@@ -18,6 +18,12 @@ Date: 2026-05-19 Australia/Melbourne
 - A Maestro Agentic Process project was created as `PermitOps V9.1 Certification`.
 - UiPath Autopilot generated the PermitOps V9.1 BPMN certification flow in `Process.bpmn`.
 - The generated BPMN has 0 validation issues in Studio Web.
+- Tenant services were updated to include Actions and Test Manager.
+- Test Manager is accessible at project prefix `PVACPOV91`.
+- Test Manager project `PermitOps V9.1 Agent Certification` was created.
+- Five PermitOps certification test cases were created in Test Manager.
+- Test set `PermitOps Certification Evidence` was created and assigned all five test cases.
+- Action Center is accessible and shows the pending-task inbox.
 
 ## Evidence Files
 
@@ -29,6 +35,10 @@ Date: 2026-05-19 Australia/Melbourne
 - `assets/maestro_permitops_bpmn_autopilot.png`
 - `assets/test_manager_not_enabled_404.png`
 - `assets/action_center_orchestrator_not_enabled.png`
+- `assets/uipath_services_actions_test_manager_enabled.png`
+- `assets/test_manager_permitops_5_test_cases.png`
+- `assets/test_manager_permitops_test_set_assigned.png`
+- `assets/action_center_enabled_empty_inbox.png`
 - `evidence/case_001/raw_llm_response.json`
 - `evidence/case_001/trace_metadata.json`
 - `evidence/case_001/normalized_ai_trace.json`
@@ -122,23 +132,37 @@ Evidence:
 - `assets/maestro_permitops_agentic_process_created.png`
 - `assets/maestro_permitops_bpmn_autopilot.png`
 
-## Current Blockers
+## Test Manager / Test Cloud
 
-### Test Manager / Test Cloud
-
-Direct navigation to `https://cloud.uipath.com/scortlandyard/testmanager_/` returned:
+Initially, direct navigation to `https://cloud.uipath.com/scortlandyard/testmanager_/` returned:
 
 ```json
 { "statusCode": 404, "message": "Resource not found" }
 ```
 
-This likely means Test Manager/Test Cloud is not enabled in the current tenant yet, or the final UiPath Labs sandbox entitlement has not arrived.
+This was resolved by opening the tenant Services page and adding `Test Manager` to `DefaultTenant`.
 
-Plan C remains ready: the local deterministic runner writes Test Manager dry-run payloads to `evidence/case_001/test_manager_sync_payload.json` and `evidence/case_001/test_manager_sync_result.json`.
+Live Test Manager artifacts now exist:
 
-### Action Center
+- Project: `PermitOps V9.1 Agent Certification`
+- Prefix: `PVACPOV91`
+- Test cases:
+  - `PVACPOV91:1` - `TC001 PII export denied`
+  - `PVACPOV91:2` - `TC002 aggregate access allowed`
+  - `PVACPOV91:3` - `TC003 raw agent request suspended`
+  - `PVACPOV91:4` - `TC004 high risk PII approval`
+  - `PVACPOV91:5` - `TC005 regression keeps PII denied`
+- Test set: `PVACPOV91:6` - `PermitOps Certification Evidence`
+- Static assignment count: `5`
 
-Action Center was checked at the tenant URL:
+Evidence:
+
+- `assets/test_manager_permitops_5_test_cases.png`
+- `assets/test_manager_permitops_test_set_assigned.png`
+
+## Action Center
+
+Initially, Action Center was checked at the tenant URL:
 
 ```text
 https://cloud.uipath.com/scortlandyard/DefaultTenant/actions_/tasks?status=Pending
@@ -151,13 +175,36 @@ Actions is not enabled for this tenant.
 Actions requires the UiPath Automation Cloud. Please contact your administrator to enable it.
 ```
 
-The repository still contains the approval task schema and payload template. Live task creation remains blocked until Actions is enabled for the tenant or the UiPath Labs sandbox entitlement arrives.
+This was resolved by opening the tenant Services page and adding `Actions` to `DefaultTenant`.
+
+Action Center is now accessible at:
+
+```text
+https://cloud.uipath.com/scortlandyard/DefaultTenant/actions_/tasks?status=Pending
+```
+
+Current state:
+
+```text
+Inbox - Action Center
+No Pending tasks
+```
+
+Evidence:
+
+- `assets/action_center_enabled_empty_inbox.png`
+
+## Current Blockers
+
+### Action Center live task creation
+
+Action Center is enabled, but no live approval task has been created yet. The official Action Center pattern is to create tasks from a UiPath process activity such as `Create Form Task`, then complete the resulting task from the Action Center inbox.
+
+The repository still contains the approval task schema and payload template. The remaining work is to bind the Maestro `Human approval in Action Center` user task or a Studio workflow activity to create the live PermitOps approval task.
 
 ## Next Platform Steps
 
-1. Confirm UiPath Labs sandbox entitlement email has arrived.
-2. Re-check Test Manager/Test Cloud availability from the product launcher or tenant services.
-3. Create the `PermitOps V9.1 Agent Certification` Test Manager project/plan.
-4. Map TC-001 through TC-005 using `evidence/case_001/test_manager_sync_payload.json`.
-5. Create the Action Center approval task and save the live approval screenshot.
-6. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
+1. Bind the Maestro `Human approval in Action Center` step or a Studio workflow activity to create a live Action Center task.
+2. Run or simulate the approval task and capture the Pending -> Completed transition.
+3. Optionally execute the Test Manager test set manually or through automation to create live run results.
+4. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

@@ -268,8 +268,9 @@ The current live API Workflow proof calls the deployed PermitOps worker and retu
 
 Blocked by tenant entitlement today:
 
-- Test Manager/Test Cloud URL returns 404 in the current tenant.
-- Action Center tenant page says Actions is not enabled for this tenant.
+- Resolved: Test Manager was added to `DefaultTenant`, and the live project `PermitOps V9.1 Agent Certification` now contains five mapped test cases plus the `PermitOps Certification Evidence` test set.
+- Resolved: Actions was added to `DefaultTenant`, and Action Center now opens to the pending-task inbox.
+- Remaining: create the live Action Center approval task from a UiPath workflow activity, then capture the Pending -> Completed approval transition.
 
 ## UiPath setup
 
@@ -349,3 +350,7 @@ Current platform spike screenshots:
 - `assets/uipath_api_workflow_success_deny_suspend.png`
 - `assets/action_center_orchestrator_not_enabled.png`
 - `assets/test_manager_not_enabled_404.png`
+- `assets/uipath_services_actions_test_manager_enabled.png`
+- `assets/test_manager_permitops_5_test_cases.png`
+- `assets/test_manager_permitops_test_set_assigned.png`
+- `assets/action_center_enabled_empty_inbox.png`

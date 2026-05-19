@@ -35,13 +35,34 @@ Target implemented test set: 5
 
 | Test Manager field | Value |
 | --- | --- |
-| Project | PermitOps |
-| Test Plan | Plan C - PermitOps Agent License Certification |
+| Project | `PermitOps V9.1 Agent Certification` |
+| Project prefix | `PVACPOV91` |
+| Test set | `PVACPOV91:6` - `PermitOps Certification Evidence` |
 | Requirement | UiPath-governed licensing for enterprise AI agents |
 | Case ID | `PERMITOPS-CASE-001` |
 | Evidence State | `Test Cloud Evidence` |
 | Runner Type | Local deterministic runner |
 | Storage System | UiPath Test Manager/Test Cloud |
+
+## Live Test Manager Evidence
+
+The following artifacts were created in the `DefaultTenant` Test Manager service:
+
+| Key | Name |
+| --- | --- |
+| `PVACPOV91:1` | `TC001 PII export denied` |
+| `PVACPOV91:2` | `TC002 aggregate access allowed` |
+| `PVACPOV91:3` | `TC003 raw agent request suspended` |
+| `PVACPOV91:4` | `TC004 high risk PII approval` |
+| `PVACPOV91:5` | `TC005 regression keeps PII denied` |
+| `PVACPOV91:6` | `PermitOps Certification Evidence` |
+
+The test set `PVACPOV91:6` has all five test cases assigned under `Static Assignment (5)`.
+
+Evidence screenshots:
+
+- `assets/test_manager_permitops_5_test_cases.png`
+- `assets/test_manager_permitops_test_set_assigned.png`
 
 ## Evidence Hash Placeholder
 
