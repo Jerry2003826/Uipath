@@ -271,7 +271,8 @@ Blocked by tenant entitlement today:
 - Resolved: Test Manager was added to `DefaultTenant`, and the live project `PermitOps V9.1 Agent Certification` now contains five mapped test cases plus the `PermitOps Certification Evidence` test set.
 - Resolved: Actions was added to `DefaultTenant`, and Action Center now opens to the pending-task inbox.
 - Resolved: a Studio Web RPA Workflow using `Create External Task` created a real Action Center task: `Approve PermitOps Restricted Agent License #3545494` in catalog `PermitOps Approvals`.
-- Remaining: assign the external task to the demo user or switch to a self-assigned Form/App task path, then capture the Pending -> Completed approval transition.
+- Resolved: Action Center completed task `#3545494`, giving the demo a live Completed approval artifact.
+- Remaining: for a cleaner live demo, assign the external task to the demo user or switch to a self-assigned Form/App task path so the task first appears in `Pending`.
 
 ## UiPath setup
 

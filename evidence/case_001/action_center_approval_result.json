@@ -1,5 +1,13 @@
 {
   "approver": "demo-human-approver",
   "case_id": "case_001",
-  "decision": "approved"
+  "decision": "approved",
+  "live_uipath_task": {
+    "catalog": "PermitOps Approvals",
+    "created_from": "Studio Web RPA Workflow Create External Task",
+    "priority": "High",
+    "status_bucket": "Completed",
+    "task_id": 3545494,
+    "title": "Approve PermitOps Restricted Agent License"
+  }
 }

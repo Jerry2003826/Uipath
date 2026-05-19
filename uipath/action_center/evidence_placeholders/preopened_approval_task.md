@@ -51,7 +51,7 @@ Task: Approve PermitOps Restricted Agent License
 Task ID: 3545494
 Catalog: PermitOps Approvals
 Priority: High
-Status bucket: Unassigned
+Status bucket: Completed
 ```
 
 Created from Studio Web:
@@ -65,5 +65,13 @@ Evidence:
 
 - `assets/studio_web_create_external_task_success.png`
 - `assets/action_center_permitops_unassigned_task_3545494_clean.png`
+- `assets/action_center_permitops_completed_task_3545494.png`
 
-Remaining work: add an assignment step so the task appears in the current user's `Pending` inbox, then capture the approval completion transition.
+Completion result:
+
+```text
+Action Center snackbar: Task completed successfully
+Completed tab: Approve PermitOps Restricted Agent License #3545494
+```
+
+Remaining work: add an assignment step so the task appears in the current user's `Pending` inbox before completion in the final demo recording.

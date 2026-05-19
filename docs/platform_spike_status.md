@@ -188,7 +188,8 @@ Current state:
 ```text
 Inbox - Action Center
 Pending: no assigned tasks
-Unassigned: Approve PermitOps Restricted Agent License #3545494
+Unassigned: no tasks after completion
+Completed: Approve PermitOps Restricted Agent License #3545494
 ```
 
 Evidence:
@@ -196,6 +197,7 @@ Evidence:
 - `assets/action_center_enabled_empty_inbox.png`
 - `assets/studio_web_create_external_task_success.png`
 - `assets/action_center_permitops_unassigned_task_3545494_clean.png`
+- `assets/action_center_permitops_completed_task_3545494.png`
 
 ### Live task creation result
 
@@ -223,7 +225,15 @@ Approve PermitOps Restricted Agent License
 Priority: High
 ```
 
-The current remaining gap is assignment. `Create External Task` produced a real Action Center task, but it did not assign the task to the current user, so the `Pending` tab remains empty. The task menu exposed `Complete`, `Show similar Tasks`, `Edit labels`, and `Remove`, but no direct `Assign` action in the current Action Center UI.
+The task was then completed from Action Center. The `Completed` tab now shows:
+
+```text
+Approve PermitOps Restricted Agent License
+#3545494 - PermitOps Approvals
+Priority: High
+```
+
+The current remaining gap is assignment. `Create External Task` produced a real Action Center task, but it did not assign the task to the current user, so the `Pending` tab remained empty before completion. The task menu exposed `Complete`, `Show similar Tasks`, `Edit labels`, and `Remove`, but no direct `Assign` action in the current Action Center UI.
 
 Important Studio Web implementation note:
 
@@ -240,6 +250,6 @@ Typing directly into the inline field can display text without satisfying Studio
 
 1. Add an assignment step after `Create External Task`, or switch to a Form/App task path that self-assigns to the current demo user.
 2. Capture the assigned `Pending` view after assignment.
-3. Run or simulate the approval task and capture the Pending/Unassigned -> Completed transition.
-3. Optionally execute the Test Manager test set manually or through automation to create live run results.
-4. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
+3. Optional: repeat the completion flow after assignment so the demo shows Pending -> Completed instead of Unassigned -> Completed.
+4. Optionally execute the Test Manager test set manually or through automation to create live run results.
+5. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
