@@ -48,17 +48,19 @@ The current live task state is:
 
 ```text
 Task: Approve PermitOps Restricted Agent License
-Task ID: 3545494
+Task ID: 3545796
 Catalog: PermitOps Approvals
 Priority: High
-Status bucket: Completed
+Status bucket: Pending
 ```
 
 Created from Studio Web:
 
 ```text
 RPA Workflow -> Create External Task
-Cloud debug log: Task created with Id 3545494
+RPA Workflow -> Assign Tasks
+Cloud debug log: Task created with Id 3545796
+Task Id binding: taskObjectOutput.Id.Value
 ```
 
 Evidence:
@@ -66,6 +68,7 @@ Evidence:
 - `assets/studio_web_create_external_task_success.png`
 - `assets/action_center_permitops_unassigned_task_3545494_clean.png`
 - `assets/action_center_permitops_completed_task_3545494.png`
+- `assets/action_center_permitops_pending_assigned_task_3545796.png`
 
 Completion result:
 
@@ -74,4 +77,4 @@ Action Center snackbar: Task completed successfully
 Completed tab: Approve PermitOps Restricted Agent License #3545494
 ```
 
-Remaining work: add an assignment step so the task appears in the current user's `Pending` inbox before completion in the final demo recording.
+The assigned-pending gap is resolved. Task `#3545796` appears under the current user's `My Tasks > Pending` inbox. The remaining optional demo step is to complete this assigned task live during recording so the video shows Pending -> Completed.

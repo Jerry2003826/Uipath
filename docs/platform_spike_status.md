@@ -187,7 +187,7 @@ Current state:
 
 ```text
 Inbox - Action Center
-Pending: no assigned tasks
+Pending: Approve PermitOps Restricted Agent License #3545796
 Unassigned: no tasks after completion
 Completed: Approve PermitOps Restricted Agent License #3545494
 ```
@@ -198,6 +198,7 @@ Evidence:
 - `assets/studio_web_create_external_task_success.png`
 - `assets/action_center_permitops_unassigned_task_3545494_clean.png`
 - `assets/action_center_permitops_completed_task_3545494.png`
+- `assets/action_center_permitops_pending_assigned_task_3545796.png`
 
 ### Live task creation result
 
@@ -233,7 +234,36 @@ Approve PermitOps Restricted Agent License
 Priority: High
 ```
 
-The current remaining gap is assignment. `Create External Task` produced a real Action Center task, but it did not assign the task to the current user, so the `Pending` tab remained empty before completion. The task menu exposed `Complete`, `Show similar Tasks`, `Edit labels`, and `Remove`, but no direct `Assign` action in the current Action Center UI.
+An assignment step was then added after `Create External Task` using the Persistence `Assign Tasks` activity.
+
+Important Studio Web implementation notes:
+
+```text
+Assign Tasks -> Task Id: taskObjectOutput.Id.Value
+Assign Tasks -> Assignment criteria: User
+Assign Tasks -> User Name or Email: current UiPath demo user
+Assign Tasks -> Task Assignment Type: Assign
+```
+
+The `Task Id` expression must be created through the VB Expression editor. The `Create External Task` output property is nullable (`Long?`), while `Assign Tasks` requires `Int64`, so the expression must use `.Value`. The raw `taskObjectOutput.Id` expression fails validation with an Option Strict nullable-to-non-nullable conversion error.
+
+After the assignment step was added, Studio Web reported `No issues found`. The cloud debug run succeeded and logged:
+
+```text
+Task created with Id 3545796
+Create External Task: Successful
+Assign Tasks: Successful
+RPA Workflow execution ended
+```
+
+The new task is visible in Action Center under the current user's `Pending` inbox:
+
+```text
+Approve PermitOps Restricted Agent License
+#3545796 - PermitOps Approvals
+Priority: High
+Status bucket: Pending
+```
 
 Important Studio Web implementation note:
 
@@ -246,10 +276,14 @@ Typing directly into the inline field can display text without satisfying Studio
 
 ### Action Center assigned pending task
 
+Resolved. The assigned pending task evidence is captured at:
+
+```text
+assets/action_center_permitops_pending_assigned_task_3545796.png
+```
+
 ## Next Platform Steps
 
-1. Add an assignment step after `Create External Task`, or switch to a Form/App task path that self-assigns to the current demo user.
-2. Capture the assigned `Pending` view after assignment.
-3. Optional: repeat the completion flow after assignment so the demo shows Pending -> Completed instead of Unassigned -> Completed.
-4. Optionally execute the Test Manager test set manually or through automation to create live run results.
-5. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
+1. Optional: complete task `#3545796` during the final demo recording so the video shows Pending -> Completed.
+2. Optionally execute the Test Manager test set manually or through automation to create live run results.
+3. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

@@ -132,6 +132,13 @@ The reviewer sees:
 
 Approval is required before the license compiler can issue a runtime license. Rejection keeps the agent unlicensed or suspended for the sensitive call path.
 
+Live platform proof now includes an assigned Action Center pending task:
+
+- Studio Web cloud debug created task `#3545796`.
+- The workflow then used `Assign Tasks` with `taskObjectOutput.Id.Value`.
+- Action Center shows `Approve PermitOps Restricted Agent License #3545796` in `My Tasks > Pending`.
+- Screenshot: `assets/action_center_permitops_pending_assigned_task_3545796.png`
+
 ## API Workflow runtime proxy
 
 The UiPath API Workflow is the runtime enforcement point.
