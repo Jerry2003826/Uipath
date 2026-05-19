@@ -353,6 +353,11 @@ The main product feedback is that UiPath already has the right primitives for go
 
 See [docs/product_feedback_notes.md](docs/product_feedback_notes.md) for the detailed notes.
 
+## Submission readiness
+
+See [docs/submission_readiness.md](docs/submission_readiness.md) for the current
+evidence checklist, demo recording path, and remaining Devpost submission tasks.
+
 ## Screenshots
 
 Recommended screenshots for the final submission:
@@ -379,4 +384,9 @@ Current platform spike screenshots:
 - `assets/uipath_services_actions_test_manager_enabled.png`
 - `assets/test_manager_permitops_5_test_cases.png`
 - `assets/test_manager_permitops_test_set_assigned.png`
+- `assets/test_manager_permitops_execution_5_passed_viewport.png`
+- `assets/test_manager_permitops_execution_5_passed_fullpage.png`
 - `assets/action_center_enabled_empty_inbox.png`
+- `assets/action_center_permitops_completed_task_3545494.png`
+- `assets/action_center_permitops_pending_assigned_task_3545796.png`
+- `assets/studio_web_create_external_task_success.png`
