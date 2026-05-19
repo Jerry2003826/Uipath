@@ -44,10 +44,26 @@ Action Center has been added to `DefaultTenant` and is accessible at:
 https://cloud.uipath.com/scortlandyard/DefaultTenant/actions_/tasks?status=Pending
 ```
 
-The current inbox state is:
+The current live task state is:
 
 ```text
-No Pending tasks
+Task: Approve PermitOps Restricted Agent License
+Task ID: 3545494
+Catalog: PermitOps Approvals
+Priority: High
+Status bucket: Unassigned
 ```
 
-Remaining work: create the live PermitOps approval task from a UiPath process activity, such as Action Center `Create Form Task`, or bind the Maestro `Human approval in Action Center` step to an executable task creation path.
+Created from Studio Web:
+
+```text
+RPA Workflow -> Create External Task
+Cloud debug log: Task created with Id 3545494
+```
+
+Evidence:
+
+- `assets/studio_web_create_external_task_success.png`
+- `assets/action_center_permitops_unassigned_task_3545494_clean.png`
+
+Remaining work: add an assignment step so the task appears in the current user's `Pending` inbox, then capture the approval completion transition.

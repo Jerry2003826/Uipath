@@ -187,24 +187,59 @@ Current state:
 
 ```text
 Inbox - Action Center
-No Pending tasks
+Pending: no assigned tasks
+Unassigned: Approve PermitOps Restricted Agent License #3545494
 ```
 
 Evidence:
 
 - `assets/action_center_enabled_empty_inbox.png`
+- `assets/studio_web_create_external_task_success.png`
+- `assets/action_center_permitops_unassigned_task_3545494_clean.png`
+
+### Live task creation result
+
+A Studio Web RPA Workflow was created with the Persistence activity `Create External Task`.
+The workflow was configured with:
+
+```text
+Task Title: Approve PermitOps Restricted Agent License
+Task Priority: High
+Orchestrator folder path: Shared
+Task Catalog: PermitOps Approvals
+```
+
+The cloud debug run succeeded and Studio Web logged:
+
+```text
+Task created with Id 3545494
+```
+
+The task is visible in Action Center under `Unassigned`:
+
+```text
+Approve PermitOps Restricted Agent License
+#3545494 - PermitOps Approvals
+Priority: High
+```
+
+The current remaining gap is assignment. `Create External Task` produced a real Action Center task, but it did not assign the task to the current user, so the `Pending` tab remains empty. The task menu exposed `Complete`, `Show similar Tasks`, `Edit labels`, and `Remove`, but no direct `Assign` action in the current Action Center UI.
+
+Important Studio Web implementation note:
+
+```text
+The Task Title field must be saved through the field menu -> Text builder -> Save.
+Typing directly into the inline field can display text without satisfying Studio Web validation.
+```
 
 ## Current Blockers
 
-### Action Center live task creation
-
-Action Center is enabled, but no live approval task has been created yet. The official Action Center pattern is to create tasks from a UiPath process activity such as `Create Form Task`, then complete the resulting task from the Action Center inbox.
-
-The repository still contains the approval task schema and payload template. The remaining work is to bind the Maestro `Human approval in Action Center` user task or a Studio workflow activity to create the live PermitOps approval task.
+### Action Center assigned pending task
 
 ## Next Platform Steps
 
-1. Bind the Maestro `Human approval in Action Center` step or a Studio workflow activity to create a live Action Center task.
-2. Run or simulate the approval task and capture the Pending -> Completed transition.
+1. Add an assignment step after `Create External Task`, or switch to a Form/App task path that self-assigns to the current demo user.
+2. Capture the assigned `Pending` view after assignment.
+3. Run or simulate the approval task and capture the Pending/Unassigned -> Completed transition.
 3. Optionally execute the Test Manager test set manually or through automation to create live run results.
 4. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
