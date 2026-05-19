@@ -28,6 +28,7 @@ workflow_steps:
     description: Submit agent-to-agent request to the PermitOps risk scanner.
     downstream_call:
       method: POST
+      base_url: https://permitops-uipath.vercel.app
       path: /scan-risk
       sends:
         - case_id
@@ -44,6 +45,7 @@ workflow_steps:
     description: Generate deterministic tests for the requested capability.
     downstream_call:
       method: POST
+      base_url: https://permitops-uipath.vercel.app
       path: /generate-test-scenarios
       sends:
         - case_id
@@ -63,6 +65,7 @@ workflow_steps:
     description: Compile a constrained license recommendation from risk and test evidence.
     downstream_call:
       method: POST
+      base_url: https://permitops-uipath.vercel.app
       path: /compile-license
       sends:
         - case_id

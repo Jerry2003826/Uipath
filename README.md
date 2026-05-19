@@ -227,6 +227,26 @@ To serve the worker locally for a UiPath API Workflow HTTP call:
 
 The local demo writes evidence to `evidence/case_001/`, including before/after test results, a pending and active license, Test Manager dry-run payloads, runtime denial evidence, and an HTML license card.
 
+## Deployed worker
+
+The current public worker endpoint for UiPath API Workflow integration is:
+
+```text
+https://permitops-uipath.vercel.app
+```
+
+Useful live checks:
+
+```bash
+curl https://permitops-uipath.vercel.app/health
+
+curl -X POST https://permitops-uipath.vercel.app/license-decision \
+  -H 'Content-Type: application/json' \
+  -d '{"case_id":"case_001","source_agent":"marketing-outreach-agent","target_agent":"customer-data-agent","action":"export_raw_customer_emails","payload":{"segment":"VIP","count":500,"data_type":"raw_email"}}'
+```
+
+The worker uses an ephemeral runtime evidence directory when deployed, so serverless API calls do not attempt to write into the read-only application bundle.
+
 ## UiPath setup
 
 Recommended UiPath Automation Cloud setup:

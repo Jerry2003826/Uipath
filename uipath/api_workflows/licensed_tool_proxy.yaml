@@ -30,6 +30,7 @@ workflow_steps:
     description: Ask PermitOps whether the runtime call is allowed by the approved license.
     downstream_call:
       method: POST
+      base_url: https://permitops-uipath.vercel.app
       path: /license-decision
       sends:
         - source_agent

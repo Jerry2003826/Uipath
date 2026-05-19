@@ -11,6 +11,8 @@ Date: 2026-05-19 Australia/Melbourne
 - Local deterministic worker is implemented and tested.
 - Local `full-demo-local` produces the PermitOps evidence chain.
 - A real OpenAI Responses API call was captured and stored as `evidence/case_001/raw_llm_response.json`.
+- A public FastAPI worker was deployed for UiPath API Workflow HTTP integration.
+- Vercel alias: `https://permitops-uipath.vercel.app`
 
 ## Evidence Files
 
@@ -26,6 +28,36 @@ Date: 2026-05-19 Australia/Melbourne
 - `evidence/case_001/license.json`
 - `evidence/case_001/runtime_decision.json`
 - `evidence/case_001/license_card.html`
+
+## Public Worker Checks
+
+Health endpoint:
+
+```text
+GET https://permitops-uipath.vercel.app/health
+```
+
+Runtime license decision endpoint:
+
+```text
+POST https://permitops-uipath.vercel.app/license-decision
+```
+
+Demo payload:
+
+```json
+{
+  "case_id": "case_001",
+  "source_agent": "marketing-outreach-agent",
+  "target_agent": "customer-data-agent",
+  "action": "export_raw_customer_emails",
+  "payload": {
+    "segment": "VIP",
+    "count": 500,
+    "data_type": "raw_email"
+  }
+}
+```
 
 ## Current Blockers
 
