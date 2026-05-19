@@ -247,6 +247,8 @@ curl -X POST https://permitops-uipath.vercel.app/license-decision \
 
 The worker uses an ephemeral runtime evidence directory when deployed, so serverless API calls do not attempt to write into the read-only application bundle.
 
+The deployed worker has also been called from a live UiPath Studio Web API Workflow debug run. The captured output shows `statusCode: 200` and `decision: deny_and_suspend`; see `assets/uipath_api_workflow_success_deny_suspend.png`.
+
 ## UiPath setup
 
 Recommended UiPath Automation Cloud setup:

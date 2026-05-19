@@ -13,12 +13,17 @@ Date: 2026-05-19 Australia/Melbourne
 - A real OpenAI Responses API call was captured and stored as `evidence/case_001/raw_llm_response.json`.
 - A public FastAPI worker was deployed for UiPath API Workflow HTTP integration.
 - Vercel alias: `https://permitops-uipath.vercel.app`
+- A Studio Web API Workflow HTTP Request activity was configured through UiPath Autopilot.
+- Studio Web Debug successfully called the public worker and returned `decision: deny_and_suspend`.
 
 ## Evidence Files
 
 - `assets/studio_api_workflow_created.png`
+- `assets/uipath_api_workflow_debug_url_blocker.png`
+- `assets/uipath_api_workflow_success_deny_suspend.png`
 - `assets/maestro_home_accessible.png`
 - `assets/test_manager_not_enabled_404.png`
+- `assets/action_center_orchestrator_not_enabled.png`
 - `evidence/case_001/raw_llm_response.json`
 - `evidence/case_001/trace_metadata.json`
 - `evidence/case_001/normalized_ai_trace.json`
@@ -59,6 +64,22 @@ Demo payload:
 }
 ```
 
+Verified live through UiPath Studio Web Debug:
+
+```json
+{
+  "content": {
+    "decision": "deny_and_suspend",
+    "evidence_ref": "runtime-event-001",
+    "license_status": "suspended",
+    "reason": "blocked_action_attempted"
+  },
+  "statusCode": 200
+}
+```
+
+The successful run is captured in `assets/uipath_api_workflow_success_deny_suspend.png`.
+
 ## Current Blockers
 
 ### Test Manager / Test Cloud
@@ -75,7 +96,20 @@ Plan C remains ready: the local deterministic runner writes Test Manager dry-run
 
 ### Action Center
 
-Action Center has not yet been verified live. The repository contains the approval task schema and payload template; live task creation should be the next platform task after tenant services are confirmed.
+Action Center was checked at the tenant URL:
+
+```text
+https://cloud.uipath.com/scortlandyard/DefaultTenant/actions_/tasks?status=Pending
+```
+
+The tenant returned:
+
+```text
+Actions is not enabled for this tenant.
+Actions requires the UiPath Automation Cloud. Please contact your administrator to enable it.
+```
+
+The repository still contains the approval task schema and payload template. Live task creation remains blocked until Actions is enabled for the tenant or the UiPath Labs sandbox entitlement arrives.
 
 ## Next Platform Steps
 
@@ -84,4 +118,4 @@ Action Center has not yet been verified live. The repository contains the approv
 3. Create the `PermitOps V9.1 Agent Certification` Test Manager project/plan.
 4. Map TC-001 through TC-005 using `evidence/case_001/test_manager_sync_payload.json`.
 5. Create the Action Center approval task and save the live approval screenshot.
-6. Configure the Studio Web API Workflow to call the deployed worker endpoint.
+6. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

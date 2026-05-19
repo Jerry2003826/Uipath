@@ -63,5 +63,20 @@ Expected response:
 Evidence capture placeholder:
 
 - Runtime call screenshot/link: TBD
-- Denial response screenshot/link: TBD
+- Denial response screenshot/link: `assets/uipath_api_workflow_success_deny_suspend.png`
 - Suspended Maestro Case screenshot/link: TBD
+
+Live Studio Web Debug output captured on 2026-05-19:
+
+```json
+{
+  "content": {
+    "decision": "deny_and_suspend",
+    "evidence_ref": "runtime-event-001",
+    "license_status": "suspended",
+    "reason": "blocked_action_attempted"
+  },
+  "statusCode": 200,
+  "vendorProcessingTimeMs": 2664
+}
+```
