@@ -17,9 +17,9 @@ followed by a live Approve click.
 | Blocked Actions | `export_raw_customer_emails`, `export_customer_phone_numbers`, `access_individual_customer_profile` |
 | Risk Level | `critical` |
 | Evidence Summary | `5 deterministic tests mapped to UiPath Test Manager/Test Cloud; raw VIP email export denied; aggregate access allowed.` |
-| Rules Hash | `rules_hash_TBD` |
-| Evidence Hash | `evidence_hash_TBD` |
-| License Hash | `license_hash_TBD` |
+| Rules Hash | `sha256:4ecd9d107251ab758479655d3637eb5f615a5e80a4041e3fe7902f94abe9eb33` |
+| Evidence Hash | `sha256:13e6a6965d1ee4cd64d2c2e75fe96151d0aa4b9ed76fc7b897d07a68744f81c4` |
+| License Hash | `sha256:9ee59ad09498851741f61cadfdb71cfec736b880cc9ebf8cb4807a6a4355f6d4` |
 | Decision | `Approve` or `Reject` |
 
 ## Demo Path

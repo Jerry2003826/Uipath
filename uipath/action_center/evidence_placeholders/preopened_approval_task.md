@@ -14,10 +14,10 @@ Use this file to capture the pre-open Action Center task shown in the demo.
 
 ## Evidence To Attach
 
-- Pre-open task screenshot/link: TBD
-- Live approval click screenshot/link: TBD
-- Post-approval Maestro Case state screenshot/link: TBD
-- License hash capture: TBD
+- Pre-open task screenshot/link: `assets/action_center_permitops_pending_assigned_task_3545796.png`
+- Live approval click screenshot/link: `assets/action_center_permitops_completed_task_3545494.png`
+- Post-approval Maestro/Studio evidence screenshot/link: `assets/maestro_debug_human_approval_completed.png`
+- License hash capture: `sha256:9ee59ad09498851741f61cadfdb71cfec736b880cc9ebf8cb4807a6a4355f6d4`
 - Action Center enabled screenshot/link: `assets/action_center_enabled_empty_inbox.png`
 
 ## Required Visible Fields

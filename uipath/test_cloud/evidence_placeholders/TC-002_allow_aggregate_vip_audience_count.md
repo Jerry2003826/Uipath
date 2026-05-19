@@ -13,7 +13,7 @@
 
 ## Evidence To Attach
 
-- Local deterministic runner result: TBD
-- Test Manager result link: TBD
-- Test Cloud evidence link: TBD
-- License decision screenshot/link: TBD
+- Local deterministic runner result: `evidence/case_001/test_results_after.json`
+- Test Manager result link: `https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/c66f6554-4b30-0f00-4375-0b49aa4d0fd9/92e9a176-8c14-0700-a2c6-0b49aa443ef2`
+- Test Cloud evidence link: `assets/test_manager_permitops_execution_5_passed_viewport.png`
+- License decision evidence: `evidence/case_001/license.json`

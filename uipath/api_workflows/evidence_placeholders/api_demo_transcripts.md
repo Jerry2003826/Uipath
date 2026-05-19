@@ -30,9 +30,9 @@ Expected response:
 
 Evidence capture placeholder:
 
-- Request screenshot/link: TBD
-- Response screenshot/link: TBD
-- Maestro Case update link: TBD
+- Request screenshot/link: `assets/uipath_api_workflow_success_deny_suspend.png`
+- Response screenshot/link: `assets/uipath_api_workflow_success_deny_suspend.png`
+- Maestro Case update link: modeled in `assets/maestro_permitops_bpmn_autopilot.png`; live Maestro case state is not available in the current tenant.
 
 ## Licensed Tool Proxy
 
@@ -62,9 +62,9 @@ Expected response:
 
 Evidence capture placeholder:
 
-- Runtime call screenshot/link: TBD
+- Runtime call screenshot/link: `assets/uipath_api_workflow_success_deny_suspend.png`
 - Denial response screenshot/link: `assets/uipath_api_workflow_success_deny_suspend.png`
-- Suspended Maestro Case screenshot/link: TBD
+- Suspended Maestro Case screenshot/link: modeled in `assets/maestro_permitops_bpmn_autopilot.png`; live suspension state is represented by the API Workflow response and local `evidence/case_001/runtime_decision.json`.
 
 Live Studio Web Debug output captured on 2026-05-19:
 

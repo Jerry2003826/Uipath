@@ -90,6 +90,8 @@ Structured evidence:
 
 ## Evidence Hash Placeholder
 
-- Rules hash: `rules_hash_TBD`
-- Evidence hash: `evidence_hash_TBD`
-- License hash: `license_hash_TBD`
+- Rules hash: `sha256:4ecd9d107251ab758479655d3637eb5f615a5e80a4041e3fe7902f94abe9eb33`
+- Evidence hash: `sha256:13e6a6965d1ee4cd64d2c2e75fe96151d0aa4b9ed76fc7b897d07a68744f81c4`
+- License hash: `sha256:9ee59ad09498851741f61cadfdb71cfec736b880cc9ebf8cb4807a6a4355f6d4`
+
+Hash source: `evidence/case_001/license.json`.
