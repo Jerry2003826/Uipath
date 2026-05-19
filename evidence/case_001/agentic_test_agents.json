@@ -1,0 +1,109 @@
+{
+  "case_id": "case_001",
+  "project_name": "Agentic Test Swarm",
+  "subtitle": "UiPath Test Cloud agents that attack, repair, and certify AI workflows",
+  "track": "UiPath Test Cloud",
+  "public_claim": "Agentic Test Swarm is a UiPath-orchestrated team of AI testing agents that attacks, repairs, re-tests, and certifies enterprise AI workflows.",
+  "permit_role": "output_not_product",
+  "agents": [
+    {
+      "name": "Marketing Outreach Agent",
+      "type": "enterprise_ai_worker_under_test",
+      "current_evidence": [
+        "evidence/case_001/normalized_ai_trace.json",
+        "evidence/case_001/trace_metadata.json"
+      ],
+      "responsibility": "Attempts a VIP campaign task and requests raw customer email export from another agent."
+    },
+    {
+      "name": "Customer Data Agent",
+      "type": "enterprise_ai_worker_or_tool_target",
+      "current_evidence": [
+        "evidence/case_001/normalized_ai_trace.json"
+      ],
+      "responsibility": "Represents the sensitive customer-data endpoint called by the Marketing Outreach Agent."
+    },
+    {
+      "name": "Policy Miner Agent",
+      "type": "testing_agent",
+      "current_evidence": [
+        "permitops_worker/fixtures/policies.yaml",
+        "evidence/case_001/agentic_test_swarm_run.json"
+      ],
+      "responsibility": "Extracts policy obligations from the raw PII policy, agent manifest, tool schema, and captured AI trace."
+    },
+    {
+      "name": "Red-Team Agent",
+      "type": "testing_agent",
+      "current_evidence": [
+        "evidence/case_001/red_team_scenarios.json",
+        "evidence/case_001/coding_agent_prompts.jsonl",
+        "evidence/case_001/coding_agent_outputs.jsonl"
+      ],
+      "responsibility": "Generates adversarial prompt-injection and agent-to-agent data misuse scenarios."
+    },
+    {
+      "name": "Test Designer Agent",
+      "type": "testing_agent",
+      "current_evidence": [
+        "evidence/case_001/test_designer_cases.json",
+        "evidence/case_001/test_cases.json"
+      ],
+      "responsibility": "Converts red-team scenarios into Test Cloud certification cases with deterministic expected outcomes."
+    },
+    {
+      "name": "Test Selector Agent",
+      "type": "testing_agent",
+      "current_evidence": [
+        "evidence/case_001/test_selector_decision.json",
+        "evidence/case_001/test_manager_manual_execution_result.json"
+      ],
+      "responsibility": "Chooses the right tests based on raw PII risk, coverage tags, changed tool scope, and recent failure history."
+    },
+    {
+      "name": "Failure Analyst Agent",
+      "type": "testing_agent",
+      "current_evidence": [
+        "evidence/case_001/failure_analysis.json",
+        "evidence/case_001/test_results_before.json"
+      ],
+      "responsibility": "Explains failed Test Cloud evidence and recommends targeted repair plus re-test scope."
+    },
+    {
+      "name": "Repair Agent",
+      "type": "coding_agent_backed_testing_agent",
+      "current_evidence": [
+        "evidence/case_001/repair_summary.md",
+        "docs/coding_agent_evidence.md"
+      ],
+      "responsibility": "Uses coding-agent output to propose a guardrail repair candidate after the raw PII export test fails."
+    },
+    {
+      "name": "Re-test Orchestrator",
+      "type": "testing_agent",
+      "current_evidence": [
+        "evidence/case_001/failure_analysis.json",
+        "evidence/case_001/test_results_after.json"
+      ],
+      "responsibility": "Runs targeted re-tests for TC-001 and TC-005 after the repair candidate is applied."
+    },
+    {
+      "name": "Quality Governor",
+      "type": "deterministic_governance_gate",
+      "current_evidence": [
+        "evidence/case_001/license.json",
+        "evidence/case_001/runtime_decision.json"
+      ],
+      "responsibility": "Turns passed Test Cloud evidence and Action Center approval into the PermitOps Runtime Permit."
+    }
+  ],
+  "uipath_role": "UiPath is the orchestration and governance layer: Maestro/Studio Web models the swarm run, Test Manager stores evidence, Action Center gates approval, and API Workflow enforces runtime decisions.",
+  "current_platform_mapping": {
+    "test_manager_project": "PermitOps V9.1 Agent Certification",
+    "test_manager_project_key": "PVACPOV91",
+    "test_set": "PVACPOV91:6 - PermitOps Certification Evidence",
+    "action_center_task": "3545796",
+    "api_workflow_result": "deny_and_suspend"
+  },
+  "sandbox_enhancement": "Add visible UiPath Agent Builder implementations for Policy Miner, Red-Team, and Test Designer when sandbox access exposes the agent runtime."
+}

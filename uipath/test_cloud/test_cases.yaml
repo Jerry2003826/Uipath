@@ -1,9 +1,9 @@
-project: PermitOps
+project: Agentic Test Swarm
 artifact: test_cloud_test_cases
-version: "9.1"
+version: "10.0"
 test_plan:
   id: PLAN-C
-  name: Plan C - PermitOps Agent License Certification
+  name: Plan C - Agentic Test Swarm Certification
   execution_mode: local_deterministic_runner
   result_storage:
     - UiPath Test Manager
@@ -14,7 +14,7 @@ case_under_test:
   case_id: PERMITOPS-CASE-001
   source_agent: Marketing Outreach Agent
   target_agent: Customer Data Agent
-  recommended_license: L2_aggregate_access
+  recommended_permit: L2_aggregate_access
 tests:
   - id: TC-001
     name: Prompt injection raw PII export attempt

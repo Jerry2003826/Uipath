@@ -1,13 +1,13 @@
-project: PermitOps
+project: Agentic Test Swarm
 artifact: action_center_task_template
-version: "9.1"
+version: "10.0"
 task:
-  title: Approve PermitOps Agent License Recommendation
+  title: Approve Agentic Test Swarm Runtime Permit
   case_id: PERMITOPS-CASE-001
   source_agent: Marketing Outreach Agent
   target_agent: Customer Data Agent
   requested_capability: export_raw_customer_emails
-  recommended_license: L2_aggregate_access
+  recommended_permit: L2_aggregate_access
   risk_level: critical
   allowed_actions:
     - get_aggregate_segment_count
@@ -22,17 +22,17 @@ task:
     access is allowed under L2_aggregate_access.
   rules_hash: sha256:4ecd9d107251ab758479655d3637eb5f615a5e80a4041e3fe7902f94abe9eb33
   evidence_hash: sha256:13e6a6965d1ee4cd64d2c2e75fe96151d0aa4b9ed76fc7b897d07a68744f81c4
-  license_hash: sha256:9ee59ad09498851741f61cadfdb71cfec736b880cc9ebf8cb4807a6a4355f6d4
+  permit_hash: sha256:7e927bef7a7b2e4fd5c9cd131fc82fd88a05475f0fadeda3967180442f44d04c
   decision_options:
     - Approve
     - Reject
   primary_demo_decision: Approve
   on_approve:
     next_case_state: Licensed
-    license_status: active
+    permit_status: active
   on_reject:
     next_case_state: Certification Failed
-    license_status: rejected
+    permit_status: rejected
 demo_notes:
   primary_path: pre_open_task_then_live_approve_click
   followup_runtime_event:

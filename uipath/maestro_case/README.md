@@ -1,13 +1,14 @@
-# PermitOps Maestro Case Specification
+# Agentic Test Swarm Maestro Case Specification
 
-PermitOps uses a UiPath Maestro Case as the primary certification lifecycle
-orchestrator for enterprise AI-agent licensing decisions. The case owns the
-state machine, evidence references, approval routing, and runtime suspension
-record for a requested agent-to-agent capability.
+Agentic Test Swarm uses a UiPath Maestro Case as the primary testing lifecycle
+orchestrator for enterprise AI workflows. The case owns the state machine,
+evidence references, approval routing, and runtime suspension record for a
+requested agent-to-agent capability. PermitOps is the final runtime permit
+module produced by the swarm.
 
 ## Hero Scenario
 
-- Project: PermitOps
+- Project: Agentic Test Swarm
 - Platform track: UiPath Test Cloud
 - Source agent: Marketing Outreach Agent
 - Target agent: Customer Data Agent
@@ -20,12 +21,12 @@ record for a requested agent-to-agent capability.
 The Maestro Case coordinates these responsibilities:
 
 1. Receive the certification submission for an agent capability.
-2. Route the submission through risk scanning and deterministic test generation.
+2. Route the submission through policy mining, red-team generation, test design, and deterministic expected-result generation.
 3. Attach Test Cloud/Test Manager evidence from local deterministic execution.
 4. Propose repair candidates when certification fails.
-5. Compile a license recommendation for human approval.
-6. Store the approved license, rules hash, evidence hash, and license hash.
-7. Monitor licensed runtime calls and suspend attempts that violate the license.
+5. Compile a restricted PermitOps Runtime Permit recommendation for human approval.
+6. Store the approved permit, rules hash, evidence hash, and permit hash.
+7. Monitor permitted runtime calls and suspend attempts that violate the permit.
 
 ## Full Case State Model
 

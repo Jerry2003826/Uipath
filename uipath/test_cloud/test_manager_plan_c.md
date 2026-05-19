@@ -1,7 +1,11 @@
-# PermitOps Test Cloud/Test Manager Plan C
+# Agentic Test Swarm Test Cloud/Test Manager Plan C
 
 Plan C uses a local deterministic runner for execution and UiPath Test
 Manager/Test Cloud for mapped test cases, results, and evidence storage.
+
+The live Test Manager artifacts still use the original PermitOps names. In the
+current submission narrative, they represent the Agentic Test Swarm evidence
+layer, and PermitOps is the final runtime permit module.
 
 The Python worker in this repository provides the deterministic executor for
 TC-001 through TC-005. UiPath remains the visible governance layer; the worker
@@ -9,7 +13,7 @@ is called by API Workflow and produces evidence for Test Manager/Test Cloud.
 
 ## Plan C Flow
 
-1. Certification Worker Gateway receives the PermitOps case intake.
+1. Certification Worker Gateway receives the Agentic Test Swarm case intake.
 2. Risk scan marks the request as `critical`.
 3. Test scenarios TC-001 through TC-005 are generated and mapped into Test Manager.
 4. Local deterministic runner executes each case with fixed input payloads.
@@ -38,7 +42,7 @@ Target implemented test set: 5
 | Project | `PermitOps V9.1 Agent Certification` |
 | Project prefix | `PVACPOV91` |
 | Test set | `PVACPOV91:6` - `PermitOps Certification Evidence` |
-| Requirement | UiPath-governed licensing for enterprise AI agents |
+| Requirement | UiPath-governed testing and permit enforcement for enterprise AI workflows |
 | Case ID | `PERMITOPS-CASE-001` |
 | Evidence State | `Test Cloud Evidence` |
 | Runner Type | Local deterministic runner |
@@ -92,6 +96,6 @@ Structured evidence:
 
 - Rules hash: `sha256:4ecd9d107251ab758479655d3637eb5f615a5e80a4041e3fe7902f94abe9eb33`
 - Evidence hash: `sha256:13e6a6965d1ee4cd64d2c2e75fe96151d0aa4b9ed76fc7b897d07a68744f81c4`
-- License hash: `sha256:9ee59ad09498851741f61cadfdb71cfec736b880cc9ebf8cb4807a6a4355f6d4`
+- Permit hash: `sha256:7e927bef7a7b2e4fd5c9cd131fc82fd88a05475f0fadeda3967180442f44d04c`
 
 Hash source: `evidence/case_001/license.json`.

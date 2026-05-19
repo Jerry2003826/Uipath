@@ -1,4 +1,4 @@
-project: PermitOps
+project: Agentic Test Swarm
 artifact: api_workflow_spec
 workflow_name: Licensed Tool Proxy
 version: "9.1"

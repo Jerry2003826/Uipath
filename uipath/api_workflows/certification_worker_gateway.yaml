@@ -1,4 +1,4 @@
-project: PermitOps
+project: Agentic Test Swarm
 artifact: api_workflow_spec
 workflow_name: Certification Worker Gateway
 version: "9.1"
@@ -61,8 +61,8 @@ workflow_steps:
         - TC-003
         - TC-004
         - TC-005
-  - step: compile_license
-    description: Compile a constrained license recommendation from risk and test evidence.
+  - step: compile_permit
+    description: Compile a constrained PermitOps Runtime Permit recommendation from risk and Test Cloud evidence.
     downstream_call:
       method: POST
       base_url: https://permitops-uipath.vercel.app

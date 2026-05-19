@@ -1,88 +1,97 @@
-# PermitOps V9.1 Demo Script: 5 Minutes
+# Agentic Test Swarm Demo Script: 5 Minutes
 
-## 0:00-0:30 - Opening
+## 0:00-0:25 - Opening
 
-"This is PermitOps, UiPath-governed licensing for enterprise AI agents. The project runs on UiPath Automation Cloud. Maestro orchestrates the certification lifecycle, Test Cloud records certification evidence, Action Center gates human approval, and an API Workflow enforces the runtime license."
+"This is Agentic Test Swarm, a UiPath-orchestrated team of AI testing agents that attacks, repairs, re-tests, and certifies enterprise AI workflows."
 
-"The track is UiPath Test Cloud. The key idea is that an agent does not get sensitive runtime access because we trust a prompt. It gets access only after a captured behavior trace becomes replayable evidence."
+"The track is UiPath Test Cloud. Test Cloud records the certification evidence, Maestro and Studio Web model the lifecycle, Action Center gates human approval, and an API Workflow enforces the tested runtime permit."
 
-## 0:30-1:05 - Hero Risk
+"The key point: the permit is not the product. The product is the testing swarm."
 
-"Our hero scenario is a Marketing Outreach Agent calling a Customer Data Agent. The Marketing Agent asks for an export of 500 VIP customer emails."
+## 0:25-0:55 - Hero Risk
 
-Show the risky request.
+Show the captured risky request.
 
-"That is exactly the kind of cross-agent action enterprises need to govern. The agent can do useful marketing work, but raw PII export needs stronger controls."
+"Our hero workflow is a Marketing Outreach Agent calling a Customer Data Agent. The Marketing Agent says it has urgent CMO approval and asks for 500 VIP customer emails."
 
-## 1:05-1:45 - Captured AI Trace
+"That is an AI-infused workflow risk: prompt injection, agent-to-agent data access, raw PII export, and unclear human approval."
+
+## 0:55-1:25 - Captured AI Trace
 
 Show the captured trace.
 
-"PermitOps preserves the real raw model or tool response. We do not only save a summary. The raw response is part of the evidence chain because tests should replay what actually happened."
+"The system preserves the captured AI trace rather than only saving a summary. The trace includes the requesting agent, target agent, attempted tool call, requested data type, trace ID, and raw response evidence."
+
+"This is the behavior the test swarm will attack and replay."
+
+## 1:25-2:05 - Policy Miner, Red-Team, Test Designer
+
+Show the swarm evidence files or agent board.
+
+"The Policy Miner Agent extracts obligations from the raw PII policy: block raw email export, allow aggregate segment summaries, require approval for high-risk requests, and suspend unauthorized raw PII attempts."
+
+"The Red-Team Agent generates adversarial scenarios: executive override, agent-to-agent misuse, high-volume PII access, and regression replay."
+
+"The Test Designer Agent converts those scenarios into Test Cloud certification cases. Expected outcomes still come from a deterministic oracle. AI proposes tests; rules decide expected behavior."
+
+## 2:05-2:35 - Test Selector
+
+Show `test_selector_decision.json` or the test list.
+
+"The Test Selector Agent chooses which tests run first based on risk, coverage, and changed tool scope. Because the Customer Data Agent exposes raw email export and the trace shows prompt injection, the selected critical tests cover raw PII, agent-to-agent calls, approval, and regression."
+
+## 2:35-3:05 - Test Cloud Evidence
+
+Show UiPath Test Manager.
+
+"Here is the UiPath Test Cloud evidence. The live Test Manager project is named PermitOps V9.1 Agent Certification because the platform artifacts were created before the public narrative pivot. It maps to this Agentic Test Swarm run."
 
 Point out:
 
-- requesting agent
-- target agent
-- requested fields
-- raw response
-- trace ID
-- trace hash
+- `5 passed / 0 failed / 0 not executed`
+- TC-001 raw PII export
+- TC-003 agent-to-agent request
+- TC-004 human approval
+- TC-005 regression after repair
 
-## 1:45-2:35 - Policy-to-Test Generation
+"Test Cloud is the certification evidence layer. This is not only a local console result."
 
-Show generated policy tests.
+## 3:05-3:40 - Failure Analyst and Repair Agent
 
-"Next, PermitOps turns the trace into policy tests. Coding agents help generate adversarial scenarios, such as nested email exports, CSV exports, partially masked outputs, or contact IDs that are actually email addresses."
+Show failure analysis and repair summary.
 
-"But coding-agent output is not trusted automatically. A deterministic oracle decides pass or fail against explicit policy rules."
+"Before repair, TC-001 failed because the captured behavior allowed raw email export. The Failure Analyst Agent explains the root cause and recommends a targeted repair."
 
-Show the initial failure for raw customer email export.
+"The Repair Agent, backed by a coding agent, proposes the guardrail: block raw email export unless the runtime permit explicitly includes raw PII export scope. That repair is not trusted automatically. It must be re-tested."
 
-"The initial behavior fails because raw customer email addresses are being exported for marketing outreach without an approved restricted license."
+## 3:40-4:05 - Targeted Re-Test and Quality Governor
 
-## 2:35-3:15 - Test Cloud Evidence
+Show after results and license metadata.
 
-Show UiPath Test Cloud / Test Manager.
+"The Re-test Orchestrator runs the targeted set, TC-001 and TC-005. After repair, raw email export is denied and the regression test passes."
 
-"Here is the Test Cloud evidence. The plan is PermitOps V9.1 Agent Certification, and the suite is Marketing Outreach Agent - Customer Data Export."
+"The deterministic Quality Governor then converts the evidence into a restricted PermitOps Runtime Permit: aggregate access allowed, raw email export blocked, raw PII requiring human approval."
 
 Point out:
 
-- failed pre-repair run
-- replay fixture ID
-- policy pack version
-- deterministic oracle result
-- evidence attachment or hash
+- `compiler_rules_hash`
+- `evidence_hash`
+- `license_hash`
 
-"This is the center of the Test Cloud track: certification is recorded as evidence, not just a local console result."
+## 4:05-4:35 - Action Center Approval
 
-## 3:15-3:50 - Repair and Re-Test
+Show Action Center task.
 
-Show the repair candidate and passing re-test.
+"Passing tests are still not enough. UiPath Action Center keeps the human accountable. The reviewer sees the risky trace, Test Cloud evidence, repair summary, and proposed permit restrictions."
 
-"PermitOps can propose a repair candidate, such as replacing raw emails with approved segments, aggregate counts, or masked references. The repaired candidate is then replayed through the same policy tests."
+Click approve only during final recording.
 
-"The repaired behavior passes because it no longer exports raw PII outside the allowed scope."
+## 4:35-5:00 - Runtime Enforcement
 
-## 3:50-4:25 - Action Center Approval and License
+Show API Workflow result.
 
-Show the Action Center task.
-
-"Passing tests are still not enough. Maestro sends the evidence to Action Center. A human reviewer sees the original risky request, Test Cloud evidence, repair summary, and proposed license restrictions."
-
-Show approval, then license metadata.
-
-"After approval, the license compiler emits a restricted runtime license. The important metadata is `compiler_rules_hash`, `evidence_hash`, and `license_hash`. Those connect the runtime decision back to the evidence and compiler rules."
-
-## 4:25-5:00 - Runtime Enforcement
-
-Show the API Workflow proxy decision.
-
-"Now the Marketing Outreach Agent tries the raw VIP email export again. This time the call goes through the UiPath API Workflow runtime proxy."
-
-"The proxy checks the license and denies or suspends unauthorized raw PII export. Approved lower-risk operations can still continue, but this request is blocked."
+"Now the Marketing Outreach Agent tries the raw VIP email export again. The call goes through the UiPath API Workflow runtime proxy. The proxy checks the tested permit and returns `deny_and_suspend`."
 
 Close:
 
-"PermitOps demonstrates one governed certification loop: AI trace, policy test, Test Cloud evidence, repair candidate, re-test, human approval, restricted license, and API Workflow runtime enforcement."
+"Agentic Test Swarm turns AI-generated tests into enforceable production permissions. UiPath is the orchestration and governance layer that connects agents, tests, humans, and runtime enforcement."

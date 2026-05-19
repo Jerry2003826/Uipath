@@ -1,6 +1,10 @@
-# PermitOps Platform Spike Status
+# Agentic Test Swarm Platform Spike Status
 
 Date: 2026-05-19 Australia/Melbourne
+
+Note: the live UiPath artifacts below still use the original PermitOps names.
+They now serve as platform proof for Agentic Test Swarm, with PermitOps scoped to
+the final runtime permit module.
 
 ## Completed
 
@@ -9,7 +13,7 @@ Date: 2026-05-19 Australia/Melbourne
 - A Studio Web API Workflow project/editor was opened and captured as evidence.
 - Maestro is accessible in the `DefaultTenant` tenant.
 - Local deterministic worker is implemented and tested.
-- Local `full-demo-local` produces the PermitOps evidence chain.
+- Local `full-demo-local` produces the PermitOps runtime-permit evidence chain.
 - A real OpenAI Responses API call was captured and stored as `evidence/case_001/raw_llm_response.json`.
 - A public FastAPI worker was deployed for UiPath API Workflow HTTP integration.
 - Vercel alias: `https://permitops-uipath.vercel.app`

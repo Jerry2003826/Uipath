@@ -1,43 +1,51 @@
-# PermitOps V9.1 Demo Script: 3 Minutes
+# Agentic Test Swarm Demo Script: 3 Minutes
 
-## 0:00-0:25 - Setup
+## 0:00-0:20 - Setup
 
-"PermitOps is UiPath-governed licensing for enterprise AI agents. It runs on UiPath Automation Cloud. Maestro orchestrates certification, Test Cloud records evidence, Action Center gates approval, and an API Workflow enforces the runtime license."
+"Agentic Test Swarm is a UiPath-orchestrated team of AI testing agents that attacks, repairs, re-tests, and certifies enterprise AI workflows."
 
-"The track is UiPath Test Cloud."
+"The track is UiPath Test Cloud. The permit is not the product; it is the final output of the testing swarm."
 
-## 0:25-0:55 - Risky Agent Call
+## 0:20-0:45 - Risky Agent Call
 
-"The hero scenario is a Marketing Outreach Agent trying to call a Customer Data Agent to export 500 VIP customer emails."
+Show the captured trace.
 
-Show the risky request and captured trace.
+"The Marketing Outreach Agent asks the Customer Data Agent to export 500 VIP customer emails after claiming urgent CMO approval. The trace preserves the actual behavior that must be tested."
 
-"PermitOps preserves the real raw response so the certification test replays what actually happened."
+## 0:45-1:25 - Testing Swarm
 
-## 0:55-1:35 - Policy Tests and Evidence
+Show the evidence files or agent board.
 
-Show generated policy tests and Test Cloud.
+"Policy Miner extracts raw PII obligations. Red-Team generates executive-override and agent-to-agent misuse attacks. Test Designer converts those attacks into Test Cloud certification cases. Test Selector chooses the high-risk PII and regression tests first."
 
-"A coding agent helps generate adversarial scenarios, but a deterministic oracle decides pass or fail. The raw email export fails policy."
+"AI proposes attacks and repair candidates, but deterministic oracles decide expected behavior."
 
-"The result is recorded in UiPath Test Cloud / Test Manager as certification evidence, including the replay fixture, policy pack, oracle result, and evidence hash."
+## 1:25-1:55 - Test Cloud and Repair
 
-## 1:35-2:10 - Repair, Re-Test, Approval
+Show Test Manager and failure analysis.
 
-Show passing re-test and Action Center.
+"UiPath Test Cloud stores the certification evidence. Before repair, TC-001 shows the raw PII export failure. Failure Analyst explains the root cause, and the coding-agent-backed Repair Agent proposes the raw PII guardrail."
 
-"PermitOps proposes a safer repair candidate, such as aggregate or masked customer data. The candidate is re-tested against the same policy tests."
+"After targeted re-test, TC-001 and TC-005 pass."
 
-"After the restricted version passes, Maestro sends the evidence to Action Center. A human reviewer approves the restricted license."
+## 1:55-2:25 - Permit and Approval
 
-## 2:10-2:45 - Runtime License Enforcement
+Show license metadata and Action Center.
 
-Show license metadata and API Workflow denial.
+"The Quality Governor compiles a restricted PermitOps Runtime Permit: aggregate access allowed, raw email export blocked, raw PII requiring human approval. Action Center gates the final approval."
 
-"The license compiler creates a restricted runtime license with `compiler_rules_hash`, `evidence_hash`, and `license_hash`."
+Point to:
 
-"When the agent tries raw PII export again, the UiPath API Workflow proxy checks the license and denies or suspends the call."
+- `compiler_rules_hash`
+- `evidence_hash`
+- `license_hash`
 
-## 2:45-3:00 - Close
+## 2:25-2:55 - Runtime Enforcement
 
-"PermitOps does not claim to be a full compliance system or universal sandbox. It demonstrates one governed loop: AI trace, policy test, Test Cloud evidence, repair, re-test, human approval, restricted license, and runtime enforcement."
+Show API Workflow denial.
+
+"When the Marketing Outreach Agent tries raw email export again, the UiPath API Workflow proxy checks the tested permit and returns `deny_and_suspend`."
+
+## 2:55-3:00 - Close
+
+"Agentic Test Swarm turns AI-generated tests into enforceable production permissions for enterprise AI workflows."

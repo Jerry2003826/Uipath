@@ -43,18 +43,18 @@ def _render_license_card(license_doc) -> Path:
     metadata = license_doc.license_metadata
     html = f"""<!doctype html>
 <html>
-<head><meta charset="utf-8"><title>PermitOps Agent License</title></head>
+<head><meta charset="utf-8"><title>PermitOps Runtime Permit</title></head>
 <body>
-<h1>PermitOps Agent License</h1>
+<h1>PermitOps Runtime Permit</h1>
 <p><strong>Agent:</strong> {license_doc.source_agent} -> {license_doc.target_agent}</p>
 <p><strong>Status:</strong> {license_doc.status}</p>
-<p><strong>License Level:</strong> {license_doc.license_level}</p>
+<p><strong>Permit Level:</strong> {license_doc.license_level}</p>
 <p><strong>Allowed:</strong> {", ".join(license_doc.allowed_actions)}</p>
 <p><strong>Blocked:</strong> {", ".join(license_doc.blocked_actions)}</p>
 <p><strong>Human Approval:</strong> {", ".join(license_doc.human_approval_required)}</p>
 <p><strong>Rules hash:</strong> {metadata.compiler_rules_hash[:15]}</p>
 <p><strong>Evidence hash:</strong> {metadata.evidence_hash[:15]}</p>
-<p><strong>License hash:</strong> {metadata.license_hash[:15]}</p>
+<p><strong>Permit hash:</strong> {metadata.license_hash[:15]}</p>
 </body>
 </html>
 """

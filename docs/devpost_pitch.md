@@ -1,50 +1,73 @@
-# Devpost Pitch: PermitOps V9.1
+# Devpost Pitch: Agentic Test Swarm
 
 ## One-Liner
 
-PermitOps is UiPath-governed licensing for enterprise AI agents: it turns captured agent behavior into Test Cloud evidence, human approval, and runtime API Workflow enforcement.
+Agentic Test Swarm is a UiPath-orchestrated team of AI testing agents that attacks, repairs, re-tests, and certifies enterprise AI workflows.
 
 ## Problem
 
-Enterprise AI agents are starting to call internal tools, other agents, and sensitive business APIs. A policy document alone cannot prove that an agent behaved safely. A prompt review alone cannot stop a bad runtime call.
+Enterprise AI agents are starting to call other agents, internal APIs, and sensitive business tools. A policy document alone cannot prove that an agent behaves safely. A prompt review alone cannot stop a risky runtime call.
 
-The risky moment is concrete: an agent asks another agent for raw customer data, then tries to export it.
+The risky moment is concrete: a Marketing Outreach Agent asks a Customer Data Agent to export 500 VIP customer emails after claiming urgent executive approval.
 
 ## Solution
 
-PermitOps creates a governed certification loop:
+Agentic Test Swarm creates a testing loop:
 
-AI trace -> policy test -> Test Cloud evidence -> repair candidate -> re-test -> human approval -> restricted license -> API Workflow runtime enforcement.
+```text
+AI trace -> Policy Miner -> Red-Team Agent -> Test Designer -> Test Selector
+-> Test Cloud evidence -> Failure Analyst -> Repair Agent -> targeted re-test
+-> Quality Governor -> runtime permit -> API Workflow enforcement
+```
 
-The hero scenario uses a Marketing Outreach Agent that attempts to call a Customer Data Agent to export 500 VIP customer emails. PermitOps captures the real raw response, generates policy tests, records evidence in UiPath Test Cloud, routes approval through UiPath Action Center, compiles a restricted license, and enforces the license through a UiPath API Workflow proxy.
+The hero scenario uses a Marketing Outreach Agent that attempts to call a Customer Data Agent to export raw customer PII. A captured AI trace shows the unsafe behavior. A Policy Miner Agent extracts obligations from the raw PII policy. A Red-Team Agent generates adversarial scenarios. A Test Designer Agent turns those attacks into Test Cloud certification cases. A Test Selector Agent chooses the critical tests by risk, coverage, and changed tool scope.
+
+When the first certification run catches the raw PII export failure, a Failure Analyst Agent explains the root cause and recommends a targeted repair. A coding-agent-backed Repair Agent proposes the guardrail candidate. The system re-tests the affected path, records the evidence in UiPath Test Cloud / Test Manager, routes a restricted runtime permit to Action Center for human approval, and enforces that permit through a UiPath API Workflow proxy.
+
+The permit is the output, not the product. The product is the testing swarm.
 
 ## Why UiPath
 
-PermitOps maps naturally onto UiPath Automation Cloud:
+Agentic Test Swarm maps naturally onto UiPath Automation Cloud:
 
-- UiPath Maestro orchestrates the certification lifecycle.
-- UiPath Test Cloud records the certification evidence.
-- UiPath Action Center gates human approval.
-- UiPath API Workflow enforces the license at runtime.
+- UiPath Test Cloud records generated tests, selected tests, failure evidence, and re-test evidence.
+- UiPath Maestro / Studio Web models the test-swarm lifecycle.
+- UiPath Action Center gates the restricted production permit.
+- UiPath API Workflow enforces the tested permit at runtime.
+- Coding agents generate adversarial scenarios and repair candidates, while deterministic oracles and UiPath evidence decide what is trusted.
 
-That combination makes the system more than a static policy checker. It becomes an auditable operational workflow.
+That combination makes the system more than a local testing framework. It becomes an auditable enterprise testing and governance workflow.
 
 ## What Is New
 
-PermitOps treats AI-agent authorization as a testable, evidence-backed license.
+Most AI-agent governance demos start with permissions and approval. Agentic Test Swarm starts with testing.
 
-The system preserves the real captured AI trace, including the raw response. It uses coding-agent generated adversarial scenarios for breadth, but relies on a deterministic oracle for pass/fail decisions. Then it links the final runtime license to the evidence package using:
+The system treats an AI worker as something that must be attacked, repaired, re-tested, and certified before it can touch production tools. It combines:
+
+- policy-to-test generation
+- red-team prompt-injection scenarios
+- risk and coverage based test selection
+- failure analysis
+- coding-agent repair suggestions
+- targeted re-tests
+- Test Cloud evidence
+- human approval
+- runtime API Workflow enforcement
+
+The final PermitOps Runtime Permit includes:
 
 - `compiler_rules_hash`
 - `evidence_hash`
 - `license_hash`
 
+Those hashes connect the runtime denial back to the Test Cloud evidence and approved governance rules.
+
 ## Demo Moment
 
-The strongest demo moment is the runtime denial.
+After the swarm completes certification, the Marketing Outreach Agent tries raw VIP email export again. The UiPath API Workflow proxy checks the restricted permit and returns `deny_and_suspend`.
 
-After the certification loop completes, the Marketing Outreach Agent tries the raw VIP email export again. The UiPath API Workflow proxy checks the restricted license and denies or suspends the request. The denial is not arbitrary; it is connected to Test Cloud evidence, Action Center approval, and license hash metadata.
+That denial is not arbitrary. It is backed by red-team scenarios, Test Cloud evidence, a repair candidate, targeted re-tests, Action Center approval, and hash-linked runtime metadata.
 
 ## Impact
 
-PermitOps gives platform teams a practical governance pattern for enterprise AI agents. It does not claim to solve all compliance or sandboxing problems. It shows a focused, repeatable loop for turning risky observed behavior into tested, approved, restricted runtime access.
+Agentic Test Swarm gives QA, platform, and automation teams a practical pattern for validating AI-infused workflows. It does not claim to solve all compliance or sandboxing problems. It demonstrates one focused loop for turning risky observed AI-agent behavior into tested, repaired, approved, and enforceable runtime access.

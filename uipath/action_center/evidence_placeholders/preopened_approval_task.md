@@ -8,7 +8,7 @@ Use this file to capture the pre-open Action Center task shown in the demo.
 | Source Agent | `Marketing Outreach Agent` |
 | Target Agent | `Customer Data Agent` |
 | Requested Capability | `export_raw_customer_emails` |
-| Recommended License | `L2_aggregate_access` |
+| Recommended Permit | `L2_aggregate_access` |
 | Risk Level | `critical` |
 | Decision shown | `Approve` |
 
@@ -17,7 +17,7 @@ Use this file to capture the pre-open Action Center task shown in the demo.
 - Pre-open task screenshot/link: `assets/action_center_permitops_pending_assigned_task_3545796.png`
 - Live approval click screenshot/link: `assets/action_center_permitops_completed_task_3545494.png`
 - Post-approval Maestro/Studio evidence screenshot/link: `assets/maestro_debug_human_approval_completed.png`
-- License hash capture: `sha256:9ee59ad09498851741f61cadfdb71cfec736b880cc9ebf8cb4807a6a4355f6d4`
+- Permit hash capture: `sha256:7e927bef7a7b2e4fd5c9cd131fc82fd88a05475f0fadeda3967180442f44d04c`
 - Action Center enabled screenshot/link: `assets/action_center_enabled_empty_inbox.png`
 
 ## Required Visible Fields
@@ -26,14 +26,14 @@ Use this file to capture the pre-open Action Center task shown in the demo.
 - Source Agent
 - Target Agent
 - Requested Capability
-- Recommended License
+- Recommended Permit
 - Allowed Actions
 - Blocked Actions
 - Risk Level
 - Evidence Summary
 - Rules Hash
 - Evidence Hash
-- License Hash
+- Permit Hash
 - Decision
 
 ## Current Live State

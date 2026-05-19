@@ -1,15 +1,15 @@
 # Non-Goals
 
-PermitOps is intentionally scoped to a focused UiPath-governed certification loop for enterprise AI-agent licensing.
+Agentic Test Swarm is intentionally scoped to one UiPath-governed testing loop for enterprise AI workflows.
 
-- PermitOps is not a legal compliance certification system.
-- PermitOps is not a universal runtime sandbox for arbitrary AI agents.
-- PermitOps does not automatically trust coding-agent patches.
-- PermitOps does not implement a full distributed enterprise API gateway.
-- PermitOps demonstrates one governed certification loop: AI trace -> policy test -> Test Cloud evidence -> repair candidate -> re-test -> human approval -> restricted license -> API Workflow runtime enforcement.
+- Agentic Test Swarm is not a legal compliance certification system.
+- Agentic Test Swarm is not a universal runtime sandbox for arbitrary AI agents.
+- Agentic Test Swarm does not automatically trust coding-agent patches.
+- Agentic Test Swarm does not implement a full distributed enterprise API gateway.
+- Agentic Test Swarm demonstrates one governed testing loop: AI trace -> policy mining -> red-team tests -> Test Cloud evidence -> failure analysis -> repair candidate -> targeted re-test -> human approval -> runtime permit -> API Workflow enforcement.
 
 ## Scope Boundary
 
-PermitOps V9.1 demonstrates how UiPath Automation Cloud components can govern a sensitive agent-to-agent action. The demo is centered on the Marketing Outreach Agent attempting to export 500 VIP customer emails through a Customer Data Agent.
+The demo centers on a Marketing Outreach Agent attempting to export 500 VIP customer emails through a Customer Data Agent.
 
-The project does not claim that one demo policy pack can certify every agent, every regulation, every data domain, or every runtime environment. Its value is the repeatable structure: captured trace, replayable tests, recorded evidence, human approval, and license enforcement.
+The project does not claim that one policy pack can certify every agent, every regulation, every data domain, or every runtime environment. Its value is the repeatable structure: captured trace, AI-generated tests, Test Cloud evidence, repair, re-test, human approval, and runtime enforcement.

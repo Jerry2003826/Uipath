@@ -1,46 +1,63 @@
-# PermitOps Submission Readiness
+# Agentic Test Swarm Submission Readiness
 
 Last updated: 2026-05-19
 
-Current GitHub evidence commit: `6196be2`
+Current public positioning:
 
-## Platform Proof
+```text
+Agentic Test Swarm - UiPath Test Cloud agents that attack, repair, and certify AI workflows
+```
+
+Internal governance artifact:
+
+```text
+PermitOps Runtime Permit
+```
+
+## Platform proof
 
 Completed:
 
 - UiPath Automation Cloud tenant: `scortlandyard / DefaultTenant`.
 - Studio Web API Workflow proof returns `deny_and_suspend` for raw VIP email export.
-- Maestro/Studio Web model exists for `PermitOps V9.1 Certification`.
+- Maestro / Studio Web model exists for `PermitOps V9.1 Certification`.
 - Test Manager project exists: `PermitOps V9.1 Agent Certification` (`PVACPOV91`).
 - Test set exists: `PVACPOV91:6 - PermitOps Certification Evidence`.
 - Test Manager execution exists: `PermitOps Certification Evidence - 20260519.0911`.
 - Test Manager result evidence shows `5 passed / 0 failed / 0 not executed`.
 - Action Center task `#3545796` is assigned to the current demo user and visible under `My Tasks > Pending`.
+- Agentic Test Swarm design exists at `docs/agentic_test_swarm.md`.
+- Structured swarm evidence exists at `evidence/case_001/agentic_test_agents.json`.
 
 Known boundary:
 
+- The live UiPath artifacts still use PermitOps names because they were created before the public narrative pivot. In the demo, explain that PermitOps is now the final runtime permit module.
 - The Test Manager execution still shows status `Running` because the five results were recorded through `Override Result` from the execution grid. The official Manual Execution Assistant `Done` path was not used because UiPath warned that re-execution could overwrite existing results.
 
-## Engineering Proof
+## Engineering proof
 
 Completed:
 
 - FastAPI worker endpoints and deterministic engine are implemented.
 - Captured trace replay artifacts exist in `evidence/case_001/`.
-- Policy-to-test output exists for TC-001 through TC-005.
+- Red-team scenarios exist at `evidence/case_001/red_team_scenarios.json`.
+- Test Designer mapping exists at `evidence/case_001/test_designer_cases.json`.
+- Test Selector decision exists at `evidence/case_001/test_selector_decision.json`.
+- Failure analysis exists at `evidence/case_001/failure_analysis.json`.
+- Repair summary exists at `evidence/case_001/repair_summary.md`.
+- Swarm run summary exists at `evidence/case_001/agentic_test_swarm_run.json`.
 - Before/after deterministic test evidence exists.
-- Active and pending licenses include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
+- Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
 - Test suite passes locally.
 
-Latest verification:
+Latest verification target:
 
 ```text
 .venv/bin/python -m pytest -q
-19 passed
 ```
 
-## Demo Assets
+## Demo assets
 
 Use these screenshots in the final video or Devpost gallery:
 
@@ -54,21 +71,29 @@ Use these screenshots in the final video or Devpost gallery:
 - `assets/action_center_permitops_completed_task_3545494.png`
 - `assets/maestro_debug_human_approval_completed.png`
 
-## Recording Plan
+## Recording plan
 
 Recommended live path:
 
-1. Start from the captured AI trace and local evidence.
-2. Show Maestro/Studio Web BPMN as the certification lifecycle.
-3. Show Test Manager project, test set, and execution result summary.
-4. Show Action Center task `#3545796` in `Pending`.
-5. Click approval live only during the final recording.
-6. Show license hash metadata from `evidence/case_001/license.json`.
-7. Show API Workflow debug result: `deny_and_suspend`.
+1. Start from the captured Marketing Outreach Agent trace.
+2. Show Policy Miner, Red-Team, Test Designer, Test Selector, Failure Analyst, Repair Agent, Re-test Orchestrator, and Quality Governor.
+3. Show Maestro/Studio Web BPMN as the certification lifecycle.
+4. Show Test Manager project, test set, and execution result summary.
+5. Show Action Center task `#3545796` in `Pending`.
+6. Click approval live only during the final recording.
+7. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+8. Show API Workflow debug result: `deny_and_suspend`.
+
+Key narration:
+
+```text
+The permit is not the product. The product is a UiPath-orchestrated testing
+swarm that attacks, repairs, re-tests, and certifies an AI workflow.
+```
 
 Do not re-run the Test Manager execution during the recording unless you intentionally want a new run and accept the overwrite warning.
 
-## Remaining Submission Work
+## Remaining submission work
 
 Still needed before Devpost final submission:
 
@@ -83,3 +108,4 @@ Not required for the current non-sandbox completion:
 - Waiting for any extra sandbox entitlement.
 - Building a full legal compliance product.
 - Building a universal runtime sandbox.
+- Wiring `astrbot_orchestrator` or `superrag` into the main demo path.
