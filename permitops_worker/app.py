@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from tempfile import gettempdir
 
 from fastapi import FastAPI, HTTPException
@@ -15,6 +16,14 @@ app = FastAPI(title="PermitOps Worker", version="0.1.0")
 
 
 API_EVIDENCE_ROOT = Path(gettempdir()) / "permitops_evidence"
+CASE_ID_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
+
+
+def _case_id_from_payload(payload: dict) -> str:
+    case_id = payload.get("case_id", "case_001")
+    if not isinstance(case_id, str) or not CASE_ID_PATTERN.fullmatch(case_id):
+        raise HTTPException(status_code=400, detail="case_id must contain only letters, numbers, hyphen, or underscore")
+    return case_id
 
 
 @app.get("/health")
@@ -29,7 +38,7 @@ def scan_risk_endpoint(call: AgentToolCall) -> dict:
 
 @app.post("/generate-test-scenarios")
 def generate_test_scenarios(payload: dict) -> dict:
-    case_id = payload.get("case_id", "case_001")
+    case_id = _case_id_from_payload(payload)
     tests = generate_certification_tests(case_id)
     return {"case_id": case_id, "test_count": len(tests), "tests": [test.model_dump(mode="json") for test in tests]}
 
@@ -43,7 +52,7 @@ def expected_oracle_endpoint(call: AgentToolCall) -> dict:
 
 @app.post("/run-certification-tests")
 def run_certification_tests_endpoint(payload: dict) -> dict:
-    case_id = payload.get("case_id", "case_001")
+    case_id = _case_id_from_payload(payload)
     phase = payload.get("phase", "after")
     if phase not in {"before", "after"}:
         raise HTTPException(status_code=400, detail="phase must be before or after")
@@ -53,7 +62,7 @@ def run_certification_tests_endpoint(payload: dict) -> dict:
 
 @app.post("/compile-license")
 def compile_license_endpoint(payload: dict) -> dict:
-    case_id = payload.get("case_id", "case_001")
+    case_id = _case_id_from_payload(payload)
     source_agent = payload.get("source_agent", "marketing-outreach-agent")
     target_agent = payload.get("target_agent", "customer-data-agent")
     before = [TestResult(**item) for item in payload.get("before_results", [])] or run_certification_tests(
@@ -75,16 +84,17 @@ def compile_license_endpoint(payload: dict) -> dict:
 
 @app.post("/license-decision")
 def license_decision_endpoint(payload: dict) -> dict:
+    case_id = _case_id_from_payload(payload)
     call = AgentToolCall(
         source_agent=payload["source_agent"],
         target_agent=payload["target_agent"],
         action=payload["action"],
         payload=payload.get("payload", {}),
     )
-    before = run_certification_tests(payload.get("case_id", "case_001"), "before", evidence_root=API_EVIDENCE_ROOT)
-    after = run_certification_tests(payload.get("case_id", "case_001"), "after", evidence_root=API_EVIDENCE_ROOT)
+    before = run_certification_tests(case_id, "before", evidence_root=API_EVIDENCE_ROOT)
+    after = run_certification_tests(case_id, "after", evidence_root=API_EVIDENCE_ROOT)
     license_doc = compile_license(
-        case_id=payload.get("case_id", "case_001"),
+        case_id=case_id,
         source_agent=call.source_agent,
         target_agent=call.target_agent,
         before_results=before,
@@ -96,6 +106,6 @@ def license_decision_endpoint(payload: dict) -> dict:
 
 @app.post("/capture-trace")
 def capture_trace_endpoint(payload: dict) -> dict:
-    case_id = payload.get("case_id", "case_001")
+    case_id = _case_id_from_payload(payload)
     case_path = API_EVIDENCE_ROOT / case_id
     return capture_trace_replay(case_path, provider=payload.get("provider", "replay"), model=payload.get("model", "captured-fixture"))
