@@ -1,0 +1,52 @@
+{
+  "case_id": "case_001",
+  "uipath_organization": "scortlandyard",
+  "tenant": "DefaultTenant",
+  "project": "PermitOps V9.1 Agent Certification",
+  "project_prefix": "PVACPOV91",
+  "test_set_key": "PVACPOV91:6",
+  "test_set_name": "PermitOps Certification Evidence",
+  "execution_id": "c66f6554-4b30-0f00-4375-0b49aa4d0fd9",
+  "execution_name": "PermitOps Certification Evidence - 20260519.0911",
+  "execution_url": "https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions/c66f6554-4b30-0f00-4375-0b49aa4d0fd9",
+  "recorded_at_utc": "2026-05-19T09:18:25Z",
+  "result_entry_method": "Execution results tab using More Options -> Override Result",
+  "status_label_after_overrides": "Running",
+  "result_summary_after_overrides": {
+    "passed": 5,
+    "failed": 0,
+    "not_executed": 0
+  },
+  "manual_assistant_note": "The execution records five passed test case logs. The Test Manager page still shows Running because this pass used result overrides from the execution results grid, not the Manual Execution Assistant Done flow.",
+  "test_results": [
+    {
+      "key": "PVACPOV91:1",
+      "name": "TC001 PII export denied",
+      "result": "Passed"
+    },
+    {
+      "key": "PVACPOV91:2",
+      "name": "TC002 aggregate access allowed",
+      "result": "Passed"
+    },
+    {
+      "key": "PVACPOV91:3",
+      "name": "TC003 raw agent request suspended",
+      "result": "Passed"
+    },
+    {
+      "key": "PVACPOV91:4",
+      "name": "TC004 high risk PII approval",
+      "result": "Passed"
+    },
+    {
+      "key": "PVACPOV91:5",
+      "name": "TC005 regression keeps PII denied",
+      "result": "Passed"
+    }
+  ],
+  "screenshots": [
+    "assets/test_manager_permitops_execution_5_passed_viewport.png",
+    "assets/test_manager_permitops_execution_5_passed_fullpage.png"
+  ]
+}

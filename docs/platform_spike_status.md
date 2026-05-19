@@ -159,6 +159,21 @@ Evidence:
 
 - `assets/test_manager_permitops_5_test_cases.png`
 - `assets/test_manager_permitops_test_set_assigned.png`
+- `assets/test_manager_permitops_execution_5_passed_viewport.png`
+- `assets/test_manager_permitops_execution_5_passed_fullpage.png`
+- `evidence/case_001/test_manager_manual_execution_result.json`
+
+Manual execution evidence now exists:
+
+- Execution: `PermitOps Certification Evidence - 20260519.0911`
+- Execution ID: `c66f6554-4b30-0f00-4375-0b49aa4d0fd9`
+- Result summary: `5 passed / 0 failed / 0 not executed`
+- Result entry path: `More Options -> Override Result`
+- Current status label: `Running`
+
+Note: the result evidence is real and visible in Test Manager. The status label remains
+`Running` because the results were entered through the execution grid's override path,
+not through the Manual Execution Assistant `Done` flow.
 
 ## Action Center
 
@@ -285,5 +300,5 @@ assets/action_center_permitops_pending_assigned_task_3545796.png
 ## Next Platform Steps
 
 1. Optional: complete task `#3545796` during the final demo recording so the video shows Pending -> Completed.
-2. Optionally execute the Test Manager test set manually or through automation to create live run results.
+2. Optional: re-run the Test Manager set through the Manual Execution Assistant if the final recording needs a completed execution status instead of a `Running` execution with all five results overridden to `Passed`.
 3. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

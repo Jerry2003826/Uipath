@@ -63,6 +63,30 @@ Evidence screenshots:
 
 - `assets/test_manager_permitops_5_test_cases.png`
 - `assets/test_manager_permitops_test_set_assigned.png`
+- `assets/test_manager_permitops_execution_5_passed_viewport.png`
+- `assets/test_manager_permitops_execution_5_passed_fullpage.png`
+
+## Live Execution Result Evidence
+
+A manual Test Manager execution was created from test set `PVACPOV91:6`:
+
+| Field | Value |
+| --- | --- |
+| Execution | `PermitOps Certification Evidence - 20260519.0911` |
+| Execution ID | `c66f6554-4b30-0f00-4375-0b49aa4d0fd9` |
+| Result entry path | `More Options -> Override Result` in the execution results grid |
+| Visible result summary | `5 passed / 0 failed / 0 not executed` |
+| Status label | `Running` |
+
+The execution status remains `Running` because this pass used result overrides from the
+results grid rather than the Manual Execution Assistant `Done` path. UiPath's manual
+execution documentation describes the assistant flow as the path where the user marks
+steps and selects `Done` after the last test case to complete the execution:
+https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/executing-manual-tests
+
+Structured evidence:
+
+- `evidence/case_001/test_manager_manual_execution_result.json`
 
 ## Evidence Hash Placeholder
 

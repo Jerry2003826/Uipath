@@ -116,6 +116,20 @@ The evidence package should show:
 
 Plan C evidence is a practical fallback for demo reliability: if a live Test Manager integration is not available during judging, the demo still shows Test Cloud/Test Manager artifacts, exported evidence, screenshots, and hashes that connect the trace, policy tests, and license metadata.
 
+Current live Test Manager evidence in `DefaultTenant`:
+
+- Project: `PermitOps V9.1 Agent Certification` (`PVACPOV91`)
+- Test set: `PVACPOV91:6` - `PermitOps Certification Evidence`
+- Execution: `PermitOps Certification Evidence - 20260519.0911`
+- Execution ID: `c66f6554-4b30-0f00-4375-0b49aa4d0fd9`
+- Visible result summary: `5 passed / 0 failed / 0 not executed`
+- Evidence file: `evidence/case_001/test_manager_manual_execution_result.json`
+
+Boundary: this live run used the execution grid's `Override Result` path to record the
+five passed test case logs. The page still labels the execution as `Running`; for a
+polished final video, re-run through the Manual Execution Assistant and select `Done`
+after the final test case.
+
 ## Action Center approval
 
 After the repaired candidate passes the policy tests, Maestro creates an Action Center task for a human reviewer.
@@ -279,7 +293,10 @@ Blocked by tenant entitlement today:
 - Resolved: Actions was added to `DefaultTenant`, and Action Center now opens to the pending-task inbox.
 - Resolved: a Studio Web RPA Workflow using `Create External Task` created a real Action Center task: `Approve PermitOps Restricted Agent License #3545494` in catalog `PermitOps Approvals`.
 - Resolved: Action Center completed task `#3545494`, giving the demo a live Completed approval artifact.
-- Remaining: for a cleaner live demo, assign the external task to the demo user or switch to a self-assigned Form/App task path so the task first appears in `Pending`.
+- Resolved: the Studio Web RPA Workflow now assigns the external Action Center task to the current demo user by passing `taskObjectOutput.Id.Value` into `Assign Tasks`.
+- Resolved: Action Center shows `Approve PermitOps Restricted Agent License #3545796` in `My Tasks > Pending`, giving the final recording a clean Pending -> Completed approval path.
+- Resolved: Test Manager execution `PermitOps Certification Evidence - 20260519.0911` records all five PermitOps test cases as `Passed`.
+- Remaining: for a cleaner Test Manager recording, re-run the set through the Manual Execution Assistant `Done` path so the execution status completes instead of showing `Running` with `5 passed / 0 failed / 0 not executed`.
 
 ## UiPath setup
 
