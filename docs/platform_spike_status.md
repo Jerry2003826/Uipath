@@ -15,6 +15,9 @@ Date: 2026-05-19 Australia/Melbourne
 - Vercel alias: `https://permitops-uipath.vercel.app`
 - A Studio Web API Workflow HTTP Request activity was configured through UiPath Autopilot.
 - Studio Web Debug successfully called the public worker and returned `decision: deny_and_suspend`.
+- A Maestro Agentic Process project was created as `PermitOps V9.1 Certification`.
+- UiPath Autopilot generated the PermitOps V9.1 BPMN certification flow in `Process.bpmn`.
+- The generated BPMN has 0 validation issues in Studio Web.
 
 ## Evidence Files
 
@@ -22,6 +25,8 @@ Date: 2026-05-19 Australia/Melbourne
 - `assets/uipath_api_workflow_debug_url_blocker.png`
 - `assets/uipath_api_workflow_success_deny_suspend.png`
 - `assets/maestro_home_accessible.png`
+- `assets/maestro_permitops_agentic_process_created.png`
+- `assets/maestro_permitops_bpmn_autopilot.png`
 - `assets/test_manager_not_enabled_404.png`
 - `assets/action_center_orchestrator_not_enabled.png`
 - `evidence/case_001/raw_llm_response.json`
@@ -79,6 +84,43 @@ Verified live through UiPath Studio Web Debug:
 ```
 
 The successful run is captured in `assets/uipath_api_workflow_success_deny_suspend.png`.
+
+## Maestro Agentic Process
+
+Studio Web created a Maestro Agentic Process solution named:
+
+```text
+PermitOps V9.1 Certification
+```
+
+UiPath Autopilot was then asked to generate the PermitOps V9.1 certification model. It accepted the BPMN diff and reported:
+
+```text
+Autopilot updated the diagram: 27 added, 1 removed.
+```
+
+The generated flow includes:
+
+- Start Certification
+- Captured AI trace intake
+- Risk scanning
+- Generate policy tests
+- Record Test Cloud evidence
+- Pass/Fail? exclusive gateway
+- Human approval in Action Center
+- Propose coding-agent repair
+- Re-test
+- Compile restricted license
+- Enforce license through API Workflow
+- Suspend unauthorized raw PII export
+- End Certification
+
+Studio Web showed `Validation issues (0)`.
+
+Evidence:
+
+- `assets/maestro_permitops_agentic_process_created.png`
+- `assets/maestro_permitops_bpmn_autopilot.png`
 
 ## Current Blockers
 

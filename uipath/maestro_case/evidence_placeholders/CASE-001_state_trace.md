@@ -16,3 +16,33 @@ Use this file as the attachment placeholder for the Maestro Case state history.
 - After approval, show the case entering `Licensed`.
 - Trigger the Licensed Tool Proxy with the VIP/raw-email payload.
 - Attach the proxy result showing `deny_and_suspend` and case state `Suspended`.
+
+## Live Maestro Modeling Evidence
+
+Studio Web project:
+
+```text
+PermitOps V9.1 Certification
+```
+
+Autopilot-generated BPMN flow:
+
+```text
+Start Certification
+Captured AI trace intake
+Risk scanning
+Generate policy tests
+Record Test Cloud evidence
+Pass/Fail?
+Human approval in Action Center
+Propose coding-agent repair
+Re-test
+Compile restricted license
+Enforce license through API Workflow
+Suspend unauthorized raw PII export
+End Certification
+```
+
+Evidence screenshot:
+
+- `assets/maestro_permitops_bpmn_autopilot.png`

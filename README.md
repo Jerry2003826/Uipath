@@ -249,6 +249,28 @@ The worker uses an ephemeral runtime evidence directory when deployed, so server
 
 The deployed worker has also been called from a live UiPath Studio Web API Workflow debug run. The captured output shows `statusCode: 200` and `decision: deny_and_suspend`; see `assets/uipath_api_workflow_success_deny_suspend.png`.
 
+## Current UiPath platform proof
+
+The current tenant has a Studio Web Maestro Agentic Process solution named `PermitOps V9.1 Certification`.
+
+UiPath Autopilot generated `Process.bpmn` for the PermitOps certification lifecycle. The accepted model includes captured AI trace intake, risk scanning, policy test generation, Test Cloud evidence recording, a Pass/Fail gateway, coding-agent repair, re-test, Action Center approval, restricted license compilation, API Workflow runtime enforcement, and raw PII suspension. Studio Web reports `Validation issues (0)` for the model.
+
+The current live API Workflow proof calls the deployed PermitOps worker and returns:
+
+```json
+{
+  "decision": "deny_and_suspend",
+  "evidence_ref": "runtime-event-001",
+  "license_status": "suspended",
+  "reason": "blocked_action_attempted"
+}
+```
+
+Blocked by tenant entitlement today:
+
+- Test Manager/Test Cloud URL returns 404 in the current tenant.
+- Action Center tenant page says Actions is not enabled for this tenant.
+
 ## UiPath setup
 
 Recommended UiPath Automation Cloud setup:
@@ -322,4 +344,8 @@ Current platform spike screenshots:
 
 - `assets/studio_api_workflow_created.png`
 - `assets/maestro_home_accessible.png`
+- `assets/maestro_permitops_agentic_process_created.png`
+- `assets/maestro_permitops_bpmn_autopilot.png`
+- `assets/uipath_api_workflow_success_deny_suspend.png`
+- `assets/action_center_orchestrator_not_enabled.png`
 - `assets/test_manager_not_enabled_404.png`

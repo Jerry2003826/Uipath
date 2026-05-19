@@ -80,3 +80,24 @@ The case should link to the following evidence groups:
 - Action Center approval task snapshot.
 - Licensed Tool Proxy runtime denial and suspension transcript.
 - Hash set: rules hash, evidence hash, license hash.
+
+## Live Studio Web Artifact
+
+The current UiPath tenant contains a Studio Web Maestro Agentic Process solution named:
+
+```text
+PermitOps V9.1 Certification
+```
+
+The live project contains `Process.bpmn`. UiPath Autopilot generated the V9.1 certification flow from the project specification and Studio Web accepted the BPMN diff:
+
+```text
+Autopilot updated the diagram: 27 added, 1 removed.
+```
+
+The generated process includes trace intake, risk scanning, policy test generation, Test Cloud evidence recording, a Pass/Fail gateway, coding-agent repair, re-test, Action Center approval, restricted license compilation, API Workflow enforcement, and unauthorized raw PII suspension.
+
+Evidence screenshots:
+
+- `assets/maestro_permitops_agentic_process_created.png`
+- `assets/maestro_permitops_bpmn_autopilot.png`
