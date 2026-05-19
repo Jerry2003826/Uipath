@@ -1,0 +1,5 @@
+{
+  "mode": "dry_run",
+  "payload_path": "evidence/case_001/test_manager_sync_payload.json",
+  "test_case_count": 5
+}

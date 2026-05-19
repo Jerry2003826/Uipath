@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+pyyaml
+httpx
+pytest
+pytest-asyncio
+rich
+jinja2
+jsonschema

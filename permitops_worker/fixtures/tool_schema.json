@@ -1,0 +1,19 @@
+{
+  "tools": [
+    {
+      "action": "export_raw_customer_emails",
+      "fields": ["segment", "count", "data_type"],
+      "risk": "critical"
+    },
+    {
+      "action": "get_aggregate_segment_count",
+      "fields": ["segment", "count", "data_type"],
+      "risk": "medium"
+    },
+    {
+      "action": "get_campaign_eligibility_summary",
+      "fields": ["segment", "count", "data_type"],
+      "risk": "medium"
+    }
+  ]
+}

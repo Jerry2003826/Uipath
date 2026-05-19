@@ -1,0 +1,95 @@
+project: PermitOps
+artifact: api_workflow_spec
+workflow_name: Certification Worker Gateway
+version: "9.1"
+type: UiPath API Workflow
+purpose: >
+  Receive a PermitOps certification request, call deterministic worker
+  endpoints, and return the recommended next Maestro Case state.
+request:
+  method: POST
+  path: /uipath/api-workflows/certification-worker-gateway
+  content_type: application/json
+  required_fields:
+    case_id: string
+    trace_id: string
+    source_agent: string
+    target_agent: string
+  demo_payload:
+    case_id: PERMITOPS-CASE-001
+    trace_id: trace-vip-500-demo
+    source_agent: Marketing Outreach Agent
+    target_agent: Customer Data Agent
+workflow_steps:
+  - step: validate_intake
+    description: Verify required case and agent fields are present.
+    on_success_next_state: Risk Scanning
+  - step: scan_risk
+    description: Submit agent-to-agent request to the PermitOps risk scanner.
+    downstream_call:
+      method: POST
+      path: /scan-risk
+      sends:
+        - case_id
+        - trace_id
+        - source_agent
+        - target_agent
+    expected_demo_result:
+      risk_level: critical
+      risk_reasons:
+        - cross_agent_customer_data_access
+        - raw_pii_export_requested
+        - bulk_vip_segment_count_500
+  - step: generate_test_scenarios
+    description: Generate deterministic tests for the requested capability.
+    downstream_call:
+      method: POST
+      path: /generate-test-scenarios
+      sends:
+        - case_id
+        - trace_id
+        - risk_level
+        - source_agent
+        - target_agent
+    expected_demo_result:
+      generated_tests: 5
+      test_ids:
+        - TC-001
+        - TC-002
+        - TC-003
+        - TC-004
+        - TC-005
+  - step: compile_license
+    description: Compile a constrained license recommendation from risk and test evidence.
+    downstream_call:
+      method: POST
+      path: /compile-license
+      sends:
+        - case_id
+        - trace_id
+        - risk_level
+        - generated_tests
+    expected_demo_result:
+      license_recommendation: L2_aggregate_access
+      allowed_actions:
+        - get_aggregate_segment_count
+        - get_campaign_eligibility_summary
+      blocked_actions:
+        - export_raw_customer_emails
+        - export_customer_phone_numbers
+        - access_individual_customer_profile
+response:
+  status: 200
+  content_type: application/json
+  body:
+    case_id: PERMITOPS-CASE-001
+    trace_id: trace-vip-500-demo
+    risk_level: critical
+    generated_tests: 5
+    license_recommendation: L2_aggregate_access
+    next_state: Pending Human Approval
+case_mapping:
+  initial_state: Submitted
+  evidence_state: Test Cloud Evidence
+  response_next_state: Pending Human Approval
+evidence_placeholder: uipath/api_workflows/evidence_placeholders/api_demo_transcripts.md

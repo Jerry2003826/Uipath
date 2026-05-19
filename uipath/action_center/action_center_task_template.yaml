@@ -1,0 +1,46 @@
+project: PermitOps
+artifact: action_center_task_template
+version: "9.1"
+task:
+  title: Approve PermitOps Agent License Recommendation
+  case_id: PERMITOPS-CASE-001
+  source_agent: Marketing Outreach Agent
+  target_agent: Customer Data Agent
+  requested_capability: export_raw_customer_emails
+  recommended_license: L2_aggregate_access
+  risk_level: critical
+  allowed_actions:
+    - get_aggregate_segment_count
+    - get_campaign_eligibility_summary
+  blocked_actions:
+    - export_raw_customer_emails
+    - export_customer_phone_numbers
+    - access_individual_customer_profile
+  evidence_summary: >
+    Five deterministic certification tests are mapped to UiPath Test
+    Manager/Test Cloud. Raw VIP customer email export is denied and aggregate
+    access is allowed under L2_aggregate_access.
+  rules_hash: rules_hash_TBD
+  evidence_hash: evidence_hash_TBD
+  license_hash: license_hash_TBD
+  decision_options:
+    - Approve
+    - Reject
+  primary_demo_decision: Approve
+  on_approve:
+    next_case_state: Licensed
+    license_status: active
+  on_reject:
+    next_case_state: Certification Failed
+    license_status: rejected
+demo_notes:
+  primary_path: pre_open_task_then_live_approve_click
+  followup_runtime_event:
+    action: export_raw_customer_emails
+    payload:
+      segment: VIP
+      count: 500
+      data_type: raw_email
+    expected_decision: deny_and_suspend
+    expected_case_state: Suspended
+evidence_placeholder: uipath/action_center/evidence_placeholders/preopened_approval_task.md

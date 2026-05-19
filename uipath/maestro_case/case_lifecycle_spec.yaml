@@ -1,0 +1,110 @@
+project: PermitOps
+artifact: maestro_case_lifecycle
+version: "9.1"
+platform_track: UiPath Test Cloud
+case:
+  id: PERMITOPS-CASE-001
+  role: primary_certification_lifecycle_orchestrator
+  hero_scenario:
+    source_agent: Marketing Outreach Agent
+    target_agent: Customer Data Agent
+    requested_capability: export_raw_customer_emails
+    payload:
+      segment: VIP
+      count: 500
+      data_type: raw_email
+    expected_runtime_outcome: deny_and_suspend
+required_states:
+  - Submitted
+  - Risk Scanning
+  - Test Generation
+  - Test Cloud Evidence
+  - Certification Failed
+  - Repair Candidate Proposed
+  - Re-test Evidence
+  - License Recommendation
+  - Pending Human Approval
+  - Licensed
+  - Runtime Monitoring
+  - Suspended
+  - Recertification Required
+minimum_demo_states:
+  - Submitted
+  - Test Cloud Evidence
+  - Pending Human Approval
+  - Licensed
+  - Suspended
+state_definitions:
+  Submitted:
+    entry_event: certification_request_received
+    required_fields:
+      - case_id
+      - trace_id
+      - source_agent
+      - target_agent
+      - requested_capability
+    exit_condition: intake_validated
+  Risk Scanning:
+    entry_event: risk_scan_started
+    worker_endpoint: /scan-risk
+    exit_condition: risk_level_recorded
+  Test Generation:
+    entry_event: test_generation_started
+    worker_endpoint: /generate-test-scenarios
+    exit_condition: generated_tests_recorded
+  Test Cloud Evidence:
+    entry_event: test_results_mapped
+    evidence_systems:
+      - UiPath Test Manager
+      - UiPath Test Cloud
+    exit_condition: evidence_hash_recorded
+  Certification Failed:
+    entry_event: blocking_test_failed
+    exit_condition: repair_candidate_requested
+  Repair Candidate Proposed:
+    entry_event: repair_candidate_generated
+    exit_condition: candidate_accepted_for_retest
+  Re-test Evidence:
+    entry_event: repaired_candidate_tested
+    exit_condition: retest_evidence_hash_recorded
+  License Recommendation:
+    entry_event: license_compiled
+    worker_endpoint: /compile-license
+    exit_condition: recommendation_ready_for_approval
+  Pending Human Approval:
+    entry_event: action_center_task_opened
+    ui_system: UiPath Action Center
+    exit_condition: human_decision_recorded
+  Licensed:
+    entry_event: approval_granted
+    license_tier: L2_aggregate_access
+    exit_condition: runtime_monitoring_enabled
+  Runtime Monitoring:
+    entry_event: licensed_tool_call_received
+    worker_endpoint: /license-decision
+    exit_condition: runtime_decision_recorded
+  Suspended:
+    entry_event: unauthorized_raw_pii_export_detected
+    runtime_decision: deny_and_suspend
+    exit_condition: recertification_required_or_manual_reinstate
+  Recertification Required:
+    entry_event: license_scope_or_agent_behavior_changed
+    exit_condition: new_certification_case_created
+demo_transition_trace:
+  - from: Submitted
+    to: Test Cloud Evidence
+    reason: demo_collapses_risk_scan_and_test_generation_into_precomputed_evidence
+  - from: Test Cloud Evidence
+    to: Pending Human Approval
+    reason: TC-001_through_TC-005_results_are_attached
+  - from: Pending Human Approval
+    to: Licensed
+    reason: human_clicks_approve_in_action_center
+  - from: Licensed
+    to: Suspended
+    reason: runtime_proxy_denies_raw_VIP_email_export_and_suspends_license
+evidence_placeholders:
+  case_trace: uipath/maestro_case/evidence_placeholders/CASE-001_state_trace.md
+  test_cloud_plan: uipath/test_cloud/test_manager_plan_c.md
+  action_center_task: uipath/action_center/evidence_placeholders/preopened_approval_task.md
+  runtime_proxy_transcript: uipath/api_workflows/evidence_placeholders/api_demo_transcripts.md

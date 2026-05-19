@@ -1,0 +1,10 @@
+{
+  "captured_at": "2026-05-18T21:52:59Z",
+  "mode": "captured_ai_trace_replay",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "provider": "openai",
+  "request_id": "resp_0a7be914cd0c3f1d006a0b8a3bc30c81938b9c4baf9c789c95",
+  "source_agent": "marketing-outreach-agent",
+  "target_agent": "customer-data-agent",
+  "trace_id": "trace-pii-export-001"
+}

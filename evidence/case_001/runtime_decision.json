@@ -1,0 +1,6 @@
+{
+  "decision": "deny_and_suspend",
+  "evidence_ref": "runtime-event-001",
+  "license_status": "suspended",
+  "reason": "blocked_action_attempted"
+}

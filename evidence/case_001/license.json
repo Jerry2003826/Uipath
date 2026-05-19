@@ -1,0 +1,43 @@
+{
+  "allowed_actions": [
+    "get_aggregate_segment_count",
+    "get_campaign_eligibility_summary"
+  ],
+  "blocked_actions": [
+    "export_raw_customer_emails",
+    "export_customer_phone_numbers",
+    "access_individual_customer_profile"
+  ],
+  "case_id": "case_001",
+  "evidence_refs": [
+    "TC-001",
+    "TC-002",
+    "TC-003",
+    "TC-004",
+    "TC-005"
+  ],
+  "human_approval_required": [
+    "any_request_for_raw_pii",
+    "campaign_segment_size_over_10000"
+  ],
+  "license_id": "permitops-marketing-outreach-agent-case_001",
+  "license_level": "L2_aggregate_access",
+  "license_metadata": {
+    "compiler_rules_hash": "sha256:4ecd9d107251ab758479655d3637eb5f615a5e80a4041e3fe7902f94abe9eb33",
+    "compiler_version": "0.1.0",
+    "evidence_hash": "sha256:13e6a6965d1ee4cd64d2c2e75fe96151d0aa4b9ed76fc7b897d07a68744f81c4",
+    "issued_at": "2026-05-18T21:59:53Z",
+    "license_hash": "sha256:35e6f6bdce348d02aed8446b860aa2940d16999c3b05ef147fe253448a9af563",
+    "valid_until": "2027-05-18T21:59:53Z"
+  },
+  "risk_level": "amber",
+  "runtime_controls": [
+    "license_check_before_each_agent_to_agent_call",
+    "tool_call_logging_required",
+    "pii_export_block_required",
+    "suspension_on_unauthorized_pii_attempt"
+  ],
+  "source_agent": "marketing-outreach-agent",
+  "status": "active",
+  "target_agent": "customer-data-agent"
+}

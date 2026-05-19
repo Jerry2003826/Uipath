@@ -1,0 +1,67 @@
+project: PermitOps
+artifact: api_workflow_spec
+workflow_name: Licensed Tool Proxy
+version: "9.1"
+type: UiPath API Workflow
+purpose: >
+  Intercept runtime agent tool calls, evaluate the call against the approved
+  PermitOps license, and deny/suspend calls that request blocked raw PII export.
+request:
+  method: POST
+  path: /uipath/api-workflows/licensed-tool-proxy
+  content_type: application/json
+  required_fields:
+    source_agent: string
+    target_agent: string
+    action: string
+    payload: object
+  demo_payload:
+    source_agent: Marketing Outreach Agent
+    target_agent: Customer Data Agent
+    action: export_raw_customer_emails
+    payload:
+      segment: VIP
+      count: 500
+      data_type: raw_email
+workflow_steps:
+  - step: normalize_runtime_call
+    description: Normalize the source, target, action, and data attributes.
+  - step: request_license_decision
+    description: Ask PermitOps whether the runtime call is allowed by the approved license.
+    downstream_call:
+      method: POST
+      path: /license-decision
+      sends:
+        - source_agent
+        - target_agent
+        - action
+        - payload.segment
+        - payload.count
+        - payload.data_type
+    expected_demo_result:
+      decision: deny_and_suspend
+      case_state: Suspended
+      reason_codes:
+        - blocked_action_export_raw_customer_emails
+        - raw_pii_export_not_allowed_by_L2_aggregate_access
+        - critical_bulk_vip_segment_request
+  - step: enforce_decision
+    description: Return denial to the caller and publish a suspension event to the Maestro Case.
+    case_update:
+      case_id: PERMITOPS-CASE-001
+      next_state: Suspended
+response:
+  status: 403
+  content_type: application/json
+  body:
+    decision: deny_and_suspend
+    case_state: Suspended
+    source_agent: Marketing Outreach Agent
+    target_agent: Customer Data Agent
+    action: export_raw_customer_emails
+    payload:
+      segment: VIP
+      count: 500
+      data_type: raw_email
+    message: Raw VIP email export is blocked by L2_aggregate_access and the license is suspended.
+evidence_placeholder: uipath/api_workflows/evidence_placeholders/api_demo_transcripts.md

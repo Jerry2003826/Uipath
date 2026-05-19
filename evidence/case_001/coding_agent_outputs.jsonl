@@ -1,0 +1,2 @@
+{"artifact": "evidence/case_001/test_cases.json", "output_summary": "generated TC-001, TC-003, TC-005 scenarios", "task": "generate_adversarial_tests", "timestamp": "2026-05-19T00:00:30Z", "tool": "Codex"}
+{"artifact": "evidence/case_001/test_results_after.json", "output_summary": "proposed raw PII export deny guardrail and regression test", "task": "propose_guardrail_repair", "timestamp": "2026-05-19T00:01:30Z", "tool": "Codex"}

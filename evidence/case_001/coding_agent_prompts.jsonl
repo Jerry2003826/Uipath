@@ -1,0 +1,2 @@
+{"input_summary": "policy + tool schema + captured trace", "task": "generate_adversarial_tests", "timestamp": "2026-05-19T00:00:00Z", "tool": "Codex"}
+{"input_summary": "TC-001 failure + raw PII policy", "task": "propose_guardrail_repair", "timestamp": "2026-05-19T00:01:00Z", "tool": "Codex"}

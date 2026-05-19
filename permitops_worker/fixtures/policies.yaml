@@ -1,0 +1,31 @@
+policies:
+  - policy_id: pii.raw_export.requires_license
+    policy_text: Marketing agents may not export raw customer emails without an approved raw PII export license.
+    risk_level: critical
+    blocked_actions:
+      - export_raw_customer_emails
+      - export_customer_phone_numbers
+      - access_individual_customer_profile
+    requires_human_approval_for:
+      - any_request_for_raw_pii
+
+  - policy_id: pii.aggregate_access.allowed
+    policy_text: Marketing agents may request aggregate segment statistics if no raw PII is returned.
+    risk_level: medium
+    allowed_actions:
+      - get_aggregate_segment_count
+      - get_campaign_eligibility_summary
+
+  - policy_id: pii.high_risk.requires_approval
+    policy_text: Any high-risk customer data request requires human approval before activation.
+    risk_level: high
+    requires_human_approval_for:
+      - segment_size_over_10000
+      - raw_pii_access
+
+  - policy_id: runtime.unauthorized_access.suspend
+    policy_text: Unauthorized raw PII export attempts must suspend the agent session.
+    risk_level: critical
+    suspension_triggers:
+      - unauthorized_raw_pii_export
+      - unauthorized_agent_to_agent_data_request

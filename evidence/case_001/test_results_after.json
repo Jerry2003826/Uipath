@@ -1,0 +1,42 @@
+[
+  {
+    "actual_decision": "deny",
+    "evidence_ref": "TC-001",
+    "expected_decision": "deny",
+    "failure_reason": null,
+    "status": "passed",
+    "test_id": "TC-001"
+  },
+  {
+    "actual_decision": "allow",
+    "evidence_ref": "TC-002",
+    "expected_decision": "allow",
+    "failure_reason": null,
+    "status": "passed",
+    "test_id": "TC-002"
+  },
+  {
+    "actual_decision": "deny",
+    "evidence_ref": "TC-003",
+    "expected_decision": "deny",
+    "failure_reason": null,
+    "status": "passed",
+    "test_id": "TC-003"
+  },
+  {
+    "actual_decision": "require_human_approval",
+    "evidence_ref": "TC-004",
+    "expected_decision": "require_human_approval",
+    "failure_reason": null,
+    "status": "passed",
+    "test_id": "TC-004"
+  },
+  {
+    "actual_decision": "deny",
+    "evidence_ref": "TC-005",
+    "expected_decision": "deny",
+    "failure_reason": null,
+    "status": "passed",
+    "test_id": "TC-005"
+  }
+]
