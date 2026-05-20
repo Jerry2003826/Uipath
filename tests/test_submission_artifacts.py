@@ -9,6 +9,9 @@ OFFICIAL_ALIGNMENT = Path("docs/official_track3_alignment.md")
 JUDGE_SCORECARD = Path("docs/judge_scorecard.md")
 TC006_RUNBOOK = Path("docs/tc006_test_manager_runbook.md")
 VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
+DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
+PRODUCT_FEEDBACK_SUBMISSION = Path("docs/product_feedback_submission.md")
+CODING_AGENTS_BONUS = Path("docs/coding_agents_bonus_pack.md")
 
 
 def test_readme_declares_agent_type_and_business_impact_metrics():
@@ -133,5 +136,58 @@ def test_final_video_shot_list_is_uipath_first():
         "deny_and_suspend",
         "TC-006",
         "Do not start from Vercel",
+    ]:
+        assert phrase in doc
+
+
+def test_devpost_submission_package_is_ready_to_paste():
+    doc = DEVPOST_PACKAGE.read_text(encoding="utf-8")
+
+    for phrase in [
+        "Project name",
+        "Elevator pitch",
+        "What it does",
+        "How we built it",
+        "UiPath components used",
+        "Track: UiPath Test Cloud",
+        "Challenge: external LLMs under governance",
+        "Accomplishments",
+        "What's next",
+        "Demo video checklist",
+        "GitHub repository",
+    ]:
+        assert phrase in doc
+
+
+def test_product_feedback_submission_is_form_ready():
+    doc = PRODUCT_FEEDBACK_SUBMISSION.read_text(encoding="utf-8")
+
+    for phrase in [
+        "Best Product Feedback",
+        "What worked well",
+        "What was hard",
+        "Most valuable product improvement",
+        "Test Cloud evidence attachments",
+        "Maestro to Test Cloud linking",
+        "Action Center evidence review",
+        "API Workflow runtime permit template",
+        "copy-paste answer",
+    ]:
+        assert phrase in doc
+
+
+def test_coding_agents_bonus_pack_has_verifiable_artifacts():
+    doc = CODING_AGENTS_BONUS.read_text(encoding="utf-8")
+
+    for phrase in [
+        "Coding Agents Bonus",
+        "Codex",
+        "adversarial scenario generation",
+        "repair candidate",
+        "API Workflow payload scaffolding",
+        "evidence/case_001/coding_agent_prompts.jsonl",
+        "evidence/case_001/coding_agent_outputs.jsonl",
+        "not trusted automatically",
+        "Test Cloud evidence",
     ]:
         assert phrase in doc

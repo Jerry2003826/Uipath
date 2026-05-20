@@ -23,6 +23,9 @@ Judge-facing proof pack:
 - [Judge scorecard](docs/judge_scorecard.md)
 - [TC-006 Test Manager runbook](docs/tc006_test_manager_runbook.md)
 - [Final video shot list](docs/final_video_shot_list.md)
+- [Devpost submission package](docs/devpost_submission_package.md)
+- [Product Feedback submission](docs/product_feedback_submission.md)
+- [Coding Agents bonus pack](docs/coding_agents_bonus_pack.md)
 - [Official Track 3 alignment](docs/official_track3_alignment.md)
 
 ## What it does
@@ -340,6 +343,9 @@ The deployed worker has been called from a live UiPath Studio Web API Workflow d
 - [Judge scorecard](docs/judge_scorecard.md)
 - [TC-006 Test Manager runbook](docs/tc006_test_manager_runbook.md)
 - [Final video shot list](docs/final_video_shot_list.md)
+- [Devpost submission package](docs/devpost_submission_package.md)
+- [Product Feedback submission](docs/product_feedback_submission.md)
+- [Coding Agents bonus pack](docs/coding_agents_bonus_pack.md)
 - [5-minute demo script](docs/demo_script_5min.md)
 - [3-minute demo script](docs/demo_script_3min.md)
 - [Coding-agent evidence](docs/coding_agent_evidence.md)

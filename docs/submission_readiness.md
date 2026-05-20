@@ -114,6 +114,24 @@ Still needed before Devpost final submission:
 - Capture the Studio Web one-click runbook trigger if the authenticated UiPath session is available.
 - Optionally add `TC-006` as a sixth live Test Manager case; otherwise present it honestly as structured incident-memory evidence ready to map.
 
+Ready-to-paste submission helpers now exist:
+
+- `docs/devpost_submission_package.md`
+- `docs/product_feedback_submission.md`
+- `docs/coding_agents_bonus_pack.md`
+
+## 2026-05-21 platform attempt
+
+Attempted to open the Test Manager project directly at:
+
+```text
+https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testcases
+```
+
+The automated browser reached UiPath login, accepted the Google account and
+password, then stopped at Google two-step verification. No Test Manager data was
+changed, and Action Center task `#3545796` was not approved.
+
 Not required for the current non-sandbox completion:
 
 - Waiting for any extra sandbox entitlement.

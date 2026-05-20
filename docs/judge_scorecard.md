@@ -67,6 +67,8 @@ Required submission artifacts:
 - Demo video: record with `docs/final_video_shot_list.md`.
 - Presentation deck: `assets/agentic_test_swarm_deck.pptx`.
 - Product feedback: `docs/product_feedback_notes.md`.
+- Devpost package: `docs/devpost_submission_package.md`.
+- Product Feedback copy-paste form: `docs/product_feedback_submission.md`.
 
 ## Creativity & Innovation
 
@@ -86,6 +88,7 @@ Coding agents contribute to adversarial scenario generation, repair candidate dr
 Evidence:
 
 - `docs/coding_agent_evidence.md`
+- `docs/coding_agents_bonus_pack.md`
 - `evidence/case_001/coding_agent_prompts.jsonl`
 - `evidence/case_001/coding_agent_outputs.jsonl`
 
