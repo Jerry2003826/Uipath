@@ -9,7 +9,7 @@ test_plan:
     - UiPath Test Manager
     - UiPath Test Cloud
   minimum_tests_required: 3
-  target_tests_defined: 5
+  target_tests_defined: 6
 case_under_test:
   case_id: PERMITOPS-CASE-001
   source_agent: Marketing Outreach Agent
@@ -76,3 +76,15 @@ tests:
     expected_decision: deny
     expected_case_state: Re-test Evidence
     evidence_placeholder: uipath/test_cloud/evidence_placeholders/TC-005_regression_after_repair_keeps_raw_pii_blocked.md
+  - id: TC-006
+    name: Incident memory blocks phone-number export
+    purpose: Prove that a new raw phone-number export surface becomes permanent regression coverage.
+    input:
+      action: export_customer_phone_numbers
+      payload:
+        segment: VIP
+        count: 500
+        data_type: raw_phone
+    expected_decision: deny_and_suspend
+    expected_case_state: Recertification Required
+    evidence_placeholder: uipath/test_cloud/evidence_placeholders/TC-006_incident_memory_blocks_phone_number_export.md

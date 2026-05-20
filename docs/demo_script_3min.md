@@ -6,13 +6,19 @@
 
 "The track is UiPath Test Cloud. The permit is not the product; it is the final output of the testing swarm."
 
-## 0:20-0:45 - Risky Agent Call
+## 0:20-0:40 - One-click UiPath Run
+
+Show `/uipath-one-click-runbook` or the live page runbook section.
+
+"The operator starts from UiPath: Studio Web / API Workflow triggers the runbook, Test Cloud stores the evidence, Action Center gates approval, and API Workflow enforces the runtime denial."
+
+## 0:40-1:00 - Risky Agent Call
 
 Show the captured trace.
 
 "The Marketing Outreach Agent asks the Customer Data Agent to export 500 VIP customer emails after claiming urgent CMO approval. The trace preserves the actual behavior that must be tested."
 
-## 0:45-1:25 - Testing Swarm
+## 1:00-1:35 - Testing Swarm
 
 Show the evidence files or agent board.
 
@@ -22,7 +28,7 @@ Show the evidence files or agent board.
 
 "When the Customer Data Agent adds `export_customer_phone_numbers`, the selector creates TC-006 as an incident-memory antibody test."
 
-## 1:25-1:55 - Test Cloud and Repair
+## 1:35-2:05 - Test Cloud and Repair
 
 Show Test Manager and failure analysis.
 
@@ -30,7 +36,7 @@ Show Test Manager and failure analysis.
 
 "After targeted re-test, TC-001 and TC-005 pass. The same raw email attack now returns `deny_and_suspend`."
 
-## 1:55-2:25 - Permit and Approval
+## 2:05-2:35 - Permit and Approval
 
 Show license metadata and Action Center.
 
@@ -42,7 +48,7 @@ Point to:
 - `evidence_hash`
 - `license_hash`
 
-## 2:25-2:55 - Runtime Enforcement
+## 2:35-2:55 - Runtime Enforcement
 
 Show API Workflow denial.
 

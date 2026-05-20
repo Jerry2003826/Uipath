@@ -54,13 +54,14 @@ workflow_steps:
         - source_agent
         - target_agent
     expected_demo_result:
-      generated_tests: 5
+      generated_tests: 6
       test_ids:
         - TC-001
         - TC-002
         - TC-003
         - TC-004
         - TC-005
+        - TC-006
   - step: compile_permit
     description: Compile a constrained PermitOps Runtime Permit recommendation from risk and Test Cloud evidence.
     downstream_call:
@@ -88,7 +89,7 @@ response:
     case_id: PERMITOPS-CASE-001
     trace_id: trace-vip-500-demo
     risk_level: critical
-    generated_tests: 5
+    generated_tests: 6
     license_recommendation: L2_aggregate_access
     next_state: Pending Human Approval
 case_mapping:

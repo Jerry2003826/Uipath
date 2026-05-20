@@ -168,6 +168,90 @@ def build_uipath_control_plane() -> dict[str, Any]:
     }
 
 
+def build_uipath_one_click_runbook(case_id: str = "case_001") -> dict[str, Any]:
+    certification_payload = {
+        "case_id": case_id,
+        "changed_actions": ["export_customer_phone_numbers"],
+    }
+    runtime_payload = {
+        "case_id": case_id,
+        "source_agent": "marketing-outreach-agent",
+        "target_agent": "customer-data-agent",
+        "action": "export_raw_customer_emails",
+        "payload": {"segment": "VIP", "count": 500, "data_type": "raw_email"},
+    }
+
+    return {
+        "runbook_name": "UiPath One-Click Agentic Test Swarm Run",
+        "purpose": "Show that UiPath, not the Python worker, owns the visible testing and governance lifecycle.",
+        "trigger": {
+            "uipath_surface": "Studio Web / API Workflow",
+            "operator_action": "Click Run in UiPath",
+            "worker_call": {
+                "method": "POST",
+                "path": "/run-live-swarm",
+                "payload": certification_payload,
+            },
+            "expected_output": "V11 run with selected tests, repair candidate, TC-006 incident memory, and permit recommendation.",
+        },
+        "sequence": [
+            {
+                "step": 1,
+                "uipath_surface": "Studio Web / API Workflow",
+                "visible_action": "Start Agentic Test Swarm run",
+                "platform_evidence": "Workflow input includes case_id and changed_actions.",
+            },
+            {
+                "step": 2,
+                "uipath_surface": "Test Cloud / Test Manager",
+                "visible_action": "Record selected certification tests",
+                "platform_evidence": "TC-001 through TC-006 are mapped as certification evidence.",
+            },
+            {
+                "step": 3,
+                "uipath_surface": "Action Center",
+                "visible_action": "Approve restricted runtime permit",
+                "platform_evidence": "Pending task #3545796 remains the human accountability gate.",
+            },
+            {
+                "step": 4,
+                "uipath_surface": "API Workflow",
+                "visible_action": "Enforce runtime tool-call decision",
+                "platform_evidence": "Licensed Tool Proxy calls /license-decision and receives deny_and_suspend.",
+            },
+            {
+                "step": 5,
+                "uipath_surface": "Test Cloud",
+                "visible_action": "Promote runtime incident into regression coverage",
+                "platform_evidence": "runtime-event-phone-001 becomes TC-006 antibody coverage.",
+            },
+        ],
+        "test_cloud_delta": {
+            "project": "PermitOps V9.1 Agent Certification",
+            "test_set": "PVACPOV91:6 - PermitOps Certification Evidence",
+            "mapped_tests": ["TC-001", "TC-002", "TC-003", "TC-004", "TC-005", "TC-006"],
+            "new_or_highlighted_test": "TC-006",
+            "reason": "A new raw phone-number export tool surface becomes permanent incident-memory regression coverage.",
+        },
+        "action_center": {
+            "task_id": "3545796",
+            "task_name": "Approve PermitOps Restricted Agent License",
+            "status_for_demo": "Pending until final live recording",
+            "approval_effect": "pending_human_approval -> active restricted L2 aggregate access permit",
+        },
+        "runtime_enforcement": {
+            "workflow": "Licensed Tool Proxy",
+            "worker_call": {
+                "method": "POST",
+                "path": "/license-decision",
+                "payload": runtime_payload,
+            },
+            "expected_decision": "deny_and_suspend",
+            "business_effect": "Unauthorized raw PII export is blocked and the agent session is suspended.",
+        },
+    }
+
+
 def run_live_agentic_testing_loop(
     case_id: str = "case_001",
     changed_actions: list[str] | None = None,
@@ -245,6 +329,7 @@ def run_live_agentic_testing_loop(
             "antibody_test": antibody_test,
         },
         "uipath_control_plane": build_uipath_control_plane(),
+        "uipath_one_click_runbook": build_uipath_one_click_runbook(case_id),
         "permit_output": {
             "name": "PermitOps Runtime Permit",
             "license_level": license_doc.license_level,
@@ -258,6 +343,7 @@ def run_live_agentic_testing_loop(
         case_dir = Path(evidence_root) / case_id
         write_json(case_dir / "v11_live_swarm_run.json", run)
         write_json(case_dir / "incident_antibody_tests.json", {"tests": [antibody_test]})
+        write_json(case_dir / "uipath_one_click_runbook.json", run["uipath_one_click_runbook"])
 
     return run
 

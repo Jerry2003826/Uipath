@@ -162,6 +162,30 @@ The no-code / low-code ownership lives in UiPath:
 
 The demo page exposes this as **UiPath No-Code Control Plane** and shows operator actions such as approving the restricted permit, running targeted re-tests, suspending the unsafe agent session, and promoting incidents into regression tests.
 
+## One-click UiPath control-plane run
+
+The strongest demo path is one operator-triggered UiPath run:
+
+```text
+Studio Web / API Workflow trigger
+-> /uipath-one-click-runbook
+-> /run-live-swarm
+-> Test Cloud/Test Manager evidence including TC-006
+-> Action Center task #3545796
+-> API Workflow Licensed Tool Proxy
+-> deny_and_suspend
+```
+
+The public endpoint for the runbook manifest is:
+
+```text
+https://permitops-uipath.vercel.app/uipath-one-click-runbook
+```
+
+The runbook keeps the proof honest: UiPath owns the visible trigger, test
+evidence, approval gate, and runtime proxy; the Python service only returns
+deterministic evidence and decisions.
+
 ## Current UiPath platform proof
 
 The live tenant evidence still uses the original PermitOps names because those UiPath artifacts were created before the public narrative pivot to Agentic Test Swarm.
@@ -254,6 +278,8 @@ curl -X POST https://permitops-uipath.vercel.app/license-decision \
 curl -X POST https://permitops-uipath.vercel.app/run-live-swarm \
   -H 'Content-Type: application/json' \
   -d '{"case_id":"case_001","changed_actions":["export_customer_phone_numbers"]}'
+
+curl https://permitops-uipath.vercel.app/uipath-one-click-runbook
 ```
 
 Browser-friendly live simulation:

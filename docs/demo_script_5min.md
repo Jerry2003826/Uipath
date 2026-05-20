@@ -10,7 +10,13 @@
 
 "The key point: the permit is not the product. The product is the testing swarm."
 
-## 0:25-0:55 - Hero Risk
+## 0:25-0:50 - One-click UiPath run
+
+Show `/uipath-one-click-runbook` or the `One-Click UiPath Runbook` section.
+
+"The demo starts from a UiPath operator action. A Studio Web / API Workflow trigger starts the runbook, calls the live swarm, points to Test Cloud evidence including TC-006, waits for Action Center approval, and finishes through the API Workflow runtime proxy."
+
+## 0:50-1:10 - Hero Risk
 
 Show the captured risky request.
 
@@ -18,7 +24,7 @@ Show the captured risky request.
 
 "That is an AI-infused workflow risk: prompt injection, agent-to-agent data access, raw PII export, and unclear human approval."
 
-## 0:55-1:25 - Captured AI Trace
+## 1:10-1:35 - Captured AI Trace
 
 Show the captured trace.
 
@@ -26,7 +32,7 @@ Show the captured trace.
 
 "This is the behavior the test swarm will attack and replay."
 
-## 1:25-1:55 - Live Agent Under Test
+## 1:35-2:00 - Live Agent Under Test
 
 Show `v11-live-swarm-local` or `v11_live_swarm_run.json`.
 
@@ -38,7 +44,7 @@ Point out:
 - raw email sample present
 - guardrail -> `missing`
 
-## 1:55-2:35 - Policy Miner, Red-Team, Test Designer
+## 2:00-2:35 - Policy Miner, Red-Team, Test Designer
 
 Show the swarm evidence files or agent board.
 

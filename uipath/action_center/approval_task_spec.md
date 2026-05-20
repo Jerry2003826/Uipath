@@ -16,7 +16,7 @@ demo path is a pre-open task followed by a live Approve click.
 | Allowed Actions | `get_aggregate_segment_count`, `get_campaign_eligibility_summary` |
 | Blocked Actions | `export_raw_customer_emails`, `export_customer_phone_numbers`, `access_individual_customer_profile` |
 | Risk Level | `critical` |
-| Evidence Summary | `5 deterministic tests mapped to UiPath Test Manager/Test Cloud; raw VIP email export denied; aggregate access allowed.` |
+| Evidence Summary | `6 deterministic tests mapped or prepared for UiPath Test Manager/Test Cloud; TC-006 converts raw phone export incident memory into regression coverage; raw VIP email export denied; aggregate access allowed.` |
 | Rules Hash | `sha256:4ecd9d107251ab758479655d3637eb5f615a5e80a4041e3fe7902f94abe9eb33` |
 | Evidence Hash | `sha256:13e6a6965d1ee4cd64d2c2e75fe96151d0aa4b9ed76fc7b897d07a68744f81c4` |
 | Permit Hash | `sha256:7e927bef7a7b2e4fd5c9cd131fc82fd88a05475f0fadeda3967180442f44d04c` |

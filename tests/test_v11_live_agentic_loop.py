@@ -2,6 +2,7 @@ from fastapi.testclient import TestClient
 
 import permitops_worker.app as worker_app
 from permitops_worker.engine.v11_live_swarm import (
+    build_uipath_one_click_runbook,
     create_antibody_test,
     run_live_agentic_testing_loop,
     select_tests_for_change,
@@ -98,6 +99,24 @@ def test_v11_live_loop_attacks_repairs_retests_and_records_antibody():
     assert run["uipath_control_plane"]["operator_actions"][0]["no_code_action"] == "Approve restricted permit"
 
 
+def test_uipath_one_click_runbook_links_platform_surfaces():
+    runbook = build_uipath_one_click_runbook("case_001")
+
+    assert runbook["runbook_name"] == "UiPath One-Click Agentic Test Swarm Run"
+    assert runbook["trigger"]["uipath_surface"] == "Studio Web / API Workflow"
+    assert runbook["trigger"]["worker_call"]["path"] == "/run-live-swarm"
+    assert [step["uipath_surface"] for step in runbook["sequence"]] == [
+        "Studio Web / API Workflow",
+        "Test Cloud / Test Manager",
+        "Action Center",
+        "API Workflow",
+        "Test Cloud",
+    ]
+    assert "TC-006" in runbook["test_cloud_delta"]["mapped_tests"]
+    assert runbook["action_center"]["task_id"] == "3545796"
+    assert runbook["runtime_enforcement"]["expected_decision"] == "deny_and_suspend"
+
+
 def test_run_live_swarm_api_writes_evidence(monkeypatch, tmp_path):
     monkeypatch.setattr(worker_app, "API_EVIDENCE_ROOT", tmp_path / "api_evidence")
     client = TestClient(worker_app.app)
@@ -110,7 +129,21 @@ def test_run_live_swarm_api_writes_evidence(monkeypatch, tmp_path):
     assert response.status_code == 200
     payload = response.json()
     assert payload["after_repair"]["agent_result"]["decision"] == "deny_and_suspend"
+    assert (tmp_path / "api_evidence" / "api_live_case" / "uipath_one_click_runbook.json").exists()
     assert (tmp_path / "api_evidence" / "api_live_case" / "v11_live_swarm_run.json").exists()
+
+
+def test_uipath_one_click_runbook_endpoint_writes_evidence(monkeypatch, tmp_path):
+    monkeypatch.setattr(worker_app, "API_EVIDENCE_ROOT", tmp_path / "api_evidence")
+    client = TestClient(worker_app.app)
+
+    response = client.get("/uipath-one-click-runbook", params={"case_id": "api_live_case"})
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["trigger"]["operator_action"] == "Click Run in UiPath"
+    assert payload["runtime_enforcement"]["worker_call"]["path"] == "/license-decision"
+    assert (tmp_path / "api_evidence" / "api_live_case" / "uipath_one_click_runbook.json").exists()
 
 
 def test_live_swarm_view_renders_browser_demo(monkeypatch, tmp_path):
@@ -126,6 +159,8 @@ def test_live_swarm_view_renders_browser_demo(monkeypatch, tmp_path):
     assert "text/html" in response.headers["content-type"]
     assert "Agentic Test Swarm" in response.text
     assert "UiPath No-Code Control Plane" in response.text
+    assert "One-Click UiPath Runbook" in response.text
+    assert "/uipath-one-click-runbook" in response.text
     assert "Approve restricted permit" in response.text
     assert "Live Public Endpoint Simulation" in response.text
     assert "deny_and_suspend" in response.text

@@ -131,6 +131,34 @@ This means the platform surfaces are not screenshots around a Python app:
 
 The browser demo now exposes a `UiPath No-Code Control Plane` section so judges can see that a non-developer operator can approve the permit, request targeted re-tests, suspend the agent session, and promote incidents into regression coverage.
 
+## One-click UiPath runbook
+
+The runbook endpoint makes the platform chain explicit:
+
+```text
+GET /uipath-one-click-runbook
+```
+
+It returns:
+
+```text
+Studio Web / API Workflow trigger
+-> POST /run-live-swarm
+-> Test Cloud/Test Manager evidence including TC-006
+-> Action Center task #3545796
+-> POST /license-decision through Licensed Tool Proxy
+-> deny_and_suspend
+```
+
+This is the answer to the core judging question:
+
+```text
+Could this just be a Python demo?
+```
+
+No. The worker can compute evidence, but UiPath owns the visible run, managed
+test evidence, human approval, and runtime enforcement.
+
 ## Sandbox enhancement
 
 When sandbox access exposes UiPath Agent Builder or first-class UiPath agent runtime, add visible UiPath-native agents for:

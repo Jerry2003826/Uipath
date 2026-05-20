@@ -1,0 +1,73 @@
+project: Agentic Test Swarm
+artifact: api_workflow_spec
+workflow_name: Control Plane Run Trigger
+version: "11.0"
+type: UiPath API Workflow
+purpose: >
+  Provide the one-click UiPath entrypoint for the final demo. The operator
+  starts in Studio Web / API Workflow, not in Python, and the workflow points
+  to each governed platform surface used by the certification run.
+request:
+  method: GET
+  path: /uipath/api-workflows/control-plane-run-trigger
+  content_type: application/json
+  demo_query:
+    case_id: case_001
+workflow_steps:
+  - step: start_from_uipath
+    description: Operator clicks Run in Studio Web / API Workflow.
+    uipath_surface: Studio Web / API Workflow
+    downstream_call:
+      method: GET
+      base_url: https://permitops-uipath.vercel.app
+      path: /uipath-one-click-runbook
+      query:
+        case_id: case_001
+  - step: run_live_swarm
+    description: Use the runbook to call the live Agentic Test Swarm worker.
+    uipath_surface: Studio Web / API Workflow
+    downstream_call:
+      method: POST
+      base_url: https://permitops-uipath.vercel.app
+      path: /run-live-swarm
+      body:
+        case_id: case_001
+        changed_actions:
+          - export_customer_phone_numbers
+  - step: record_test_cloud_evidence
+    description: Map selected tests and incident-memory coverage into Test Cloud / Test Manager.
+    uipath_surface: Test Cloud / Test Manager
+    expected_tests:
+      - TC-001
+      - TC-002
+      - TC-003
+      - TC-004
+      - TC-005
+      - TC-006
+  - step: wait_for_human_gate
+    description: Keep the restricted runtime permit pending until Action Center approval.
+    uipath_surface: Action Center
+    task_id: "3545796"
+  - step: enforce_runtime
+    description: Route the repeated raw PII export attempt through Licensed Tool Proxy.
+    uipath_surface: API Workflow
+    downstream_call:
+      method: POST
+      base_url: https://permitops-uipath.vercel.app
+      path: /license-decision
+    expected_decision: deny_and_suspend
+response:
+  status: 200
+  content_type: application/json
+  body:
+    runbook_name: UiPath One-Click Agentic Test Swarm Run
+    trigger:
+      operator_action: Click Run in UiPath
+      uipath_surface: Studio Web / API Workflow
+    test_cloud_delta:
+      new_or_highlighted_test: TC-006
+    action_center:
+      task_id: "3545796"
+    runtime_enforcement:
+      expected_decision: deny_and_suspend
+evidence_placeholder: uipath/api_workflows/evidence_placeholders/api_demo_transcripts.md

@@ -8,14 +8,14 @@ current submission narrative, they represent the Agentic Test Swarm evidence
 layer, and PermitOps is the final runtime permit module.
 
 The Python worker in this repository provides the deterministic executor for
-TC-001 through TC-005. UiPath remains the visible governance layer; the worker
+TC-001 through TC-006. UiPath remains the visible governance layer; the worker
 is called by API Workflow and produces evidence for Test Manager/Test Cloud.
 
 ## Plan C Flow
 
 1. Certification Worker Gateway receives the Agentic Test Swarm case intake.
 2. Risk scan marks the request as `critical`.
-3. Test scenarios TC-001 through TC-005 are generated and mapped into Test Manager.
+3. Test scenarios TC-001 through TC-006 are generated and mapped into Test Manager.
 4. Local deterministic runner executes each case with fixed input payloads.
 5. Results and evidence links are stored in Test Manager/Test Cloud.
 6. Evidence hash is attached to the Maestro Case at `Test Cloud Evidence`.
@@ -25,12 +25,12 @@ is called by API Workflow and produces evidence for Test Manager/Test Cloud.
 
 Minimum required tests: 3
 
-Target implemented test set: 5
+Target implemented test set: 6
 
-V11 local extension: `TC-006` is generated as an incident-memory antibody test
-when the Customer Data Agent gains a new raw phone-number export surface. This
-is ready for Test Manager as a sixth case after the live platform test set is
-refreshed.
+V11 extension: `TC-006` is generated as an incident-memory antibody test when
+the Customer Data Agent gains a new raw phone-number export surface. If the live
+Test Manager set is not refreshed before recording, present TC-006 honestly as
+local incident-memory evidence linked to Test Cloud as the next mapped case.
 
 | Test ID | Name | Expected decision | Evidence placeholder |
 | --- | --- | --- | --- |
@@ -39,6 +39,7 @@ refreshed.
 | TC-003 | Unauthorized agent-to-agent raw data request | `deny_and_suspend` | `evidence_placeholders/TC-003_unauthorized_agent_to_agent_raw_data_request.md` |
 | TC-004 | High-risk PII request requires human approval | `require_human_approval` | `evidence_placeholders/TC-004_high_risk_pii_request_requires_human_approval.md` |
 | TC-005 | Regression after repair keeps raw PII blocked | `deny` | `evidence_placeholders/TC-005_regression_after_repair_keeps_raw_pii_blocked.md` |
+| TC-006 | Incident memory blocks phone-number export | `deny_and_suspend` | `evidence_placeholders/TC-006_incident_memory_blocks_phone_number_export.md` |
 
 ## Test Manager Mapping
 
@@ -67,6 +68,10 @@ The following artifacts were created in the `DefaultTenant` Test Manager service
 | `PVACPOV91:6` | `PermitOps Certification Evidence` |
 
 The test set `PVACPOV91:6` has all five test cases assigned under `Static Assignment (5)`.
+
+TC-006 currently exists as structured local incident-memory evidence at
+`evidence/case_001/incident_antibody_tests.json` and should be added as the
+sixth Test Manager case for the strongest final recording.
 
 Evidence screenshots:
 

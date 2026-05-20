@@ -13,7 +13,7 @@ from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.risk_scan import scan_risk
 from permitops_worker.engine.test_runner import run_certification_tests
-from permitops_worker.engine.v11_live_swarm import run_live_agentic_testing_loop
+from permitops_worker.engine.v11_live_swarm import build_uipath_one_click_runbook, run_live_agentic_testing_loop
 from permitops_worker.schemas import AgentToolCall, TestResult
 
 app = FastAPI(title="PermitOps Worker", version="0.1.0")
@@ -38,6 +38,7 @@ def _render_live_swarm_view(run: dict) -> str:
     repair = run["repair_candidate"]
     antibody = run["incident_memory"]["antibody_test"]
     control_plane = run["uipath_control_plane"]
+    runbook = run["uipath_one_click_runbook"]
     permit = run["permit_output"]
     selected_tests = " + ".join(selector["selected_tests"])
     coverage_tags = "".join(f"<span class='tag'>{escape(tag)}</span>" for tag in selector["inputs"]["coverage_tags"])
@@ -61,6 +62,16 @@ def _render_live_swarm_view(run: dict) -> str:
             "</div>"
         )
         for action in control_plane["operator_actions"]
+    )
+    sequence_cards = "".join(
+        (
+            "<div class='runbook-step'>"
+            f"<strong>{step['step']}. {escape(step['uipath_surface'])}</strong>"
+            f"<p>{escape(step['visible_action'])}</p>"
+            f"<span>{escape(step['platform_evidence'])}</span>"
+            "</div>"
+        )
+        for step in runbook["sequence"]
     )
     raw_json = json.dumps(run, indent=2)
 
@@ -112,6 +123,12 @@ def _render_live_swarm_view(run: dict) -> str:
     .platform-card em {{ display: block; color: #a7f3d0; font-style: normal; font-size: 12px; line-height: 1.35; margin-top: 10px; }}
     .operator-grid {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }}
     .action-card {{ border: 1px solid #315176; background: #172554; border-radius: 8px; padding: 13px; }}
+    .runbook {{ background: #fefce8; border-color: #fde68a; }}
+    .runbook-grid {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 14px; }}
+    .runbook-step {{ border: 1px solid #fde68a; background: #fffdf2; border-radius: 8px; padding: 13px; min-height: 150px; }}
+    .runbook-step strong {{ display: block; color: #713f12; font-size: 13px; margin-bottom: 8px; }}
+    .runbook-step p {{ margin: 0 0 8px; color: #422006; font-size: 13px; line-height: 1.35; }}
+    .runbook-step span {{ display: block; color: #854d0e; font-size: 12px; line-height: 1.35; }}
   </style>
 </head>
 <body>
@@ -138,6 +155,12 @@ def _render_live_swarm_view(run: dict) -> str:
         <div class="platform-grid">{platform_cards}</div>
         <h2 style="margin-top: 18px;">No-code operator actions</h2>
         <div class="operator-grid">{action_cards}</div>
+      </div>
+      <div class="card full runbook">
+        <h2>One-Click UiPath Runbook</h2>
+        <p class="muted">GET <code>/uipath-one-click-runbook</code> returns the platform runbook that a Studio Web / API Workflow trigger can use. The run starts in UiPath, records Test Cloud evidence including TC-006, waits for Action Center, and then enforces the permit through API Workflow.</p>
+        <div class="tagrow"><span class="tag">{escape(runbook["trigger"]["operator_action"])}</span><span class="tag">{escape(runbook["test_cloud_delta"]["new_or_highlighted_test"])}</span><span class="tag">{escape(runbook["action_center"]["task_id"])}</span><span class="tag">{escape(runbook["runtime_enforcement"]["expected_decision"])}</span></div>
+        <div class="runbook-grid">{sequence_cards}</div>
       </div>
       <div class="card full"><h2>Agentic Testing Loop</h2><div class="flow"><div class="step"><strong>1. Red-Team Attack</strong><p>Marketing Agent requests raw VIP customer emails using executive override language.</p></div><div class="step"><strong>2. Test Selection</strong><p>Risk, coverage, change impact, and recent failures select critical tests.</p></div><div class="step"><strong>3. Failure Analysis</strong><p>TC-001 root cause: raw PII exfiltration from AI-infused workflow.</p></div><div class="step"><strong>4. Repair + Re-test</strong><p>Guardrail patch blocks raw PII export and targeted re-test passes.</p></div><div class="step"><strong>5. Permit + Enforcement</strong><p>Runtime permit allows aggregate insight and blocks raw PII exports.</p></div></div></div>
       <div class="card full license"><div><h2>PermitOps Runtime Permit</h2><p class="value amber">{escape(permit["license_level"])}</p><div class="muted">License hash: {escape(permit["license_hash"][:19])}...</div></div><div><h2>Runtime Permissions</h2><ul class="list"><li>Allowed: {escape(", ".join(permit["allowed_actions"]))}</li><li>Blocked: {escape(", ".join(permit["blocked_actions"]))}</li><li>Runtime raw PII export result: {escape(after["decision"])}</li></ul></div></div>
@@ -240,6 +263,16 @@ def run_live_swarm_endpoint(payload: dict) -> dict:
     if not isinstance(changed_actions, list) or not all(isinstance(action, str) for action in changed_actions):
         raise HTTPException(status_code=400, detail="changed_actions must be a list of strings")
     return run_live_agentic_testing_loop(case_id=case_id, changed_actions=changed_actions, evidence_root=API_EVIDENCE_ROOT)
+
+
+@app.get("/uipath-one-click-runbook")
+def uipath_one_click_runbook(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    runbook = build_uipath_one_click_runbook(validated_case_id)
+    case_dir = API_EVIDENCE_ROOT / validated_case_id
+    case_dir.mkdir(parents=True, exist_ok=True)
+    (case_dir / "uipath_one_click_runbook.json").write_text(json.dumps(runbook, indent=2), encoding="utf-8")
+    return runbook
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)

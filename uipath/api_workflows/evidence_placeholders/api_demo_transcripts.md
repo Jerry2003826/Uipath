@@ -34,6 +34,42 @@ Evidence capture placeholder:
 - Response screenshot/link: `assets/uipath_api_workflow_success_deny_suspend.png`
 - Maestro Case update link: modeled in `assets/maestro_permitops_bpmn_autopilot.png`; live Maestro case state is not available in the current tenant.
 
+## Control Plane Run Trigger
+
+Request:
+
+```http
+GET /uipath-one-click-runbook?case_id=case_001
+```
+
+Expected response summary:
+
+```json
+{
+  "runbook_name": "UiPath One-Click Agentic Test Swarm Run",
+  "trigger": {
+    "operator_action": "Click Run in UiPath",
+    "uipath_surface": "Studio Web / API Workflow"
+  },
+  "test_cloud_delta": {
+    "mapped_tests": ["TC-001", "TC-002", "TC-003", "TC-004", "TC-005", "TC-006"],
+    "new_or_highlighted_test": "TC-006"
+  },
+  "action_center": {
+    "task_id": "3545796"
+  },
+  "runtime_enforcement": {
+    "expected_decision": "deny_and_suspend"
+  }
+}
+```
+
+Evidence capture placeholder:
+
+- Studio Web trigger screenshot/link: capture during final recording.
+- Response screenshot/link: use `https://permitops-uipath.vercel.app/live-swarm-view` if Studio Web debug panel is not visible enough.
+- Structured evidence: `evidence/case_001/uipath_one_click_runbook.json`.
+
 ## Licensed Tool Proxy
 
 Request payload:

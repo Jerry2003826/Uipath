@@ -51,6 +51,12 @@ The no-code control plane is visible in the demo:
 
 The Python worker is only the deterministic evidence worker. UiPath owns the workflow state, test evidence, human approval, and runtime enforcement.
 
+The one-click runbook makes this explicit: a Studio Web / API Workflow trigger
+starts the run, calls the live swarm, points to Test Cloud evidence including
+TC-006, waits for Action Center task `#3545796`, and then routes the repeated
+raw PII attempt through the Licensed Tool Proxy where it returns
+`deny_and_suspend`.
+
 ## What Is New
 
 Most AI-agent governance demos start with permissions and approval. Agentic Test Swarm starts with testing.
