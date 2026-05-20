@@ -109,6 +109,28 @@ Current live platform proof:
 
 The names still say PermitOps because the UiPath artifacts were created before the narrative pivot. They now map to the Agentic Test Swarm certification run.
 
+## UiPath no-code control plane
+
+The award-grade framing is:
+
+```text
+AI agents explore and recommend.
+Deterministic rules decide expected behavior.
+UiPath makes the whole loop operable, auditable, and enforceable.
+```
+
+This means the platform surfaces are not screenshots around a Python app:
+
+| UiPath surface | Control-plane responsibility |
+| --- | --- |
+| Maestro / Studio Web | Owns the visible lifecycle for the certification run. |
+| Test Cloud / Test Manager | Owns generated test cases, selected tests, failures, and re-test evidence. |
+| Action Center | Owns human approval before the restricted permit becomes active. |
+| API Workflow | Owns runtime enforcement for agent-to-agent tool calls. |
+| Automation Cloud | Connects workflow state, evidence, approval, and enforcement in one tenant. |
+
+The browser demo now exposes a `UiPath No-Code Control Plane` section so judges can see that a non-developer operator can approve the permit, request targeted re-tests, suspend the agent session, and promote incidents into regression coverage.
+
 ## Sandbox enhancement
 
 When sandbox access exposes UiPath Agent Builder or first-class UiPath agent runtime, add visible UiPath-native agents for:

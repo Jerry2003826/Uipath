@@ -87,6 +87,15 @@ def test_v11_live_loop_attacks_repairs_retests_and_records_antibody():
     assert "TC-006" in run["test_selector"]["selected_tests"]
     assert run["incident_memory"]["antibody_test"]["test_id"] == "TC-006"
     assert run["permit_output"]["license_level"] == "L2_aggregate_access"
+    assert run["uipath_control_plane"]["claim"] == "UiPath is the no-code orchestration and governance layer."
+    assert [artifact["component"] for artifact in run["uipath_control_plane"]["artifacts"]] == [
+        "Maestro / Studio Web",
+        "Test Cloud / Test Manager",
+        "Action Center",
+        "API Workflow",
+        "Automation Cloud",
+    ]
+    assert run["uipath_control_plane"]["operator_actions"][0]["no_code_action"] == "Approve restricted permit"
 
 
 def test_run_live_swarm_api_writes_evidence(monkeypatch, tmp_path):
@@ -116,6 +125,8 @@ def test_live_swarm_view_renders_browser_demo(monkeypatch, tmp_path):
     assert response.status_code == 200
     assert "text/html" in response.headers["content-type"]
     assert "Agentic Test Swarm" in response.text
+    assert "UiPath No-Code Control Plane" in response.text
+    assert "Approve restricted permit" in response.text
     assert "Live Public Endpoint Simulation" in response.text
     assert "deny_and_suspend" in response.text
     assert "TC-006" in response.text

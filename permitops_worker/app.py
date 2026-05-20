@@ -37,9 +37,31 @@ def _render_live_swarm_view(run: dict) -> str:
     failure = run["failure_analysis"]
     repair = run["repair_candidate"]
     antibody = run["incident_memory"]["antibody_test"]
+    control_plane = run["uipath_control_plane"]
     permit = run["permit_output"]
     selected_tests = " + ".join(selector["selected_tests"])
     coverage_tags = "".join(f"<span class='tag'>{escape(tag)}</span>" for tag in selector["inputs"]["coverage_tags"])
+    platform_cards = "".join(
+        (
+            "<div class='platform-card'>"
+            f"<strong>{escape(artifact['component'])}</strong>"
+            f"<p>{escape(artifact['platform_role'])}</p>"
+            f"<span>{escape(artifact['visible_artifact'])}</span>"
+            f"<em>{escape(artifact['why_uipath'])}</em>"
+            "</div>"
+        )
+        for artifact in control_plane["artifacts"]
+    )
+    action_cards = "".join(
+        (
+            "<div class='action-card'>"
+            f"<strong>{escape(action['no_code_action'])}</strong>"
+            f"<p>{escape(action['uipath_surface'])}</p>"
+            f"<span>{escape(action['effect'])}</span>"
+            "</div>"
+        )
+        for action in control_plane["operator_actions"]
+    )
     raw_json = json.dumps(run, indent=2)
 
     return f"""<!doctype html>
@@ -79,6 +101,17 @@ def _render_live_swarm_view(run: dict) -> str:
     .license {{ display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; }}
     .list {{ margin: 0; padding-left: 18px; color: #334155; font-size: 14px; line-height: 1.55; }}
     .code {{ background: #101827; color: #e5e7eb; border-radius: 8px; padding: 18px; overflow: auto; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; max-height: 420px; line-height: 1.45; }}
+    .platform {{ background: #0f172a; color: #e5e7eb; border-color: #1e293b; }}
+    .platform h2 {{ color: #f8fafc; font-size: 20px; }}
+    .platform .muted {{ color: #b6c4d7; }}
+    .platform-grid {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }}
+    .platform-card {{ border: 1px solid #334155; background: #111c2f; border-radius: 8px; padding: 13px; min-height: 170px; }}
+    .platform-card strong, .action-card strong {{ display: block; color: #f8fafc; font-size: 14px; margin-bottom: 8px; }}
+    .platform-card p, .action-card p {{ margin: 0 0 8px; color: #cbd5e1; font-size: 13px; line-height: 1.35; }}
+    .platform-card span, .action-card span {{ display: block; color: #93c5fd; font-size: 12px; line-height: 1.35; }}
+    .platform-card em {{ display: block; color: #a7f3d0; font-style: normal; font-size: 12px; line-height: 1.35; margin-top: 10px; }}
+    .operator-grid {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }}
+    .action-card {{ border: 1px solid #315176; background: #172554; border-radius: 8px; padding: 13px; }}
   </style>
 </head>
 <body>
@@ -99,6 +132,13 @@ def _render_live_swarm_view(run: dict) -> str:
       <div class="card"><h2>Incident Memory</h2><p class="value blue">{escape(antibody["test_id"])}</p><div class="muted">{escape(antibody["reason"])}</div></div>
       <div class="card wide"><h2>Test Selector Agent</h2><p class="value">{escape(selected_tests)}</p><div class="muted">{escape(selector["selection_reason"])}</div><div class="tagrow">{coverage_tags}</div></div>
       <div class="card wide"><h2>Repair Agent Candidate</h2><p><span class="pill">{escape(repair["agent"])}</span><span class="pill">{escape(repair["guardrail"])}</span></p><div class="muted">Trusted only after Test Cloud evidence, Action Center approval, and deterministic Quality Governor.</div></div>
+      <div class="card full platform">
+        <h2>UiPath No-Code Control Plane</h2>
+        <div class="muted">{escape(control_plane["claim"])} The Python worker only computes deterministic evidence; UiPath owns the visible workflow, human gate, test evidence, and runtime enforcement.</div>
+        <div class="platform-grid">{platform_cards}</div>
+        <h2 style="margin-top: 18px;">No-code operator actions</h2>
+        <div class="operator-grid">{action_cards}</div>
+      </div>
       <div class="card full"><h2>Agentic Testing Loop</h2><div class="flow"><div class="step"><strong>1. Red-Team Attack</strong><p>Marketing Agent requests raw VIP customer emails using executive override language.</p></div><div class="step"><strong>2. Test Selection</strong><p>Risk, coverage, change impact, and recent failures select critical tests.</p></div><div class="step"><strong>3. Failure Analysis</strong><p>TC-001 root cause: raw PII exfiltration from AI-infused workflow.</p></div><div class="step"><strong>4. Repair + Re-test</strong><p>Guardrail patch blocks raw PII export and targeted re-test passes.</p></div><div class="step"><strong>5. Permit + Enforcement</strong><p>Runtime permit allows aggregate insight and blocks raw PII exports.</p></div></div></div>
       <div class="card full license"><div><h2>PermitOps Runtime Permit</h2><p class="value amber">{escape(permit["license_level"])}</p><div class="muted">License hash: {escape(permit["license_hash"][:19])}...</div></div><div><h2>Runtime Permissions</h2><ul class="list"><li>Allowed: {escape(", ".join(permit["allowed_actions"]))}</li><li>Blocked: {escape(", ".join(permit["blocked_actions"]))}</li><li>Runtime raw PII export result: {escape(after["decision"])}</li></ul></div></div>
       <div class="card full"><h2>Raw JSON Response</h2><pre class="code">{escape(raw_json)}</pre></div>

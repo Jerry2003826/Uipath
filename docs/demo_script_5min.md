@@ -6,6 +6,8 @@
 
 "The track is UiPath Test Cloud. Test Cloud records the certification evidence, Maestro and Studio Web model the lifecycle, Action Center gates human approval, and an API Workflow enforces the tested runtime permit."
 
+"This is important: Python is not the control plane. UiPath is. A non-developer can see the case state, inspect test evidence, approve the permit, and let the API Workflow enforce the runtime decision."
+
 "The key point: the permit is not the product. The product is the testing swarm."
 
 ## 0:25-0:55 - Hero Risk
@@ -70,7 +72,20 @@ Point out:
 
 "Test Cloud is the certification evidence layer. This is not only a local console result."
 
-## 3:25-4:00 - Failure Analyst and Repair Agent
+## 3:25-3:45 - UiPath No-Code Control Plane
+
+Show the live browser demo section named `UiPath No-Code Control Plane`.
+
+"This is why UiPath is not replaceable here. The testing agents generate evidence, but UiPath turns that evidence into an enterprise workflow: Maestro or Studio Web owns the lifecycle, Test Cloud stores the evidence, Action Center keeps a human accountable, and API Workflow enforces the result at runtime."
+
+Point out the no-code actions:
+
+- approve restricted permit
+- run targeted re-test
+- suspend unsafe agent session
+- promote incident to regression
+
+## 3:45-4:10 - Failure Analyst and Repair Agent
 
 Show failure analysis and repair summary.
 
@@ -83,7 +98,7 @@ Show the after-repair live result:
 - after repair -> `deny_and_suspend`
 - guardrail -> `raw_pii_export_block`
 
-## 4:00-4:20 - Targeted Re-Test and Quality Governor
+## 4:10-4:25 - Targeted Re-Test and Quality Governor
 
 Show after results and license metadata.
 
@@ -97,7 +112,7 @@ Point out:
 - `evidence_hash`
 - `license_hash`
 
-## 4:20-4:40 - Action Center Approval
+## 4:25-4:45 - Action Center Approval
 
 Show Action Center task.
 
@@ -105,7 +120,7 @@ Show Action Center task.
 
 Click approve only during final recording.
 
-## 4:40-5:00 - Runtime Enforcement
+## 4:45-5:00 - Runtime Enforcement
 
 Show API Workflow result.
 

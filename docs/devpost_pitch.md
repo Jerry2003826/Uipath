@@ -32,7 +32,7 @@ The runtime incident also becomes memory: a production-style raw phone export ev
 
 ## Why UiPath
 
-Agentic Test Swarm maps naturally onto UiPath Automation Cloud:
+Agentic Test Swarm needs UiPath because the hard part is not only generating a test. The hard part is making AI-generated evidence governable by enterprise operators.
 
 - UiPath Test Cloud records generated tests, selected tests, failure evidence, and re-test evidence.
 - UiPath Maestro / Studio Web models the test-swarm lifecycle.
@@ -41,6 +41,15 @@ Agentic Test Swarm maps naturally onto UiPath Automation Cloud:
 - Coding agents generate adversarial scenarios and repair candidates, while deterministic oracles and UiPath evidence decide what is trusted.
 
 That combination makes the system more than a local testing framework. It becomes an auditable enterprise testing and governance workflow.
+
+The no-code control plane is visible in the demo:
+
+- a business operator can inspect the test-swarm lifecycle in Maestro / Studio Web;
+- a QA owner can see generated tests, selected tests, failures, and re-tests in Test Cloud / Test Manager;
+- an approver can sign or reject the restricted permit in Action Center;
+- an automation owner can enforce the permit through an API Workflow runtime proxy.
+
+The Python worker is only the deterministic evidence worker. UiPath owns the workflow state, test evidence, human approval, and runtime enforcement.
 
 ## What Is New
 

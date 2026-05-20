@@ -146,6 +146,22 @@ The local worker and evidence package are deterministic so the demo can run with
 - **UiPath API Workflow** acts as the runtime proxy for agent-to-agent calls.
 - **Coding agents** generate adversarial scenarios and repair candidates, but deterministic oracles, Test Cloud evidence, and human approval decide what is trusted.
 
+## UiPath no-code control plane
+
+The Python worker is deliberately not the product control plane. It computes deterministic evidence and decisions that UiPath can call.
+
+The no-code / low-code ownership lives in UiPath:
+
+| UiPath surface | No-code role | Why it matters |
+| --- | --- | --- |
+| Maestro / Studio Web | Shows the Agentic Test Swarm lifecycle and routes the case between testing, repair, approval, and runtime monitoring. | Business operators can understand and govern the run without reading backend logs. |
+| Test Cloud / Test Manager | Stores generated test cases, selected tests, failure evidence, and re-test evidence. | The swarm output becomes managed test evidence instead of a local console artifact. |
+| Action Center | Lets a human approve or reject the restricted runtime permit. | The system keeps human accountability for high-impact AI-agent access. |
+| API Workflow | Enforces the tested permit for agent-to-agent tool calls. | Runtime denial happens inside an Automation Cloud workflow, not only inside Python. |
+| Automation Cloud | Connects the tests, workflow state, approval task, API proxy, and evidence package. | UiPath becomes the enterprise control plane that makes the swarm auditable and governable. |
+
+The demo page exposes this as **UiPath No-Code Control Plane** and shows operator actions such as approving the restricted permit, running targeted re-tests, suspending the unsafe agent session, and promoting incidents into regression tests.
+
 ## Current UiPath platform proof
 
 The live tenant evidence still uses the original PermitOps names because those UiPath artifacts were created before the public narrative pivot to Agentic Test Swarm.

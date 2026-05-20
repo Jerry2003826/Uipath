@@ -108,6 +108,66 @@ def create_antibody_test(runtime_event: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def build_uipath_control_plane() -> dict[str, Any]:
+    return {
+        "claim": "UiPath is the no-code orchestration and governance layer.",
+        "artifacts": [
+            {
+                "component": "Maestro / Studio Web",
+                "platform_role": "Owns the certification run state machine.",
+                "visible_artifact": "Agentic Test Swarm case: submitted, test selection, repair, approval, runtime monitoring.",
+                "why_uipath": "Business users can see and route the workflow without reading Python logs.",
+            },
+            {
+                "component": "Test Cloud / Test Manager",
+                "platform_role": "Stores generated tests, selected tests, failures, and re-test evidence.",
+                "visible_artifact": "TC-001 through TC-006 certification evidence and mapped execution results.",
+                "why_uipath": "The evidence survives beyond a local run and becomes auditable test management.",
+            },
+            {
+                "component": "Action Center",
+                "platform_role": "Keeps a human accountable before a restricted permit becomes active.",
+                "visible_artifact": "Approve PermitOps Restricted Agent License task.",
+                "why_uipath": "No-code approval turns AI test evidence into a governed business decision.",
+            },
+            {
+                "component": "API Workflow",
+                "platform_role": "Acts as the runtime gate for agent-to-agent tool calls.",
+                "visible_artifact": "Licensed Tool Proxy returns deny_and_suspend for blocked raw PII export.",
+                "why_uipath": "Production enforcement happens through an Automation Cloud workflow, not a hidden script.",
+            },
+            {
+                "component": "Automation Cloud",
+                "platform_role": "Connects people, tests, workflows, evidence, and runtime enforcement.",
+                "visible_artifact": "Shared tenant artifacts across Studio Web, Test Manager, Actions, and API Workflow.",
+                "why_uipath": "The platform is the control plane that makes the swarm governable in an enterprise.",
+            },
+        ],
+        "operator_actions": [
+            {
+                "no_code_action": "Approve restricted permit",
+                "uipath_surface": "Action Center",
+                "effect": "pending_human_approval -> active",
+            },
+            {
+                "no_code_action": "Run targeted re-test",
+                "uipath_surface": "Test Cloud / Test Manager",
+                "effect": "rerun TC-001 and TC-005 after the Repair Agent proposes a guardrail",
+            },
+            {
+                "no_code_action": "Suspend unsafe agent session",
+                "uipath_surface": "API Workflow + Maestro",
+                "effect": "deny_and_suspend and reopen monitoring evidence",
+            },
+            {
+                "no_code_action": "Promote incident to regression",
+                "uipath_surface": "Test Cloud",
+                "effect": "runtime-event-phone-001 becomes TC-006 antibody coverage",
+            },
+        ],
+    }
+
+
 def run_live_agentic_testing_loop(
     case_id: str = "case_001",
     changed_actions: list[str] | None = None,
@@ -184,6 +244,7 @@ def run_live_agentic_testing_loop(
             "runtime_event": incident_event,
             "antibody_test": antibody_test,
         },
+        "uipath_control_plane": build_uipath_control_plane(),
         "permit_output": {
             "name": "PermitOps Runtime Permit",
             "license_level": license_doc.license_level,
