@@ -29,6 +29,13 @@ the final runtime permit module.
 - Test set `PermitOps Certification Evidence` was created and assigned all five test cases.
 - Action Center is accessible and shows the pending-task inbox.
 
+## 2026-05-20 follow-up
+
+- Added the official Track 3 alignment document at `docs/official_track3_alignment.md`.
+- Added the presentation deck draft at `assets/agentic_test_swarm_deck.pptx`.
+- Re-checked the Studio Web designer URL from a fresh automated browser tab. The tab redirected to UiPath account login, so no new one-click control-plane screenshot was captured in that automation pass.
+- Preserve the existing Studio Web API Workflow proof for `deny_and_suspend`; capture the one-click runbook trigger from the authenticated browser during the final recording.
+
 ## Evidence Files
 
 - `assets/studio_api_workflow_created.png`

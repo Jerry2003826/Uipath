@@ -20,6 +20,7 @@ Completed:
 
 - UiPath Automation Cloud tenant: `scortlandyard / DefaultTenant`.
 - Studio Web API Workflow proof returns `deny_and_suspend` for raw VIP email export.
+- Public one-click runbook endpoint exists at `https://permitops-uipath.vercel.app/uipath-one-click-runbook`.
 - Maestro / Studio Web model exists for `PermitOps V9.1 Certification`.
 - Test Manager project exists: `PermitOps V9.1 Agent Certification` (`PVACPOV91`).
 - Test set exists: `PVACPOV91:6 - PermitOps Certification Evidence`.
@@ -33,6 +34,7 @@ Known boundary:
 
 - The live UiPath artifacts still use PermitOps names because they were created before the public narrative pivot. In the demo, explain that PermitOps is now the final runtime permit module.
 - The Test Manager execution still shows status `Running` because the five results were recorded through `Override Result` from the execution grid. The official Manual Execution Assistant `Done` path was not used because UiPath warned that re-execution could overwrite existing results.
+- A fresh automated browser tab redirected to UiPath login on 2026-05-20, so the new one-click Studio Web trigger screenshot remains a final-recording task. The existing API Workflow debug screenshot still proves UiPath can call the public worker and receive `deny_and_suspend`.
 
 ## Engineering proof
 
@@ -109,6 +111,8 @@ Still needed before Devpost final submission:
 - Make sure the GitHub repository is public.
 - Complete the Devpost project page.
 - Submit the UiPath Product Feedback form.
+- Capture the Studio Web one-click runbook trigger if the authenticated UiPath session is available.
+- Optionally add `TC-006` as a sixth live Test Manager case; otherwise present it honestly as structured incident-memory evidence ready to map.
 
 Not required for the current non-sandbox completion:
 

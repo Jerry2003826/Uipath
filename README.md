@@ -68,6 +68,22 @@ Agentic Test Swarm makes AI workflow quality evidence-based:
 - Action Center keeps humans accountable for high-impact approval.
 - API Workflow turns the tested permit into runtime enforcement.
 
+## Business impact metrics
+
+The demo uses a realistic enterprise AI-governance problem: deciding whether an AI worker may access customer data through another agent.
+
+Target impact for a production version:
+
+| Metric | Baseline | Agentic Test Swarm target |
+| --- | --- | --- |
+| manual AI workflow review time | 2 hours per high-risk agent change | 10 minutes to review Test Cloud evidence and Action Center permit summary |
+| Test coverage for new AI tool surfaces | Ad hoc reviewer checklist | Automatic incident-to-regression coverage such as `TC-006` |
+| Repeatability of AI-agent certification | Prompt review and screenshots | Evidence package with trace, generated tests, re-test results, approval, and permit hash |
+| High-risk raw PII calls | Reviewer must trust agent prompt/config | API Workflow blocks and suspends unauthorized raw PII export |
+| Audit readiness | Manual notes across tools | UiPath-controlled chain across Test Cloud, Action Center, API Workflow, and evidence hashes |
+
+In business terms, the system helps QA, automation, and platform teams certify AI workers faster while keeping humans accountable for sensitive production access.
+
 ## Track: UiPath Test Cloud
 
 The primary submission track is UiPath Test Cloud.
@@ -119,6 +135,15 @@ Current structured evidence: `evidence/case_001/agentic_test_agents.json`.
 - `Repair Agent`: coding-agent-backed repair candidate generator.
 - `Re-test Orchestrator`: runs targeted re-tests after repair.
 - `Quality Governor`: deterministic gate that converts passed evidence and approval into the PermitOps Runtime Permit.
+
+## Agent type
+
+Agent type: combination.
+
+- **External coded agents**: Red-Team Agent, Test Designer Agent, Failure Analyst Agent, and Repair Agent are represented as coded/testing agents that can be powered by external LLMs or coding agents.
+- **Deterministic coded worker**: Policy oracle, Test Selector, Quality Governor, runtime permit compiler, and `/license-decision` service provide repeatable decisions without live LLM dependency.
+- **UiPath low-code/governance surfaces**: Studio Web / Maestro, Test Cloud / Test Manager, Action Center, and API Workflows are the visible orchestration, testing, approval, and enforcement layer.
+- **Coding-agent use**: Codex-style coding agents are used to generate adversarial scenarios and repair candidates. Their outputs are not trusted until deterministic expected results and Test Cloud evidence validate them.
 
 ## Evidence package
 
@@ -294,6 +319,7 @@ The deployed worker has been called from a live UiPath Studio Web API Workflow d
 
 - [Agentic Test Swarm design](docs/agentic_test_swarm.md)
 - [Devpost pitch](docs/devpost_pitch.md)
+- [Official Track 3 alignment](docs/official_track3_alignment.md)
 - [5-minute demo script](docs/demo_script_5min.md)
 - [3-minute demo script](docs/demo_script_3min.md)
 - [Coding-agent evidence](docs/coding_agent_evidence.md)

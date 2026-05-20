@@ -66,9 +66,15 @@ Expected response summary:
 
 Evidence capture placeholder:
 
-- Studio Web trigger screenshot/link: capture during final recording.
+- Studio Web trigger screenshot/link: capture during final recording from an authenticated UiPath browser session.
 - Response screenshot/link: use `https://permitops-uipath.vercel.app/live-swarm-view` if Studio Web debug panel is not visible enough.
 - Structured evidence: `evidence/case_001/uipath_one_click_runbook.json`.
+
+Current automation note, 2026-05-20:
+
+- The public runbook endpoint is deployed and deterministic.
+- A new automated browser tab opened the Studio Web designer URL but redirected to UiPath account login, so a fresh control-plane trigger screenshot was not captured in this run.
+- Do not treat that as product failure; use the existing authenticated in-app/browser session during final recording, or record the existing API Workflow runtime debug evidence plus the public runbook response.
 
 ## Licensed Tool Proxy
 
