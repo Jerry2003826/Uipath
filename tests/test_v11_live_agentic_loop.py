@@ -102,3 +102,21 @@ def test_run_live_swarm_api_writes_evidence(monkeypatch, tmp_path):
     payload = response.json()
     assert payload["after_repair"]["agent_result"]["decision"] == "deny_and_suspend"
     assert (tmp_path / "api_evidence" / "api_live_case" / "v11_live_swarm_run.json").exists()
+
+
+def test_live_swarm_view_renders_browser_demo(monkeypatch, tmp_path):
+    monkeypatch.setattr(worker_app, "API_EVIDENCE_ROOT", tmp_path / "api_evidence")
+    client = TestClient(worker_app.app)
+
+    response = client.get(
+        "/live-swarm-view",
+        params={"case_id": "browser_case", "changed_actions": "export_customer_phone_numbers"},
+    )
+
+    assert response.status_code == 200
+    assert "text/html" in response.headers["content-type"]
+    assert "Agentic Test Swarm" in response.text
+    assert "Live Public Endpoint Simulation" in response.text
+    assert "deny_and_suspend" in response.text
+    assert "TC-006" in response.text
+    assert "PermitOps Runtime Permit" in response.text

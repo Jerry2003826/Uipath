@@ -240,6 +240,12 @@ curl -X POST https://permitops-uipath.vercel.app/run-live-swarm \
   -d '{"case_id":"case_001","changed_actions":["export_customer_phone_numbers"]}'
 ```
 
+Browser-friendly live simulation:
+
+```text
+https://permitops-uipath.vercel.app/live-swarm-view
+```
+
 The deployed worker has been called from a live UiPath Studio Web API Workflow debug run. The captured output shows `statusCode: 200` and `decision: deny_and_suspend`; see `assets/uipath_api_workflow_success_deny_suspend.png`.
 
 ## Documentation

@@ -1,8 +1,11 @@
 from pathlib import Path
+from html import escape
+import json
 import re
 from tempfile import gettempdir
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 
 from permitops_worker.engine.ai_trace import capture_trace_replay
 from permitops_worker.engine.compiler import compile_license
@@ -25,6 +28,84 @@ def _case_id_from_payload(payload: dict) -> str:
     if not isinstance(case_id, str) or not CASE_ID_PATTERN.fullmatch(case_id):
         raise HTTPException(status_code=400, detail="case_id must contain only letters, numbers, hyphen, or underscore")
     return case_id
+
+
+def _render_live_swarm_view(run: dict) -> str:
+    before = run["before_repair"]["agent_result"]
+    after = run["after_repair"]["agent_result"]
+    selector = run["test_selector"]
+    failure = run["failure_analysis"]
+    repair = run["repair_candidate"]
+    antibody = run["incident_memory"]["antibody_test"]
+    permit = run["permit_output"]
+    selected_tests = " + ".join(selector["selected_tests"])
+    coverage_tags = "".join(f"<span class='tag'>{escape(tag)}</span>" for tag in selector["inputs"]["coverage_tags"])
+    raw_json = json.dumps(run, indent=2)
+
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Agentic Test Swarm - Live Vercel Simulation</title>
+  <style>
+    :root {{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #16202a; background: #eef2f6; }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; background: #eef2f6; }}
+    .page {{ max-width: 1220px; margin: 0 auto; padding: 34px; }}
+    .header {{ display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 22px; }}
+    .kicker {{ font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #2463eb; margin-bottom: 8px; }}
+    h1 {{ margin: 0; font-size: 38px; line-height: 1.05; letter-spacing: 0; color: #111827; }}
+    .sub {{ margin: 10px 0 0; color: #4b5563; font-size: 16px; line-height: 1.45; max-width: 850px; }}
+    .endpoint {{ background: #111827; color: #d1fae5; padding: 14px 16px; border-radius: 8px; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; min-width: 370px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }}
+    .banner {{ padding: 12px 14px; border: 1px solid #bfdbfe; background: #eff6ff; color: #1e3a8a; border-radius: 8px; font-size: 14px; margin: 16px 0 6px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }}
+    .card {{ background: #fff; border: 1px solid #d9e0ea; border-radius: 8px; padding: 18px; box-shadow: 0 6px 18px rgba(15,23,42,.06); }}
+    .card h2 {{ font-size: 15px; margin: 0 0 12px; color: #111827; }}
+    .value {{ font-size: 22px; font-weight: 800; margin: 0; color: #111827; }}
+    .muted {{ font-size: 13px; color: #64748b; line-height: 1.45; margin-top: 8px; }}
+    .danger {{ color: #b91c1c; }}
+    .ok {{ color: #047857; }}
+    .amber {{ color: #b45309; }}
+    .blue {{ color: #1d4ed8; }}
+    .wide {{ grid-column: span 2; }}
+    .full {{ grid-column: 1 / -1; }}
+    .flow {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: stretch; margin-top: 8px; }}
+    .step {{ border: 1px solid #dbe3ee; background: #f8fafc; border-radius: 8px; padding: 13px; min-height: 114px; }}
+    .step strong {{ display: block; font-size: 14px; color: #0f172a; margin-bottom: 8px; }}
+    .step p {{ margin: 0; color: #475569; font-size: 13px; line-height: 1.35; }}
+    .tagrow {{ display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }}
+    .tag {{ border: 1px solid #cbd5e1; border-radius: 999px; padding: 5px 9px; background: #fff; font-size: 12px; color: #334155; }}
+    .pill {{ display: inline-block; padding: 5px 9px; border-radius: 999px; background: #e0f2fe; color: #075985; font-weight: 700; font-size: 12px; margin-right: 6px; }}
+    .license {{ display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; }}
+    .list {{ margin: 0; padding-left: 18px; color: #334155; font-size: 14px; line-height: 1.55; }}
+    .code {{ background: #101827; color: #e5e7eb; border-radius: 8px; padding: 18px; overflow: auto; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; max-height: 420px; line-height: 1.45; }}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="header">
+      <div>
+        <div class="kicker">Live Public Endpoint Simulation</div>
+        <h1>Agentic Test Swarm</h1>
+        <p class="sub">UiPath-orchestrated testing agents attack an AI workflow, analyze the failure, propose a repair, select targeted re-tests, create incident-memory regression coverage, and output a runtime permit.</p>
+      </div>
+      <div class="endpoint">POST /run-live-swarm<br>Status: 200 OK<br>Case: {escape(run["case_id"])}<br>Version: {escape(run["version"])}</div>
+    </div>
+    <div class="banner">This normal HTTPS page renders the same V11 live swarm result that the POST endpoint returns as JSON.</div>
+    <section class="grid">
+      <div class="card"><h2>Before Repair</h2><p class="value danger">{escape(before["decision"])}</p><div class="muted">The vulnerable agent accepts the executive override and returns raw PII.</div></div>
+      <div class="card"><h2>Failure Analyst</h2><p class="value danger">{escape(failure["failed_test"])}</p><div class="muted">{escape(failure["root_cause"])}</div></div>
+      <div class="card"><h2>After Repair</h2><p class="value ok">{escape(after["decision"])}</p><div class="muted">Guardrail: {escape(after["guardrail"])}</div></div>
+      <div class="card"><h2>Incident Memory</h2><p class="value blue">{escape(antibody["test_id"])}</p><div class="muted">{escape(antibody["reason"])}</div></div>
+      <div class="card wide"><h2>Test Selector Agent</h2><p class="value">{escape(selected_tests)}</p><div class="muted">{escape(selector["selection_reason"])}</div><div class="tagrow">{coverage_tags}</div></div>
+      <div class="card wide"><h2>Repair Agent Candidate</h2><p><span class="pill">{escape(repair["agent"])}</span><span class="pill">{escape(repair["guardrail"])}</span></p><div class="muted">Trusted only after Test Cloud evidence, Action Center approval, and deterministic Quality Governor.</div></div>
+      <div class="card full"><h2>Agentic Testing Loop</h2><div class="flow"><div class="step"><strong>1. Red-Team Attack</strong><p>Marketing Agent requests raw VIP customer emails using executive override language.</p></div><div class="step"><strong>2. Test Selection</strong><p>Risk, coverage, change impact, and recent failures select critical tests.</p></div><div class="step"><strong>3. Failure Analysis</strong><p>TC-001 root cause: raw PII exfiltration from AI-infused workflow.</p></div><div class="step"><strong>4. Repair + Re-test</strong><p>Guardrail patch blocks raw PII export and targeted re-test passes.</p></div><div class="step"><strong>5. Permit + Enforcement</strong><p>Runtime permit allows aggregate insight and blocks raw PII exports.</p></div></div></div>
+      <div class="card full license"><div><h2>PermitOps Runtime Permit</h2><p class="value amber">{escape(permit["license_level"])}</p><div class="muted">License hash: {escape(permit["license_hash"][:19])}...</div></div><div><h2>Runtime Permissions</h2><ul class="list"><li>Allowed: {escape(", ".join(permit["allowed_actions"]))}</li><li>Blocked: {escape(", ".join(permit["blocked_actions"]))}</li><li>Runtime raw PII export result: {escape(after["decision"])}</li></ul></div></div>
+      <div class="card full"><h2>Raw JSON Response</h2><pre class="code">{escape(raw_json)}</pre></div>
+    </section>
+  </main>
+</body>
+</html>"""
 
 
 @app.get("/health")
@@ -119,3 +200,15 @@ def run_live_swarm_endpoint(payload: dict) -> dict:
     if not isinstance(changed_actions, list) or not all(isinstance(action, str) for action in changed_actions):
         raise HTTPException(status_code=400, detail="changed_actions must be a list of strings")
     return run_live_agentic_testing_loop(case_id=case_id, changed_actions=changed_actions, evidence_root=API_EVIDENCE_ROOT)
+
+
+@app.get("/live-swarm-view", response_class=HTMLResponse)
+def live_swarm_view(case_id: str = "case_001", changed_actions: str = "export_customer_phone_numbers") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    action_list = [action.strip() for action in changed_actions.split(",") if action.strip()]
+    run = run_live_agentic_testing_loop(
+        case_id=validated_case_id,
+        changed_actions=action_list,
+        evidence_root=API_EVIDENCE_ROOT,
+    )
+    return HTMLResponse(_render_live_swarm_view(run))
