@@ -82,7 +82,8 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 
 - Built a public live simulation: `https://permitops-uipath.vercel.app/live-swarm-view`
 - Built a one-click runbook endpoint for UiPath API Workflow: `/uipath-one-click-runbook`
-- Created a Test Manager project and five visible certification tests.
+- Created a Test Manager project, five core certification tests, and live TC-006 incident-memory coverage as `PVACPOV91:76`.
+- Assigned TC-006 to the main `PVACPOV91:6 - PermitOps Certification Evidence` test set, which now shows `Static Assignment (6)`.
 - Created Action Center approval evidence and preserved pending task `#3545796` for the final demo.
 - Captured Studio Web API Workflow evidence returning `deny_and_suspend`.
 - Added `TC-006` as incident-memory evidence for a new raw phone-number export tool surface.
@@ -96,7 +97,7 @@ UiPath is valuable because it gives the system a control plane: Test Cloud for e
 
 ## What's next
 
-- Add `TC-006` as a sixth live Test Manager case and complete a six-test execution through Manual Execution Assistant.
+- Complete a fresh six-test execution through Manual Execution Assistant for final video polish.
 - Add UiPath Agent Builder agents for Policy Miner and Red-Team roles.
 - Add a reusable API Workflow runtime permit template.
 - Add first-class Test Cloud attachments for captured AI traces, deterministic oracle versions, and evidence hashes.

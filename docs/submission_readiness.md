@@ -1,6 +1,6 @@
 # Agentic Test Swarm Submission Readiness
 
-Last updated: 2026-05-19
+Last updated: 2026-05-21
 
 Current public positioning:
 
@@ -24,6 +24,8 @@ Completed:
 - Maestro / Studio Web model exists for `PermitOps V9.1 Certification`.
 - Test Manager project exists: `PermitOps V9.1 Agent Certification` (`PVACPOV91`).
 - Test set exists: `PVACPOV91:6 - PermitOps Certification Evidence`.
+- Live TC-006 case exists: `PVACPOV91:76 - TC006 incident memory blocks phone-number export`.
+- Test set `PVACPOV91:6` now shows `Static Assignment (6)` and includes `PVACPOV91:76`.
 - Test Manager execution exists: `PermitOps Certification Evidence - 20260519.0911`.
 - Test Manager result evidence shows `5 passed / 0 failed / 0 not executed`.
 - Action Center task `#3545796` is assigned to the current demo user and visible under `My Tasks > Pending`.
@@ -33,7 +35,8 @@ Completed:
 Known boundary:
 
 - The live UiPath artifacts still use PermitOps names because they were created before the public narrative pivot. In the demo, explain that PermitOps is now the final runtime permit module.
-- The Test Manager execution still shows status `Running` because the five results were recorded through `Override Result` from the execution grid. The official Manual Execution Assistant `Done` path was not used because UiPath warned that re-execution could overwrite existing results.
+- The Test Manager execution still shows status `Running` because the five original results were recorded through `Override Result` from the execution grid. The official Manual Execution Assistant `Done` path was not used because UiPath warned that re-execution could overwrite existing results.
+- TC-006 is live in the test set, but the historical execution still has the original five overridden results. Create a new six-case Manual Execution Assistant run only during final video polish if a completed six-case execution page is needed.
 - A fresh automated browser tab redirected to UiPath login on 2026-05-20, so the new one-click Studio Web trigger screenshot remains a final-recording task. The existing API Workflow debug screenshot still proves UiPath can call the public worker and receive `deny_and_suspend`.
 
 ## Engineering proof
@@ -72,6 +75,8 @@ Use these screenshots in the final video or Devpost gallery:
 - `assets/test_manager_permitops_5_test_cases.png`
 - `assets/test_manager_permitops_test_set_assigned.png`
 - `assets/test_manager_permitops_execution_5_passed_viewport.png`
+- `assets/test_manager_tc006_case_created.png`
+- `assets/test_manager_tc006_added_to_test_set.png`
 - `assets/action_center_permitops_pending_assigned_task_3545796.png`
 - `assets/action_center_permitops_completed_task_3545494.png`
 - `assets/maestro_debug_human_approval_completed.png`
@@ -112,7 +117,7 @@ Still needed before Devpost final submission:
 - Complete the Devpost project page.
 - Submit the UiPath Product Feedback form.
 - Capture the Studio Web one-click runbook trigger if the authenticated UiPath session is available.
-- Optionally add `TC-006` as a sixth live Test Manager case; otherwise present it honestly as structured incident-memory evidence ready to map.
+- Optional final polish: create a fresh six-case Manual Execution Assistant run for the already assigned live TC-006 case.
 
 Ready-to-paste submission helpers now exist:
 

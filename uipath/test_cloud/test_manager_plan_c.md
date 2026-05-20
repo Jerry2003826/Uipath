@@ -28,9 +28,9 @@ Minimum required tests: 3
 Target implemented test set: 6
 
 V11 extension: `TC-006` is generated as an incident-memory antibody test when
-the Customer Data Agent gains a new raw phone-number export surface. If the live
-Test Manager set is not refreshed before recording, present TC-006 honestly as
-local incident-memory evidence linked to Test Cloud as the next mapped case.
+the Customer Data Agent gains a new raw phone-number export surface. This case is
+now also visible in the live Test Manager project as `PVACPOV91:76` and assigned
+to the main certification test set.
 
 | Test ID | Name | Expected decision | Evidence placeholder |
 | --- | --- | --- | --- |
@@ -65,13 +65,10 @@ The following artifacts were created in the `DefaultTenant` Test Manager service
 | `PVACPOV91:3` | `TC003 raw agent request suspended` |
 | `PVACPOV91:4` | `TC004 high risk PII approval` |
 | `PVACPOV91:5` | `TC005 regression keeps PII denied` |
+| `PVACPOV91:76` | `TC006 incident memory blocks phone-number export` |
 | `PVACPOV91:6` | `PermitOps Certification Evidence` |
 
-The test set `PVACPOV91:6` has all five test cases assigned under `Static Assignment (5)`.
-
-TC-006 currently exists as structured local incident-memory evidence at
-`evidence/case_001/incident_antibody_tests.json` and should be added as the
-sixth Test Manager case for the strongest final recording.
+The test set `PVACPOV91:6` has all six test cases assigned under `Static Assignment (6)`.
 
 Evidence screenshots:
 
@@ -79,6 +76,13 @@ Evidence screenshots:
 - `assets/test_manager_permitops_test_set_assigned.png`
 - `assets/test_manager_permitops_execution_5_passed_viewport.png`
 - `assets/test_manager_permitops_execution_5_passed_fullpage.png`
+- `assets/test_manager_tc006_case_created.png`
+- `assets/test_manager_tc006_added_to_test_set.png`
+
+Structured evidence:
+
+- `evidence/case_001/test_manager_tc006_case_created.txt`
+- `evidence/case_001/test_manager_tc006_test_set_assignment.txt`
 
 ## Live Execution Result Evidence
 
@@ -92,10 +96,11 @@ A manual Test Manager execution was created from test set `PVACPOV91:6`:
 | Visible result summary | `5 passed / 0 failed / 0 not executed` |
 | Status label | `Running` |
 
-The execution status remains `Running` because this pass used result overrides from the
-results grid rather than the Manual Execution Assistant `Done` path. UiPath's manual
-execution documentation describes the assistant flow as the path where the user marks
-steps and selects `Done` after the last test case to complete the execution:
+This execution was created before live TC-006 was assigned. Its status remains
+`Running` because this pass used result overrides from the results grid rather
+than the Manual Execution Assistant `Done` path. UiPath's manual execution
+documentation describes the assistant flow as the path where the user marks steps
+and selects `Done` after the last test case to complete the execution:
 https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/executing-manual-tests
 
 Structured evidence:

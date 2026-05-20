@@ -103,7 +103,7 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | UiPath runtime proxy works | `assets/uipath_api_workflow_success_deny_suspend.png` |
 | Test Cloud evidence exists | `assets/test_manager_permitops_execution_5_passed_viewport.png` |
 | Human approval gate exists | `assets/action_center_permitops_pending_assigned_task_3545796.png` |
-| TC-006 incident memory exists | `evidence/case_001/incident_antibody_tests.json` |
+| TC-006 incident memory exists | `PVACPOV91:76`, `assets/test_manager_tc006_case_created.png`, `assets/test_manager_tc006_added_to_test_set.png`, `evidence/case_001/incident_antibody_tests.json` |
 | Deck exists | `assets/agentic_test_swarm_deck.pptx` |
 | Setup is reproducible | `README.md` local setup commands |
 
@@ -111,8 +111,8 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 
 Do not overclaim:
 
-- TC-006 is currently structured incident-memory evidence unless it is added as a sixth live Test Manager case.
-- The current Test Manager execution can show `Running` because the five results were entered through result override.
+- TC-006 is now a live Test Manager case (`PVACPOV91:76`) assigned to `PVACPOV91:6` under `Static Assignment (6)`.
+- The current Test Manager execution can show `Running` because the five original results were entered through result override before TC-006 was added.
 - Do not click Action Center approval before the final recording.
 - Do not claim legal compliance certification.
 - Do not claim coding-agent repairs are automatically trusted.

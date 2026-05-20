@@ -111,5 +111,5 @@ Before final Devpost submission:
 
 - record a fresh under-five-minute demo with UiPath screens first and the Vercel page second;
 - keep Action Center task `#3545796` pending until the live approval moment;
-- if possible, add TC-006 as a visible Test Manager case or clearly label it as the next mapped incident-memory case;
+- show live TC-006 in Test Manager as `PVACPOV91:76` and `Static Assignment (6)`;
 - include the deck, README, setup instructions, coding-agent evidence, and product feedback notes.

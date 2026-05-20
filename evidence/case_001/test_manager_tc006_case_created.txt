@@ -1,0 +1,36 @@
+- img: arrow_drop_down
+        - button "Menu for column Last Modified":
+          - img: more_vert
+        - separator "Drag the handle or use arrow keys (Left and Right) to resize the column"
+      - columnheader "Latest Result Menu for column Latest Result":
+        - button "Latest Result":
+          - generic "Latest Result"
+        - button "Menu for column Latest Result":
+          - img: more_vert
+      - gridcell "Refresh":
+        - button "Refresh":
+          - img: refresh
+      - columnheader "Actions":
+        - generic: Actions
+  - rowgroup:
+    - row "Select row 1 PVACPOV91:76 TC006 incident memory blocks phone-number export Expected deny_and_suspend when Customer Data Agent exposes export_customer_phone_numbers. Incident m... a few seconds ago None More Options":
+      - gridcell "Select row 1":
+        - checkbox "Select row 1"
+      - rowheader "PVACPOV91:76":
+        - link "PVACPOV91:76":
+          - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testcases/PVACPOV91:76
+      - gridcell "TC006 incident memory blocks phone-number export":
+        - generic: TC006 incident memory blocks phone-number export
+      - gridcell
+      - gridcell
+      - gridcell "Expected deny_and_suspend when Customer Data Agent exposes export_customer_phone_numbers. Incident m...":
+        - generic: Expected deny_and_suspend when Customer Data Agent exposes export_customer_phone_numbers. Incident m...
+      - gridcell "a few seconds ago":
+        - generic: a few seconds ago
+      - gridcell "None":
+        - generic "None":
+          - generic: None
+      - gridcell "More Options":
+        - button "More Options":
+          - img: more_vert
+    - row "Select row 2 PVACPOV91:5 TC005 regression keeps PII denied Expected pass after repair with raw PII export stil

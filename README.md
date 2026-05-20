@@ -238,12 +238,19 @@ The live tenant evidence still uses the original PermitOps names because those U
 - Tenant: `scortlandyard / DefaultTenant`
 - Test Manager project: `PermitOps V9.1 Agent Certification` (`PVACPOV91`)
 - Test set: `PVACPOV91:6 - PermitOps Certification Evidence`
+- Live incident-memory case: `PVACPOV91:76 - TC006 incident memory blocks phone-number export`
+- Test set assignment: `Static Assignment (6)` now includes `PVACPOV91:76`
 - Execution: `PermitOps Certification Evidence - 20260519.0911`
 - Visible result summary: `5 passed / 0 failed / 0 not executed`
 - Action Center pending task: `#3545796`
 - Studio Web / API Workflow proof: raw email export returns `deny_and_suspend`
 
-Known boundary: the Test Manager execution was recorded through `Override Result`, so the page can still show `Running` while the grid shows `5 passed / 0 failed / 0 not executed`. For final video polish, re-run through Manual Execution Assistant and select `Done`.
+Evidence screenshots for the new live TC-006 mapping:
+
+- `assets/test_manager_tc006_case_created.png`
+- `assets/test_manager_tc006_added_to_test_set.png`
+
+Known boundary: the existing Test Manager execution was recorded before TC-006 was added and through `Override Result`, so the page can still show `Running` while the grid shows `5 passed / 0 failed / 0 not executed`. For final video polish, create a fresh six-case execution through Manual Execution Assistant and select `Done`.
 
 ## Runtime permit
 

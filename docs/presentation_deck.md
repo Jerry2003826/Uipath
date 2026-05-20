@@ -98,7 +98,7 @@ UiPath records, approves, and enforces the result.
 
 Near-term:
 
-- Add live Test Manager TC-006 case and refreshed six-test execution.
+- Record a refreshed six-test Manual Execution Assistant run now that live TC-006 exists as `PVACPOV91:76`.
 - Record the 5-minute Devpost demo from UiPath first.
 - Show UiPath for Coding Agents in the video for bonus platform points.
 

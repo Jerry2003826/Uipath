@@ -12,6 +12,14 @@ VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
 PRODUCT_FEEDBACK_SUBMISSION = Path("docs/product_feedback_submission.md")
 CODING_AGENTS_BONUS = Path("docs/coding_agents_bonus_pack.md")
+TEST_MANAGER_PLAN_C = Path("uipath/test_cloud/test_manager_plan_c.md")
+SUBMISSION_READINESS = Path("docs/submission_readiness.md")
+PLATFORM_SPIKE_STATUS = Path("docs/platform_spike_status.md")
+TC006_PLACEHOLDER = Path("uipath/test_cloud/evidence_placeholders/TC-006_incident_memory_blocks_phone_number_export.md")
+TC006_CASE_SCREENSHOT = Path("assets/test_manager_tc006_case_created.png")
+TC006_ASSIGNMENT_SCREENSHOT = Path("assets/test_manager_tc006_added_to_test_set.png")
+TC006_CASE_EVIDENCE = Path("evidence/case_001/test_manager_tc006_case_created.txt")
+TC006_ASSIGNMENT_EVIDENCE = Path("evidence/case_001/test_manager_tc006_test_set_assignment.txt")
 
 
 def test_readme_declares_agent_type_and_business_impact_metrics():
@@ -191,3 +199,38 @@ def test_coding_agents_bonus_pack_has_verifiable_artifacts():
         "Test Cloud evidence",
     ]:
         assert phrase in doc
+
+
+def test_tc006_live_test_manager_mapping_is_documented():
+    docs = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [
+            README,
+            TEST_MANAGER_PLAN_C,
+            SUBMISSION_READINESS,
+            JUDGE_SCORECARD,
+            TC006_RUNBOOK,
+            PLATFORM_SPIKE_STATUS,
+            TC006_PLACEHOLDER,
+        ]
+    )
+
+    for phrase in [
+        "PVACPOV91:76",
+        "TC006 incident memory blocks phone-number export",
+        "Static Assignment (6)",
+        "assets/test_manager_tc006_case_created.png",
+        "assets/test_manager_tc006_added_to_test_set.png",
+    ]:
+        assert phrase in docs
+
+    for path in [
+        TC006_CASE_SCREENSHOT,
+        TC006_ASSIGNMENT_SCREENSHOT,
+        TC006_CASE_EVIDENCE,
+        TC006_ASSIGNMENT_EVIDENCE,
+    ]:
+        assert path.exists()
+
+    assert "PVACPOV91:76" in TC006_CASE_EVIDENCE.read_text(encoding="utf-8")
+    assert "Static Assignment (6)" in TC006_ASSIGNMENT_EVIDENCE.read_text(encoding="utf-8")

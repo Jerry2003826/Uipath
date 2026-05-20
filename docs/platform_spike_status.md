@@ -163,8 +163,9 @@ Live Test Manager artifacts now exist:
   - `PVACPOV91:3` - `TC003 raw agent request suspended`
   - `PVACPOV91:4` - `TC004 high risk PII approval`
   - `PVACPOV91:5` - `TC005 regression keeps PII denied`
+  - `PVACPOV91:76` - `TC006 incident memory blocks phone-number export`
 - Test set: `PVACPOV91:6` - `PermitOps Certification Evidence`
-- Static assignment count: `5`
+- Static assignment count: `Static Assignment (6)`
 
 Evidence:
 
@@ -172,7 +173,11 @@ Evidence:
 - `assets/test_manager_permitops_test_set_assigned.png`
 - `assets/test_manager_permitops_execution_5_passed_viewport.png`
 - `assets/test_manager_permitops_execution_5_passed_fullpage.png`
+- `assets/test_manager_tc006_case_created.png`
+- `assets/test_manager_tc006_added_to_test_set.png`
 - `evidence/case_001/test_manager_manual_execution_result.json`
+- `evidence/case_001/test_manager_tc006_case_created.txt`
+- `evidence/case_001/test_manager_tc006_test_set_assignment.txt`
 
 Manual execution evidence now exists:
 
@@ -184,7 +189,9 @@ Manual execution evidence now exists:
 
 Note: the result evidence is real and visible in Test Manager. The status label remains
 `Running` because the results were entered through the execution grid's override path,
-not through the Manual Execution Assistant `Done` flow.
+not through the Manual Execution Assistant `Done` flow. TC-006 was added after this
+historical execution, so the final six-test completion should be recorded as a fresh run
+only if video polish requires it.
 
 ## Action Center
 

@@ -54,7 +54,8 @@ Screen:
 
 - Test Manager / Test Cloud project `PVACPOV91`
 - `PermitOps Certification Evidence`
-- Existing five passed tests, or six passed tests if TC-006 has been added
+- `Static Assignment (6)` with live `PVACPOV91:76 / TC006 incident memory blocks phone-number export`
+- Existing historical execution with five passed overridden results
 
 Narration:
 
@@ -110,6 +111,7 @@ At runtime, the repeated agent-to-agent raw PII request goes through API Workflo
 Screen:
 
 - `TC-006` incident-memory evidence
+- Live Test Manager row `PVACPOV91:76`
 - phone-number export tool-surface change
 
 Narration:
@@ -117,6 +119,8 @@ Narration:
 ```text
 The system is not a static test suite. When a new raw phone-number export surface appears, the Test Selector creates TC-006 as permanent incident-to-regression coverage.
 ```
+
+Show the live Test Manager row `PVACPOV91:76` and the `Static Assignment (6)` test set if the browser session is available.
 
 ## 4:40-5:00 - Closing claim
 
