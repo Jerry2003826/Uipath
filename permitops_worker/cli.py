@@ -9,6 +9,7 @@ from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.test_manager_sync import sync_test_cases
 from permitops_worker.engine.test_runner import run_certification_tests
+from permitops_worker.engine.v11_live_swarm import run_live_agentic_testing_loop
 from permitops_worker.schemas import AgentToolCall
 
 
@@ -194,6 +195,28 @@ def cmd_full_demo_local(_args) -> int:
     return 0
 
 
+def cmd_v11_live_swarm_local(_args) -> int:
+    run = run_live_agentic_testing_loop(
+        case_id=CASE_ID,
+        changed_actions=["export_customer_phone_numbers"],
+        evidence_root=EVIDENCE_ROOT,
+    )
+    print("[1/7] Live vulnerable Customer Data Agent attacked")
+    print(f"      before repair -> {run['before_repair']['agent_result']['decision']}")
+    print("[2/7] Test Selector reacted to changed tool schema")
+    print(f"      selected tests -> {', '.join(run['test_selector']['selected_tests'])}")
+    print("[3/7] Failure Analyst produced root cause for TC-001")
+    print("[4/7] Repair Agent proposed raw PII export guardrail")
+    print("[5/7] Targeted re-test passed after repair")
+    print(f"      after repair -> {run['after_repair']['agent_result']['decision']}")
+    print("[6/7] Incident memory created antibody test")
+    print(f"      antibody -> {run['incident_memory']['antibody_test']['test_id']}")
+    print("[7/7] Runtime permit remains L2 aggregate access")
+    print("      wrote evidence/case_001/v11_live_swarm_run.json")
+    print("      wrote evidence/case_001/incident_antibody_tests.json")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="permitops")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -215,6 +238,7 @@ def build_parser() -> argparse.ArgumentParser:
     sync.add_argument("--dry-run", action="store_true")
     sync.set_defaults(func=cmd_sync_test_manager)
     sub.add_parser("full-demo-local").set_defaults(func=cmd_full_demo_local)
+    sub.add_parser("v11-live-swarm-local").set_defaults(func=cmd_v11_live_swarm_local)
     return parser
 
 

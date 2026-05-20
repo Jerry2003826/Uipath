@@ -16,9 +16,11 @@ Show the captured trace.
 
 Show the evidence files or agent board.
 
-"Policy Miner extracts raw PII obligations. Red-Team generates executive-override and agent-to-agent misuse attacks. Test Designer converts those attacks into Test Cloud certification cases. Test Selector chooses the high-risk PII and regression tests first."
+"Policy Miner extracts raw PII obligations. Red-Team attacks the live Customer Data Agent. Before repair, it returns raw emails. Test Designer converts those attacks into Test Cloud certification cases. Test Selector chooses the high-risk PII and regression tests first."
 
 "AI proposes attacks and repair candidates, but deterministic oracles decide expected behavior."
+
+"When the Customer Data Agent adds `export_customer_phone_numbers`, the selector creates TC-006 as an incident-memory antibody test."
 
 ## 1:25-1:55 - Test Cloud and Repair
 
@@ -26,7 +28,7 @@ Show Test Manager and failure analysis.
 
 "UiPath Test Cloud stores the certification evidence. Before repair, TC-001 shows the raw PII export failure. Failure Analyst explains the root cause, and the coding-agent-backed Repair Agent proposes the raw PII guardrail."
 
-"After targeted re-test, TC-001 and TC-005 pass."
+"After targeted re-test, TC-001 and TC-005 pass. The same raw email attack now returns `deny_and_suspend`."
 
 ## 1:55-2:25 - Permit and Approval
 

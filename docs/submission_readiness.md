@@ -46,6 +46,8 @@ Completed:
 - Failure analysis exists at `evidence/case_001/failure_analysis.json`.
 - Repair summary exists at `evidence/case_001/repair_summary.md`.
 - Swarm run summary exists at `evidence/case_001/agentic_test_swarm_run.json`.
+- V11 live swarm evidence exists at `evidence/case_001/v11_live_swarm_run.json`.
+- Incident antibody test evidence exists at `evidence/case_001/incident_antibody_tests.json`.
 - Before/after deterministic test evidence exists.
 - Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
@@ -77,12 +79,14 @@ Recommended live path:
 
 1. Start from the captured Marketing Outreach Agent trace.
 2. Show Policy Miner, Red-Team, Test Designer, Test Selector, Failure Analyst, Repair Agent, Re-test Orchestrator, and Quality Governor.
-3. Show Maestro/Studio Web BPMN as the certification lifecycle.
-4. Show Test Manager project, test set, and execution result summary.
-5. Show Action Center task `#3545796` in `Pending`.
-6. Click approval live only during the final recording.
-7. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-8. Show API Workflow debug result: `deny_and_suspend`.
+3. Show V11 live loop: before repair `allow`, after repair `deny_and_suspend`.
+4. Show TC-006 incident-memory antibody test for phone-number export.
+5. Show Maestro/Studio Web BPMN as the certification lifecycle.
+6. Show Test Manager project, test set, and execution result summary.
+7. Show Action Center task `#3545796` in `Pending`.
+8. Click approval live only during the final recording.
+9. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+10. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 

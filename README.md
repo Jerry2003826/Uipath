@@ -32,6 +32,30 @@ Agentic Test Swarm treats that as an AI-infused workflow testing problem, not on
 
 The permit is the output, not the product. The product is the testing swarm.
 
+## V11 Award Upgrade: Live Agentic Testing Loop
+
+V11 adds a runnable live workflow under test. Instead of only showing static evidence, the local worker now simulates a vulnerable `Customer Data Agent` and lets the testing swarm attack, repair, and re-test it.
+
+The live loop shows:
+
+- **Before repair**: the Customer Data Agent accepts an executive-override prompt and returns raw customer emails.
+- **Test Selector**: a changed tool schema adds `export_customer_phone_numbers`, so the selector adds a new `TC-006` antibody regression test.
+- **Failure Analyst**: TC-001 fails because raw PII was exported.
+- **Repair Agent**: proposes a raw PII export guardrail for the Customer Data Agent and API Workflow proxy.
+- **After repair**: the same raw email export attempt returns `deny_and_suspend`.
+- **Incident Memory**: the phone-number export incident becomes a permanent regression test.
+
+Run it locally:
+
+```bash
+.venv/bin/python -m permitops_worker.cli v11-live-swarm-local
+```
+
+Generated evidence:
+
+- `evidence/case_001/v11_live_swarm_run.json`
+- `evidence/case_001/incident_antibody_tests.json`
+
 ## Why it matters
 
 Enterprise AI agents are starting to call other agents, internal APIs, and sensitive tools. A static prompt review cannot prove that an agent behaves safely at runtime. A policy document cannot catch a prompt-injected agent-to-agent PII export.
@@ -185,6 +209,7 @@ Useful commands:
 .venv/bin/python -m permitops_worker.cli license-decision-demo
 .venv/bin/python -m permitops_worker.cli render-license-card
 .venv/bin/python -m permitops_worker.cli sync-test-manager --dry-run
+.venv/bin/python -m permitops_worker.cli v11-live-swarm-local
 ```
 
 To serve the worker locally for a UiPath API Workflow HTTP call:
@@ -209,6 +234,10 @@ curl https://permitops-uipath.vercel.app/health
 curl -X POST https://permitops-uipath.vercel.app/license-decision \
   -H 'Content-Type: application/json' \
   -d '{"case_id":"case_001","source_agent":"marketing-outreach-agent","target_agent":"customer-data-agent","action":"export_raw_customer_emails","payload":{"segment":"VIP","count":500,"data_type":"raw_email"}}'
+
+curl -X POST https://permitops-uipath.vercel.app/run-live-swarm \
+  -H 'Content-Type: application/json' \
+  -d '{"case_id":"case_001","changed_actions":["export_customer_phone_numbers"]}'
 ```
 
 The deployed worker has been called from a live UiPath Studio Web API Workflow debug run. The captured output shows `statusCode: 200` and `decision: deny_and_suspend`; see `assets/uipath_api_workflow_success_deny_suspend.png`.
@@ -230,7 +259,7 @@ The deployed worker has been called from a live UiPath Studio Web API Workflow d
 - Agentic Test Swarm is not a universal runtime sandbox for arbitrary AI agents.
 - Agentic Test Swarm does not automatically trust coding-agent patches.
 - Agentic Test Swarm does not implement a full distributed enterprise API gateway.
-- Agentic Test Swarm demonstrates one governed testing loop: AI trace -> policy mining -> red-team tests -> Test Cloud evidence -> failure analysis -> repair candidate -> targeted re-test -> human approval -> runtime permit -> API Workflow enforcement.
+- Agentic Test Swarm demonstrates one governed testing loop: AI trace -> policy mining -> red-team tests -> live AI workflow attack -> Test Cloud evidence -> failure analysis -> repair candidate -> targeted re-test -> incident memory -> human approval -> runtime permit -> API Workflow enforcement.
 
 ## Screenshots
 

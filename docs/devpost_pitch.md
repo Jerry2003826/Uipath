@@ -26,6 +26,10 @@ When the first certification run catches the raw PII export failure, a Failure A
 
 The permit is the output, not the product. The product is the testing swarm.
 
+V11 adds a live agentic testing loop. The demo includes a deterministic Customer Data Agent under test. Before repair, it accepts an executive-override prompt and returns raw customer emails. The Test Selector reacts to a changed tool schema by adding a new phone-number export regression test, `TC-006`. The Failure Analyst explains the raw PII failure, the Repair Agent proposes a guardrail, and the same attack is re-run. After repair, the Customer Data Agent returns `deny_and_suspend`.
+
+The runtime incident also becomes memory: a production-style raw phone export event is converted into a permanent antibody regression test. That turns the system from a one-time certification demo into a quality memory loop.
+
 ## Why UiPath
 
 Agentic Test Swarm maps naturally onto UiPath Automation Cloud:
@@ -53,6 +57,7 @@ The system treats an AI worker as something that must be attacked, repaired, re-
 - Test Cloud evidence
 - human approval
 - runtime API Workflow enforcement
+- incident-to-regression "antibody" tests
 
 The final PermitOps Runtime Permit includes:
 
@@ -67,6 +72,8 @@ Those hashes connect the runtime denial back to the Test Cloud evidence and appr
 After the swarm completes certification, the Marketing Outreach Agent tries raw VIP email export again. The UiPath API Workflow proxy checks the restricted permit and returns `deny_and_suspend`.
 
 That denial is not arbitrary. It is backed by red-team scenarios, Test Cloud evidence, a repair candidate, targeted re-tests, Action Center approval, and hash-linked runtime metadata.
+
+The second demo moment is `TC-006`: a new raw phone-number export surface appears, and the Test Selector automatically adds an antibody test rather than running the same static test set forever.
 
 ## Impact
 

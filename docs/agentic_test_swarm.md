@@ -56,6 +56,31 @@ Captured AI Trace
 -> API Workflow enforcement
 ```
 
+## V11 live loop
+
+V11 adds a concrete workflow under test:
+
+```text
+Red-Team Agent attacks Customer Data Agent
+-> vulnerable agent returns raw emails
+-> Failure Analyst explains TC-001
+-> Repair Agent proposes raw PII guardrail
+-> Re-test Orchestrator replays the same attack
+-> repaired agent returns deny_and_suspend
+-> incident memory creates TC-006 for phone-number export
+```
+
+Local command:
+
+```bash
+.venv/bin/python -m permitops_worker.cli v11-live-swarm-local
+```
+
+Evidence:
+
+- `evidence/case_001/v11_live_swarm_run.json`
+- `evidence/case_001/incident_antibody_tests.json`
+
 ## Agent roles
 
 | Agent | Type | Evidence | Responsibility |
@@ -70,6 +95,7 @@ Captured AI Trace
 | `Repair Agent` | Coding-agent-backed testing agent | `repair_summary.md`, coding-agent logs | Proposes the guardrail candidate. |
 | `Re-test Orchestrator` | Testing agent | `test_results_after.json` | Re-runs TC-001 and TC-005 after repair. |
 | `Quality Governor` | Deterministic governance gate | `license.json`, `runtime_decision.json` | Converts evidence and approval into the PermitOps Runtime Permit. |
+| `Incident Memory` | Quality memory layer | `incident_antibody_tests.json` | Converts runtime violations into permanent regression tests. |
 
 ## UiPath runtime mapping
 

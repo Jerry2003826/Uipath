@@ -25,6 +25,7 @@ def test_swarm_agent_map_names_testing_agents_and_permit_as_output():
         "Repair Agent",
         "Re-test Orchestrator",
         "Quality Governor",
+        "Incident Memory",
     }.issubset(names)
 
 

@@ -10,6 +10,7 @@ from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.risk_scan import scan_risk
 from permitops_worker.engine.test_runner import run_certification_tests
+from permitops_worker.engine.v11_live_swarm import run_live_agentic_testing_loop
 from permitops_worker.schemas import AgentToolCall, TestResult
 
 app = FastAPI(title="PermitOps Worker", version="0.1.0")
@@ -109,3 +110,12 @@ def capture_trace_endpoint(payload: dict) -> dict:
     case_id = _case_id_from_payload(payload)
     case_path = API_EVIDENCE_ROOT / case_id
     return capture_trace_replay(case_path, provider=payload.get("provider", "replay"), model=payload.get("model", "captured-fixture"))
+
+
+@app.post("/run-live-swarm")
+def run_live_swarm_endpoint(payload: dict) -> dict:
+    case_id = _case_id_from_payload(payload)
+    changed_actions = payload.get("changed_actions", [])
+    if not isinstance(changed_actions, list) or not all(isinstance(action, str) for action in changed_actions):
+        raise HTTPException(status_code=400, detail="changed_actions must be a list of strings")
+    return run_live_agentic_testing_loop(case_id=case_id, changed_actions=changed_actions, evidence_root=API_EVIDENCE_ROOT)

@@ -13,6 +13,7 @@ Test Swarm evidence chain.
 | --- | --- |
 | Certification Worker Gateway | Receives a certification case and orchestrates risk scan, test generation, and license compilation. |
 | Licensed Tool Proxy | Intercepts runtime agent tool calls and asks the PermitOps Runtime Permit decision service whether the call is allowed. |
+| Live Swarm Runner | Calls `/run-live-swarm` to show the vulnerable Customer Data Agent, repair candidate, targeted re-test, and TC-006 incident memory. |
 
 ## Demo IDs
 
@@ -22,3 +23,4 @@ Test Swarm evidence chain.
 - Target agent: `Customer Data Agent`
 - Recommended license: `L2_aggregate_access`
 - Runtime violation decision: `deny_and_suspend`
+- V11 live swarm endpoint: `/run-live-swarm`

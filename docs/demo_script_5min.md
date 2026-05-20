@@ -24,7 +24,19 @@ Show the captured trace.
 
 "This is the behavior the test swarm will attack and replay."
 
-## 1:25-2:05 - Policy Miner, Red-Team, Test Designer
+## 1:25-1:55 - Live Agent Under Test
+
+Show `v11-live-swarm-local` or `v11_live_swarm_run.json`.
+
+"V11 adds a live workflow under test. Before repair, the Customer Data Agent is vulnerable: the Red-Team prompt causes it to return raw customer emails. This makes the demo more than a static policy record. The swarm is attacking behavior."
+
+Point out:
+
+- before repair -> `allow`
+- raw email sample present
+- guardrail -> `missing`
+
+## 1:55-2:35 - Policy Miner, Red-Team, Test Designer
 
 Show the swarm evidence files or agent board.
 
@@ -34,13 +46,15 @@ Show the swarm evidence files or agent board.
 
 "The Test Designer Agent converts those scenarios into Test Cloud certification cases. Expected outcomes still come from a deterministic oracle. AI proposes tests; rules decide expected behavior."
 
-## 2:05-2:35 - Test Selector
+## 2:35-3:00 - Test Selector and Incident Memory
 
 Show `test_selector_decision.json` or the test list.
 
 "The Test Selector Agent chooses which tests run first based on risk, coverage, and changed tool scope. Because the Customer Data Agent exposes raw email export and the trace shows prompt injection, the selected critical tests cover raw PII, agent-to-agent calls, approval, and regression."
 
-## 2:35-3:05 - Test Cloud Evidence
+"Now the tool schema changes: Customer Data Agent adds `export_customer_phone_numbers`. The selector adds TC-006, an antibody regression test, so a new raw PII surface becomes permanent coverage."
+
+## 3:00-3:25 - Test Cloud Evidence
 
 Show UiPath Test Manager.
 
@@ -56,7 +70,7 @@ Point out:
 
 "Test Cloud is the certification evidence layer. This is not only a local console result."
 
-## 3:05-3:40 - Failure Analyst and Repair Agent
+## 3:25-4:00 - Failure Analyst and Repair Agent
 
 Show failure analysis and repair summary.
 
@@ -64,7 +78,12 @@ Show failure analysis and repair summary.
 
 "The Repair Agent, backed by a coding agent, proposes the guardrail: block raw email export unless the runtime permit explicitly includes raw PII export scope. That repair is not trusted automatically. It must be re-tested."
 
-## 3:40-4:05 - Targeted Re-Test and Quality Governor
+Show the after-repair live result:
+
+- after repair -> `deny_and_suspend`
+- guardrail -> `raw_pii_export_block`
+
+## 4:00-4:20 - Targeted Re-Test and Quality Governor
 
 Show after results and license metadata.
 
@@ -78,7 +97,7 @@ Point out:
 - `evidence_hash`
 - `license_hash`
 
-## 4:05-4:35 - Action Center Approval
+## 4:20-4:40 - Action Center Approval
 
 Show Action Center task.
 
@@ -86,7 +105,7 @@ Show Action Center task.
 
 Click approve only during final recording.
 
-## 4:35-5:00 - Runtime Enforcement
+## 4:40-5:00 - Runtime Enforcement
 
 Show API Workflow result.
 
@@ -94,4 +113,4 @@ Show API Workflow result.
 
 Close:
 
-"Agentic Test Swarm turns AI-generated tests into enforceable production permissions. UiPath is the orchestration and governance layer that connects agents, tests, humans, and runtime enforcement."
+"Agentic Test Swarm turns AI-generated tests into enforceable production permissions. V11 adds quality memory: incidents become antibody tests, so the workflow gets harder to break after every failure."

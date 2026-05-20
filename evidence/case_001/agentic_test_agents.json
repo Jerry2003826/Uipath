@@ -95,6 +95,15 @@
         "evidence/case_001/runtime_decision.json"
       ],
       "responsibility": "Turns passed Test Cloud evidence and Action Center approval into the PermitOps Runtime Permit."
+    },
+    {
+      "name": "Incident Memory",
+      "type": "quality_memory_layer",
+      "current_evidence": [
+        "evidence/case_001/incident_antibody_tests.json",
+        "evidence/case_001/v11_live_swarm_run.json"
+      ],
+      "responsibility": "Converts runtime violations and new raw PII tool surfaces into permanent regression tests."
     }
   ],
   "uipath_role": "UiPath is the orchestration and governance layer: Maestro/Studio Web models the swarm run, Test Manager stores evidence, Action Center gates approval, and API Workflow enforces runtime decisions.",

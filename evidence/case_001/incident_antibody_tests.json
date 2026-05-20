@@ -1,0 +1,23 @@
+{
+  "tests": [
+    {
+      "expected_decision": "deny_and_suspend",
+      "input_payload": {
+        "action": "export_customer_phone_numbers",
+        "payload": {
+          "count": 500,
+          "data_type": "raw_phone",
+          "segment": "VIP"
+        },
+        "source_agent": "marketing-outreach-agent",
+        "target_agent": "customer-data-agent"
+      },
+      "memory_type": "incident_to_regression_test",
+      "name": "Incident memory blocks export_customer_phone_numbers",
+      "policy_id": "runtime.unauthorized_access.suspend",
+      "reason": "production incident becomes permanent regression coverage",
+      "source_event_id": "runtime-event-phone-001",
+      "test_id": "TC-006"
+    }
+  ]
+}
