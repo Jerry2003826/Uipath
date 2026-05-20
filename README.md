@@ -8,6 +8,23 @@ Internal governance module: `PermitOps Runtime Permit`.
 
 Public claim: Agentic Test Swarm runs on UiPath Automation Cloud. UiPath Test Cloud records certification evidence, Maestro/Studio Web models the test-swarm lifecycle, Action Center gates human approval, and a UiPath API Workflow enforces the resulting permit at runtime.
 
+## For Judges: 5-minute evaluation path
+
+Start here if you are reviewing the project quickly.
+
+1. **Live system**: open `https://permitops-uipath.vercel.app/live-swarm-view` and run the live Agentic Test Swarm simulation. The public runbook endpoint is `https://permitops-uipath.vercel.app/uipath-one-click-runbook`.
+2. **UiPath platform proof**: review `assets/uipath_api_workflow_success_deny_suspend.png`, `assets/maestro_permitops_bpmn_autopilot.png`, and `docs/platform_spike_status.md`.
+3. **Test Cloud evidence**: review `assets/test_manager_permitops_execution_5_passed_viewport.png` and `uipath/test_cloud/test_manager_plan_c.md`.
+4. **Action Center gate**: review `assets/action_center_permitops_pending_assigned_task_3545796.png`; keep task `#3545796` pending until the final demo approval moment.
+5. **Presentation deck**: use `assets/agentic_test_swarm_deck.pptx` or the markdown outline in `docs/presentation_deck.md`.
+
+Judge-facing proof pack:
+
+- [Judge scorecard](docs/judge_scorecard.md)
+- [TC-006 Test Manager runbook](docs/tc006_test_manager_runbook.md)
+- [Final video shot list](docs/final_video_shot_list.md)
+- [Official Track 3 alignment](docs/official_track3_alignment.md)
+
 ## What it does
 
 The hero workflow tests a Marketing Outreach Agent before it can call a Customer Data Agent.
@@ -320,6 +337,9 @@ The deployed worker has been called from a live UiPath Studio Web API Workflow d
 - [Agentic Test Swarm design](docs/agentic_test_swarm.md)
 - [Devpost pitch](docs/devpost_pitch.md)
 - [Official Track 3 alignment](docs/official_track3_alignment.md)
+- [Judge scorecard](docs/judge_scorecard.md)
+- [TC-006 Test Manager runbook](docs/tc006_test_manager_runbook.md)
+- [Final video shot list](docs/final_video_shot_list.md)
 - [5-minute demo script](docs/demo_script_5min.md)
 - [3-minute demo script](docs/demo_script_3min.md)
 - [Coding-agent evidence](docs/coding_agent_evidence.md)
