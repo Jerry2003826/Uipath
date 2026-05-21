@@ -14,6 +14,9 @@ PRODUCT_FEEDBACK_SUBMISSION = Path("docs/product_feedback_submission.md")
 CODING_AGENTS_BONUS = Path("docs/coding_agents_bonus_pack.md")
 RESEARCH_WORKBENCH = Path("docs/research_workbench.md")
 RESEARCH_LOG = Path("docs/research_log.md")
+AGENTHACK_AWARD_GAP_RESEARCH = Path(
+    "docs/research_findings_2026-05-21_agenthack_award_gap.md"
+)
 TEST_MANAGER_PLAN_C = Path("uipath/test_cloud/test_manager_plan_c.md")
 SUBMISSION_READINESS = Path("docs/submission_readiness.md")
 PLATFORM_SPIKE_STATUS = Path("docs/platform_spike_status.md")
@@ -269,3 +272,33 @@ def test_research_workbench_is_ready_for_continuous_deep_research():
         assert phrase in log
 
     assert "docs/research_workbench.md" in readme
+
+
+def test_agenthack_award_gap_research_prioritizes_uipath_visible_proof():
+    doc = AGENTHACK_AWARD_GAP_RESEARCH.read_text(encoding="utf-8")
+    log = RESEARCH_LOG.read_text(encoding="utf-8")
+
+    for phrase in [
+        "AgentHack Award Gap Research",
+        "Research Plan",
+        "Context7",
+        "Firecrawl",
+        "Exa",
+        "UiPath must be the visible control plane",
+        "Test Cloud needs to feel like managed evidence",
+        "Coding-agent bonus is real",
+        "uip skills install --agent codex",
+        "Failure Analyst Agent",
+        "Do not integrate AstrBot/SuperRAG before the first submission",
+        "UiPath starts the run",
+    ]:
+        assert phrase in doc
+
+    for phrase in [
+        "AgentHack award gap deep dive",
+        "PVACPOV91:76",
+        "pending Action Center task `#3545796`",
+        "UiPath for Coding Agents",
+        "Failure Analyst Agent",
+    ]:
+        assert phrase in log
