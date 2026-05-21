@@ -305,6 +305,32 @@ The Task Title field must be saved through the field menu -> Text builder -> Sav
 Typing directly into the inline field can display text without satisfying Studio Web validation.
 ```
 
+## UiPath-native Failure Analyst Agent draft
+
+Sandbox access now exposes UiPath Agents / Studio Web agent templates.
+
+Created and configured:
+
+```text
+Project: Generate incident tickets from logs 1 2
+Surface: UiPath Studio Web Autonomous Agent
+Role: Agentic Test Swarm Failure Analyst Agent
+Model: gpt-5.4-2026-03-05
+Input: {{log_chunk}} evidence package
+```
+
+The system prompt asks the agent to analyze failed UiPath Test Cloud certification evidence, identify root cause and risk impact, recommend a repair, and choose a targeted re-test strategy.
+
+Evidence:
+
+```text
+assets/uipath_failure_analyst_agent_draft.png
+assets/uipath_failure_analyst_agent_model_selected.png
+evidence/case_001/uipath_failure_analyst_agent_model_selected.txt
+```
+
+Known boundary: the template still includes a `Create Issue` integration tool, so Health Analyzer reports `Connection is required for this integration tool`. Final publish/debug requires connecting or removing that tool. Action Center task `#3545796` was not approved during this work.
+
 ## Current Blockers
 
 ### Action Center assigned pending task
@@ -319,4 +345,5 @@ assets/action_center_permitops_pending_assigned_task_3545796.png
 
 1. Optional: complete task `#3545796` during the final demo recording so the video shows Pending -> Completed.
 2. Optional: re-run the Test Manager set through the Manual Execution Assistant if the final recording needs a completed execution status instead of a `Running` execution with all five results overridden to `Passed`.
-3. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
+3. Connect or remove the Failure Analyst Agent template `Create Issue` tool if a published UiPath-native agent run is needed for the final video.
+4. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

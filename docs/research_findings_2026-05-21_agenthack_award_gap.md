@@ -169,8 +169,11 @@ P0 - Coding agents bonus hardening:
 
 P1 - Sandbox enhancement:
 
-- Build one UiPath-native `Failure Analyst Agent` in Agent Builder if available.
-- Link its output to the existing failure analysis and repair recommendation evidence.
+- Completed partial sandbox proof: created/configured one UiPath-native Studio Web Autonomous Agent draft, `Generate incident tickets from logs 1 2`, as the `Agentic Test Swarm Failure Analyst Agent`.
+- Selected UiPath model `gpt-5.4-2026-03-05`.
+- Preserved the template `{{log_chunk}}` input so the agent can accept a Test Cloud evidence package without invalid prompt variables.
+- Remaining platform blocker: the template `Create Issue` integration tool needs a connection before debug/publish.
+- Evidence: `assets/uipath_failure_analyst_agent_model_selected.png` and `evidence/case_001/uipath_failure_analyst_agent_model_selected.txt`.
 
 P1 - Submission copy:
 
@@ -195,4 +198,3 @@ UiPath starts the run
 -> Action Center keeps human approval
 -> API Workflow enforces the tested result
 ```
-

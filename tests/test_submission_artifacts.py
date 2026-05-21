@@ -25,6 +25,11 @@ TC006_CASE_SCREENSHOT = Path("assets/test_manager_tc006_case_created.png")
 TC006_ASSIGNMENT_SCREENSHOT = Path("assets/test_manager_tc006_added_to_test_set.png")
 TC006_CASE_EVIDENCE = Path("evidence/case_001/test_manager_tc006_case_created.txt")
 TC006_ASSIGNMENT_EVIDENCE = Path("evidence/case_001/test_manager_tc006_test_set_assignment.txt")
+UIPATH_FAILURE_ANALYST_DRAFT_SCREENSHOT = Path("assets/uipath_failure_analyst_agent_draft.png")
+UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT = Path("assets/uipath_failure_analyst_agent_model_selected.png")
+UIPATH_FAILURE_ANALYST_EVIDENCE = Path(
+    "evidence/case_001/uipath_failure_analyst_agent_model_selected.txt"
+)
 
 
 def test_readme_declares_agent_type_and_business_impact_metrics():
@@ -302,3 +307,29 @@ def test_agenthack_award_gap_research_prioritizes_uipath_visible_proof():
         "Failure Analyst Agent",
     ]:
         assert phrase in log
+
+
+def test_uipath_native_failure_analyst_agent_draft_is_documented():
+    readme = README.read_text(encoding="utf-8")
+    readiness = SUBMISSION_READINESS.read_text(encoding="utf-8")
+    scorecard = JUDGE_SCORECARD.read_text(encoding="utf-8")
+    swarm_doc = Path("docs/agentic_test_swarm.md").read_text(encoding="utf-8")
+    gap_doc = AGENTHACK_AWARD_GAP_RESEARCH.read_text(encoding="utf-8")
+    evidence = UIPATH_FAILURE_ANALYST_EVIDENCE.read_text(encoding="utf-8")
+
+    assert UIPATH_FAILURE_ANALYST_DRAFT_SCREENSHOT.exists()
+    assert UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT.exists()
+
+    for phrase in [
+        "Agentic Test Swarm Failure Analyst Agent",
+        "Generate incident tickets from logs 1 2",
+        "gpt-5.4-2026-03-05",
+        "{{log_chunk}}",
+        "Connection is required for this integration tool",
+    ]:
+        assert phrase in evidence
+
+    for doc in [readme, readiness, scorecard, swarm_doc, gap_doc]:
+        assert "UiPath-native" in doc
+        assert "Failure Analyst Agent" in doc
+        assert "uipath_failure_analyst_agent_model_selected.png" in doc

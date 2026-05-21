@@ -31,6 +31,8 @@ Completed:
 - Action Center task `#3545796` is assigned to the current demo user and visible under `My Tasks > Pending`.
 - Agentic Test Swarm design exists at `docs/agentic_test_swarm.md`.
 - Structured swarm evidence exists at `evidence/case_001/agentic_test_agents.json`.
+- UiPath-native Agent Builder / Studio Web draft exists: `Generate incident tickets from logs 1 2` is configured as the `Agentic Test Swarm Failure Analyst Agent`.
+- The draft uses UiPath model `gpt-5.4-2026-03-05` and accepts the existing low-code `{{log_chunk}}` evidence-package input.
 
 Known boundary:
 
@@ -38,6 +40,7 @@ Known boundary:
 - The Test Manager execution still shows status `Running` because the five original results were recorded through `Override Result` from the execution grid. The official Manual Execution Assistant `Done` path was not used because UiPath warned that re-execution could overwrite existing results.
 - TC-006 is live in the test set, but the historical execution still has the original five overridden results. Create a new six-case Manual Execution Assistant run only during final video polish if a completed six-case execution page is needed.
 - A fresh automated browser tab redirected to UiPath login on 2026-05-20, so the new one-click Studio Web trigger screenshot remains a final-recording task. The existing API Workflow debug screenshot still proves UiPath can call the public worker and receive `deny_and_suspend`.
+- The UiPath-native Failure Analyst Agent draft still has one Health Analyzer issue: `Connection is required for this integration tool`. The remaining blocker is the template `Create Issue` tool connection, not the model or prompt configuration.
 
 ## Engineering proof
 
@@ -77,6 +80,8 @@ Use these screenshots in the final video or Devpost gallery:
 - `assets/test_manager_permitops_execution_5_passed_viewport.png`
 - `assets/test_manager_tc006_case_created.png`
 - `assets/test_manager_tc006_added_to_test_set.png`
+- `assets/uipath_failure_analyst_agent_draft.png`
+- `assets/uipath_failure_analyst_agent_model_selected.png`
 - `assets/action_center_permitops_pending_assigned_task_3545796.png`
 - `assets/action_center_permitops_completed_task_3545494.png`
 - `assets/maestro_debug_human_approval_completed.png`
@@ -117,6 +122,7 @@ Still needed before Devpost final submission:
 - Complete the Devpost project page.
 - Submit the UiPath Product Feedback form.
 - Capture the Studio Web one-click runbook trigger if the authenticated UiPath session is available.
+- Optional final polish: connect or remove the template `Create Issue` tool in the UiPath-native Failure Analyst Agent so the draft can debug/publish cleanly.
 - Optional final polish: create a fresh six-case Manual Execution Assistant run for the already assigned live TC-006 case.
 
 Ready-to-paste submission helpers now exist:

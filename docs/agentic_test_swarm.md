@@ -106,6 +106,7 @@ Current live platform proof:
 - Execution result summary: `5 passed / 0 failed / 0 not executed`
 - Action Center pending task: `#3545796`
 - Studio Web / API Workflow result: `deny_and_suspend`
+- UiPath-native Studio Web Autonomous Agent draft: `Generate incident tickets from logs 1 2` configured as `Agentic Test Swarm Failure Analyst Agent`
 
 The names still say PermitOps because the UiPath artifacts were created before the narrative pivot. They now map to the Agentic Test Swarm certification run.
 
@@ -161,7 +162,30 @@ test evidence, human approval, and runtime enforcement.
 
 ## Sandbox enhancement
 
-When sandbox access exposes UiPath Agent Builder or first-class UiPath agent runtime, add visible UiPath-native agents for:
+Sandbox access now exposes UiPath Agents / Studio Web. The first visible UiPath-native agent has been configured:
+
+```text
+Failure Analyst Agent
+UiPath project: Generate incident tickets from logs 1 2
+Model: gpt-5.4-2026-03-05
+Input: {{log_chunk}} Test Cloud evidence package
+Output: root cause, risk impact, repair recommendation, targeted re-test strategy
+```
+
+Evidence:
+
+```text
+assets/uipath_failure_analyst_agent_model_selected.png
+evidence/case_001/uipath_failure_analyst_agent_model_selected.txt
+```
+
+Remaining blocker:
+
+```text
+The template Create Issue integration tool requires a connection before debug/publish.
+```
+
+If there is more sandbox time, add visible UiPath-native agents for:
 
 ```text
 Policy Miner Agent

@@ -245,13 +245,21 @@ The live tenant evidence still uses the original PermitOps names because those U
 - Visible result summary: `5 passed / 0 failed / 0 not executed`
 - Action Center pending task: `#3545796`
 - Studio Web / API Workflow proof: raw email export returns `deny_and_suspend`
+- UiPath-native Agent Builder / Studio Web proof: `Generate incident tickets from logs 1 2` is configured as the `Agentic Test Swarm Failure Analyst Agent` with UiPath model `gpt-5.4-2026-03-05`
 
 Evidence screenshots for the new live TC-006 mapping:
 
 - `assets/test_manager_tc006_case_created.png`
 - `assets/test_manager_tc006_added_to_test_set.png`
+- `assets/uipath_failure_analyst_agent_model_selected.png`
+
+Evidence files for the UiPath-native Failure Analyst Agent draft:
+
+- `evidence/case_001/uipath_failure_analyst_agent_model_selected.txt`
 
 Known boundary: the existing Test Manager execution was recorded before TC-006 was added and through `Override Result`, so the page can still show `Running` while the grid shows `5 passed / 0 failed / 0 not executed`. For final video polish, create a fresh six-case execution through Manual Execution Assistant and select `Done`.
+
+Known Agent Builder boundary: the Failure Analyst Agent draft has a model selected, but the template still includes a `Create Issue` integration tool that requires a connection before debug/publish. This is acceptable as sandbox proof of the UiPath-native agent surface; final publish requires connecting or removing that integration tool.
 
 ## Runtime permit
 
