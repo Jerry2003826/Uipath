@@ -12,6 +12,8 @@ VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
 PRODUCT_FEEDBACK_SUBMISSION = Path("docs/product_feedback_submission.md")
 CODING_AGENTS_BONUS = Path("docs/coding_agents_bonus_pack.md")
+RESEARCH_WORKBENCH = Path("docs/research_workbench.md")
+RESEARCH_LOG = Path("docs/research_log.md")
 TEST_MANAGER_PLAN_C = Path("uipath/test_cloud/test_manager_plan_c.md")
 SUBMISSION_READINESS = Path("docs/submission_readiness.md")
 PLATFORM_SPIKE_STATUS = Path("docs/platform_spike_status.md")
@@ -93,6 +95,7 @@ def test_judge_quick_start_points_to_proof_pack():
         "docs/judge_scorecard.md",
         "docs/tc006_test_manager_runbook.md",
         "docs/final_video_shot_list.md",
+        "docs/research_workbench.md",
     ]:
         assert phrase in readme
 
@@ -234,3 +237,35 @@ def test_tc006_live_test_manager_mapping_is_documented():
 
     assert "PVACPOV91:76" in TC006_CASE_EVIDENCE.read_text(encoding="utf-8")
     assert "Static Assignment (6)" in TC006_ASSIGNMENT_EVIDENCE.read_text(encoding="utf-8")
+
+
+def test_research_workbench_is_ready_for_continuous_deep_research():
+    workbench = RESEARCH_WORKBENCH.read_text(encoding="utf-8")
+    log = RESEARCH_LOG.read_text(encoding="utf-8")
+    readme = README.read_text(encoding="utf-8")
+
+    for phrase in [
+        "Continuous Research Workbench",
+        "Firecrawl",
+        "Exa",
+        "Tavily",
+        "Brave Search",
+        "Crawl4AI",
+        "Context7",
+        "UiPath AgentHack",
+        "research loop",
+        "decision record",
+        "Action Center task `#3545796` remains pending",
+    ]:
+        assert phrase in workbench
+
+    for phrase in [
+        "2026-05-21",
+        "Research stack installed",
+        "FIRECRAWL_API_KEY",
+        "EXA_API_KEY",
+        "next research queue",
+    ]:
+        assert phrase in log
+
+    assert "docs/research_workbench.md" in readme

@@ -27,6 +27,7 @@ Judge-facing proof pack:
 - [Product Feedback submission](docs/product_feedback_submission.md)
 - [Coding Agents bonus pack](docs/coding_agents_bonus_pack.md)
 - [Official Track 3 alignment](docs/official_track3_alignment.md)
+- [Continuous research workbench](docs/research_workbench.md)
 
 ## What it does
 
