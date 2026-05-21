@@ -326,10 +326,12 @@ Evidence:
 ```text
 assets/uipath_failure_analyst_agent_draft.png
 assets/uipath_failure_analyst_agent_model_selected.png
+assets/uipath_failure_analyst_agent_no_issues.png
 evidence/case_001/uipath_failure_analyst_agent_model_selected.txt
+evidence/case_001/uipath_failure_analyst_agent_no_issues.txt
 ```
 
-Known boundary: the template still includes a `Create Issue` integration tool, so Health Analyzer reports `Connection is required for this integration tool`. Final publish/debug requires connecting or removing that tool. Action Center task `#3545796` was not approved during this work.
+Resolved issue: the template `Create Issue` integration tool was removed because this Failure Analyst Agent only needs to return structured analysis. Health Analyzer now reports `No issues found`, the draft is saved, and the `Debug` action is available. Action Center task `#3545796` was not approved during this work.
 
 ## Current Blockers
 
@@ -345,5 +347,4 @@ assets/action_center_permitops_pending_assigned_task_3545796.png
 
 1. Optional: complete task `#3545796` during the final demo recording so the video shows Pending -> Completed.
 2. Optional: re-run the Test Manager set through the Manual Execution Assistant if the final recording needs a completed execution status instead of a `Running` execution with all five results overridden to `Passed`.
-3. Connect or remove the Failure Analyst Agent template `Create Issue` tool if a published UiPath-native agent run is needed for the final video.
-4. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.
+3. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

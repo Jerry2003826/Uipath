@@ -176,13 +176,15 @@ Evidence:
 
 ```text
 assets/uipath_failure_analyst_agent_model_selected.png
+assets/uipath_failure_analyst_agent_no_issues.png
 evidence/case_001/uipath_failure_analyst_agent_model_selected.txt
+evidence/case_001/uipath_failure_analyst_agent_no_issues.txt
 ```
 
-Remaining blocker:
+Resolved sandbox issue:
 
 ```text
-The template Create Issue integration tool requires a connection before debug/publish.
+The template Create Issue integration tool was removed because the Failure Analyst Agent only needs to produce structured analysis. Health Analyzer now reports No issues found.
 ```
 
 If there is more sandbox time, add visible UiPath-native agents for:

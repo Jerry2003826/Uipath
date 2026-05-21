@@ -52,7 +52,7 @@ The Python worker only provides deterministic evidence and decisions when UiPath
 Platform proof:
 
 - Studio Web / API Workflow: `assets/uipath_api_workflow_success_deny_suspend.png`
-- UiPath-native Agent Builder / Studio Web agent: `assets/uipath_failure_analyst_agent_model_selected.png`
+- UiPath-native Agent Builder / Studio Web agent: `assets/uipath_failure_analyst_agent_no_issues.png`
 - Test Cloud / Test Manager: `assets/test_manager_permitops_execution_5_passed_viewport.png`
 - Action Center: `assets/action_center_permitops_pending_assigned_task_3545796.png`
 - Maestro/Studio Web lifecycle: `assets/maestro_permitops_bpmn_autopilot.png`
@@ -102,7 +102,7 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | Runs publicly | `https://permitops-uipath.vercel.app/health` |
 | Live AI workflow test | `https://permitops-uipath.vercel.app/live-swarm-view` |
 | UiPath runtime proxy works | `assets/uipath_api_workflow_success_deny_suspend.png` |
-| UiPath-native Failure Analyst Agent draft exists | `assets/uipath_failure_analyst_agent_model_selected.png`, `evidence/case_001/uipath_failure_analyst_agent_model_selected.txt` |
+| UiPath-native Failure Analyst Agent draft exists | `assets/uipath_failure_analyst_agent_no_issues.png`, `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt` |
 | Test Cloud evidence exists | `assets/test_manager_permitops_execution_5_passed_viewport.png` |
 | Human approval gate exists | `assets/action_center_permitops_pending_assigned_task_3545796.png` |
 | TC-006 incident memory exists | `PVACPOV91:76`, `assets/test_manager_tc006_case_created.png`, `assets/test_manager_tc006_added_to_test_set.png`, `evidence/case_001/incident_antibody_tests.json` |
@@ -116,6 +116,6 @@ Do not overclaim:
 - TC-006 is now a live Test Manager case (`PVACPOV91:76`) assigned to `PVACPOV91:6` under `Static Assignment (6)`.
 - The current Test Manager execution can show `Running` because the five original results were entered through result override before TC-006 was added.
 - Do not click Action Center approval before the final recording.
-- Do not claim the UiPath-native Failure Analyst Agent is published yet; its model and prompt are configured, but the template `Create Issue` tool still needs a connection before debug/publish.
+- Do not claim the UiPath-native Failure Analyst Agent replaces Test Cloud or the deterministic oracle; it is advisory failure analysis inside UiPath, and Test Cloud evidence remains the source of certification truth.
 - Do not claim legal compliance certification.
 - Do not claim coding-agent repairs are automatically trusted.

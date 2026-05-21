@@ -27,8 +27,14 @@ TC006_CASE_EVIDENCE = Path("evidence/case_001/test_manager_tc006_case_created.tx
 TC006_ASSIGNMENT_EVIDENCE = Path("evidence/case_001/test_manager_tc006_test_set_assignment.txt")
 UIPATH_FAILURE_ANALYST_DRAFT_SCREENSHOT = Path("assets/uipath_failure_analyst_agent_draft.png")
 UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT = Path("assets/uipath_failure_analyst_agent_model_selected.png")
-UIPATH_FAILURE_ANALYST_EVIDENCE = Path(
+UIPATH_FAILURE_ANALYST_NO_ISSUES_SCREENSHOT = Path(
+    "assets/uipath_failure_analyst_agent_no_issues.png"
+)
+UIPATH_FAILURE_ANALYST_MODEL_EVIDENCE = Path(
     "evidence/case_001/uipath_failure_analyst_agent_model_selected.txt"
+)
+UIPATH_FAILURE_ANALYST_NO_ISSUES_EVIDENCE = Path(
+    "evidence/case_001/uipath_failure_analyst_agent_no_issues.txt"
 )
 
 
@@ -315,21 +321,37 @@ def test_uipath_native_failure_analyst_agent_draft_is_documented():
     scorecard = JUDGE_SCORECARD.read_text(encoding="utf-8")
     swarm_doc = Path("docs/agentic_test_swarm.md").read_text(encoding="utf-8")
     gap_doc = AGENTHACK_AWARD_GAP_RESEARCH.read_text(encoding="utf-8")
-    evidence = UIPATH_FAILURE_ANALYST_EVIDENCE.read_text(encoding="utf-8")
+    model_evidence = UIPATH_FAILURE_ANALYST_MODEL_EVIDENCE.read_text(encoding="utf-8")
+    no_issues_evidence = UIPATH_FAILURE_ANALYST_NO_ISSUES_EVIDENCE.read_text(
+        encoding="utf-8"
+    )
 
     assert UIPATH_FAILURE_ANALYST_DRAFT_SCREENSHOT.exists()
     assert UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT.exists()
+    assert UIPATH_FAILURE_ANALYST_NO_ISSUES_SCREENSHOT.exists()
 
     for phrase in [
         "Agentic Test Swarm Failure Analyst Agent",
         "Generate incident tickets from logs 1 2",
         "gpt-5.4-2026-03-05",
         "{{log_chunk}}",
+    ]:
+        assert phrase in model_evidence
+        assert phrase in no_issues_evidence
+
+    for phrase in [
         "Connection is required for this integration tool",
     ]:
-        assert phrase in evidence
+        assert phrase in model_evidence
+
+    for phrase in [
+        "No issues found",
+        "Removed the template Create Issue integration tool",
+        "Debug button is enabled",
+    ]:
+        assert phrase in no_issues_evidence
 
     for doc in [readme, readiness, scorecard, swarm_doc, gap_doc]:
         assert "UiPath-native" in doc
         assert "Failure Analyst Agent" in doc
-        assert "uipath_failure_analyst_agent_model_selected.png" in doc
+        assert "uipath_failure_analyst_agent_no_issues.png" in doc

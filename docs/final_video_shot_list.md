@@ -70,7 +70,7 @@ Screen:
 - failure analysis
 - repair summary
 - after-repair result showing `deny_and_suspend`
-- optional UiPath-native Studio Web Agent draft: `assets/uipath_failure_analyst_agent_model_selected.png`
+- optional UiPath-native Studio Web Agent draft: `assets/uipath_failure_analyst_agent_no_issues.png`
 
 Narration:
 
@@ -81,7 +81,7 @@ When the raw PII test fails, the Failure Analyst explains why, and the coding-ag
 If time allows, briefly show the UiPath-native Failure Analyst Agent draft:
 
 ```text
-This role also exists as a UiPath Studio Web Autonomous Agent. The model and prompt are configured in UiPath; the remaining publish blocker is the template issue-tracker connection.
+This role also exists as a UiPath Studio Web Autonomous Agent. The model and prompt are configured in UiPath, the unneeded template issue-tracker tool was removed, and Health Analyzer reports no issues.
 ```
 
 ## 2:45-3:20 - Action Center gate

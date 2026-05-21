@@ -252,14 +252,16 @@ Evidence screenshots for the new live TC-006 mapping:
 - `assets/test_manager_tc006_case_created.png`
 - `assets/test_manager_tc006_added_to_test_set.png`
 - `assets/uipath_failure_analyst_agent_model_selected.png`
+- `assets/uipath_failure_analyst_agent_no_issues.png`
 
 Evidence files for the UiPath-native Failure Analyst Agent draft:
 
 - `evidence/case_001/uipath_failure_analyst_agent_model_selected.txt`
+- `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt`
 
 Known boundary: the existing Test Manager execution was recorded before TC-006 was added and through `Override Result`, so the page can still show `Running` while the grid shows `5 passed / 0 failed / 0 not executed`. For final video polish, create a fresh six-case execution through Manual Execution Assistant and select `Done`.
 
-Known Agent Builder boundary: the Failure Analyst Agent draft has a model selected, but the template still includes a `Create Issue` integration tool that requires a connection before debug/publish. This is acceptable as sandbox proof of the UiPath-native agent surface; final publish requires connecting or removing that integration tool.
+Resolved Agent Builder boundary: the template `Create Issue` integration tool was removed from the Failure Analyst Agent draft. Health Analyzer now reports `No issues found`, the draft is saved, and the `Debug` action is available.
 
 ## Runtime permit
 
