@@ -33,6 +33,7 @@ Completed:
 - Structured swarm evidence exists at `evidence/case_001/agentic_test_agents.json`.
 - UiPath-native Agent Builder / Studio Web draft exists: `Generate incident tickets from logs 1 2` is configured as the `Agentic Test Swarm Failure Analyst Agent`.
 - The draft uses UiPath model `gpt-5.4-2026-03-05` and accepts the existing low-code `{{log_chunk}}` evidence-package input.
+- The UiPath-native Failure Analyst Agent was debugged successfully inside Studio Web with TC-001 evidence. The trace shows an Agent run, LLM call, model run, `1 Agents.LLMCalls` usage, and output `Completed certification failure analysis`.
 
 Known boundary:
 
@@ -83,6 +84,8 @@ Use these screenshots in the final video or Devpost gallery:
 - `assets/uipath_failure_analyst_agent_draft.png`
 - `assets/uipath_failure_analyst_agent_model_selected.png`
 - `assets/uipath_failure_analyst_agent_no_issues.png`
+- `assets/uipath_failure_analyst_agent_debug_success.png`
+- `assets/uipath_failure_analyst_agent_output_detail.png`
 - `assets/action_center_permitops_pending_assigned_task_3545796.png`
 - `assets/action_center_permitops_completed_task_3545494.png`
 - `assets/maestro_debug_human_approval_completed.png`

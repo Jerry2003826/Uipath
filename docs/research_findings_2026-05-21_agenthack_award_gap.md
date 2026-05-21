@@ -174,7 +174,8 @@ P1 - Sandbox enhancement:
 - Preserved the template `{{log_chunk}}` input so the agent can accept a Test Cloud evidence package without invalid prompt variables.
 - Resolved the template connection issue by removing the unneeded `Create Issue` integration tool.
 - Health Analyzer now reports `No issues found`.
-- Evidence: `assets/uipath_failure_analyst_agent_no_issues.png` and `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt`.
+- Debugged the agent successfully inside Studio Web with TC-001 evidence. The trace shows an Agent run, LLM call, `gpt-5.4-2026-03-05-community-agents` model run, `1 Agents.LLMCalls` usage, and output `Completed certification failure analysis`.
+- Evidence: `assets/uipath_failure_analyst_agent_no_issues.png`, `assets/uipath_failure_analyst_agent_debug_success.png`, `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt`, and `evidence/case_001/uipath_failure_analyst_agent_debug_success.txt`.
 
 P1 - Submission copy:
 

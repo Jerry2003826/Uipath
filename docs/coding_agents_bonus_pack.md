@@ -135,5 +135,35 @@ Codex-style coding agents generate attacks and repair candidates, but the system
 - Show `evidence/case_001/coding_agent_prompts.jsonl`.
 - Show `evidence/case_001/coding_agent_outputs.jsonl`.
 - Show `evidence/case_001/repair_summary.md`.
+- Show `assets/uipath_failure_analyst_agent_debug_success.png` to prove a UiPath-native testing agent ran inside Studio Web.
 - Show Test Manager / Test Cloud evidence after the repair.
 - Show runtime `deny_and_suspend` through API Workflow.
+
+## UiPath-native agent bonus proof
+
+The strongest new bonus proof is not just a screenshot of an agent definition. The `Agentic Test Swarm Failure Analyst Agent` now has a successful Studio Web debug trace.
+
+Evidence:
+
+```text
+assets/uipath_failure_analyst_agent_debug_success.png
+evidence/case_001/uipath_failure_analyst_agent_debug_success.txt
+```
+
+The trace shows:
+
+```text
+Agent run
+LLM call
+Model run: gpt-5.4-2026-03-05-community-agents
+License usage: 1 Agents.LLMCalls
+Input: TC-001 failure evidence through log_chunk
+Output: Completed certification failure analysis
+Status: Successful
+```
+
+Use this line in judging:
+
+```text
+The Failure Analyst is not only represented as Python logic; it also exists as a UiPath Studio Web Autonomous Agent and successfully analyzed TC-001 evidence inside the UiPath platform.
+```

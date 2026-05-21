@@ -177,14 +177,29 @@ Evidence:
 ```text
 assets/uipath_failure_analyst_agent_model_selected.png
 assets/uipath_failure_analyst_agent_no_issues.png
+assets/uipath_failure_analyst_agent_debug_success.png
+assets/uipath_failure_analyst_agent_output_detail.png
 evidence/case_001/uipath_failure_analyst_agent_model_selected.txt
 evidence/case_001/uipath_failure_analyst_agent_no_issues.txt
+evidence/case_001/uipath_failure_analyst_agent_debug_success.txt
 ```
 
 Resolved sandbox issue:
 
 ```text
 The template Create Issue integration tool was removed because the Failure Analyst Agent only needs to produce structured analysis. Health Analyzer now reports No issues found.
+```
+
+Bonus proof:
+
+```text
+The Failure Analyst Agent was debugged successfully inside UiPath Studio Web.
+The execution trace shows:
+- Agent run
+- LLM call
+- model run: gpt-5.4-2026-03-05-community-agents
+- license usage: 1 Agents.LLMCalls
+- output: Completed certification failure analysis
 ```
 
 If there is more sandbox time, add visible UiPath-native agents for:

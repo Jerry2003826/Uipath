@@ -88,6 +88,7 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Captured Studio Web API Workflow evidence returning `deny_and_suspend`.
 - Configured a UiPath-native Studio Web Autonomous Agent draft as the `Agentic Test Swarm Failure Analyst Agent`, selected UiPath model `gpt-5.4-2026-03-05`, and preserved the low-code `{{log_chunk}}` evidence-package input.
 - Removed the unneeded template `Create Issue` integration tool from that agent draft, clearing Health Analyzer to `No issues found` while keeping Action Center task `#3545796` pending.
+- Debugged the UiPath-native Failure Analyst Agent successfully inside Studio Web. The execution trace shows an Agent run, LLM call, model run, `1 Agents.LLMCalls` usage, and output `Completed certification failure analysis`.
 - Added `TC-006` as incident-memory evidence for a new raw phone-number export tool surface.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 

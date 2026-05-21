@@ -102,7 +102,8 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | Runs publicly | `https://permitops-uipath.vercel.app/health` |
 | Live AI workflow test | `https://permitops-uipath.vercel.app/live-swarm-view` |
 | UiPath runtime proxy works | `assets/uipath_api_workflow_success_deny_suspend.png` |
-| UiPath-native Failure Analyst Agent draft exists | `assets/uipath_failure_analyst_agent_no_issues.png`, `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt` |
+| UiPath-native Failure Analyst Agent runs in Studio Web | `assets/uipath_failure_analyst_agent_debug_success.png`, `assets/uipath_failure_analyst_agent_output_detail.png`, `evidence/case_001/uipath_failure_analyst_agent_debug_success.txt` |
+| UiPath-native Failure Analyst Agent draft has no analyzer issues | `assets/uipath_failure_analyst_agent_no_issues.png`, `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt` |
 | Test Cloud evidence exists | `assets/test_manager_permitops_execution_5_passed_viewport.png` |
 | Human approval gate exists | `assets/action_center_permitops_pending_assigned_task_3545796.png` |
 | TC-006 incident memory exists | `PVACPOV91:76`, `assets/test_manager_tc006_case_created.png`, `assets/test_manager_tc006_added_to_test_set.png`, `evidence/case_001/incident_antibody_tests.json` |

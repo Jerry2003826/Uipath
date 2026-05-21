@@ -71,6 +71,7 @@ Screen:
 - repair summary
 - after-repair result showing `deny_and_suspend`
 - optional UiPath-native Studio Web Agent draft: `assets/uipath_failure_analyst_agent_no_issues.png`
+- optional UiPath-native Studio Web Agent debug success: `assets/uipath_failure_analyst_agent_debug_success.png`
 
 Narration:
 
@@ -82,6 +83,7 @@ If time allows, briefly show the UiPath-native Failure Analyst Agent draft:
 
 ```text
 This role also exists as a UiPath Studio Web Autonomous Agent. The model and prompt are configured in UiPath, the unneeded template issue-tracker tool was removed, and Health Analyzer reports no issues.
+It was also debugged successfully inside Studio Web, with an execution trace showing an LLM call and a completed certification failure analysis output.
 ```
 
 ## 2:45-3:20 - Action Center gate

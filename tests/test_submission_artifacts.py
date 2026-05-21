@@ -12,6 +12,7 @@ VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
 PRODUCT_FEEDBACK_SUBMISSION = Path("docs/product_feedback_submission.md")
 CODING_AGENTS_BONUS = Path("docs/coding_agents_bonus_pack.md")
+BONUS_EVIDENCE_PACK = Path("docs/bonus_evidence_pack.md")
 RESEARCH_WORKBENCH = Path("docs/research_workbench.md")
 RESEARCH_LOG = Path("docs/research_log.md")
 AGENTHACK_AWARD_GAP_RESEARCH = Path(
@@ -30,11 +31,20 @@ UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT = Path("assets/uipath_failure_analyst_ag
 UIPATH_FAILURE_ANALYST_NO_ISSUES_SCREENSHOT = Path(
     "assets/uipath_failure_analyst_agent_no_issues.png"
 )
+UIPATH_FAILURE_ANALYST_DEBUG_SCREENSHOT = Path(
+    "assets/uipath_failure_analyst_agent_debug_success.png"
+)
+UIPATH_FAILURE_ANALYST_OUTPUT_DETAIL_SCREENSHOT = Path(
+    "assets/uipath_failure_analyst_agent_output_detail.png"
+)
 UIPATH_FAILURE_ANALYST_MODEL_EVIDENCE = Path(
     "evidence/case_001/uipath_failure_analyst_agent_model_selected.txt"
 )
 UIPATH_FAILURE_ANALYST_NO_ISSUES_EVIDENCE = Path(
     "evidence/case_001/uipath_failure_analyst_agent_no_issues.txt"
+)
+UIPATH_FAILURE_ANALYST_DEBUG_EVIDENCE = Path(
+    "evidence/case_001/uipath_failure_analyst_agent_debug_success.txt"
 )
 
 
@@ -203,6 +213,7 @@ def test_product_feedback_submission_is_form_ready():
 
 def test_coding_agents_bonus_pack_has_verifiable_artifacts():
     doc = CODING_AGENTS_BONUS.read_text(encoding="utf-8")
+    bonus = BONUS_EVIDENCE_PACK.read_text(encoding="utf-8")
 
     for phrase in [
         "Coding Agents Bonus",
@@ -214,8 +225,21 @@ def test_coding_agents_bonus_pack_has_verifiable_artifacts():
         "evidence/case_001/coding_agent_outputs.jsonl",
         "not trusted automatically",
         "Test Cloud evidence",
+        "uipath_failure_analyst_agent_debug_success.png",
     ]:
         assert phrase in doc
+
+    for phrase in [
+        "Bonus Evidence Pack",
+        "UiPath-native agent bonus",
+        "Coding Agents bonus",
+        "Most Creative Solution",
+        "Best Product Feedback",
+        "1 Agents.LLMCalls",
+        "Completed certification failure analysis",
+        "Action Center approval",
+    ]:
+        assert phrase in bonus
 
 
 def test_tc006_live_test_manager_mapping_is_documented():
@@ -325,10 +349,13 @@ def test_uipath_native_failure_analyst_agent_draft_is_documented():
     no_issues_evidence = UIPATH_FAILURE_ANALYST_NO_ISSUES_EVIDENCE.read_text(
         encoding="utf-8"
     )
+    debug_evidence = UIPATH_FAILURE_ANALYST_DEBUG_EVIDENCE.read_text(encoding="utf-8")
 
     assert UIPATH_FAILURE_ANALYST_DRAFT_SCREENSHOT.exists()
     assert UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT.exists()
     assert UIPATH_FAILURE_ANALYST_NO_ISSUES_SCREENSHOT.exists()
+    assert UIPATH_FAILURE_ANALYST_DEBUG_SCREENSHOT.exists()
+    assert UIPATH_FAILURE_ANALYST_OUTPUT_DETAIL_SCREENSHOT.exists()
 
     for phrase in [
         "Agentic Test Swarm Failure Analyst Agent",
@@ -338,6 +365,7 @@ def test_uipath_native_failure_analyst_agent_draft_is_documented():
     ]:
         assert phrase in model_evidence
         assert phrase in no_issues_evidence
+        assert phrase in debug_evidence
 
     for phrase in [
         "Connection is required for this integration tool",
@@ -351,7 +379,19 @@ def test_uipath_native_failure_analyst_agent_draft_is_documented():
     ]:
         assert phrase in no_issues_evidence
 
+    for phrase in [
+        "Agent run",
+        "LLM call",
+        "gpt-5.4-2026-03-05-community-agents",
+        "1 Agents.LLMCalls",
+        "Completed certification failure analysis",
+        "Successful",
+        "TC-001",
+    ]:
+        assert phrase in debug_evidence
+
     for doc in [readme, readiness, scorecard, swarm_doc, gap_doc]:
         assert "UiPath-native" in doc
         assert "Failure Analyst Agent" in doc
         assert "uipath_failure_analyst_agent_no_issues.png" in doc
+        assert "uipath_failure_analyst_agent_debug_success.png" in doc

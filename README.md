@@ -25,6 +25,7 @@ Judge-facing proof pack:
 - [Final video shot list](docs/final_video_shot_list.md)
 - [Devpost submission package](docs/devpost_submission_package.md)
 - [Product Feedback submission](docs/product_feedback_submission.md)
+- [Bonus evidence pack](docs/bonus_evidence_pack.md)
 - [Coding Agents bonus pack](docs/coding_agents_bonus_pack.md)
 - [Official Track 3 alignment](docs/official_track3_alignment.md)
 - [Continuous research workbench](docs/research_workbench.md)
@@ -253,15 +254,20 @@ Evidence screenshots for the new live TC-006 mapping:
 - `assets/test_manager_tc006_added_to_test_set.png`
 - `assets/uipath_failure_analyst_agent_model_selected.png`
 - `assets/uipath_failure_analyst_agent_no_issues.png`
+- `assets/uipath_failure_analyst_agent_debug_success.png`
+- `assets/uipath_failure_analyst_agent_output_detail.png`
 
 Evidence files for the UiPath-native Failure Analyst Agent draft:
 
 - `evidence/case_001/uipath_failure_analyst_agent_model_selected.txt`
 - `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt`
+- `evidence/case_001/uipath_failure_analyst_agent_debug_success.txt`
 
 Known boundary: the existing Test Manager execution was recorded before TC-006 was added and through `Override Result`, so the page can still show `Running` while the grid shows `5 passed / 0 failed / 0 not executed`. For final video polish, create a fresh six-case execution through Manual Execution Assistant and select `Done`.
 
 Resolved Agent Builder boundary: the template `Create Issue` integration tool was removed from the Failure Analyst Agent draft. Health Analyzer now reports `No issues found`, the draft is saved, and the `Debug` action is available.
+
+UiPath-native Agent Builder bonus proof: the Failure Analyst Agent was debugged inside Studio Web with a `log_chunk` evidence package for TC-001. The execution trace shows an Agent run, LLM call, `gpt-5.4-2026-03-05-community-agents` model run, `1 Agents.LLMCalls` usage, and a successful output titled `Completed certification failure analysis`.
 
 ## Runtime permit
 
