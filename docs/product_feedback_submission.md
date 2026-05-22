@@ -20,6 +20,8 @@ copy-paste answer:
 
 ```text
 The hardest part was linking evidence across UiPath products. Agentic Test Swarm produces a chain: captured AI trace, policy obligation, red-team scenario, Test Cloud case, failure result, repair candidate, targeted re-test, Action Center approval, and API Workflow runtime denial. Today that chain can be represented with screenshots, attachments, links, and custom notes, but it is not a single first-class evidence object. For a production version, reviewers need to move quickly from a failed AI workflow test to the exact trace, repair, re-test, approval, and runtime enforcement event.
+
+Our Evidence Graph endpoint models this chain as trace -> policy -> test -> repair -> approval -> runtime enforcement, but today that graph lives outside the UiPath product surface.
 ```
 
 ## Most valuable product improvement
@@ -28,6 +30,8 @@ copy-paste answer:
 
 ```text
 The most valuable improvement would be a first-class cross-product "AI workflow certification evidence" object. It should connect Test Cloud evidence, Action Center approvals, API Workflow runtime decisions, and Maestro case state. That would let a reviewer inspect one certification record and see the original AI trace, generated tests, deterministic expected result, failed result, repair candidate, re-test result, human approval, runtime permit, and final enforcement log.
+
+The same object should support Continuous Quality Memory so runtime incidents become permanent UiPath Test Cloud regression evidence without manually re-linking every artifact.
 ```
 
 ## Test Cloud evidence attachments
@@ -36,6 +40,18 @@ copy-paste answer:
 
 ```text
 For AI-infused workflow testing, Test Cloud evidence attachments should support structured provenance fields: trace ID, raw response hash, policy pack version, red-team scenario ID, deterministic oracle version, repair candidate ID, evidence hash, Action Center task ID, and runtime permit ID. Agentic Test Swarm currently stores this in repository evidence files and screenshots; first-class Test Cloud support would make the chain easier to audit.
+
+It would also be useful for Test Cloud to display a native Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
+```
+
+## Agent Builder guardrails, simulations, and memory
+
+copy-paste answer:
+
+```text
+Agent Builder already gives a strong conceptual model for Prompt, Context, Tools, and Escalations. For AI workflow testing, the next high-value bridge would be a way to promote Test Cloud evidence directly into Agent Builder tool guardrails and tool simulations. In Agentic Test Swarm, a failed raw PII export test should be able to create or update a Customer Data Agent tool guardrail, then create a simulation that replays the same executive-override attack before the agent can be trusted again.
+
+Agent Memory and Context Grounding are also important for this pattern. Runtime incidents should update a governed memory or context object so future agent decisions know which tool paths previously failed, which tests became permanent regressions, and which Action Center approvals were required.
 ```
 
 ## Maestro to Test Cloud linking

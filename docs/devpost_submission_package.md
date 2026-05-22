@@ -35,6 +35,8 @@ The final runtime decision is `deny_and_suspend` for raw PII export. Aggregate s
 
 Agentic Test Swarm follows the testing principle that AI should amplify judgment, not replace it: agents generate attack ideas and repair candidates, deterministic oracles define expected behavior, Test Cloud records evidence, and Action Center keeps humans accountable.
 
+The continuous quality layer turns runtime incidents into future tests. `Continuous Quality Memory` shows how `runtime-event-phone-001` becomes TC-006 in UiPath Test Manager. The `Evidence Graph` links the whole chain: trace -> policy -> test -> repair -> approval -> runtime enforcement.
+
 ## How we built it
 
 UiPath is the orchestration and governance layer:
@@ -105,6 +107,9 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Debugged the UiPath-native Failure Analyst Agent successfully inside Studio Web. The execution trace shows an Agent run, LLM call, model run, `1 Agents.LLMCalls` usage, and output `Completed certification failure analysis`.
 - Added UiPath-native agent depth specs for Policy Miner Agent, Red-Team Agent, and Test Designer Agent, plus the worker endpoint `/uipath-native-agent-pack` so Studio Web or API Workflow can fetch the setup pack.
 - Added `TC-006` as incident-memory evidence for a new raw phone-number export tool surface.
+- Added Continuous Quality Memory endpoints: `/continuous-quality-memory` and `/continuous-quality-memory-view`.
+- Added Evidence Graph endpoints: `/evidence-graph` and `/evidence-graph-view`.
+- Added repo evidence files: `evidence/case_001/continuous_quality_memory.json` and `evidence/case_001/evidence_graph.json`.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 
 ## What we learned

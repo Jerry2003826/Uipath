@@ -31,6 +31,12 @@ Agentic Test Swarm targets these business outcomes:
 - preserve human accountability for high-risk access through Action Center;
 - give QA, automation, and platform teams a reusable certification pattern for AI-infused workflows.
 
+The Continuous Quality Memory layer makes this explicit:
+
+```text
+Runtime incidents become permanent UiPath Test Cloud regression evidence.
+```
+
 ## Platform Usage
 
 UiPath is the control plane:
@@ -50,6 +56,8 @@ The worker service is deterministic for demo reliability and production explaina
 - expected results come from a deterministic oracle, not an LLM opinion;
 - the Quality Governor compiles permits from evidence, approval, and policy rules;
 - `/license-decision` denies or suspends blocked raw PII actions;
+- `/continuous-quality-memory` shows how runtime incidents become future Test Cloud gates;
+- `/evidence-graph` links trace -> policy -> test -> repair -> approval -> runtime enforcement;
 - evidence hashes connect runtime decisions back to the certified test evidence;
 - the public Vercel worker exposes browser-friendly and API-friendly endpoints for UiPath to call.
 
@@ -65,6 +73,8 @@ Current delivery artifacts:
 - Test Manager / Test Cloud evidence screenshots;
 - Action Center pending approval evidence;
 - Studio Web / API Workflow debug evidence;
+- Continuous Quality Memory evidence at `evidence/case_001/continuous_quality_memory.json`;
+- Evidence Graph evidence at `evidence/case_001/evidence_graph.json`;
 - Devpost pitch and demo scripts;
 - presentation deck draft at `assets/agentic_test_swarm_deck.pptx`.
 

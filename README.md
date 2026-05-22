@@ -29,6 +29,7 @@ Judge-facing proof pack:
 - [Bonus evidence pack](docs/bonus_evidence_pack.md)
 - [Coding Agents bonus pack](docs/coding_agents_bonus_pack.md)
 - [Official Track 3 alignment](docs/official_track3_alignment.md)
+- [UiPath-native depth gap research](docs/uipath_native_depth_gap_research_2026-05-23.md)
 - [Continuous research workbench](docs/research_workbench.md)
 
 ## What it does
@@ -78,6 +79,53 @@ Generated evidence:
 
 - `evidence/case_001/v11_live_swarm_run.json`
 - `evidence/case_001/incident_antibody_tests.json`
+
+## Continuous Quality Memory and Evidence Graph
+
+The strongest Track 3 story is continuous quality, not one-time certification.
+
+Agentic Test Swarm now exposes two judge-facing proof layers:
+
+- **Continuous Quality Memory**: runtime incidents become permanent UiPath Test Cloud regression evidence. TC-006 is the example: `runtime-event-phone-001` becomes `PVACPOV91:76`, then future Test Selector runs must include it when raw PII tool surfaces change.
+- **Evidence Graph**: every governance claim links back through `trace -> policy -> test -> repair -> approval -> runtime enforcement`.
+
+Public endpoints:
+
+```text
+https://permitops-uipath.vercel.app/continuous-quality-memory
+https://permitops-uipath.vercel.app/continuous-quality-memory-view
+https://permitops-uipath.vercel.app/evidence-graph
+https://permitops-uipath.vercel.app/evidence-graph-view
+```
+
+Evidence files:
+
+- `evidence/case_001/continuous_quality_memory.json`
+- `evidence/case_001/evidence_graph.json`
+
+Judge line:
+
+```text
+Runtime incidents become permanent UiPath Test Cloud regression evidence, and the Evidence Graph proves every permit decision is connected to trace, policy, Test Cloud result, Action Center approval, and API Workflow enforcement.
+```
+
+## UiPath-native agent shape
+
+The latest native-depth research maps Agentic Test Swarm to UiPath's native
+agent shape:
+
+```text
+Prompt / Context / Tools / Escalations
+```
+
+- **Prompt**: Failure Analyst Agent, Policy Miner Agent, Red-Team Agent, and Test Designer Agent specs.
+- **Context**: captured AI trace, policy pack, Test Cloud evidence, Continuous Quality Memory, and Evidence Graph.
+- **Tools**: API Workflow runtime proxy, worker endpoints, and Test Manager evidence flow.
+- **Escalations**: Action Center task `#3545796` for human approval.
+
+Research note:
+
+- `docs/uipath_native_depth_gap_research_2026-05-23.md`
 
 ## Why it matters
 
@@ -189,6 +237,8 @@ Key local evidence files:
 - `evidence/case_001/repair_summary.md`
 - `evidence/case_001/agentic_test_swarm_run.json`
 - `evidence/case_001/uipath_native_agent_pack.json`
+- `evidence/case_001/continuous_quality_memory.json`
+- `evidence/case_001/evidence_graph.json`
 - `evidence/case_001/test_results_before.json`
 - `evidence/case_001/test_results_after.json`
 - `evidence/case_001/license.json`

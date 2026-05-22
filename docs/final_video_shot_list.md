@@ -140,11 +140,15 @@ Screen:
 - `TC-006` incident-memory evidence
 - Live Test Manager row `PVACPOV91:76`
 - phone-number export tool-surface change
+- `continuous-quality-memory-view`
+- `evidence-graph-view`
 
 Narration:
 
 ```text
 The system is not a static test suite. When a new raw phone-number export surface appears, the Test Selector creates TC-006 as permanent incident-to-regression coverage.
+Continuous Quality Memory makes that a future gate: Runtime incidents become permanent UiPath Test Cloud regression evidence.
+The Evidence Graph links trace -> policy -> test -> repair -> approval -> runtime enforcement.
 ```
 
 Show the live Test Manager row `PVACPOV91:76` and the `Static Assignment (6)` test set if the browser session is available.
@@ -170,4 +174,6 @@ Agentic Test Swarm turns AI-generated tests into enforceable production permissi
 - Show `deny_and_suspend`.
 - Show `TC-006`.
 - Show UiPath-native agent depth: Failure Analyst Agent debug trace plus Policy Miner Agent / Red-Team Agent / Test Designer Agent specs or `/uipath-native-agent-pack`.
+- Show Continuous Quality Memory with `/continuous-quality-memory-view`.
+- Show Evidence Graph with `/evidence-graph-view`.
 - Keep the video under five minutes.

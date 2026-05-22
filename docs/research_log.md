@@ -182,6 +182,63 @@ Open risk:
 - If the final video starts from Vercel instead of UiPath, the Taqi/platform
   usage score can still suffer despite strong backend proof.
 
+## 2026-05-23 - UiPath-native depth gap deep dive
+
+Question:
+
+What is still missing if judges look specifically for UiPath-native agent depth
+and no-code platform value?
+
+Sources:
+
+- AgentHack official page: https://uipath-agenthack.devpost.com/
+- AgentHack FAQ: https://community.uipath.com/agenthack-faq/
+- UiPath Test Cloud agentic testing page: https://www.uipath.com/platform/agentic-testing
+- UiPath Forrester agentic testing webinar: https://www.uipath.com/resources/automation-webinars/forrester-agentic-testing-webinar
+- UiPath Agents docs, About Agents: https://docs.uipath.com/agents/automation-cloud/latest/user-guide/about-uipath-agents
+- UiPath Agents docs, Tools: https://docs.uipath.com/agents/automation-cloud/latest/user-guide/tools-agent-builder
+- UiPath Agents docs, Escalations and Agent Memory: https://docs.uipath.com/agents/automation-cloud/latest/user-guide/escalations-agent-builder
+- UiPath Agents docs, Best practices: https://docs.uipath.com/agents/automation-cloud/latest/user-guide/best-practices-for-building-agents
+- UiPath Test Manager docs, Testing Process Governance: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/testing-process-governance
+- UiPath Python SDK and LangChain SDK docs via Context7.
+- Taqi Jaffri hybrid automation interview: https://diginomica.com/uipath-explains-hybrid-automation-architecture-why-agents-need-workflows-not-other-way-around
+- Ingo Philipp agentic testing session listing: https://conference.eurostarsoftwaretesting.com/event/2026/accelerate-the-agentic-enterprise-with-agentic-testing/
+
+Findings:
+
+- UiPath-native agents should be explained as Prompt / Context / Tools /
+  Escalations, not just "an LLM in Studio Web."
+- Agentic Test Swarm is strongest on Prompt, Tools, and Escalations:
+  native Failure Analyst prompt, API Workflow runtime proxy, and Action Center
+  approval task `#3545796`.
+- The remaining native-depth gaps are Context Grounding / Agent Memory, Agent
+  Builder tool guardrails, and tool simulations. These are good product-feedback
+  items and post-submission extensions, but they should not disturb the final
+  Action Center recording path.
+- Test Cloud Autopilot for Testers and Healing Agent should be positioned as
+  related UiPath-native capabilities. The project is a custom Test Cloud agent
+  pattern rather than a claim that we used those built-ins.
+
+Impact on Agentic Test Swarm:
+
+- Add the Prompt / Context / Tools / Escalations framing to README and demo
+  narration.
+- Add product feedback asking for Test Cloud evidence to become Agent Builder
+  tool guardrails, tool simulations, Agent Memory, and cross-product evidence
+  graphs.
+- Keep final recording stable: do not click Action Center task `#3545796` until
+  the final video.
+
+Decision:
+
+Do not add another risky live UiPath feature before recording. The score gain is
+highest from clearer native-depth framing plus product feedback.
+
+Action taken:
+
+- Added `docs/uipath_native_depth_gap_research_2026-05-23.md`.
+- Updated README, submission readiness, and product feedback wording.
+
 ## Next Research Queue
 
 Label: next research queue

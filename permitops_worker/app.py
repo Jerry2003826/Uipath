@@ -5,10 +5,11 @@ import re
 from tempfile import gettempdir
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 
 from permitops_worker.engine.ai_trace import capture_trace_replay
 from permitops_worker.engine.compiler import compile_license
+from permitops_worker.engine.continuous_quality import build_continuous_quality_memory, build_evidence_graph
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.risk_scan import scan_risk
@@ -172,9 +173,56 @@ def _render_live_swarm_view(run: dict) -> str:
 </html>"""
 
 
+def _render_evidence_view(title: str, claim: str, items: list[dict], raw: dict) -> str:
+    cards = "".join(
+        (
+            "<div class='card'>"
+            f"<strong>{escape(item['label'])}</strong>"
+            f"<span>{escape(item['owner'])}</span>"
+            f"<p>{escape(item['evidence'])}</p>"
+            "</div>"
+        )
+        for item in items
+    )
+    raw_json = json.dumps(raw, indent=2)
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{escape(title)}</title>
+  <style>
+    :root {{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #142033; background: #f5f7fb; }}
+    body {{ margin: 0; }}
+    main {{ max-width: 1180px; margin: 0 auto; padding: 34px; }}
+    h1 {{ margin: 0; font-size: 36px; letter-spacing: 0; }}
+    .claim {{ color: #475569; line-height: 1.45; max-width: 860px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 22px 0; }}
+    .card {{ background: #fff; border: 1px solid #dbe3ee; border-radius: 8px; padding: 16px; min-height: 132px; box-shadow: 0 6px 18px rgba(15,23,42,.06); }}
+    .card strong {{ display: block; color: #0f172a; font-size: 15px; margin-bottom: 8px; }}
+    .card span {{ display: inline-block; color: #1d4ed8; background: #eff6ff; border-radius: 999px; padding: 4px 8px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }}
+    .card p {{ margin: 0; color: #475569; line-height: 1.4; font-size: 13px; }}
+    pre {{ background: #101827; color: #e5e7eb; border-radius: 8px; padding: 18px; overflow: auto; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; line-height: 1.45; }}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>{escape(title)}</h1>
+    <p class="claim">{escape(claim)}</p>
+    <section class="grid">{cards}</section>
+    <pre>{escape(raw_json)}</pre>
+  </main>
+</body>
+</html>"""
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok", "service": "permitops-worker"}
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon() -> Response:
+    return Response(status_code=204)
 
 
 @app.post("/scan-risk")
@@ -283,6 +331,36 @@ def uipath_native_agent_pack(case_id: str = "case_001") -> dict:
     if not pack_path.exists():
         raise HTTPException(status_code=404, detail=f"UiPath-native agent pack not found for {validated_case_id}")
     return json.loads(pack_path.read_text(encoding="utf-8"))
+
+
+@app.get("/continuous-quality-memory")
+def continuous_quality_memory(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return build_continuous_quality_memory(validated_case_id)
+
+
+@app.get("/continuous-quality-memory-view", response_class=HTMLResponse)
+def continuous_quality_memory_view(case_id: str = "case_001") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    memory = build_continuous_quality_memory(validated_case_id)
+    items = [
+        {"label": step["stage"], "owner": step["uipath_surface"], "evidence": step["description"]}
+        for step in memory["lifecycle"]
+    ]
+    return HTMLResponse(_render_evidence_view(memory["system_name"], memory["claim"], items, memory))
+
+
+@app.get("/evidence-graph")
+def evidence_graph(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return build_evidence_graph(validated_case_id)
+
+
+@app.get("/evidence-graph-view", response_class=HTMLResponse)
+def evidence_graph_view(case_id: str = "case_001") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    graph = build_evidence_graph(validated_case_id)
+    return HTMLResponse(_render_evidence_view(graph["graph_name"], graph["claim"], graph["nodes"], graph))
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)

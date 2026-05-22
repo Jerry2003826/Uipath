@@ -8,6 +8,7 @@ DECK_PPTX = Path("assets/agentic_test_swarm_deck.pptx")
 OFFICIAL_ALIGNMENT = Path("docs/official_track3_alignment.md")
 JUDGE_SCORECARD = Path("docs/judge_scorecard.md")
 JUDGE_TASTE_RESEARCH = Path("docs/judge_taste_research_2026-05-23.md")
+UIPATH_NATIVE_GAP_RESEARCH = Path("docs/uipath_native_depth_gap_research_2026-05-23.md")
 TC006_RUNBOOK = Path("docs/tc006_test_manager_runbook.md")
 VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
@@ -192,6 +193,53 @@ def test_judge_taste_research_maps_judges_to_demo_strategy():
 
     assert "AI should amplify judgment, not replace it" in devpost
     assert "2026-05-23 - Judge taste research" in log
+
+
+def test_uipath_native_depth_gap_research_is_actionable():
+    doc = UIPATH_NATIVE_GAP_RESEARCH.read_text(encoding="utf-8")
+    readme = README.read_text(encoding="utf-8")
+    readiness = SUBMISSION_READINESS.read_text(encoding="utf-8")
+    feedback = PRODUCT_FEEDBACK_SUBMISSION.read_text(encoding="utf-8")
+    log = RESEARCH_LOG.read_text(encoding="utf-8")
+
+    for phrase in [
+        "UiPath Native Depth Gap Research",
+        "Prompt / Context / Tools / Escalations",
+        "tool guardrails",
+        "tool simulations",
+        "Context Grounding",
+        "Agent Memory",
+        "Autopilot for Testers",
+        "Healing Agent",
+        "Testing Process Governance",
+        "Do not disturb Action Center task `#3545796`",
+        "P0 demo-language upgrade",
+        "P1 product-feedback upgrade",
+        "P2 post-submission build path",
+    ]:
+        assert phrase in doc
+
+    for phrase in [
+        "docs/uipath_native_depth_gap_research_2026-05-23.md",
+        "Prompt / Context / Tools / Escalations",
+    ]:
+        assert phrase in readme
+
+    for phrase in [
+        "Native-depth deep dive",
+        "tool guardrails",
+        "Agent Memory",
+    ]:
+        assert phrase in readiness
+
+    for phrase in [
+        "tool simulations",
+        "Agent Memory",
+        "Context Grounding",
+    ]:
+        assert phrase in feedback
+
+    assert "2026-05-23 - UiPath-native depth gap deep dive" in log
 
 
 def test_tc006_runbook_is_safe_for_final_platform_polish():
@@ -501,5 +549,34 @@ def test_uipath_native_agent_depth_pack_is_documented():
         "uipath/agents/policy_miner_agent.md",
         "uipath/agents/red_team_agent.md",
         "uipath/agents/test_designer_agent.md",
+    ]:
+        assert phrase in docs
+
+
+def test_continuous_quality_memory_and_evidence_graph_are_documented():
+    docs = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [
+            README,
+            DEVPOST_PACKAGE,
+            VIDEO_SHOT_LIST,
+            SUBMISSION_READINESS,
+            JUDGE_SCORECARD,
+            OFFICIAL_ALIGNMENT,
+            PRODUCT_FEEDBACK_SUBMISSION,
+        ]
+    )
+
+    for phrase in [
+        "Continuous Quality Memory",
+        "Evidence Graph",
+        "/continuous-quality-memory",
+        "/continuous-quality-memory-view",
+        "/evidence-graph",
+        "/evidence-graph-view",
+        "evidence/case_001/continuous_quality_memory.json",
+        "evidence/case_001/evidence_graph.json",
+        "Runtime incidents become permanent UiPath Test Cloud regression evidence",
+        "trace -> policy -> test -> repair -> approval -> runtime enforcement",
     ]:
         assert phrase in docs

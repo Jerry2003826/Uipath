@@ -40,6 +40,8 @@ Completed:
 - Red-Team Agent setup spec exists at `uipath/agents/red_team_agent.md`.
 - Test Designer Agent setup spec exists at `uipath/agents/test_designer_agent.md`.
 - Worker endpoint for the native pack exists at `/uipath-native-agent-pack`.
+- Continuous Quality Memory exists at `/continuous-quality-memory` and `/continuous-quality-memory-view`.
+- Evidence Graph exists at `/evidence-graph` and `/evidence-graph-view`.
 
 Known boundary:
 
@@ -48,6 +50,9 @@ Known boundary:
 - A fresh automated browser tab redirected to UiPath login on 2026-05-20, so the new one-click Studio Web trigger screenshot remains a final-recording task. The existing API Workflow debug screenshot still proves UiPath can call the public worker and receive `deny_and_suspend`.
 - The UiPath-native Failure Analyst Agent draft no longer has the template tool connection issue. The `Create Issue` integration tool was removed, and Health Analyzer reports `No issues found`.
 - Policy Miner Agent, Red-Team Agent, and Test Designer Agent are currently specs plus endpoint-ready payloads, not yet separate live Studio Web debug traces. This is still useful for final judging because it shows the planned UiPath-native extension path without risking the existing Action Center gate.
+- Native-depth deep dive: the project maps cleanly to UiPath's native agent
+  shape, `Prompt / Context / Tools / Escalations`. Current proof is strongest
+  for prompt, tools, and escalations; Context Grounding, Agent Memory, tool guardrails, and tool simulations should be framed as product-fit extensions rather than rushed into the final demo.
 
 ## Engineering proof
 
@@ -65,6 +70,8 @@ Completed:
 - Incident antibody test evidence exists at `evidence/case_001/incident_antibody_tests.json`.
 - UiPath one-click runbook evidence exists at `evidence/case_001/uipath_one_click_runbook.json`.
 - UiPath-native agent depth evidence exists at `evidence/case_001/uipath_native_agent_pack.json`.
+- Continuous Quality Memory evidence exists at `evidence/case_001/continuous_quality_memory.json`.
+- Evidence Graph evidence exists at `evidence/case_001/evidence_graph.json`.
 - Before/after deterministic test evidence exists.
 - Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
@@ -108,13 +115,15 @@ Recommended live path:
 4. Show Policy Miner, Red-Team, Test Designer, Test Selector, Failure Analyst, Repair Agent, Re-test Orchestrator, and Quality Governor.
 5. Show UiPath-native agent depth: Failure Analyst Agent debug trace, then the Policy Miner Agent / Red-Team Agent / Test Designer Agent specs or `/uipath-native-agent-pack`.
 6. Show V11 live loop: before repair `allow`, after repair `deny_and_suspend`.
-7. Show TC-006 incident-memory antibody test for phone-number export.
-8. Show Maestro/Studio Web BPMN as the certification lifecycle.
-9. Show Test Manager project, test set, and execution result summary.
-10. Show Action Center task `#3545796` in `Pending`.
-11. Click approval live only during the final recording.
-12. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-13. Show API Workflow debug result: `deny_and_suspend`.
+7. Show Continuous Quality Memory: runtime incidents become permanent UiPath Test Cloud regression evidence.
+8. Show Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
+9. Show TC-006 incident-memory antibody test for phone-number export.
+10. Show Maestro/Studio Web BPMN as the certification lifecycle.
+11. Show Test Manager project, test set, and execution result summary.
+12. Show Action Center task `#3545796` in `Pending`.
+13. Click approval live only during the final recording.
+14. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+15. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 
@@ -142,6 +151,7 @@ Ready-to-paste submission helpers now exist:
 - `docs/devpost_submission_package.md`
 - `docs/product_feedback_submission.md`
 - `docs/coding_agents_bonus_pack.md`
+- `docs/uipath_native_depth_gap_research_2026-05-23.md`
 
 ## 2026-05-21 platform attempt
 

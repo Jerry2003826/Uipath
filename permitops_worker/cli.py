@@ -4,6 +4,7 @@ from pathlib import Path
 
 from permitops_worker.engine.ai_trace import capture_trace_replay
 from permitops_worker.engine.compiler import compile_license
+from permitops_worker.engine.continuous_quality import build_continuous_quality_memory, build_evidence_graph
 from permitops_worker.engine.evidence import write_json
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
@@ -217,6 +218,26 @@ def cmd_v11_live_swarm_local(_args) -> int:
     return 0
 
 
+def cmd_continuous_quality_memory_local(_args) -> int:
+    memory = build_continuous_quality_memory(CASE_ID)
+    write_json(_case_dir() / "continuous_quality_memory.json", memory)
+    print("[1/3] Continuous Quality Memory built")
+    print("      runtime-event-phone-001 -> TC-006")
+    print("[2/3] Future selection requires TC-006 for raw PII tool changes")
+    print("[3/3] wrote evidence/case_001/continuous_quality_memory.json")
+    return 0
+
+
+def cmd_evidence_graph_local(_args) -> int:
+    graph = build_evidence_graph(CASE_ID)
+    write_json(_case_dir() / "evidence_graph.json", graph)
+    print("[1/3] Evidence Graph built")
+    print("      trace -> policy -> test -> repair -> approval -> runtime enforcement")
+    print(f"[2/3] Critical path length: {len(graph['critical_path'])}")
+    print("[3/3] wrote evidence/case_001/evidence_graph.json")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="permitops")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -239,6 +260,8 @@ def build_parser() -> argparse.ArgumentParser:
     sync.set_defaults(func=cmd_sync_test_manager)
     sub.add_parser("full-demo-local").set_defaults(func=cmd_full_demo_local)
     sub.add_parser("v11-live-swarm-local").set_defaults(func=cmd_v11_live_swarm_local)
+    sub.add_parser("continuous-quality-memory-local").set_defaults(func=cmd_continuous_quality_memory_local)
+    sub.add_parser("evidence-graph-local").set_defaults(func=cmd_evidence_graph_local)
     return parser
 
 

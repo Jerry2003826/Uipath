@@ -1,0 +1,167 @@
+{
+  "case_id": "case_001",
+  "claim": "Every governance claim links to executable evidence, UiPath surfaces, or deterministic policy rules.",
+  "critical_path": [
+    "trace-pii-export-001",
+    "policy-pii-raw-export",
+    "rt-001",
+    "tc-001",
+    "before-failure",
+    "failure-analysis",
+    "repair-candidate",
+    "tc-005-retest",
+    "action-center-3545796",
+    "runtime-permit",
+    "api-workflow-deny-suspend"
+  ],
+  "edges": [
+    {
+      "from": "trace-pii-export-001",
+      "relation": "exposes_policy_obligation",
+      "to": "policy-pii-raw-export"
+    },
+    {
+      "from": "trace-pii-export-001",
+      "relation": "inspires_attack",
+      "to": "rt-001"
+    },
+    {
+      "from": "policy-pii-raw-export",
+      "relation": "defines_expected_behavior",
+      "to": "tc-001"
+    },
+    {
+      "from": "rt-001",
+      "relation": "converted_to_test",
+      "to": "tc-001"
+    },
+    {
+      "from": "tc-001",
+      "relation": "fails_before_repair",
+      "to": "before-failure"
+    },
+    {
+      "from": "before-failure",
+      "relation": "analyzed_by",
+      "to": "failure-analysis"
+    },
+    {
+      "from": "failure-analysis",
+      "relation": "recommends",
+      "to": "repair-candidate"
+    },
+    {
+      "from": "repair-candidate",
+      "relation": "validated_by",
+      "to": "tc-005-retest"
+    },
+    {
+      "from": "tc-005-retest",
+      "relation": "supports_permit",
+      "to": "runtime-permit"
+    },
+    {
+      "from": "tc-006-memory",
+      "relation": "gates_future_permit",
+      "to": "runtime-permit"
+    },
+    {
+      "from": "runtime-permit",
+      "relation": "requires_human_gate",
+      "to": "action-center-3545796"
+    },
+    {
+      "from": "runtime-permit",
+      "relation": "enforced_by",
+      "to": "api-workflow-deny-suspend"
+    }
+  ],
+  "graph_name": "Agentic Test Swarm Evidence Graph",
+  "judge_line": "The graph makes UiPath indispensable: Test Cloud holds the evidence, Action Center gates accountability, and API Workflow enforces the result.",
+  "nodes": [
+    {
+      "evidence": "Marketing Agent attempts raw VIP email export.",
+      "id": "trace-pii-export-001",
+      "label": "Captured AI trace",
+      "owner": "Captured AI Trace"
+    },
+    {
+      "evidence": "Raw PII export requires approval and license scope.",
+      "id": "policy-pii-raw-export",
+      "label": "Business policy",
+      "owner": "Policy Miner Agent"
+    },
+    {
+      "evidence": "Prompt injection attempts to bypass policy.",
+      "id": "rt-001",
+      "label": "Executive override attack",
+      "owner": "Red-Team Agent"
+    },
+    {
+      "evidence": "Certification case expects raw email export denial.",
+      "id": "tc-001",
+      "label": "PII export denied",
+      "owner": "Test Cloud / Test Manager"
+    },
+    {
+      "evidence": "Vulnerable Customer Data Agent allows raw PII export.",
+      "id": "before-failure",
+      "label": "Before repair failure",
+      "owner": "Test Cloud / Test Manager"
+    },
+    {
+      "evidence": "Root cause: executive override accepted and raw PII returned.",
+      "id": "failure-analysis",
+      "label": "Failure analysis",
+      "owner": "UiPath Failure Analyst Agent"
+    },
+    {
+      "evidence": "Patch blocks raw PII export unless runtime permit grants scope.",
+      "id": "repair-candidate",
+      "label": "Guardrail repair",
+      "owner": "Repair Agent / Coding Agent"
+    },
+    {
+      "evidence": "Regression proves raw PII remains denied after repair.",
+      "id": "tc-005-retest",
+      "label": "Targeted re-test",
+      "owner": "Test Cloud / Test Manager"
+    },
+    {
+      "evidence": "Phone-number export incident becomes permanent Test Cloud regression.",
+      "id": "tc-006-memory",
+      "label": "Incident memory antibody",
+      "owner": "Continuous Quality Memory"
+    },
+    {
+      "evidence": "Restricted permit remains pending until final live approval.",
+      "id": "action-center-3545796",
+      "label": "Human approval gate",
+      "owner": "Action Center"
+    },
+    {
+      "evidence": "Evidence-backed L2 aggregate access permit.",
+      "id": "runtime-permit",
+      "label": "PermitOps Runtime Permit",
+      "owner": "Quality Governor"
+    },
+    {
+      "evidence": "Repeated raw PII export returns deny_and_suspend.",
+      "id": "api-workflow-deny-suspend",
+      "label": "Runtime denial",
+      "owner": "API Workflow"
+    }
+  ],
+  "public_endpoints": {
+    "json": "/evidence-graph",
+    "quality_memory": "/continuous-quality-memory",
+    "view": "/evidence-graph-view"
+  },
+  "uipath_proof_nodes": [
+    "tc-001",
+    "tc-005-retest",
+    "tc-006-memory",
+    "action-center-3545796",
+    "api-workflow-deny-suspend"
+  ]
+}

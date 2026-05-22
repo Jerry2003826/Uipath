@@ -52,6 +52,8 @@ Proof:
 - `/run-live-swarm` proves the vulnerable AI workflow, repair candidate, and targeted re-test loop.
 - `/uipath-one-click-runbook` proves the intended UiPath control-plane sequence.
 - `/license-decision` proves raw PII export enforcement with `deny_and_suspend`.
+- `/continuous-quality-memory` proves runtime incidents become permanent UiPath Test Cloud regression evidence.
+- `/evidence-graph` proves the chain from trace -> policy -> test -> repair -> approval -> runtime enforcement.
 - Evidence hashes in `evidence/case_001/license.json` tie runtime decisions to the certified evidence chain.
 
 Important design choice: AI proposes tests and repairs; deterministic rules decide expected behavior. That makes the system demo-friendly and enterprise-auditable.
@@ -100,6 +102,14 @@ Policy -> Red-Team Agent -> Test Designer -> Test Selector -> Test Cloud evidenc
 
 Most projects will generate tests or approve agents. Agentic Test Swarm shows a continuous testing memory loop: when a new raw phone-number export surface appears, `TC-006` becomes incident-to-regression coverage.
 
+The extra creative proof is the Evidence Graph:
+
+```text
+trace -> policy -> test -> repair -> approval -> runtime enforcement
+```
+
+That graph makes the system auditable instead of just plausible.
+
 ## Coding Agents Bonus
 
 Coding agents contribute to adversarial scenario generation, repair candidate drafting, API Workflow payload scaffolding, and documentation packaging.
@@ -119,6 +129,8 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | --- | --- |
 | Runs publicly | `https://permitops-uipath.vercel.app/health` |
 | Live AI workflow test | `https://permitops-uipath.vercel.app/live-swarm-view` |
+| Continuous Quality Memory | `https://permitops-uipath.vercel.app/continuous-quality-memory`, `evidence/case_001/continuous_quality_memory.json` |
+| Evidence Graph | `https://permitops-uipath.vercel.app/evidence-graph`, `evidence/case_001/evidence_graph.json` |
 | UiPath runtime proxy works | `assets/uipath_api_workflow_success_deny_suspend.png` |
 | UiPath-native Failure Analyst Agent runs in Studio Web | `assets/uipath_failure_analyst_agent_debug_success.png`, `assets/uipath_failure_analyst_agent_output_detail.png`, `evidence/case_001/uipath_failure_analyst_agent_debug_success.txt` |
 | UiPath-native Failure Analyst Agent draft has no analyzer issues | `assets/uipath_failure_analyst_agent_no_issues.png`, `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt` |
