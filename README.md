@@ -89,6 +89,7 @@ Agentic Test Swarm now exposes two judge-facing proof layers:
 
 - **Continuous Quality Memory**: runtime incidents become permanent UiPath Test Cloud regression evidence. TC-006 is the example: `runtime-event-phone-001` becomes `PVACPOV91:76`, then future Test Selector runs must include it when raw PII tool surfaces change.
 - **Evidence Graph**: every governance claim links back through `trace -> policy -> test -> repair -> approval -> runtime enforcement`.
+- **Test Cloud Native Traceability Pack**: the Test Cloud-native target chain is `Requirement -> Test Case -> Execution -> Defect -> Runtime Permit`.
 
 Public endpoints:
 
@@ -97,12 +98,15 @@ https://permitops-uipath.vercel.app/continuous-quality-memory
 https://permitops-uipath.vercel.app/continuous-quality-memory-view
 https://permitops-uipath.vercel.app/evidence-graph
 https://permitops-uipath.vercel.app/evidence-graph-view
+https://permitops-uipath.vercel.app/test-cloud-traceability
+https://permitops-uipath.vercel.app/test-cloud-traceability-view
 ```
 
 Evidence files:
 
 - `evidence/case_001/continuous_quality_memory.json`
 - `evidence/case_001/evidence_graph.json`
+- `evidence/case_001/test_cloud_traceability_pack.json`
 
 Judge line:
 
@@ -127,6 +131,12 @@ API Workflow enforcement. The next Test Cloud-native objects should be:
 - `Obsolete Test Scout`: an agent that checks whether changed requirements or tool schemas make existing tests stale.
 - `Create Defect webhook`: a Test Manager failure event that can trigger Failure Analyst and Repair Agent evidence.
 - `Testing Process Governance`: the native sign-off path for test artifacts, complementing Action Center permit approval.
+
+Local proof:
+
+```bash
+.venv/bin/python -m permitops_worker.cli test-cloud-traceability-local
+```
 
 Research note:
 

@@ -54,6 +54,7 @@ Proof:
 - `/license-decision` proves raw PII export enforcement with `deny_and_suspend`.
 - `/continuous-quality-memory` proves runtime incidents become permanent UiPath Test Cloud regression evidence.
 - `/evidence-graph` proves the chain from trace -> policy -> test -> repair -> approval -> runtime enforcement.
+- `/test-cloud-traceability` proves the Test Cloud-native target chain from Requirement -> Test Case -> Execution -> Defect -> Runtime Permit.
 - Evidence hashes in `evidence/case_001/license.json` tie runtime decisions to the certified evidence chain.
 
 Important design choice: AI proposes tests and repairs; deterministic rules decide expected behavior. That makes the system demo-friendly and enterprise-auditable.
@@ -131,6 +132,7 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | Live AI workflow test | `https://permitops-uipath.vercel.app/live-swarm-view` |
 | Continuous Quality Memory | `https://permitops-uipath.vercel.app/continuous-quality-memory`, `evidence/case_001/continuous_quality_memory.json` |
 | Evidence Graph | `https://permitops-uipath.vercel.app/evidence-graph`, `evidence/case_001/evidence_graph.json` |
+| Test Cloud Native Traceability Pack | `https://permitops-uipath.vercel.app/test-cloud-traceability`, `evidence/case_001/test_cloud_traceability_pack.json` |
 | UiPath runtime proxy works | `assets/uipath_api_workflow_success_deny_suspend.png` |
 | UiPath-native Failure Analyst Agent runs in Studio Web | `assets/uipath_failure_analyst_agent_debug_success.png`, `assets/uipath_failure_analyst_agent_output_detail.png`, `evidence/case_001/uipath_failure_analyst_agent_debug_success.txt` |
 | UiPath-native Failure Analyst Agent draft has no analyzer issues | `assets/uipath_failure_analyst_agent_no_issues.png`, `evidence/case_001/uipath_failure_analyst_agent_no_issues.txt` |
@@ -151,3 +153,4 @@ Do not overclaim:
 - Do not claim the UiPath-native Failure Analyst Agent replaces Test Cloud or the deterministic oracle; it is advisory failure analysis inside UiPath, and Test Cloud evidence remains the source of certification truth.
 - Do not claim legal compliance certification.
 - Do not claim coding-agent repairs are automatically trusted.
+- Do not claim `REQ-PII-001`, Obsolete Test Scout, Create Defect webhook, or Testing Process Governance are already live tenant objects. They are the next Test Cloud-native polish layer, while the current live proof covers TC-001 through TC-006, the six-case execution, Action Center, and API Workflow enforcement.

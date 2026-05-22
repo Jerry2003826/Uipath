@@ -13,6 +13,7 @@ from permitops_worker.engine.continuous_quality import build_continuous_quality_
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.risk_scan import scan_risk
+from permitops_worker.engine.test_cloud_traceability import build_test_cloud_traceability_pack
 from permitops_worker.engine.test_runner import run_certification_tests
 from permitops_worker.engine.v11_live_swarm import build_uipath_one_click_runbook, run_live_agentic_testing_loop
 from permitops_worker.schemas import AgentToolCall, TestResult
@@ -361,6 +362,59 @@ def evidence_graph_view(case_id: str = "case_001") -> HTMLResponse:
     validated_case_id = _case_id_from_payload({"case_id": case_id})
     graph = build_evidence_graph(validated_case_id)
     return HTMLResponse(_render_evidence_view(graph["graph_name"], graph["claim"], graph["nodes"], graph))
+
+
+@app.get("/test-cloud-traceability")
+def test_cloud_traceability(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return build_test_cloud_traceability_pack(validated_case_id)
+
+
+@app.get("/test-cloud-traceability-view", response_class=HTMLResponse)
+def test_cloud_traceability_view(case_id: str = "case_001") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    pack = build_test_cloud_traceability_pack(validated_case_id)
+    items = [
+        {
+            "label": pack["requirement"]["requirement_id"],
+            "owner": pack["requirement"]["uipath_surface"],
+            "evidence": pack["requirement"]["description"],
+        },
+        *[
+            {
+                "label": case["test_id"],
+                "owner": case["test_manager_key"],
+                "evidence": f"{case['name']} -> expected {case['expected']}",
+            }
+            for case in pack["test_cases"]
+        ],
+        {
+            "label": pack["execution"]["name"],
+            "owner": pack["execution"]["uipath_surface"],
+            "evidence": pack["execution"]["result_summary"],
+        },
+        {
+            "label": "Create Defect webhook",
+            "owner": pack["defect_webhook_blueprint"]["uipath_surface"],
+            "evidence": pack["defect_webhook_blueprint"]["result"],
+        },
+        {
+            "label": pack["obsolete_test_scout"]["agent_name"],
+            "owner": pack["obsolete_test_scout"]["uipath_surface"],
+            "evidence": pack["obsolete_test_scout"]["future_schema_change_rule"],
+        },
+        {
+            "label": "Testing Process Governance",
+            "owner": pack["testing_process_governance"]["uipath_surface"],
+            "evidence": pack["testing_process_governance"]["relationship_to_action_center"],
+        },
+        {
+            "label": "Runtime Permit",
+            "owner": pack["runtime_permit"]["uipath_surface"],
+            "evidence": f"API Workflow runtime decision: {pack['runtime_permit']['decision']}",
+        },
+    ]
+    return HTMLResponse(_render_evidence_view(pack["system_name"], pack["claim"], items, pack))
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)

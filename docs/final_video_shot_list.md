@@ -68,12 +68,14 @@ Screen:
 - `Static Assignment (6)` with live `PVACPOV91:76 / TC006 incident memory blocks phone-number export`
 - Fresh execution `PermitOps Certification Evidence - 20260522.1544`
 - `Finished`, `6 passed / 0 failed / 0 not executed`
+- `test-cloud-traceability-view`
 
 Narration:
 
 ```text
 Test Cloud is where the swarm output becomes managed certification evidence. This is not a local console-only test run.
 The Test Cloud-native chain we are building toward is Requirement -> Test Case -> Execution -> Defect -> Runtime Permit. This live proof shows the managed Test Case and Execution layer, then Action Center and API Workflow complete the runtime permit path.
+The Test Cloud Native Traceability Pack shows the next native layer: REQ-PII-001, Obsolete Test Scout, Create Defect webhook, Testing Process Governance, and runtime permit enforcement.
 ```
 
 ## 2:10-2:45 - Failure Analyst and Repair Agent
@@ -177,4 +179,5 @@ Agentic Test Swarm turns AI-generated tests into enforceable production permissi
 - Show UiPath-native agent depth: Failure Analyst Agent debug trace plus Policy Miner Agent / Red-Team Agent / Test Designer Agent specs or `/uipath-native-agent-pack`.
 - Show Continuous Quality Memory with `/continuous-quality-memory-view`.
 - Show Evidence Graph with `/evidence-graph-view`.
+- Show Test Cloud Native Traceability Pack with `/test-cloud-traceability-view`.
 - Keep the video under five minutes.

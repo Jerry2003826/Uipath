@@ -50,6 +50,8 @@ copy-paste answer:
 
 ```text
 The strongest Test Cloud-native version of this project would make the full chain visible as one traceability path: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit. Agentic Test Swarm can already show Test Cases, Executions, Action Center approval, API Workflow enforcement, and evidence hashes. The next product-level improvement would be a first-class way to link a Test Manager requirement such as REQ-PII-001 to generated tests, failed execution evidence, repair recommendations, permit restrictions, and runtime decisions.
+
+The prototype now includes a Test Cloud Native Traceability Pack at `/test-cloud-traceability` and `/test-cloud-traceability-view`, backed by `evidence/case_001/test_cloud_traceability_pack.json`, to show how that native chain should look.
 ```
 
 ## Obsolete test and defect-loop support

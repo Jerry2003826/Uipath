@@ -380,6 +380,15 @@ next platform work is:
    to Action Center's runtime permit approval.
 ```
 
+Implementation follow-up already added:
+
+```text
+Test Cloud Native Traceability Pack
+-> evidence/case_001/test_cloud_traceability_pack.json
+-> /test-cloud-traceability
+-> /test-cloud-traceability-view
+```
+
 Final one-line upgrade:
 
 ```text

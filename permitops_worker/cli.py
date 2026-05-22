@@ -8,6 +8,7 @@ from permitops_worker.engine.continuous_quality import build_continuous_quality_
 from permitops_worker.engine.evidence import write_json
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
+from permitops_worker.engine.test_cloud_traceability import build_test_cloud_traceability_pack
 from permitops_worker.engine.test_manager_sync import sync_test_cases
 from permitops_worker.engine.test_runner import run_certification_tests
 from permitops_worker.engine.v11_live_swarm import run_live_agentic_testing_loop
@@ -238,6 +239,17 @@ def cmd_evidence_graph_local(_args) -> int:
     return 0
 
 
+def cmd_test_cloud_traceability_local(_args) -> int:
+    pack = build_test_cloud_traceability_pack(CASE_ID)
+    write_json(_case_dir() / "test_cloud_traceability_pack.json", pack)
+    print("[1/4] Test Cloud traceability pack built")
+    print("      Requirement -> Test Case -> Execution -> Defect -> Runtime Permit")
+    print("[2/4] REQ-PII-001 mapped to TC-001 through TC-006")
+    print("[3/4] Obsolete Test Scout and Create Defect webhook blueprint included")
+    print("[4/4] wrote evidence/case_001/test_cloud_traceability_pack.json")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="permitops")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -262,6 +274,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("v11-live-swarm-local").set_defaults(func=cmd_v11_live_swarm_local)
     sub.add_parser("continuous-quality-memory-local").set_defaults(func=cmd_continuous_quality_memory_local)
     sub.add_parser("evidence-graph-local").set_defaults(func=cmd_evidence_graph_local)
+    sub.add_parser("test-cloud-traceability-local").set_defaults(func=cmd_test_cloud_traceability_local)
     return parser
 
 

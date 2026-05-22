@@ -42,6 +42,7 @@ Completed:
 - Worker endpoint for the native pack exists at `/uipath-native-agent-pack`.
 - Continuous Quality Memory exists at `/continuous-quality-memory` and `/continuous-quality-memory-view`.
 - Evidence Graph exists at `/evidence-graph` and `/evidence-graph-view`.
+- Test Cloud Native Traceability Pack exists at `/test-cloud-traceability` and `/test-cloud-traceability-view`.
 
 Known boundary:
 
@@ -58,6 +59,8 @@ Known boundary:
   Permit` visible inside Test Manager/Test Cloud. Current live proof covers Test
   Case -> Execution -> Runtime Permit. The next safe UiPath additions are
   `REQ-PII-001`, an `Obsolete Test Scout`, and a Create Defect webhook plan.
+  A deterministic evidence pack now exists at
+  `evidence/case_001/test_cloud_traceability_pack.json`.
 
 ## Engineering proof
 
@@ -77,6 +80,7 @@ Completed:
 - UiPath-native agent depth evidence exists at `evidence/case_001/uipath_native_agent_pack.json`.
 - Continuous Quality Memory evidence exists at `evidence/case_001/continuous_quality_memory.json`.
 - Evidence Graph evidence exists at `evidence/case_001/evidence_graph.json`.
+- Test Cloud Native Traceability Pack evidence exists at `evidence/case_001/test_cloud_traceability_pack.json`.
 - Before/after deterministic test evidence exists.
 - Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
@@ -122,13 +126,14 @@ Recommended live path:
 6. Show V11 live loop: before repair `allow`, after repair `deny_and_suspend`.
 7. Show Continuous Quality Memory: runtime incidents become permanent UiPath Test Cloud regression evidence.
 8. Show Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
-9. Show TC-006 incident-memory antibody test for phone-number export.
-10. Show Maestro/Studio Web BPMN as the certification lifecycle.
-11. Show Test Manager project, test set, and execution result summary.
-12. Show Action Center task `#3545796` in `Pending`.
-13. Click approval live only during the final recording.
-14. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-15. Show API Workflow debug result: `deny_and_suspend`.
+9. Show Test Cloud Native Traceability Pack: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit.
+10. Show TC-006 incident-memory antibody test for phone-number export.
+11. Show Maestro/Studio Web BPMN as the certification lifecycle.
+12. Show Test Manager project, test set, and execution result summary.
+13. Show Action Center task `#3545796` in `Pending`.
+14. Click approval live only during the final recording.
+15. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+16. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 

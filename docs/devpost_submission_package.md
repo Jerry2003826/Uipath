@@ -35,7 +35,7 @@ The final runtime decision is `deny_and_suspend` for raw PII export. Aggregate s
 
 Agentic Test Swarm follows the testing principle that AI should amplify judgment, not replace it: agents generate attack ideas and repair candidates, deterministic oracles define expected behavior, Test Cloud records evidence, and Action Center keeps humans accountable.
 
-The continuous quality layer turns runtime incidents into future tests. `Continuous Quality Memory` shows how `runtime-event-phone-001` becomes TC-006 in UiPath Test Manager. The `Evidence Graph` links the whole chain: trace -> policy -> test -> repair -> approval -> runtime enforcement.
+The continuous quality layer turns runtime incidents into future tests. `Continuous Quality Memory` shows how `runtime-event-phone-001` becomes TC-006 in UiPath Test Manager. The `Evidence Graph` links the whole chain: trace -> policy -> test -> repair -> approval -> runtime enforcement. The `Test Cloud Native Traceability Pack` shows the next native Test Cloud chain: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit, anchored by `REQ-PII-001`, `Obsolete Test Scout`, a Create Defect webhook blueprint, Testing Process Governance, and the runtime permit.
 
 ## How we built it
 
@@ -109,7 +109,9 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Added `TC-006` as incident-memory evidence for a new raw phone-number export tool surface.
 - Added Continuous Quality Memory endpoints: `/continuous-quality-memory` and `/continuous-quality-memory-view`.
 - Added Evidence Graph endpoints: `/evidence-graph` and `/evidence-graph-view`.
+- Added Test Cloud Native Traceability Pack endpoints: `/test-cloud-traceability` and `/test-cloud-traceability-view`.
 - Added repo evidence files: `evidence/case_001/continuous_quality_memory.json` and `evidence/case_001/evidence_graph.json`.
+- Added repo traceability evidence: `evidence/case_001/test_cloud_traceability_pack.json`.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 
 ## What we learned
@@ -123,6 +125,10 @@ UiPath is valuable because it gives the system a control plane: Test Cloud for e
 - Attach captured AI trace and hash evidence directly to each Test Manager test result.
 - If recording time allows, instantiate the Policy Miner Agent and Red-Team Agent specs inside UiPath Agent Builder using the `/uipath-native-agent-pack` payload.
 - Add a reusable API Workflow runtime permit template.
+- Create `REQ-PII-001` directly in Test Manager and link it to TC-001 through TC-006.
+- Turn `Obsolete Test Scout` into a live Test Manager obsolete-test classification step.
+- Connect Test Manager's Create Defect webhook to the Failure Analyst / Repair Agent loop.
+- Use Testing Process Governance to sign off the test artifacts themselves.
 - Add first-class Test Cloud attachments for captured AI traces, deterministic oracle versions, and evidence hashes.
 - Expand beyond customer-data access into invoice, refund, procurement, and support AI workflows.
 

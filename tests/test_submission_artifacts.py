@@ -630,3 +630,30 @@ def test_continuous_quality_memory_and_evidence_graph_are_documented():
         "trace -> policy -> test -> repair -> approval -> runtime enforcement",
     ]:
         assert phrase in docs
+
+
+def test_test_cloud_traceability_pack_is_documented_for_judges():
+    docs = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [
+            README,
+            DEVPOST_PACKAGE,
+            VIDEO_SHOT_LIST,
+            SUBMISSION_READINESS,
+            JUDGE_SCORECARD,
+            PRODUCT_FEEDBACK_SUBMISSION,
+        ]
+    )
+
+    for phrase in [
+        "Test Cloud Native Traceability Pack",
+        "/test-cloud-traceability",
+        "/test-cloud-traceability-view",
+        "evidence/case_001/test_cloud_traceability_pack.json",
+        "REQ-PII-001",
+        "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
+        "Obsolete Test Scout",
+        "Create Defect webhook",
+        "Testing Process Governance",
+    ]:
+        assert phrase in docs
