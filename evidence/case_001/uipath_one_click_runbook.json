@@ -5,6 +5,16 @@
     "task_id": "3545796",
     "task_name": "Approve PermitOps Restricted Agent License"
   },
+  "native_agent_depth": {
+    "claim": "UiPath-native agents deepen the testing swarm; the permit remains the output.",
+    "endpoint": "/uipath-native-agent-pack",
+    "roles": [
+      "Policy Miner Agent",
+      "Red-Team Agent",
+      "Test Designer Agent",
+      "Failure Analyst Agent"
+    ]
+  },
   "purpose": "Show that UiPath, not the Python worker, owns the visible testing and governance lifecycle.",
   "runbook_name": "UiPath One-Click Agentic Test Swarm Run",
   "runtime_enforcement": {
@@ -35,26 +45,32 @@
       "visible_action": "Start Agentic Test Swarm run"
     },
     {
-      "platform_evidence": "TC-001 through TC-006 are mapped as certification evidence.",
+      "platform_evidence": "/uipath-native-agent-pack exposes Policy Miner, Red-Team, Test Designer, and Failure Analyst contracts.",
       "step": 2,
+      "uipath_surface": "Agent Builder / Studio Web",
+      "visible_action": "Run or review native testing agents"
+    },
+    {
+      "platform_evidence": "TC-001 through TC-006 are mapped as certification evidence.",
+      "step": 3,
       "uipath_surface": "Test Cloud / Test Manager",
       "visible_action": "Record selected certification tests"
     },
     {
       "platform_evidence": "Pending task #3545796 remains the human accountability gate.",
-      "step": 3,
+      "step": 4,
       "uipath_surface": "Action Center",
       "visible_action": "Approve restricted runtime permit"
     },
     {
       "platform_evidence": "Licensed Tool Proxy calls /license-decision and receives deny_and_suspend.",
-      "step": 4,
+      "step": 5,
       "uipath_surface": "API Workflow",
       "visible_action": "Enforce runtime tool-call decision"
     },
     {
       "platform_evidence": "runtime-event-phone-001 becomes TC-006 antibody coverage.",
-      "step": 5,
+      "step": 6,
       "uipath_surface": "Test Cloud",
       "visible_action": "Promote runtime incident into regression coverage"
     }

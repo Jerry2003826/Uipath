@@ -35,6 +35,11 @@ Completed:
 - UiPath-native Agent Builder / Studio Web draft exists: `Generate incident tickets from logs 1 2` is configured as the `Agentic Test Swarm Failure Analyst Agent`.
 - The draft uses UiPath model `gpt-5.4-2026-03-05` and accepts the existing low-code `{{log_chunk}}` evidence-package input.
 - The UiPath-native Failure Analyst Agent was debugged successfully inside Studio Web with TC-001 evidence. The trace shows an Agent run, LLM call, model run, `1 Agents.LLMCalls` usage, and output `Completed certification failure analysis`.
+- UiPath-native agent depth pack exists at `evidence/case_001/uipath_native_agent_pack.json`.
+- Policy Miner Agent setup spec exists at `uipath/agents/policy_miner_agent.md`.
+- Red-Team Agent setup spec exists at `uipath/agents/red_team_agent.md`.
+- Test Designer Agent setup spec exists at `uipath/agents/test_designer_agent.md`.
+- Worker endpoint for the native pack exists at `/uipath-native-agent-pack`.
 
 Known boundary:
 
@@ -42,6 +47,7 @@ Known boundary:
 - Historical five-case execution `PermitOps Certification Evidence - 20260519.0911` can still show `Running` because it used result overrides. Use the fresh six-case execution `PermitOps Certification Evidence - 20260522.1544` for final video and judge-facing proof.
 - A fresh automated browser tab redirected to UiPath login on 2026-05-20, so the new one-click Studio Web trigger screenshot remains a final-recording task. The existing API Workflow debug screenshot still proves UiPath can call the public worker and receive `deny_and_suspend`.
 - The UiPath-native Failure Analyst Agent draft no longer has the template tool connection issue. The `Create Issue` integration tool was removed, and Health Analyzer reports `No issues found`.
+- Policy Miner Agent, Red-Team Agent, and Test Designer Agent are currently specs plus endpoint-ready payloads, not yet separate live Studio Web debug traces. This is still useful for final judging because it shows the planned UiPath-native extension path without risking the existing Action Center gate.
 
 ## Engineering proof
 
@@ -58,6 +64,7 @@ Completed:
 - V11 live swarm evidence exists at `evidence/case_001/v11_live_swarm_run.json`.
 - Incident antibody test evidence exists at `evidence/case_001/incident_antibody_tests.json`.
 - UiPath one-click runbook evidence exists at `evidence/case_001/uipath_one_click_runbook.json`.
+- UiPath-native agent depth evidence exists at `evidence/case_001/uipath_native_agent_pack.json`.
 - Before/after deterministic test evidence exists.
 - Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
@@ -99,14 +106,15 @@ Recommended live path:
 2. Show the runbook chain: `/run-live-swarm`, Test Cloud evidence, Action Center task `#3545796`, API Workflow runtime proxy.
 3. Show the captured Marketing Outreach Agent trace.
 4. Show Policy Miner, Red-Team, Test Designer, Test Selector, Failure Analyst, Repair Agent, Re-test Orchestrator, and Quality Governor.
-5. Show V11 live loop: before repair `allow`, after repair `deny_and_suspend`.
-6. Show TC-006 incident-memory antibody test for phone-number export.
-7. Show Maestro/Studio Web BPMN as the certification lifecycle.
-8. Show Test Manager project, test set, and execution result summary.
-9. Show Action Center task `#3545796` in `Pending`.
-10. Click approval live only during the final recording.
-11. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-12. Show API Workflow debug result: `deny_and_suspend`.
+5. Show UiPath-native agent depth: Failure Analyst Agent debug trace, then the Policy Miner Agent / Red-Team Agent / Test Designer Agent specs or `/uipath-native-agent-pack`.
+6. Show V11 live loop: before repair `allow`, after repair `deny_and_suspend`.
+7. Show TC-006 incident-memory antibody test for phone-number export.
+8. Show Maestro/Studio Web BPMN as the certification lifecycle.
+9. Show Test Manager project, test set, and execution result summary.
+10. Show Action Center task `#3545796` in `Pending`.
+11. Click approval live only during the final recording.
+12. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+13. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 

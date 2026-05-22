@@ -21,6 +21,7 @@ app = FastAPI(title="PermitOps Worker", version="0.1.0")
 
 API_EVIDENCE_ROOT = Path(gettempdir()) / "permitops_evidence"
 CASE_ID_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
+STATIC_EVIDENCE_ROOT = Path("evidence")
 
 
 def _case_id_from_payload(payload: dict) -> str:
@@ -273,6 +274,15 @@ def uipath_one_click_runbook(case_id: str = "case_001") -> dict:
     case_dir.mkdir(parents=True, exist_ok=True)
     (case_dir / "uipath_one_click_runbook.json").write_text(json.dumps(runbook, indent=2), encoding="utf-8")
     return runbook
+
+
+@app.get("/uipath-native-agent-pack")
+def uipath_native_agent_pack(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    pack_path = STATIC_EVIDENCE_ROOT / validated_case_id / "uipath_native_agent_pack.json"
+    if not pack_path.exists():
+        raise HTTPException(status_code=404, detail=f"UiPath-native agent pack not found for {validated_case_id}")
+    return json.loads(pack_path.read_text(encoding="utf-8"))
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)

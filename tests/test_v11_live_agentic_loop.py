@@ -91,12 +91,15 @@ def test_v11_live_loop_attacks_repairs_retests_and_records_antibody():
     assert run["uipath_control_plane"]["claim"] == "UiPath is the no-code orchestration and governance layer."
     assert [artifact["component"] for artifact in run["uipath_control_plane"]["artifacts"]] == [
         "Maestro / Studio Web",
+        "Agent Builder / Studio Web Agents",
         "Test Cloud / Test Manager",
         "Action Center",
         "API Workflow",
         "Automation Cloud",
     ]
     assert run["uipath_control_plane"]["operator_actions"][0]["no_code_action"] == "Approve restricted permit"
+    assert run["uipath_one_click_runbook"]["native_agent_depth"]["endpoint"] == "/uipath-native-agent-pack"
+    assert "Policy Miner Agent" in run["uipath_one_click_runbook"]["native_agent_depth"]["roles"]
 
 
 def test_uipath_one_click_runbook_links_platform_surfaces():
@@ -107,11 +110,13 @@ def test_uipath_one_click_runbook_links_platform_surfaces():
     assert runbook["trigger"]["worker_call"]["path"] == "/run-live-swarm"
     assert [step["uipath_surface"] for step in runbook["sequence"]] == [
         "Studio Web / API Workflow",
+        "Agent Builder / Studio Web",
         "Test Cloud / Test Manager",
         "Action Center",
         "API Workflow",
         "Test Cloud",
     ]
+    assert runbook["native_agent_depth"]["claim"] == "UiPath-native agents deepen the testing swarm; the permit remains the output."
     assert "TC-006" in runbook["test_cloud_delta"]["mapped_tests"]
     assert runbook["action_center"]["task_id"] == "3545796"
     assert runbook["runtime_enforcement"]["expected_decision"] == "deny_and_suspend"

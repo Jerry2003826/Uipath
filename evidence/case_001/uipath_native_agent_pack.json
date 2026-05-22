@@ -1,0 +1,164 @@
+{
+  "pack_name": "UiPath-Native Agent Depth Pack",
+  "case_id": "case_001",
+  "positioning": "UiPath-native agents deepen the testing swarm; the permit remains the output.",
+  "worker_endpoint": "/uipath-native-agent-pack",
+  "public_endpoint": "https://permitops-uipath.vercel.app/uipath-native-agent-pack",
+  "demo_rule": "Show at least one UiPath-native agent trace before showing the Vercel visual companion.",
+  "agents": [
+    {
+      "name": "UiPath Policy Miner Agent",
+      "swarm_role": "Policy Miner Agent",
+      "runtime": "uipath_native_orchestrated",
+      "uipath_surface": "Agent Builder / Studio Web",
+      "purpose": "Convert business policy, captured AI trace, agent manifest, and tool schema into certification-test obligations.",
+      "input_contract": {
+        "field": "policy_evidence_pack",
+        "contains": [
+          "policy_text",
+          "captured_trace_id",
+          "source_agent",
+          "target_agent",
+          "tool_schema"
+        ]
+      },
+      "output_contract": {
+        "fields": [
+          "obligations",
+          "blocked_actions",
+          "allowed_actions",
+          "approval_required",
+          "test_cloud_tags",
+          "evidence_refs"
+        ],
+        "decision_authority": "advisory_only"
+      },
+      "system_prompt_source": "uipath/agents/policy_miner_agent.md",
+      "test_cloud_evidence": [
+        "TC001 PII export denied",
+        "TC002 aggregate access allowed",
+        "TC003 raw agent request suspended",
+        "TC004 high risk PII approval",
+        "TC006 incident memory blocks phone-number export"
+      ],
+      "demo_line": "Policy Miner is a UiPath-native testing agent that turns business policy into Test Cloud obligations."
+    },
+    {
+      "name": "UiPath Red-Team Agent",
+      "swarm_role": "Red-Team Agent",
+      "runtime": "uipath_native_orchestrated",
+      "uipath_surface": "Agent Builder / Studio Web",
+      "purpose": "Generate risk-revealing adversarial AI-workflow scenarios for the Marketing Outreach Agent to Customer Data Agent path.",
+      "input_contract": {
+        "field": "red_team_evidence_pack",
+        "contains": [
+          "policy_obligations",
+          "captured_trace",
+          "tested_workflow"
+        ]
+      },
+      "output_contract": {
+        "fields": [
+          "scenario_id",
+          "attack_family",
+          "prompt",
+          "target_action",
+          "risk",
+          "expected_test_intent",
+          "recommended_test_cloud_tags"
+        ],
+        "decision_authority": "advisory_only"
+      },
+      "system_prompt_source": "uipath/agents/red_team_agent.md",
+      "test_cloud_evidence": [
+        "TC001 PII export denied",
+        "TC003 raw agent request suspended",
+        "TC006 incident memory blocks phone-number export"
+      ],
+      "demo_line": "Red-Team is a UiPath-native testing agent that attacks the AI workflow before production access."
+    },
+    {
+      "name": "UiPath Test Designer Agent",
+      "swarm_role": "Test Designer Agent",
+      "runtime": "uipath_native_orchestrated",
+      "uipath_surface": "Agent Builder / Studio Web",
+      "purpose": "Convert red-team scenarios into Test Cloud-ready case drafts with deterministic expected behavior and evidence requirements.",
+      "input_contract": {
+        "field": "test_design_pack",
+        "contains": [
+          "policy_miner_output_ref",
+          "red_team_output_ref",
+          "deterministic_oracle_version",
+          "test_manager_project"
+        ]
+      },
+      "output_contract": {
+        "fields": [
+          "test_cases",
+          "test_id",
+          "source_scenario_id",
+          "policy_id",
+          "severity",
+          "expected_decision_source",
+          "expected_decision",
+          "test_cloud_tags",
+          "evidence_required"
+        ],
+        "decision_authority": "test_asset_draft_only"
+      },
+      "system_prompt_source": "uipath/agents/test_designer_agent.md",
+      "test_cloud_evidence": [
+        "TC001 PII export denied",
+        "TC006 incident memory blocks phone-number export"
+      ],
+      "demo_line": "Test Designer is a UiPath-native testing agent that turns attacks into managed Test Cloud case drafts."
+    },
+    {
+      "name": "UiPath Failure Analyst Agent",
+      "swarm_role": "Failure Analyst Agent",
+      "runtime": "uipath_native_orchestrated",
+      "uipath_surface": "Studio Web Autonomous Agent",
+      "purpose": "Analyze failed Test Cloud evidence, identify root cause, recommend a repair, and choose targeted re-test scope.",
+      "input_contract": {
+        "field": "log_chunk",
+        "contains": [
+          "failed_test",
+          "expected_decision",
+          "actual_decision",
+          "trace_id",
+          "policy_id"
+        ]
+      },
+      "output_contract": {
+        "fields": [
+          "root_cause",
+          "risk_impact",
+          "repair_recommendation",
+          "retest_strategy",
+          "tests_to_rerun"
+        ],
+        "decision_authority": "advisory_only"
+      },
+      "system_prompt_source": "Studio Web draft: Generate incident tickets from logs 1 2",
+      "test_cloud_evidence": [
+        "TC001 PII export denied",
+        "TC005 regression keeps PII denied"
+      ],
+      "live_platform_evidence": [
+        "assets/uipath_failure_analyst_agent_model_selected.png",
+        "assets/uipath_failure_analyst_agent_no_issues.png",
+        "assets/uipath_failure_analyst_agent_debug_success.png",
+        "evidence/case_001/uipath_failure_analyst_agent_debug_success.txt"
+      ],
+      "demo_line": "Failure Analyst is already implemented as a UiPath-native Studio Web Autonomous Agent and debugged with one LLM call."
+    }
+  ],
+  "safe_demo_sequence": [
+    "Open Studio Web / API Workflow first.",
+    "Show the UiPath-native Failure Analyst Agent debug trace with 1 Agents.LLMCalls.",
+    "Use this pack to create Policy Miner, Red-Team, and Test Designer drafts if time allows.",
+    "Show Test Manager execution 59ea06c1-8074-0f00-8ea7-0b49ad83e475 with 6 passed.",
+    "Keep Action Center task #3545796 pending until the final approval recording."
+  ],
+  "judge_claim": "Agentic Test Swarm is not a Python-only demo: UiPath-native agents perform policy mining, red-team generation, test design, and failure analysis inside the Automation Cloud control plane."
+}

@@ -119,6 +119,12 @@ def build_uipath_control_plane() -> dict[str, Any]:
                 "why_uipath": "Business users can see and route the workflow without reading Python logs.",
             },
             {
+                "component": "Agent Builder / Studio Web Agents",
+                "platform_role": "Runs native testing-agent roles inside UiPath.",
+                "visible_artifact": "Failure Analyst Agent debug trace plus Policy Miner, Red-Team, and Test Designer setup pack.",
+                "why_uipath": "Testing intelligence is not only an external service; UiPath-native agents can mine policy, generate attacks, design tests, and analyze failures.",
+            },
+            {
                 "component": "Test Cloud / Test Manager",
                 "platform_role": "Stores generated tests, selected tests, failures, and re-test evidence.",
                 "visible_artifact": "TC-001 through TC-006 certification evidence and mapped execution results.",
@@ -164,6 +170,11 @@ def build_uipath_control_plane() -> dict[str, Any]:
                 "uipath_surface": "Test Cloud",
                 "effect": "runtime-event-phone-001 becomes TC-006 antibody coverage",
             },
+            {
+                "no_code_action": "Review native-agent pack",
+                "uipath_surface": "Agent Builder / Studio Web",
+                "effect": "Policy Miner, Red-Team, Test Designer, and Failure Analyst roles have explicit prompt contracts",
+            },
         ],
     }
 
@@ -203,29 +214,45 @@ def build_uipath_one_click_runbook(case_id: str = "case_001") -> dict[str, Any]:
             },
             {
                 "step": 2,
+                "uipath_surface": "Agent Builder / Studio Web",
+                "visible_action": "Run or review native testing agents",
+                "platform_evidence": "/uipath-native-agent-pack exposes Policy Miner, Red-Team, Test Designer, and Failure Analyst contracts.",
+            },
+            {
+                "step": 3,
                 "uipath_surface": "Test Cloud / Test Manager",
                 "visible_action": "Record selected certification tests",
                 "platform_evidence": "TC-001 through TC-006 are mapped as certification evidence.",
             },
             {
-                "step": 3,
+                "step": 4,
                 "uipath_surface": "Action Center",
                 "visible_action": "Approve restricted runtime permit",
                 "platform_evidence": "Pending task #3545796 remains the human accountability gate.",
             },
             {
-                "step": 4,
+                "step": 5,
                 "uipath_surface": "API Workflow",
                 "visible_action": "Enforce runtime tool-call decision",
                 "platform_evidence": "Licensed Tool Proxy calls /license-decision and receives deny_and_suspend.",
             },
             {
-                "step": 5,
+                "step": 6,
                 "uipath_surface": "Test Cloud",
                 "visible_action": "Promote runtime incident into regression coverage",
                 "platform_evidence": "runtime-event-phone-001 becomes TC-006 antibody coverage.",
             },
         ],
+        "native_agent_depth": {
+            "endpoint": "/uipath-native-agent-pack",
+            "roles": [
+                "Policy Miner Agent",
+                "Red-Team Agent",
+                "Test Designer Agent",
+                "Failure Analyst Agent",
+            ],
+            "claim": "UiPath-native agents deepen the testing swarm; the permit remains the output.",
+        },
         "test_cloud_delta": {
             "project": "PermitOps V9.1 Agent Certification",
             "test_set": "PVACPOV91:6 - PermitOps Certification Evidence",

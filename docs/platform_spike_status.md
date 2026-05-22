@@ -342,6 +342,26 @@ evidence/case_001/uipath_failure_analyst_agent_no_issues.txt
 
 Resolved issue: the template `Create Issue` integration tool was removed because this Failure Analyst Agent only needs to return structured analysis. Health Analyzer now reports `No issues found`, the draft is saved, and the `Debug` action is available. Action Center task `#3545796` was not approved during this work.
 
+## UiPath-native agent depth pack
+
+The live implemented native-agent proof is still the Studio Web Autonomous Agent above, but the project now includes endpoint-ready UiPath-native specs for the earlier testing roles:
+
+```text
+Policy Miner Agent: uipath/agents/policy_miner_agent.md
+Red-Team Agent: uipath/agents/red_team_agent.md
+Test Designer Agent: uipath/agents/test_designer_agent.md
+Pack evidence: evidence/case_001/uipath_native_agent_pack.json
+Worker endpoint: /uipath-native-agent-pack
+```
+
+Purpose:
+
+```text
+Show UiPath-native agent depth without disturbing the working Test Manager execution or pending Action Center task.
+```
+
+The pack defines input variables, system prompts, expected JSON outputs, Test Cloud evidence links, and judge demo lines for each role. If final recording time allows, instantiate one more role in Agent Builder. If not, show the pack plus the already-debugged Failure Analyst Agent trace.
+
 ## Current Blockers
 
 ### Action Center assigned pending task

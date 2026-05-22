@@ -65,6 +65,18 @@ The external worker is deterministic. It provides:
 - UiPath Action Center
 - UiPath API Workflows
 - UiPath for Coding Agents / coding-agent workflow evidence
+- UiPath-native Agent Builder / Studio Web agent specs for Policy Miner Agent, Red-Team Agent, Test Designer Agent, and the implemented Failure Analyst Agent
+
+## UiPath-native agent depth
+
+The project is no longer only an external worker plus UiPath screenshots. The testing swarm has UiPath-native agent depth:
+
+- Policy Miner Agent has a Studio Web / Agent Builder spec that turns business policy and captured trace evidence into Test Cloud obligations.
+- Red-Team Agent has a Studio Web / Agent Builder spec that generates risk-revealing adversarial AI-workflow scenarios.
+- Test Designer Agent has a Studio Web / Agent Builder spec that converts red-team scenarios into Test Cloud case drafts with deterministic expected outcomes.
+- Failure Analyst Agent is implemented as a UiPath-native Studio Web Autonomous Agent and was debugged successfully with `1 Agents.LLMCalls`.
+
+The setup pack is available in the repository at `evidence/case_001/uipath_native_agent_pack.json` and through the worker endpoint `/uipath-native-agent-pack`.
 
 ## Challenge: external LLMs under governance
 
@@ -91,6 +103,7 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Configured a UiPath-native Studio Web Autonomous Agent draft as the `Agentic Test Swarm Failure Analyst Agent`, selected UiPath model `gpt-5.4-2026-03-05`, and preserved the low-code `{{log_chunk}}` evidence-package input.
 - Removed the unneeded template `Create Issue` integration tool from that agent draft, clearing Health Analyzer to `No issues found` while keeping Action Center task `#3545796` pending.
 - Debugged the UiPath-native Failure Analyst Agent successfully inside Studio Web. The execution trace shows an Agent run, LLM call, model run, `1 Agents.LLMCalls` usage, and output `Completed certification failure analysis`.
+- Added UiPath-native agent depth specs for Policy Miner Agent, Red-Team Agent, and Test Designer Agent, plus the worker endpoint `/uipath-native-agent-pack` so Studio Web or API Workflow can fetch the setup pack.
 - Added `TC-006` as incident-memory evidence for a new raw phone-number export tool surface.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 
@@ -103,7 +116,7 @@ UiPath is valuable because it gives the system a control plane: Test Cloud for e
 ## What's next
 
 - Attach captured AI trace and hash evidence directly to each Test Manager test result.
-- Add UiPath Agent Builder agents for Policy Miner and Red-Team roles.
+- If recording time allows, instantiate the Policy Miner Agent and Red-Team Agent specs inside UiPath Agent Builder using the `/uipath-native-agent-pack` payload.
 - Add a reusable API Workflow runtime permit template.
 - Add first-class Test Cloud attachments for captured AI traces, deterministic oracle versions, and evidence hashes.
 - Expand beyond customer-data access into invoice, refund, procurement, and support AI workflows.

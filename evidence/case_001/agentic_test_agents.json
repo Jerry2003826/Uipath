@@ -26,28 +26,40 @@
     {
       "name": "Policy Miner Agent",
       "type": "testing_agent",
+      "uipath_native_candidate": true,
+      "uipath_surface": "Agent Builder / Studio Web",
       "current_evidence": [
         "permitops_worker/fixtures/policies.yaml",
-        "evidence/case_001/agentic_test_swarm_run.json"
+        "evidence/case_001/agentic_test_swarm_run.json",
+        "uipath/agents/policy_miner_agent.md",
+        "evidence/case_001/uipath_native_agent_pack.json"
       ],
       "responsibility": "Extracts policy obligations from the raw PII policy, agent manifest, tool schema, and captured AI trace."
     },
     {
       "name": "Red-Team Agent",
       "type": "testing_agent",
+      "uipath_native_candidate": true,
+      "uipath_surface": "Agent Builder / Studio Web",
       "current_evidence": [
         "evidence/case_001/red_team_scenarios.json",
         "evidence/case_001/coding_agent_prompts.jsonl",
-        "evidence/case_001/coding_agent_outputs.jsonl"
+        "evidence/case_001/coding_agent_outputs.jsonl",
+        "uipath/agents/red_team_agent.md",
+        "evidence/case_001/uipath_native_agent_pack.json"
       ],
       "responsibility": "Generates adversarial prompt-injection and agent-to-agent data misuse scenarios."
     },
     {
       "name": "Test Designer Agent",
       "type": "testing_agent",
+      "uipath_native_candidate": true,
+      "uipath_surface": "Agent Builder / Studio Web",
       "current_evidence": [
         "evidence/case_001/test_designer_cases.json",
-        "evidence/case_001/test_cases.json"
+        "evidence/case_001/test_cases.json",
+        "uipath/agents/test_designer_agent.md",
+        "evidence/case_001/uipath_native_agent_pack.json"
       ],
       "responsibility": "Converts red-team scenarios into Test Cloud certification cases with deterministic expected outcomes."
     },
@@ -63,9 +75,14 @@
     {
       "name": "Failure Analyst Agent",
       "type": "testing_agent",
+      "uipath_native_implemented": true,
+      "uipath_surface": "Studio Web Autonomous Agent",
       "current_evidence": [
         "evidence/case_001/failure_analysis.json",
-        "evidence/case_001/test_results_before.json"
+        "evidence/case_001/test_results_before.json",
+        "assets/uipath_failure_analyst_agent_debug_success.png",
+        "evidence/case_001/uipath_failure_analyst_agent_debug_success.txt",
+        "evidence/case_001/uipath_native_agent_pack.json"
       ],
       "responsibility": "Explains failed Test Cloud evidence and recommends targeted repair plus re-test scope."
     },
@@ -114,5 +131,12 @@
     "action_center_task": "3545796",
     "api_workflow_result": "deny_and_suspend"
   },
-  "sandbox_enhancement": "Add visible UiPath Agent Builder implementations for Policy Miner, Red-Team, and Test Designer when sandbox access exposes the agent runtime."
+  "native_agent_depth_evidence": [
+    "uipath/agents/policy_miner_agent.md",
+    "uipath/agents/red_team_agent.md",
+    "uipath/agents/test_designer_agent.md",
+    "evidence/case_001/uipath_native_agent_pack.json",
+    "assets/uipath_failure_analyst_agent_debug_success.png"
+  ],
+  "sandbox_enhancement": "Policy Miner, Red-Team, and Test Designer now have UiPath Agent Builder specs and a worker-served native agent pack; Failure Analyst is already implemented and debugged inside Studio Web."
 }

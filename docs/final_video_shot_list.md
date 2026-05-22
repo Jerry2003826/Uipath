@@ -49,11 +49,14 @@ Screen:
 
 - Policy Miner / Red-Team / Test Designer / Test Selector cards
 - TC-001 through TC-006 evidence
+- UiPath-native agent depth pack: `/uipath-native-agent-pack`
+- Optional Studio Web / Agent Builder specs for Policy Miner Agent, Red-Team Agent, and Test Designer Agent
 
 Narration:
 
 ```text
 The testing agents turn policy and trace evidence into adversarial tests, then select the tests by risk, coverage, change impact, and failure history.
+The UiPath-native agent depth is explicit: Policy Miner, Red-Team, and Test Designer have Agent Builder specs, and Failure Analyst is already debugged as a Studio Web Autonomous Agent.
 ```
 
 ## 1:35-2:10 - Test Manager / Test Cloud evidence
@@ -93,6 +96,12 @@ If time allows, briefly show the UiPath-native Failure Analyst Agent draft:
 ```text
 This role also exists as a UiPath Studio Web Autonomous Agent. The model and prompt are configured in UiPath, the unneeded template issue-tracker tool was removed, and Health Analyzer reports no issues.
 It was also debugged successfully inside Studio Web, with an execution trace showing an LLM call and a completed certification failure analysis output.
+```
+
+If there is only time for one native-agent shot, show the Failure Analyst debug trace. If there is time for a second shot, show the `/uipath-native-agent-pack` payload and say:
+
+```text
+The other testing roles are also ready for UiPath Agent Builder: Policy Miner Agent, Red-Team Agent, and Test Designer Agent all have prompt contracts, input variables, expected JSON outputs, and Test Cloud evidence links.
 ```
 
 ## 2:45-3:20 - Action Center gate
@@ -160,4 +169,5 @@ Agentic Test Swarm turns AI-generated tests into enforceable production permissi
 - Show Action Center before claiming an active restricted permit.
 - Show `deny_and_suspend`.
 - Show `TC-006`.
+- Show UiPath-native agent depth: Failure Analyst Agent debug trace plus Policy Miner Agent / Red-Team Agent / Test Designer Agent specs or `/uipath-native-agent-pack`.
 - Keep the video under five minutes.

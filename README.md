@@ -14,7 +14,7 @@ Start here if you are reviewing the project quickly.
 
 1. **Live system**: open `https://permitops-uipath.vercel.app/live-swarm-view` and run the live Agentic Test Swarm simulation. The public runbook endpoint is `https://permitops-uipath.vercel.app/uipath-one-click-runbook`.
 2. **UiPath platform proof**: review `assets/uipath_api_workflow_success_deny_suspend.png`, `assets/maestro_permitops_bpmn_autopilot.png`, and `docs/platform_spike_status.md`.
-3. **Test Cloud evidence**: review `assets/test_manager_permitops_execution_5_passed_viewport.png` and `uipath/test_cloud/test_manager_plan_c.md`.
+3. **Test Cloud evidence**: review `assets/test_manager_6_passed_completed.png` and `uipath/test_cloud/test_manager_plan_c.md`.
 4. **Action Center gate**: review `assets/action_center_permitops_pending_assigned_task_3545796.png`; keep task `#3545796` pending until the final demo approval moment.
 5. **Presentation deck**: use `assets/agentic_test_swarm_deck.pptx` or the markdown outline in `docs/presentation_deck.md`.
 
@@ -164,9 +164,18 @@ Current structured evidence: `evidence/case_001/agentic_test_agents.json`.
 Agent type: combination.
 
 - **External coded agents**: Red-Team Agent, Test Designer Agent, Failure Analyst Agent, and Repair Agent are represented as coded/testing agents that can be powered by external LLMs or coding agents.
+- **UiPath-native agent depth**: Policy Miner Agent, Red-Team Agent, and Test Designer Agent now have Agent Builder / Studio Web specs, prompt contracts, input variables, and expected JSON outputs. Failure Analyst Agent is already implemented as a UiPath-native Studio Web Autonomous Agent and debugged successfully.
 - **Deterministic coded worker**: Policy oracle, Test Selector, Quality Governor, runtime permit compiler, and `/license-decision` service provide repeatable decisions without live LLM dependency.
 - **UiPath low-code/governance surfaces**: Studio Web / Maestro, Test Cloud / Test Manager, Action Center, and API Workflows are the visible orchestration, testing, approval, and enforcement layer.
 - **Coding-agent use**: Codex-style coding agents are used to generate adversarial scenarios and repair candidates. Their outputs are not trusted until deterministic expected results and Test Cloud evidence validate them.
+
+UiPath-native setup pack:
+
+- `uipath/agents/policy_miner_agent.md`
+- `uipath/agents/red_team_agent.md`
+- `uipath/agents/test_designer_agent.md`
+- `evidence/case_001/uipath_native_agent_pack.json`
+- Public worker endpoint for Studio Web/API Workflow: `/uipath-native-agent-pack`
 
 ## Evidence package
 
@@ -179,6 +188,7 @@ Key local evidence files:
 - `evidence/case_001/failure_analysis.json`
 - `evidence/case_001/repair_summary.md`
 - `evidence/case_001/agentic_test_swarm_run.json`
+- `evidence/case_001/uipath_native_agent_pack.json`
 - `evidence/case_001/test_results_before.json`
 - `evidence/case_001/test_results_after.json`
 - `evidence/case_001/license.json`
@@ -249,6 +259,8 @@ The live tenant evidence still uses the original PermitOps names because those U
 - Action Center pending task: `#3545796`
 - Studio Web / API Workflow proof: raw email export returns `deny_and_suspend`
 - UiPath-native Agent Builder / Studio Web proof: `Generate incident tickets from logs 1 2` is configured as the `Agentic Test Swarm Failure Analyst Agent` with UiPath model `gpt-5.4-2026-03-05`
+- UiPath-native agent depth pack: Policy Miner Agent, Red-Team Agent, and Test Designer Agent have Studio Web / Agent Builder setup specs and prompt contracts.
+- Native agent pack endpoint: `https://permitops-uipath.vercel.app/uipath-native-agent-pack`
 
 Evidence screenshots for the new live TC-006 mapping:
 
@@ -275,6 +287,8 @@ Historical boundary retained for transparency: `PermitOps Certification Evidence
 Resolved Agent Builder boundary: the template `Create Issue` integration tool was removed from the Failure Analyst Agent draft. Health Analyzer now reports `No issues found`, the draft is saved, and the `Debug` action is available.
 
 UiPath-native Agent Builder bonus proof: the Failure Analyst Agent was debugged inside Studio Web with a `log_chunk` evidence package for TC-001. The execution trace shows an Agent run, LLM call, `gpt-5.4-2026-03-05-community-agents` model run, `1 Agents.LLMCalls` usage, and a successful output titled `Completed certification failure analysis`.
+
+UiPath-native agent depth proof: the repo now includes Studio Web / Agent Builder specs for Policy Miner Agent, Red-Team Agent, and Test Designer Agent. These specs give exact input variables, prompts, expected JSON outputs, and Test Cloud evidence links, while `/uipath-native-agent-pack` exposes the same setup pack for a UiPath workflow to fetch.
 
 Judge-taste adjustment: the final video should make the testing swarm the product and the runtime permit the output. The strongest phrasing is `risk-revealing tests`, `UiPath-governed quality system`, and `AI amplifies judgment, not replaces it`.
 

@@ -34,6 +34,22 @@ Judging claim:
 A UiPath-native Autonomous Agent ingests TC-001 Test Cloud evidence through log_chunk, calls gpt-5.4-2026-03-05-community-agents inside Studio Web, and returns a completed certification failure analysis.
 ```
 
+UiPath-native agent depth:
+
+```text
+Policy Miner Agent, Red-Team Agent, and Test Designer Agent now have UiPath Agent Builder / Studio Web specs with input variables, system prompts, expected JSON outputs, and Test Cloud evidence links.
+```
+
+Artifacts:
+
+```text
+uipath/agents/policy_miner_agent.md
+uipath/agents/red_team_agent.md
+uipath/agents/test_designer_agent.md
+evidence/case_001/uipath_native_agent_pack.json
+/uipath-native-agent-pack
+```
+
 What the trace proves:
 
 ```text
@@ -106,6 +122,13 @@ If time allows, insert a 5-8 second shot after the Failure Analyst section:
 ```text
 Show assets/uipath_failure_analyst_agent_debug_success.png or the live Studio Web execution trace.
 Narrate: This Failure Analyst role also runs as a UiPath-native Autonomous Agent; the trace shows an LLM call and successful certification failure analysis inside Studio Web.
+```
+
+If there is a second native-agent shot:
+
+```text
+Show /uipath-native-agent-pack or the three spec files.
+Narrate: Policy Miner Agent, Red-Team Agent, and Test Designer Agent are also prepared as UiPath-native Agent Builder roles, so the testing swarm is not just an external Python worker.
 ```
 
 Do not click Action Center approval except during the final recording.

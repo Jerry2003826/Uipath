@@ -57,6 +57,11 @@ def test_readme_declares_agent_type_and_business_impact_metrics():
     assert "## Agent type" in readme
     assert "Agent type: combination" in readme
     assert "External coded agents" in readme
+    assert "UiPath-native agent depth" in readme
+    assert "Policy Miner Agent" in readme
+    assert "Red-Team Agent" in readme
+    assert "Test Designer Agent" in readme
+    assert "/uipath-native-agent-pack" in readme
     assert "UiPath low-code/governance surfaces" in readme
     assert "## Business impact metrics" in readme
     assert "manual AI workflow review time" in readme
@@ -219,6 +224,10 @@ def test_final_video_shot_list_is_uipath_first():
         "deny_and_suspend",
         "TC-006",
         "Do not start from Vercel",
+        "UiPath-native agent depth",
+        "Policy Miner Agent",
+        "Red-Team Agent",
+        "Test Designer Agent",
     ]:
         assert phrase in doc
 
@@ -238,6 +247,10 @@ def test_devpost_submission_package_is_ready_to_paste():
         "What's next",
         "Demo video checklist",
         "GitHub repository",
+        "UiPath-native agent depth",
+        "Policy Miner Agent",
+        "Red-Team Agent",
+        "/uipath-native-agent-pack",
     ]:
         assert phrase in doc
 
@@ -462,3 +475,31 @@ def test_uipath_native_failure_analyst_agent_draft_is_documented():
         assert "Failure Analyst Agent" in doc
         assert "uipath_failure_analyst_agent_no_issues.png" in doc
         assert "uipath_failure_analyst_agent_debug_success.png" in doc
+
+
+def test_uipath_native_agent_depth_pack_is_documented():
+    docs = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [
+            README,
+            DEVPOST_PACKAGE,
+            VIDEO_SHOT_LIST,
+            SUBMISSION_READINESS,
+            PLATFORM_SPIKE_STATUS,
+            BONUS_EVIDENCE_PACK,
+        ]
+    )
+
+    for phrase in [
+        "UiPath-native agent depth",
+        "Policy Miner Agent",
+        "Red-Team Agent",
+        "Test Designer Agent",
+        "Failure Analyst Agent",
+        "/uipath-native-agent-pack",
+        "evidence/case_001/uipath_native_agent_pack.json",
+        "uipath/agents/policy_miner_agent.md",
+        "uipath/agents/red_team_agent.md",
+        "uipath/agents/test_designer_agent.md",
+    ]:
+        assert phrase in docs
