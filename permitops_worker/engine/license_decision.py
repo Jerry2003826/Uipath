@@ -7,12 +7,23 @@ def _parse_utc(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def _response(decision: str, reason: str, license_status: str, evidence_ref: str | None = None) -> dict[str, str]:
+def _response(
+    decision: str,
+    reason: str,
+    license_status: str,
+    evidence_ref: str | None = None,
+    previous_status: str | None = None,
+    next_license_level: str | None = None,
+) -> dict[str, str]:
     output = {
         "decision": decision,
         "reason": reason,
         "license_status": license_status,
     }
+    if previous_status:
+        output["previous_license_status"] = previous_status
+    if next_license_level:
+        output["next_license_level"] = next_license_level
     if evidence_ref:
         output["evidence_ref"] = evidence_ref
     return output
@@ -26,9 +37,14 @@ def decide(call: AgentToolCall, license_doc: AgentLicense) -> dict[str, str]:
         return _response("deny", "license_expired", license_doc.status)
 
     if call.action in license_doc.blocked_actions:
-        license_doc.status = "suspended"
-        license_doc.license_level = "SX_suspended"
-        return _response("deny_and_suspend", "blocked_action_attempted", "suspended", "runtime-event-001")
+        return _response(
+            "deny_and_suspend",
+            "blocked_action_attempted",
+            "suspended",
+            "runtime-event-001",
+            previous_status=license_doc.status,
+            next_license_level="SX_suspended",
+        )
 
     if call.action in license_doc.allowed_actions:
         return _response("allow", "allowed_by_license", license_doc.status)

@@ -102,6 +102,8 @@ https://permitops-uipath.vercel.app/test-cloud-traceability
 https://permitops-uipath.vercel.app/test-cloud-traceability-view
 https://permitops-uipath.vercel.app/test-manager-webhook-demo
 https://permitops-uipath.vercel.app/test-manager-webhook-demo-view
+https://permitops-uipath.vercel.app/judge-evidence-matrix
+https://permitops-uipath.vercel.app/judge-evidence-matrix-view
 ```
 
 Evidence files:
@@ -110,6 +112,10 @@ Evidence files:
 - `evidence/case_001/evidence_graph.json`
 - `evidence/case_001/test_cloud_traceability_pack.json`
 - `evidence/case_001/test_manager_create_defect_webhook_demo.json`
+
+Judge-facing status page:
+
+- `/judge-evidence-matrix-view` separates live UiPath tenant proof from deterministic demo evidence and next-platform-polish items, so the final pitch does not overclaim blueprint artifacts as live tenant configuration.
 
 Judge line:
 

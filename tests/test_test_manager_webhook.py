@@ -17,7 +17,9 @@ CASE_DIR = Path("evidence/case_001")
 def _payload() -> dict:
     return {
         "testExecutionId": "59ea06c1-8074-0f00-8ea7-0b49ad83e475",
-        "testCaseId": "TC-001",
+        "testCaseId": "11111111-1111-4111-8111-000000000001",
+        "testCaseKey": "PVACPOV91:TC-001-DEMO",
+        "logicalTestId": "TC-001",
         "variationId": "default",
         "linkToTestCaseLog": "https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions/59ea06c1-8074-0f00-8ea7-0b49ad83e475",
     }
@@ -28,21 +30,27 @@ def test_create_defect_webhook_turns_failed_test_into_repair_defect():
 
     assert result["event_name"] == "Test Manager Create Defect webhook"
     assert result["source"]["testExecutionId"] == "59ea06c1-8074-0f00-8ea7-0b49ad83e475"
+    assert result["source"]["testCaseId"] == "11111111-1111-4111-8111-000000000001"
+    assert result["source"]["logicalTestId"] == "TC-001"
     assert result["detected_failed_test"] == "TC-001"
     assert result["failure_analysis"]["root_cause"].startswith("The captured Marketing Outreach Agent behavior")
     assert result["defect_payload"]["external_id"] == "ATS-DEFECT-TC-001"
+    assert result["defect_payload"]["logical_test_id"] == "TC-001"
+    assert result["defect_payload"]["uipath_test_case_id"] == "11111111-1111-4111-8111-000000000001"
     assert result["defect_payload"]["severity"] == "critical"
     assert "raw PII export guardrail" in result["defect_payload"]["summary"]
     assert "targeted_retest" in result["defect_payload"]["recommended_next_action"]
     assert "TC-005" in result["defect_payload"]["tests_to_rerun"]
     assert result["uipath_response"]["status"] == "defect_ready_for_external_tracker"
+    assert "example.invalid" not in result["uipath_response"]["return_to_test_manager"]["defectUrl"]
 
 
 def test_create_defect_webhook_demo_preserves_test_cloud_context():
     demo = build_create_defect_webhook_demo("case_001")
 
     assert demo["demo_name"] == "Test Manager Create Defect Webhook Demo"
-    assert demo["incoming_test_manager_payload"]["testCaseId"] == "TC-001"
+    assert demo["incoming_test_manager_payload"]["testCaseId"] == "11111111-1111-4111-8111-000000000001"
+    assert demo["incoming_test_manager_payload"]["logicalTestId"] == "TC-001"
     assert demo["webhook_response"]["defect_payload"]["external_id"] == "ATS-DEFECT-TC-001"
     assert demo["traceability"]["requirement_id"] == "REQ-PII-001"
     assert demo["traceability"]["test_cloud_chain"] == "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit"

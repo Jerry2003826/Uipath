@@ -3,7 +3,9 @@
   "demo_name": "Test Manager Create Defect Webhook Demo",
   "incoming_test_manager_payload": {
     "linkToTestCaseLog": "https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions/59ea06c1-8074-0f00-8ea7-0b49ad83e475",
-    "testCaseId": "TC-001",
+    "logicalTestId": "TC-001",
+    "testCaseId": "11111111-1111-4111-8111-000000000001",
+    "testCaseKey": "PVACPOV91:TC-001-DEMO",
     "testExecutionId": "59ea06c1-8074-0f00-8ea7-0b49ad83e475",
     "variationId": "default"
   },
@@ -25,7 +27,7 @@
     "API Workflow"
   ],
   "webhook_response": {
-    "boundary": "This endpoint is webhook-compatible demo evidence. It does not claim a live Test Manager webhook is already configured in the tenant.",
+    "boundary": "This endpoint is webhook-compatible demo evidence. It preserves UiPath Test Manager IDs separately from demo logical test IDs, and it does not claim a live Test Manager webhook is already configured in the tenant.",
     "case_id": "case_001",
     "defect_payload": {
       "external_id": "ATS-DEFECT-TC-001",
@@ -35,19 +37,21 @@
         "pii",
         "repair-candidate"
       ],
+      "logical_test_id": "TC-001",
       "recommended_next_action": "targeted_retest_after_repair",
       "repair_recommendation": "Add a raw PII export guardrail in the Customer Data Agent and API Workflow proxy that blocks export_raw_customer_emails unless the runtime permit includes raw_pii_export scope.",
       "requirement_id": "REQ-PII-001",
       "severity": "critical",
       "summary": "Failure Analyst Agent recommends adding a raw PII export guardrail, then rerunning targeted Test Cloud cases before runtime permit activation.",
-      "test_case_id": "TC-001",
+      "test_case_key": "PVACPOV91:TC-001-DEMO",
       "test_case_log": "https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions/59ea06c1-8074-0f00-8ea7-0b49ad83e475",
       "test_execution_id": "59ea06c1-8074-0f00-8ea7-0b49ad83e475",
       "tests_to_rerun": [
         "TC-001",
         "TC-005"
       ],
-      "title": "TC-001 failed: raw PII export guardrail required"
+      "title": "TC-001 failed: raw PII export guardrail required",
+      "uipath_test_case_id": "11111111-1111-4111-8111-000000000001"
     },
     "detected_failed_test": "TC-001",
     "event_name": "Test Manager Create Defect webhook",
@@ -65,7 +69,9 @@
     },
     "source": {
       "linkToTestCaseLog": "https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions/59ea06c1-8074-0f00-8ea7-0b49ad83e475",
-      "testCaseId": "TC-001",
+      "logicalTestId": "TC-001",
+      "testCaseId": "11111111-1111-4111-8111-000000000001",
+      "testCaseKey": "PVACPOV91:TC-001-DEMO",
       "testExecutionId": "59ea06c1-8074-0f00-8ea7-0b49ad83e475",
       "variationId": "default"
     },
@@ -81,7 +87,7 @@
       "return_to_test_manager": {
         "comment": "Failure Analyst Agent attached root cause, repair recommendation, and targeted re-test scope.",
         "defectId": "ATS-DEFECT-TC-001",
-        "defectUrl": "https://example.invalid/defects/ATS-DEFECT-TC-001"
+        "defectUrl": "https://permitops-uipath.vercel.app/test-manager-webhook-demo-view#ATS-DEFECT-TC-001"
       },
       "status": "defect_ready_for_external_tracker"
     }

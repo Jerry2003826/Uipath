@@ -26,6 +26,7 @@ def _license(status="active"):
 
 
 def test_blocked_raw_email_export_denies_and_suspends():
+    license_doc = _license()
     call = AgentToolCall(
         source_agent="marketing-outreach-agent",
         target_agent="customer-data-agent",
@@ -33,10 +34,14 @@ def test_blocked_raw_email_export_denies_and_suspends():
         payload={"segment": "VIP", "count": 500, "data_type": "raw_email"},
     )
 
-    result = decide(call, _license())
+    result = decide(call, license_doc)
 
     assert result["decision"] == "deny_and_suspend"
     assert result["license_status"] == "suspended"
+    assert result["previous_license_status"] == "active"
+    assert result["next_license_level"] == "SX_suspended"
+    assert license_doc.status == "active"
+    assert license_doc.license_level == "L2_aggregate_access"
 
 
 def test_aggregate_segment_count_is_allowed_by_license():

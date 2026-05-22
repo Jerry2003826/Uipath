@@ -3,10 +3,15 @@
   "claim": "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
   "current_boundary": "Live tenant proof currently covers Test Case -> Execution -> Runtime Permit. REQ-PII-001, obsolete-test classification, and defect webhook are the next Test Cloud-native platform polish items.",
   "defect_webhook_blueprint": {
+    "demo_endpoint": "/test-manager-webhook-demo",
+    "demo_view": "/test-manager-webhook-demo-view",
+    "evidence_file": "evidence/case_001/test_manager_create_defect_webhook_demo.json",
     "id": "defect-webhook-blueprint",
     "payload_fields": [
       "testExecutionId",
       "testCaseId",
+      "testCaseKey",
+      "logicalTestId",
       "variationId",
       "linkToTestCaseLog"
     ],

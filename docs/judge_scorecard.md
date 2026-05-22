@@ -130,6 +130,7 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | Claim | Evidence |
 | --- | --- |
 | Runs publicly | `https://permitops-uipath.vercel.app/health` |
+| Judge evidence status matrix | `https://permitops-uipath.vercel.app/judge-evidence-matrix`, `https://permitops-uipath.vercel.app/judge-evidence-matrix-view` separates live tenant proof, deterministic demo evidence, and next-platform-polish items |
 | Live AI workflow test | `https://permitops-uipath.vercel.app/live-swarm-view` |
 | Continuous Quality Memory | `https://permitops-uipath.vercel.app/continuous-quality-memory`, `evidence/case_001/continuous_quality_memory.json` |
 | Evidence Graph | `https://permitops-uipath.vercel.app/evidence-graph`, `evidence/case_001/evidence_graph.json` |

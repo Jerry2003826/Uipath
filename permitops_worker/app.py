@@ -10,6 +10,7 @@ from fastapi.responses import HTMLResponse, Response
 from permitops_worker.engine.ai_trace import capture_trace_replay
 from permitops_worker.engine.compiler import compile_license
 from permitops_worker.engine.continuous_quality import build_continuous_quality_memory, build_evidence_graph
+from permitops_worker.engine.judge_evidence import build_judge_evidence_matrix
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.risk_scan import scan_risk
@@ -439,7 +440,11 @@ def test_manager_webhook_demo_view(case_id: str = "case_001") -> HTMLResponse:
         {
             "label": "Incoming Test Manager payload",
             "owner": "Test Manager Webhooks",
-            "evidence": f"{demo['incoming_test_manager_payload']['testCaseId']} from execution {demo['incoming_test_manager_payload']['testExecutionId']}",
+            "evidence": (
+                f"{demo['incoming_test_manager_payload']['logicalTestId']} "
+                f"({demo['incoming_test_manager_payload']['testCaseId']}) from execution "
+                f"{demo['incoming_test_manager_payload']['testExecutionId']}"
+            ),
         },
         {
             "label": response["failure_analysis"]["agent"],
@@ -463,6 +468,27 @@ def test_manager_webhook_demo_view(case_id: str = "case_001") -> HTMLResponse:
         },
     ]
     return HTMLResponse(_render_evidence_view(demo["demo_name"], demo["judge_line"], items, demo))
+
+
+@app.get("/judge-evidence-matrix")
+def judge_evidence_matrix(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return build_judge_evidence_matrix(validated_case_id)
+
+
+@app.get("/judge-evidence-matrix-view", response_class=HTMLResponse)
+def judge_evidence_matrix_view(case_id: str = "case_001") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    matrix = build_judge_evidence_matrix(validated_case_id)
+    items = [
+        {
+            "label": row["claim"],
+            "owner": f"{row['status']} - {row['uipath_surface']}",
+            "evidence": f"{row['evidence']} Boundary: {row['boundary']}",
+        }
+        for row in matrix["rows"]
+    ]
+    return HTMLResponse(_render_evidence_view(matrix["system_name"], matrix["claim"], items, matrix))
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)
