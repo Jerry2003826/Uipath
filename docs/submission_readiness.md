@@ -53,6 +53,11 @@ Known boundary:
 - Native-depth deep dive: the project maps cleanly to UiPath's native agent
   shape, `Prompt / Context / Tools / Escalations`. Current proof is strongest
   for prompt, tools, and escalations; Context Grounding, Agent Memory, tool guardrails, and tool simulations should be framed as product-fit extensions rather than rushed into the final demo.
+- Test Cloud native traceability deep dive: the strongest remaining platform
+  upgrade is making `Requirement -> Test Case -> Execution -> Defect -> Runtime
+  Permit` visible inside Test Manager/Test Cloud. Current live proof covers Test
+  Case -> Execution -> Runtime Permit. The next safe UiPath additions are
+  `REQ-PII-001`, an `Obsolete Test Scout`, and a Create Defect webhook plan.
 
 ## Engineering proof
 
@@ -152,6 +157,7 @@ Ready-to-paste submission helpers now exist:
 - `docs/product_feedback_submission.md`
 - `docs/coding_agents_bonus_pack.md`
 - `docs/uipath_native_depth_gap_research_2026-05-23.md`
+- `docs/test_cloud_native_gap_research_2026-05-23.md`
 
 ## 2026-05-21 platform attempt
 

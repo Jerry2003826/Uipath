@@ -9,6 +9,7 @@ OFFICIAL_ALIGNMENT = Path("docs/official_track3_alignment.md")
 JUDGE_SCORECARD = Path("docs/judge_scorecard.md")
 JUDGE_TASTE_RESEARCH = Path("docs/judge_taste_research_2026-05-23.md")
 UIPATH_NATIVE_GAP_RESEARCH = Path("docs/uipath_native_depth_gap_research_2026-05-23.md")
+TEST_CLOUD_NATIVE_GAP_RESEARCH = Path("docs/test_cloud_native_gap_research_2026-05-23.md")
 TC006_RUNBOOK = Path("docs/tc006_test_manager_runbook.md")
 VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
@@ -240,6 +241,55 @@ def test_uipath_native_depth_gap_research_is_actionable():
         assert phrase in feedback
 
     assert "2026-05-23 - UiPath-native depth gap deep dive" in log
+
+
+def test_test_cloud_native_gap_research_maps_native_features_to_next_actions():
+    doc = TEST_CLOUD_NATIVE_GAP_RESEARCH.read_text(encoding="utf-8")
+    readme = README.read_text(encoding="utf-8")
+    readiness = SUBMISSION_READINESS.read_text(encoding="utf-8")
+    feedback = PRODUCT_FEEDBACK_SUBMISSION.read_text(encoding="utf-8")
+    video = VIDEO_SHOT_LIST.read_text(encoding="utf-8")
+    log = RESEARCH_LOG.read_text(encoding="utf-8")
+
+    for phrase in [
+        "Test Cloud Native Gap Research",
+        "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
+        "REQ-PII-001",
+        "Finding obsolete tests based on requirements",
+        "Obsolete Test Scout",
+        "AI-powered test insights",
+        "Create Defect webhook",
+        "Healing Agent",
+        "Testing Process Governance",
+        "Do not claim live Healing Agent use",
+        "P0 final-video wording",
+        "P1 UiPath platform enhancement",
+        "P2 post-submission build path",
+    ]:
+        assert phrase in doc
+
+    for phrase in [
+        "docs/test_cloud_native_gap_research_2026-05-23.md",
+        "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
+    ]:
+        assert phrase in readme
+
+    for phrase in [
+        "Test Cloud native traceability deep dive",
+        "REQ-PII-001",
+        "Obsolete Test Scout",
+    ]:
+        assert phrase in readiness
+
+    for phrase in [
+        "Create Defect webhook",
+        "Testing Process Governance",
+        "obsolete test",
+    ]:
+        assert phrase in feedback
+
+    assert "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit" in video
+    assert "2026-05-23 - Test Cloud native traceability deep dive" in log
 
 
 def test_tc006_runbook_is_safe_for_final_platform_polish():

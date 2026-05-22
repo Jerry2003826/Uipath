@@ -30,6 +30,7 @@ Judge-facing proof pack:
 - [Coding Agents bonus pack](docs/coding_agents_bonus_pack.md)
 - [Official Track 3 alignment](docs/official_track3_alignment.md)
 - [UiPath-native depth gap research](docs/uipath_native_depth_gap_research_2026-05-23.md)
+- [Test Cloud native gap research](docs/test_cloud_native_gap_research_2026-05-23.md)
 - [Continuous research workbench](docs/research_workbench.md)
 
 ## What it does
@@ -108,6 +109,28 @@ Judge line:
 ```text
 Runtime incidents become permanent UiPath Test Cloud regression evidence, and the Evidence Graph proves every permit decision is connected to trace, policy, Test Cloud result, Action Center approval, and API Workflow enforcement.
 ```
+
+## Test Cloud-native traceability target
+
+The latest Test Cloud native gap research says the next UiPath platform upgrade
+should make this chain first-class:
+
+```text
+Requirement -> Test Case -> Execution -> Defect -> Runtime Permit
+```
+
+Current proof already covers Test Case -> Execution -> Runtime Permit with
+TC-001 through TC-006, the six-case Test Manager execution, Action Center, and
+API Workflow enforcement. The next Test Cloud-native objects should be:
+
+- `REQ-PII-001`: a managed Test Manager requirement for raw customer PII export policy.
+- `Obsolete Test Scout`: an agent that checks whether changed requirements or tool schemas make existing tests stale.
+- `Create Defect webhook`: a Test Manager failure event that can trigger Failure Analyst and Repair Agent evidence.
+- `Testing Process Governance`: the native sign-off path for test artifacts, complementing Action Center permit approval.
+
+Research note:
+
+- `docs/test_cloud_native_gap_research_2026-05-23.md`
 
 ## UiPath-native agent shape
 

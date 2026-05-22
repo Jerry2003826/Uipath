@@ -44,6 +44,40 @@ For AI-infused workflow testing, Test Cloud evidence attachments should support 
 It would also be useful for Test Cloud to display a native Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
 ```
 
+## Requirement-to-permit traceability
+
+copy-paste answer:
+
+```text
+The strongest Test Cloud-native version of this project would make the full chain visible as one traceability path: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit. Agentic Test Swarm can already show Test Cases, Executions, Action Center approval, API Workflow enforcement, and evidence hashes. The next product-level improvement would be a first-class way to link a Test Manager requirement such as REQ-PII-001 to generated tests, failed execution evidence, repair recommendations, permit restrictions, and runtime decisions.
+```
+
+## Obsolete test and defect-loop support
+
+copy-paste answer:
+
+```text
+Test Manager's obsolete test capability maps directly to AI workflow governance. When a policy or agent tool schema changes, a testing agent should be able to mark tests as keep, update, retire candidate, or coverage gap. In Agentic Test Swarm we call this Obsolete Test Scout. It would be valuable if Test Manager exposed structured obsolete-test decisions that custom agents could attach to requirements and test cases.
+
+Create Defect webhook support is also a natural fit. When TC-001 fails, the Test Manager Create Defect webhook could trigger a Failure Analyst Agent, attach the trace ID and policy ID, generate a repair candidate, and link the resulting defect back to the test case log.
+```
+
+## Testing Process Governance linkage
+
+copy-paste answer:
+
+```text
+Testing Process Governance and Action Center solve two different approval layers. Testing Process Governance can sign off the test artifacts themselves, while Action Center approves the high-impact runtime permit. A native link between governed test case signatures, Action Center task status, and API Workflow enforcement would make AI workflow certification much easier to audit.
+```
+
+## Healing Agent boundary
+
+copy-paste answer:
+
+```text
+Healing Agent would complement this pattern, but it should not be confused with the custom Repair Agent. Healing Agent is valuable for debugging and self-healing UiPath automated test execution issues. Agentic Test Swarm's Repair Agent handles unsafe AI workflow behavior, such as raw PII export guardrails. The product opportunity is to let both kinds of repair evidence feed the same Test Cloud evidence graph.
+```
+
 ## Agent Builder guardrails, simulations, and memory
 
 copy-paste answer:

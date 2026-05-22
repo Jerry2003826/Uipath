@@ -239,13 +239,73 @@ Action taken:
 - Added `docs/uipath_native_depth_gap_research_2026-05-23.md`.
 - Updated README, submission readiness, and product feedback wording.
 
+## 2026-05-23 - Test Cloud native traceability deep dive
+
+Question:
+
+What still needs to be added if judges specifically inspect Agentic Test Swarm
+for Test Cloud-native depth, not only general UiPath platform usage?
+
+Sources:
+
+- AgentHack Track 3 guidance: https://uipath-agenthack.devpost.com/details/tracks
+- AgentHack rules and coding-agent bonus: https://uipath-agenthack.devpost.com/rules
+- UiPath Test Manager docs, Quality-check requirements: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/evaluating-requirement-quality
+- UiPath Test Manager docs, Generate tests for requirements: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/generating-manual-test-cases
+- UiPath Test Manager docs, Finding obsolete tests based on requirements: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/finding-obsolete-tests-based-on-requirements
+- UiPath Test Manager docs, AI-powered test insights: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/ai-powered-test-insights-best-practices
+- UiPath Test Manager docs, Webhooks: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/webhooks
+- UiPath Test Manager docs, Test Manager API integration: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/test-manager-api-integration
+- UiPath Test Manager docs, Enabling Healing Agent: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/enabling-healing-agent
+- UiPath Test Manager docs, Testing Process Governance: https://docs.uipath.com/test-manager/automation-cloud/latest/user-guide/testing-process-governance
+- UiPath Python SDK docs through Context7.
+
+Findings:
+
+- The clearest remaining native-depth story is not adding more tests. It is
+  making Test Cloud the visible system of record for the whole path:
+  `Requirement -> Test Case -> Execution -> Defect -> Runtime Permit`.
+- Current proof covers the middle and end of that chain: TC-001 through TC-006,
+  a six-case Test Manager execution, Action Center approval gate, and API
+  Workflow runtime denial.
+- The most valuable next live Test Manager object is `REQ-PII-001`, linked to
+  TC-001 through TC-006.
+- The best new testing-agent role is `Obsolete Test Scout`, because official
+  Track 3 and Test Manager docs both emphasize outdated / obsolete tests.
+- Test Manager `Create Defect webhook` support is the cleanest way to connect a
+  failed test result to Failure Analyst and Repair Agent evidence.
+- Healing Agent should be positioned carefully: useful adjacent capability, but
+  not something we used live.
+- Testing Process Governance should be described as test-artifact sign-off,
+  while Action Center remains runtime permit approval.
+
+Impact on Agentic Test Swarm:
+
+- Add `docs/test_cloud_native_gap_research_2026-05-23.md`.
+- Add README/readiness/product-feedback/video wording for the native traceability
+  chain.
+- Do not disturb the pending Action Center task `#3545796`.
+
+Decision:
+
+Do not add another risky live UiPath feature before recording. If there is one
+more platform pass, create `REQ-PII-001` and link it to TC-001 through TC-006.
+Otherwise, use this research as final-video narration and product feedback.
+
+Action taken:
+
+- Added `docs/test_cloud_native_gap_research_2026-05-23.md`.
+- Updated README, submission readiness, product feedback, and final-video shot
+  list.
+
 ## Next Research Queue
 
 Label: next research queue
 
-1. Capture UiPath for Coding Agents setup evidence if `uip` login works.
-2. If sandbox exposes Agent Builder, create one visible `Failure Analyst Agent`.
-3. Compare top Devpost AI-agent/testing projects and extract what makes their demos feel judge-ready.
-4. Search for real-world failures in AI-generated tests, prompt injection, and agent-to-agent data leakage.
-5. Audit the demo script against official judging criteria after every major source-backed finding.
-6. Use the completed six-case Test Manager execution as the primary Test Cloud proof in final video review.
+1. Create Test Manager requirement `REQ-PII-001` and link TC-001 through TC-006.
+2. Add Obsolete Test Scout evidence when requirements or tool schemas change.
+3. Capture UiPath for Coding Agents setup evidence if `uip` login works.
+4. Compare top Devpost AI-agent/testing projects and extract what makes their demos feel judge-ready.
+5. Search for real-world failures in AI-generated tests, prompt injection, and agent-to-agent data leakage.
+6. Audit the demo script against official judging criteria after every major source-backed finding.
+7. Use the completed six-case Test Manager execution as the primary Test Cloud proof in final video review.

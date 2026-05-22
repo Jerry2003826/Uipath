@@ -73,6 +73,7 @@ Narration:
 
 ```text
 Test Cloud is where the swarm output becomes managed certification evidence. This is not a local console-only test run.
+The Test Cloud-native chain we are building toward is Requirement -> Test Case -> Execution -> Defect -> Runtime Permit. This live proof shows the managed Test Case and Execution layer, then Action Center and API Workflow complete the runtime permit path.
 ```
 
 ## 2:10-2:45 - Failure Analyst and Repair Agent
