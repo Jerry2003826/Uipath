@@ -2,6 +2,24 @@
 
 This document maps the official AgentHack judging criteria to concrete Agentic Test Swarm proof. Use it as the submission checklist and as the structure for the final demo narration.
 
+## Judge taste update
+
+Current visible judges:
+
+```text
+Taqi Jaffri - enterprise agentic automation, coded agents, interoperability, governance, observability.
+Ingo Philipp - agentic testing, risk thinking, useful evidence, avoiding coverage theater.
+```
+
+Operational implication:
+
+```text
+The demo should not sell "more AI-generated tests."
+It should sell a UiPath-governed quality system that uses AI agents to find risk, explain failure, propose repair, re-test, and enforce only evidence-backed runtime permissions.
+```
+
+Detailed research: `docs/judge_taste_research_2026-05-23.md`.
+
 ## Scorecard summary
 
 | Criterion | What judges need to see | Agentic Test Swarm proof |

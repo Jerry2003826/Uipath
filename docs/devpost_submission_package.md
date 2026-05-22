@@ -33,6 +33,8 @@ Before repair, the Customer Data Agent accepts an executive-override prompt and 
 
 The final runtime decision is `deny_and_suspend` for raw PII export. Aggregate segment insight remains allowed.
 
+Agentic Test Swarm follows the testing principle that AI should amplify judgment, not replace it: agents generate attack ideas and repair candidates, deterministic oracles define expected behavior, Test Cloud records evidence, and Action Center keeps humans accountable.
+
 ## How we built it
 
 UiPath is the orchestration and governance layer:

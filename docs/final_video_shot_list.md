@@ -8,6 +8,13 @@ UiPath-first.
 
 Do not start from Vercel. Vercel is the worker and visual companion. UiPath is the platform that makes the system judgeable.
 
+Judge-taste rule:
+
+```text
+For Taqi Jaffri, show enterprise-governed agentic automation: external agents plus UiPath-native agents, Action Center, API Workflow, traceability, and enforcement.
+For Ingo Philipp, show risk-driven agentic testing: what should be tested, why it matters, failure analysis, targeted re-test, and incident memory.
+```
+
 ## 0:00-0:25 - Studio Web / API Workflow control-plane start
 
 Screen:
@@ -20,6 +27,7 @@ Narration:
 
 ```text
 This starts from UiPath. API Workflow is the control-plane trigger that calls the Agentic Test Swarm worker and routes the result into Test Cloud, Action Center, and runtime enforcement.
+The permit is not the product; the product is the testing swarm that produces risk-revealing evidence.
 ```
 
 ## 0:25-0:55 - Show the unsafe AI workflow under test

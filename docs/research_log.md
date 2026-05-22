@@ -121,6 +121,67 @@ Open risk:
 - The repo still needs live `uip` CLI / UiPath for Coding Agents installation
   evidence before we can claim the strongest possible coding-agent bonus.
 
+## 2026-05-23 - Judge taste research
+
+Question:
+
+What are the visible UiPath AgentHack judges likely to reward, and how should
+the final Agentic Test Swarm demo adapt?
+
+Sources:
+
+- AgentHack homepage and judge list: https://uipath-agenthack.devpost.com/
+- AgentHack official rules: https://uipath-agenthack.devpost.com/rules
+- AgentHack Track 3 guidance: https://uipath-agenthack.devpost.com/details/tracks
+- Taqi Jaffri UiPath profile: https://www.uipath.com/blog/taqi-jaffri/
+- Taqi Jaffri LlamaIndex article: https://www.uipath.com/blog/product-and-updates/llamaindex-fast-tracks-enterprise-grade-agentic-automation-development
+- Taqi Jaffri LangGraph article: https://www.uipath.com/blog/product-and-updates/langgraph-uipath-advancing-agentic-automation-together
+- Ingo Philipp UiPath profile: https://www.uipath.com/blog/ingo-philipp/
+- Ingo Philipp testing article: https://www.uipath.com/blog/ai/how-ai-is-changing-software-testing
+- Ingo Philipp Test Cloud article: https://www.uipath.com/blog/product-and-updates/how-uipath-test-cloud-paves-way-for-agentic-autonomous-qa
+- AgentHack 2025 winners: https://forum.uipath.com/t/here-are-the-uipath-agenthack-2025-winners/3586396
+- AgentHack 2025 finalists: https://forum.uipath.com/t/we-are-thrilled-to-unveil-the-uipath-agenthack-finalist-teams/3295981
+
+Findings:
+
+- Taqi Jaffri's public product writing points toward enterprise-grade agentic
+  automation: external/pro-code agents are valuable, but UiPath should provide
+  deployment, orchestration, monitoring, security, auditability, and
+  human-in-the-loop governance.
+- Ingo Philipp's public testing writing points toward risk thinking rather than
+  test-volume theater: AI should help testers ask what matters and why, not just
+  generate more checks.
+- Prior AgentHack winners/finalists tended to have concrete enterprise use
+  cases, named business pain, multiple UiPath surfaces, and clear community or
+  product value.
+
+Impact on Agentic Test Swarm:
+
+- Keep the testing swarm as the product and the permit as the output.
+- In the video, say "risk-revealing tests" and "AI amplifies judgment, not
+  replaces it."
+- Show the UiPath-native Failure Analyst Agent debug trace because it speaks to
+  Taqi's native/external-agent blend and Ingo's failure-analysis lifecycle.
+- Use TC-006 as the strongest Ingo-oriented proof: incident-to-regression memory
+  for a new phone-number export surface.
+
+Decision:
+
+Do not add a new large feature. The highest expected score gain is judge-tailored
+demo narration and proof ordering.
+
+Action taken:
+
+- Added `docs/judge_taste_research_2026-05-23.md`.
+- Linked the research from README and `docs/judge_scorecard.md`.
+- Updated `docs/final_video_shot_list.md` and
+  `docs/devpost_submission_package.md` with judge-tuned phrasing.
+
+Open risk:
+
+- If the final video starts from Vercel instead of UiPath, the Taqi/platform
+  usage score can still suffer despite strong backend proof.
+
 ## Next Research Queue
 
 Label: next research queue

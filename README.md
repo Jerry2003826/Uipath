@@ -21,6 +21,7 @@ Start here if you are reviewing the project quickly.
 Judge-facing proof pack:
 
 - [Judge scorecard](docs/judge_scorecard.md)
+- [Judge taste research](docs/judge_taste_research_2026-05-23.md)
 - [TC-006 Test Manager runbook](docs/tc006_test_manager_runbook.md)
 - [Final video shot list](docs/final_video_shot_list.md)
 - [Devpost submission package](docs/devpost_submission_package.md)
@@ -268,6 +269,8 @@ Known boundary: the existing Test Manager execution was recorded before TC-006 w
 Resolved Agent Builder boundary: the template `Create Issue` integration tool was removed from the Failure Analyst Agent draft. Health Analyzer now reports `No issues found`, the draft is saved, and the `Debug` action is available.
 
 UiPath-native Agent Builder bonus proof: the Failure Analyst Agent was debugged inside Studio Web with a `log_chunk` evidence package for TC-001. The execution trace shows an Agent run, LLM call, `gpt-5.4-2026-03-05-community-agents` model run, `1 Agents.LLMCalls` usage, and a successful output titled `Completed certification failure analysis`.
+
+Judge-taste adjustment: the final video should make the testing swarm the product and the runtime permit the output. The strongest phrasing is `risk-revealing tests`, `UiPath-governed quality system`, and `AI amplifies judgment, not replaces it`.
 
 ## Runtime permit
 

@@ -7,6 +7,7 @@ DECK_MD = Path("docs/presentation_deck.md")
 DECK_PPTX = Path("assets/agentic_test_swarm_deck.pptx")
 OFFICIAL_ALIGNMENT = Path("docs/official_track3_alignment.md")
 JUDGE_SCORECARD = Path("docs/judge_scorecard.md")
+JUDGE_TASTE_RESEARCH = Path("docs/judge_taste_research_2026-05-23.md")
 TC006_RUNBOOK = Path("docs/tc006_test_manager_runbook.md")
 VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
@@ -117,6 +118,7 @@ def test_judge_quick_start_points_to_proof_pack():
         "Action Center gate",
         "Presentation deck",
         "docs/judge_scorecard.md",
+        "docs/judge_taste_research_2026-05-23.md",
         "docs/tc006_test_manager_runbook.md",
         "docs/final_video_shot_list.md",
         "docs/research_workbench.md",
@@ -138,8 +140,51 @@ def test_judge_scorecard_maps_all_official_criteria_to_evidence():
         "Judge-safe boundaries",
         "UiPath first",
         "Python worker second",
+        "Judge taste update",
+        "Taqi Jaffri",
+        "Ingo Philipp",
+        "risk thinking",
     ]:
         assert phrase in doc
+
+
+def test_judge_taste_research_maps_judges_to_demo_strategy():
+    doc = JUDGE_TASTE_RESEARCH.read_text(encoding="utf-8")
+    readme = README.read_text(encoding="utf-8")
+    video = VIDEO_SHOT_LIST.read_text(encoding="utf-8")
+    devpost = DEVPOST_PACKAGE.read_text(encoding="utf-8")
+    log = RESEARCH_LOG.read_text(encoding="utf-8")
+
+    for phrase in [
+        "Judge Taste Research",
+        "Taqi Jaffri",
+        "Ingo Philipp",
+        "enterprise agentic automation",
+        "risk-driven agentic testing",
+        "risk-revealing tests",
+        "AI should amplify judgment, not replace it",
+        "the permit is the output, not the product",
+        "UiPath-native Agent debug trace",
+        "TC-006 incident memory",
+    ]:
+        assert phrase in doc
+
+    for phrase in [
+        "docs/judge_taste_research_2026-05-23.md",
+        "risk-revealing tests",
+        "AI amplifies judgment, not replaces it",
+    ]:
+        assert phrase in readme
+
+    for phrase in [
+        "Taqi Jaffri",
+        "Ingo Philipp",
+        "risk-driven agentic testing",
+    ]:
+        assert phrase in video
+
+    assert "AI should amplify judgment, not replace it" in devpost
+    assert "2026-05-23 - Judge taste research" in log
 
 
 def test_tc006_runbook_is_safe_for_final_platform_polish():
