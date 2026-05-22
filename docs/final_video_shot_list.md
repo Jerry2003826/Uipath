@@ -69,6 +69,7 @@ Screen:
 - Fresh execution `PermitOps Certification Evidence - 20260522.1544`
 - `Finished`, `6 passed / 0 failed / 0 not executed`
 - `test-cloud-traceability-view`
+- `test-manager-webhook-demo-view`
 
 Narration:
 
@@ -76,6 +77,7 @@ Narration:
 Test Cloud is where the swarm output becomes managed certification evidence. This is not a local console-only test run.
 The Test Cloud-native chain we are building toward is Requirement -> Test Case -> Execution -> Defect -> Runtime Permit. This live proof shows the managed Test Case and Execution layer, then Action Center and API Workflow complete the runtime permit path.
 The Test Cloud Native Traceability Pack shows the next native layer: REQ-PII-001, Obsolete Test Scout, Create Defect webhook, Testing Process Governance, and runtime permit enforcement.
+The webhook demo shows how a failed TC-001 Test Manager result can produce defect payload ATS-DEFECT-TC-001 and route failure analysis into a repair and targeted re-test loop.
 ```
 
 ## 2:10-2:45 - Failure Analyst and Repair Agent
@@ -180,4 +182,5 @@ Agentic Test Swarm turns AI-generated tests into enforceable production permissi
 - Show Continuous Quality Memory with `/continuous-quality-memory-view`.
 - Show Evidence Graph with `/evidence-graph-view`.
 - Show Test Cloud Native Traceability Pack with `/test-cloud-traceability-view`.
+- Show Test Manager Create Defect webhook demo with `/test-manager-webhook-demo-view` if there is time.
 - Keep the video under five minutes.

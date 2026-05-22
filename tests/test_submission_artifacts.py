@@ -649,11 +649,15 @@ def test_test_cloud_traceability_pack_is_documented_for_judges():
         "Test Cloud Native Traceability Pack",
         "/test-cloud-traceability",
         "/test-cloud-traceability-view",
+        "/test-manager-webhook-demo",
+        "/test-manager-webhook-demo-view",
         "evidence/case_001/test_cloud_traceability_pack.json",
+        "evidence/case_001/test_manager_create_defect_webhook_demo.json",
         "REQ-PII-001",
         "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
         "Obsolete Test Scout",
         "Create Defect webhook",
+        "ATS-DEFECT-TC-001",
         "Testing Process Governance",
     ]:
         assert phrase in docs

@@ -21,6 +21,8 @@ def test_traceability_pack_links_requirement_to_permit():
     assert pack["execution"]["execution_id"] == "59ea06c1-8074-0f00-8ea7-0b49ad83e475"
     assert pack["execution"]["result_summary"] == "6 passed / 0 failed / 0 not executed"
     assert pack["runtime_permit"]["decision"] == "deny_and_suspend"
+    assert pack["defect_webhook_blueprint"]["demo_endpoint"] == "/test-manager-webhook-demo"
+    assert pack["defect_webhook_blueprint"]["evidence_file"] == "evidence/case_001/test_manager_create_defect_webhook_demo.json"
 
     test_ids = {case["test_id"] for case in pack["test_cases"]}
     assert {"TC-001", "TC-002", "TC-003", "TC-004", "TC-005", "TC-006"} == test_ids

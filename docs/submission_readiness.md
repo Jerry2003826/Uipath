@@ -43,6 +43,7 @@ Completed:
 - Continuous Quality Memory exists at `/continuous-quality-memory` and `/continuous-quality-memory-view`.
 - Evidence Graph exists at `/evidence-graph` and `/evidence-graph-view`.
 - Test Cloud Native Traceability Pack exists at `/test-cloud-traceability` and `/test-cloud-traceability-view`.
+- Test Manager Create Defect webhook demo exists at `/test-manager-webhook-demo` and `/test-manager-webhook-demo-view`.
 
 Known boundary:
 
@@ -61,6 +62,9 @@ Known boundary:
   `REQ-PII-001`, an `Obsolete Test Scout`, and a Create Defect webhook plan.
   A deterministic evidence pack now exists at
   `evidence/case_001/test_cloud_traceability_pack.json`.
+  A deterministic Create Defect webhook demo now exists at
+  `evidence/case_001/test_manager_create_defect_webhook_demo.json` and returns
+  defect payload `ATS-DEFECT-TC-001`.
 
 ## Engineering proof
 
@@ -81,6 +85,7 @@ Completed:
 - Continuous Quality Memory evidence exists at `evidence/case_001/continuous_quality_memory.json`.
 - Evidence Graph evidence exists at `evidence/case_001/evidence_graph.json`.
 - Test Cloud Native Traceability Pack evidence exists at `evidence/case_001/test_cloud_traceability_pack.json`.
+- Test Manager Create Defect webhook evidence exists at `evidence/case_001/test_manager_create_defect_webhook_demo.json`.
 - Before/after deterministic test evidence exists.
 - Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
@@ -127,13 +132,14 @@ Recommended live path:
 7. Show Continuous Quality Memory: runtime incidents become permanent UiPath Test Cloud regression evidence.
 8. Show Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
 9. Show Test Cloud Native Traceability Pack: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit.
-10. Show TC-006 incident-memory antibody test for phone-number export.
-11. Show Maestro/Studio Web BPMN as the certification lifecycle.
-12. Show Test Manager project, test set, and execution result summary.
-13. Show Action Center task `#3545796` in `Pending`.
-14. Click approval live only during the final recording.
-15. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-16. Show API Workflow debug result: `deny_and_suspend`.
+10. Show Test Manager Create Defect webhook demo: failed TC-001 -> `ATS-DEFECT-TC-001` -> Failure Analyst -> Repair Agent -> targeted re-test.
+11. Show TC-006 incident-memory antibody test for phone-number export.
+12. Show Maestro/Studio Web BPMN as the certification lifecycle.
+13. Show Test Manager project, test set, and execution result summary.
+14. Show Action Center task `#3545796` in `Pending`.
+15. Click approval live only during the final recording.
+16. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+17. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 

@@ -100,6 +100,8 @@ https://permitops-uipath.vercel.app/evidence-graph
 https://permitops-uipath.vercel.app/evidence-graph-view
 https://permitops-uipath.vercel.app/test-cloud-traceability
 https://permitops-uipath.vercel.app/test-cloud-traceability-view
+https://permitops-uipath.vercel.app/test-manager-webhook-demo
+https://permitops-uipath.vercel.app/test-manager-webhook-demo-view
 ```
 
 Evidence files:
@@ -107,6 +109,7 @@ Evidence files:
 - `evidence/case_001/continuous_quality_memory.json`
 - `evidence/case_001/evidence_graph.json`
 - `evidence/case_001/test_cloud_traceability_pack.json`
+- `evidence/case_001/test_manager_create_defect_webhook_demo.json`
 
 Judge line:
 
@@ -129,13 +132,14 @@ API Workflow enforcement. The next Test Cloud-native objects should be:
 
 - `REQ-PII-001`: a managed Test Manager requirement for raw customer PII export policy.
 - `Obsolete Test Scout`: an agent that checks whether changed requirements or tool schemas make existing tests stale.
-- `Create Defect webhook`: a Test Manager failure event that can trigger Failure Analyst and Repair Agent evidence.
+- `Create Defect webhook`: a Test Manager failure event that can trigger Failure Analyst and Repair Agent evidence, producing `ATS-DEFECT-TC-001`.
 - `Testing Process Governance`: the native sign-off path for test artifacts, complementing Action Center permit approval.
 
 Local proof:
 
 ```bash
 .venv/bin/python -m permitops_worker.cli test-cloud-traceability-local
+.venv/bin/python -m permitops_worker.cli test-manager-webhook-demo-local
 ```
 
 Research note:

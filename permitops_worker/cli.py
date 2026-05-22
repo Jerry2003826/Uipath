@@ -9,6 +9,7 @@ from permitops_worker.engine.evidence import write_json
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.test_cloud_traceability import build_test_cloud_traceability_pack
+from permitops_worker.engine.test_manager_webhook import build_create_defect_webhook_demo
 from permitops_worker.engine.test_manager_sync import sync_test_cases
 from permitops_worker.engine.test_runner import run_certification_tests
 from permitops_worker.engine.v11_live_swarm import run_live_agentic_testing_loop
@@ -250,6 +251,17 @@ def cmd_test_cloud_traceability_local(_args) -> int:
     return 0
 
 
+def cmd_test_manager_webhook_demo_local(_args) -> int:
+    demo = build_create_defect_webhook_demo(CASE_ID)
+    write_json(_case_dir() / "test_manager_create_defect_webhook_demo.json", demo)
+    print("[1/4] Test Manager Create Defect webhook demo built")
+    print("      TC-001 failure -> Failure Analyst Agent")
+    print("[2/4] Defect payload ready: ATS-DEFECT-TC-001")
+    print("[3/4] Targeted re-test scope: TC-001, TC-005")
+    print("[4/4] wrote evidence/case_001/test_manager_create_defect_webhook_demo.json")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="permitops")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -275,6 +287,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("continuous-quality-memory-local").set_defaults(func=cmd_continuous_quality_memory_local)
     sub.add_parser("evidence-graph-local").set_defaults(func=cmd_evidence_graph_local)
     sub.add_parser("test-cloud-traceability-local").set_defaults(func=cmd_test_cloud_traceability_local)
+    sub.add_parser("test-manager-webhook-demo-local").set_defaults(func=cmd_test_manager_webhook_demo_local)
     return parser
 
 

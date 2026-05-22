@@ -14,6 +14,7 @@ from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.risk_scan import scan_risk
 from permitops_worker.engine.test_cloud_traceability import build_test_cloud_traceability_pack
+from permitops_worker.engine.test_manager_webhook import build_create_defect_webhook_demo, handle_create_defect_webhook
 from permitops_worker.engine.test_runner import run_certification_tests
 from permitops_worker.engine.v11_live_swarm import build_uipath_one_click_runbook, run_live_agentic_testing_loop
 from permitops_worker.schemas import AgentToolCall, TestResult
@@ -415,6 +416,53 @@ def test_cloud_traceability_view(case_id: str = "case_001") -> HTMLResponse:
         },
     ]
     return HTMLResponse(_render_evidence_view(pack["system_name"], pack["claim"], items, pack))
+
+
+@app.post("/test-manager-webhook/create-defect")
+def test_manager_create_defect_webhook(payload: dict, case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return handle_create_defect_webhook(validated_case_id, payload)
+
+
+@app.get("/test-manager-webhook-demo")
+def test_manager_webhook_demo(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return build_create_defect_webhook_demo(validated_case_id)
+
+
+@app.get("/test-manager-webhook-demo-view", response_class=HTMLResponse)
+def test_manager_webhook_demo_view(case_id: str = "case_001") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    demo = build_create_defect_webhook_demo(validated_case_id)
+    response = demo["webhook_response"]
+    items = [
+        {
+            "label": "Incoming Test Manager payload",
+            "owner": "Test Manager Webhooks",
+            "evidence": f"{demo['incoming_test_manager_payload']['testCaseId']} from execution {demo['incoming_test_manager_payload']['testExecutionId']}",
+        },
+        {
+            "label": response["failure_analysis"]["agent"],
+            "owner": "UiPath-native / worker-backed analysis",
+            "evidence": response["failure_analysis"]["root_cause"],
+        },
+        {
+            "label": response["defect_payload"]["external_id"],
+            "owner": "Create Defect webhook response",
+            "evidence": response["defect_payload"]["summary"],
+        },
+        {
+            "label": "Targeted re-test",
+            "owner": "Test Cloud / Test Manager",
+            "evidence": ", ".join(response["defect_payload"]["tests_to_rerun"]),
+        },
+        {
+            "label": "Traceability",
+            "owner": "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
+            "evidence": response["traceability"]["defect_to_repair"],
+        },
+    ]
+    return HTMLResponse(_render_evidence_view(demo["demo_name"], demo["judge_line"], items, demo))
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)

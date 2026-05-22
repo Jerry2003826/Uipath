@@ -35,7 +35,7 @@ The final runtime decision is `deny_and_suspend` for raw PII export. Aggregate s
 
 Agentic Test Swarm follows the testing principle that AI should amplify judgment, not replace it: agents generate attack ideas and repair candidates, deterministic oracles define expected behavior, Test Cloud records evidence, and Action Center keeps humans accountable.
 
-The continuous quality layer turns runtime incidents into future tests. `Continuous Quality Memory` shows how `runtime-event-phone-001` becomes TC-006 in UiPath Test Manager. The `Evidence Graph` links the whole chain: trace -> policy -> test -> repair -> approval -> runtime enforcement. The `Test Cloud Native Traceability Pack` shows the next native Test Cloud chain: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit, anchored by `REQ-PII-001`, `Obsolete Test Scout`, a Create Defect webhook blueprint, Testing Process Governance, and the runtime permit.
+The continuous quality layer turns runtime incidents into future tests. `Continuous Quality Memory` shows how `runtime-event-phone-001` becomes TC-006 in UiPath Test Manager. The `Evidence Graph` links the whole chain: trace -> policy -> test -> repair -> approval -> runtime enforcement. The `Test Cloud Native Traceability Pack` shows the next native Test Cloud chain: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit, anchored by `REQ-PII-001`, `Obsolete Test Scout`, a Create Defect webhook demo that returns `ATS-DEFECT-TC-001`, Testing Process Governance, and the runtime permit.
 
 ## How we built it
 
@@ -110,8 +110,10 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Added Continuous Quality Memory endpoints: `/continuous-quality-memory` and `/continuous-quality-memory-view`.
 - Added Evidence Graph endpoints: `/evidence-graph` and `/evidence-graph-view`.
 - Added Test Cloud Native Traceability Pack endpoints: `/test-cloud-traceability` and `/test-cloud-traceability-view`.
+- Added Test Manager Create Defect webhook demo endpoints: `/test-manager-webhook-demo` and `/test-manager-webhook-demo-view`.
 - Added repo evidence files: `evidence/case_001/continuous_quality_memory.json` and `evidence/case_001/evidence_graph.json`.
 - Added repo traceability evidence: `evidence/case_001/test_cloud_traceability_pack.json`.
+- Added webhook evidence: `evidence/case_001/test_manager_create_defect_webhook_demo.json`, with defect payload `ATS-DEFECT-TC-001`.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 
 ## What we learned

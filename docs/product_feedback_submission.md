@@ -62,6 +62,8 @@ copy-paste answer:
 Test Manager's obsolete test capability maps directly to AI workflow governance. When a policy or agent tool schema changes, a testing agent should be able to mark tests as keep, update, retire candidate, or coverage gap. In Agentic Test Swarm we call this Obsolete Test Scout. It would be valuable if Test Manager exposed structured obsolete-test decisions that custom agents could attach to requirements and test cases.
 
 Create Defect webhook support is also a natural fit. When TC-001 fails, the Test Manager Create Defect webhook could trigger a Failure Analyst Agent, attach the trace ID and policy ID, generate a repair candidate, and link the resulting defect back to the test case log.
+
+The prototype now exposes a webhook-compatible demo at `/test-manager-webhook-demo` and `/test-manager-webhook-demo-view`, backed by `evidence/case_001/test_manager_create_defect_webhook_demo.json`. It turns a failed TC-001 payload into defect payload `ATS-DEFECT-TC-001` with root cause, repair recommendation, and targeted re-test scope.
 ```
 
 ## Testing Process Governance linkage

@@ -135,6 +135,9 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
             "trigger": "failed Test Manager test case result",
             "payload_fields": ["testExecutionId", "testCaseId", "variationId", "linkToTestCaseLog"],
             "target_endpoint": "/test-manager-webhook/create-defect",
+            "demo_endpoint": "/test-manager-webhook-demo",
+            "demo_view": "/test-manager-webhook-demo-view",
+            "evidence_file": "evidence/case_001/test_manager_create_defect_webhook_demo.json",
             "result": (
                 "Failure Analyst Agent receives TC-001 log details, generates root cause and "
                 "repair evidence, then returns a linked defect payload."
