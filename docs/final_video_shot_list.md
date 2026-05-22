@@ -63,7 +63,8 @@ Screen:
 - Test Manager / Test Cloud project `PVACPOV91`
 - `PermitOps Certification Evidence`
 - `Static Assignment (6)` with live `PVACPOV91:76 / TC006 incident memory blocks phone-number export`
-- Existing historical execution with five passed overridden results
+- Fresh execution `PermitOps Certification Evidence - 20260522.1544`
+- `Finished`, `6 passed / 0 failed / 0 not executed`
 
 Narration:
 

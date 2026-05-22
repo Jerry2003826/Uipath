@@ -26,7 +26,7 @@ the final runtime permit module.
 - Test Manager is accessible at project prefix `PVACPOV91`.
 - Test Manager project `PermitOps V9.1 Agent Certification` was created.
 - Five PermitOps certification test cases were created in Test Manager.
-- Test set `PermitOps Certification Evidence` was created and assigned all five test cases.
+- Test set `PermitOps Certification Evidence` was created with the original five cases and later expanded to six with TC-006.
 - Action Center is accessible and shows the pending-task inbox.
 
 ## 2026-05-20 follow-up
@@ -175,11 +175,22 @@ Evidence:
 - `assets/test_manager_permitops_execution_5_passed_fullpage.png`
 - `assets/test_manager_tc006_case_created.png`
 - `assets/test_manager_tc006_added_to_test_set.png`
+- `assets/test_manager_6_passed_completed.png`
 - `evidence/case_001/test_manager_manual_execution_result.json`
 - `evidence/case_001/test_manager_tc006_case_created.txt`
 - `evidence/case_001/test_manager_tc006_test_set_assignment.txt`
+- `evidence/case_001/test_manager_6_passed_completed.txt`
 
-Manual execution evidence now exists:
+Fresh six-case manual execution evidence now exists:
+
+- Execution: `PermitOps Certification Evidence - 20260522.1544`
+- Execution ID: `59ea06c1-8074-0f00-8ea7-0b49ad83e475`
+- Result summary: `6 passed / 0 failed / 0 not executed`
+- Current status label: `Finished`
+- Test set: `PVACPOV91:6`
+- Includes live TC-006: `PVACPOV91:76`
+
+Historical five-case execution evidence is preserved:
 
 - Execution: `PermitOps Certification Evidence - 20260519.0911`
 - Execution ID: `c66f6554-4b30-0f00-4375-0b49aa4d0fd9`
@@ -187,11 +198,9 @@ Manual execution evidence now exists:
 - Result entry path: `More Options -> Override Result`
 - Current status label: `Running`
 
-Note: the result evidence is real and visible in Test Manager. The status label remains
-`Running` because the results were entered through the execution grid's override path,
-not through the Manual Execution Assistant `Done` flow. TC-006 was added after this
-historical execution, so the final six-test completion should be recorded as a fresh run
-only if video polish requires it.
+Note: the historical result evidence is real and visible in Test Manager, but it is no
+longer the primary judge-facing Test Cloud proof. Use the fresh six-case execution for
+the final video.
 
 ## Action Center
 
@@ -346,5 +355,5 @@ assets/action_center_permitops_pending_assigned_task_3545796.png
 ## Next Platform Steps
 
 1. Optional: complete task `#3545796` during the final demo recording so the video shows Pending -> Completed.
-2. Optional: re-run the Test Manager set through the Manual Execution Assistant if the final recording needs a completed execution status instead of a `Running` execution with all five results overridden to `Passed`.
+2. Preserve the fresh six-case Test Manager execution during recording; do not overwrite it unless a new final take is intentionally created.
 3. Publish or package the Studio Web API Workflow after the sandbox/service entitlement is stable.

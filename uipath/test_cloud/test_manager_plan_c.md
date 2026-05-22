@@ -78,15 +78,28 @@ Evidence screenshots:
 - `assets/test_manager_permitops_execution_5_passed_fullpage.png`
 - `assets/test_manager_tc006_case_created.png`
 - `assets/test_manager_tc006_added_to_test_set.png`
+- `assets/test_manager_6_passed_completed.png`
 
 Structured evidence:
 
 - `evidence/case_001/test_manager_tc006_case_created.txt`
 - `evidence/case_001/test_manager_tc006_test_set_assignment.txt`
+- `evidence/case_001/test_manager_6_passed_completed.txt`
 
 ## Live Execution Result Evidence
 
-A manual Test Manager execution was created from test set `PVACPOV91:6`:
+A fresh manual Test Manager execution was created from test set `PVACPOV91:6`:
+
+| Field | Value |
+| --- | --- |
+| Execution | `PermitOps Certification Evidence - 20260522.1544` |
+| Execution ID | `59ea06c1-8074-0f00-8ea7-0b49ad83e475` |
+| Result entry path | Manual Execution Assistant |
+| Visible result summary | `6 passed / 0 failed / 0 not executed` |
+| Status label | `Finished` |
+| Includes TC-006 | `PVACPOV91:76 - TC006 incident memory blocks phone-number export` |
+
+Historical execution evidence is preserved for traceability:
 
 | Field | Value |
 | --- | --- |

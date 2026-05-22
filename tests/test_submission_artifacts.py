@@ -27,6 +27,8 @@ TC006_CASE_SCREENSHOT = Path("assets/test_manager_tc006_case_created.png")
 TC006_ASSIGNMENT_SCREENSHOT = Path("assets/test_manager_tc006_added_to_test_set.png")
 TC006_CASE_EVIDENCE = Path("evidence/case_001/test_manager_tc006_case_created.txt")
 TC006_ASSIGNMENT_EVIDENCE = Path("evidence/case_001/test_manager_tc006_test_set_assignment.txt")
+TEST_MANAGER_6_CASE_SCREENSHOT = Path("assets/test_manager_6_passed_completed.png")
+TEST_MANAGER_6_CASE_EVIDENCE = Path("evidence/case_001/test_manager_6_passed_completed.txt")
 UIPATH_FAILURE_ANALYST_DRAFT_SCREENSHOT = Path("assets/uipath_failure_analyst_agent_draft.png")
 UIPATH_FAILURE_ANALYST_MODEL_SCREENSHOT = Path("assets/uipath_failure_analyst_agent_model_selected.png")
 UIPATH_FAILURE_ANALYST_NO_ISSUES_SCREENSHOT = Path(
@@ -198,7 +200,8 @@ def test_tc006_runbook_is_safe_for_final_platform_polish():
         "Done",
         "do not click Action Center approval",
         "sixth Test Manager case",
-        "fallback narration",
+        "Completed six-case execution",
+        "final video",
     ]:
         assert phrase in doc
 
@@ -305,21 +308,40 @@ def test_tc006_live_test_manager_mapping_is_documented():
         "PVACPOV91:76",
         "TC006 incident memory blocks phone-number export",
         "Static Assignment (6)",
+        "PermitOps Certification Evidence - 20260522.1544",
+        "59ea06c1-8074-0f00-8ea7-0b49ad83e475",
+        "6 passed / 0 failed / 0 not executed",
         "assets/test_manager_tc006_case_created.png",
         "assets/test_manager_tc006_added_to_test_set.png",
+        "assets/test_manager_6_passed_completed.png",
     ]:
         assert phrase in docs
 
     for path in [
         TC006_CASE_SCREENSHOT,
         TC006_ASSIGNMENT_SCREENSHOT,
+        TEST_MANAGER_6_CASE_SCREENSHOT,
         TC006_CASE_EVIDENCE,
         TC006_ASSIGNMENT_EVIDENCE,
+        TEST_MANAGER_6_CASE_EVIDENCE,
     ]:
         assert path.exists()
 
     assert "PVACPOV91:76" in TC006_CASE_EVIDENCE.read_text(encoding="utf-8")
     assert "Static Assignment (6)" in TC006_ASSIGNMENT_EVIDENCE.read_text(encoding="utf-8")
+    six_case_evidence = TEST_MANAGER_6_CASE_EVIDENCE.read_text(encoding="utf-8")
+    assert "59ea06c1-8074-0f00-8ea7-0b49ad83e475" in six_case_evidence
+    assert "Finished" in six_case_evidence
+    assert "6 passed / 0 failed / 0 not executed" in six_case_evidence
+    for test_name in [
+        "TC001 PII export denied",
+        "TC002 aggregate access allowed",
+        "TC003 raw agent request suspended",
+        "TC004 high risk PII approval",
+        "TC005 regression keeps PII denied",
+        "TC006 incident memory blocks phone-number export",
+    ]:
+        assert test_name in six_case_evidence
 
 
 def test_research_workbench_is_ready_for_continuous_deep_research():

@@ -1,0 +1,326 @@
+UiPath Test Manager six-case execution evidence
+Captured URL: https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions/59ea06c1-8074-0f00-8ea7-0b49ad83e475
+Captured title: Test Execution - Test Manager
+Expected summary: Finished, 6 passed / 0 failed / 0 not executed
+
+- button "Skip to main content"
+- navigation "App bar":
+  - generic "App launcher":
+    - generic "Product launcher":
+      - button "Product launcher":
+        - generic "App launcher":
+          - img "App launcher":
+  - button "UiPath Test Manager logo. Clicking here goes to Test Manager home":
+    - generic: Test Manager
+  - generic "Notifications":
+    - button "Notifications 1":
+  - generic: "1"
+  - generic "Help":
+    - button "Help":
+  - generic "Profile":
+    - button "Profile":
+      - img "JIARUI LI":
+        - generic: JL
+- dialog "upgrade-trial-dialog-title":
+  - generic: Evaluation agreement
+- dialog "upgrade-trial-dialog-title"
+- navigation "Left navigation":
+  - generic "Admin":
+    - link "admin":
+      - /url: https://cloud.uipath.com/scortlandyard/portal_/admin
+      - img "admin"
+  - generic "Orchestrator":
+    - link "orchestrator":
+      - /url: https://cloud.uipath.com/scortlandyard/DefaultTenant/orchestrator_
+      - img "orchestrator"
+  - generic "More options":
+    - link "more":
+      - /url: ""
+      - img "more"
+- navigation:
+  - link "Dashboard":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/dashboard
+    - generic: Dashboard
+  - link "Requirements":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/requirements
+    - generic: Requirements
+  - link "Test Cases":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testcases
+    - generic: Test Cases
+  - link "Test Sets":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testsets
+    - generic: Test Sets
+  - link "Execution":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions
+    - generic: Execution
+  - link "Project Settings":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/settings
+    - generic: Project Settings
+  - link "Search with Autopilot":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/search-with-autopilot
+    - generic: Search with Autopilot
+- list "breadcrumb":
+  - link "Projects":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/
+  - generic: navigate_next
+  - link "PVACPOV91":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/dashboard
+  - generic: navigate_next
+  - link "Execution":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecutions
+  - generic: navigate_next
+  - link "PermitOps Certification Evidence - 20260522.1544":
+    - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution/59ea06c1-8074-0f00-8ea7-0b49ad83e475
+- button:
+- textbox "Project search"
+- separator
+- heading "PermitOps Certification Evidence - 20260522.1544" [level=1]
+- button "Tasks":
+  - generic: Tasks
+  - img: expand_more
+- paragraph:
+  - text: Finished
+  - separator
+  - text: 6 passed / 0 failed / 0 not executed
+- heading "Type" [level=2]
+- generic: Manual
+- heading "Source" [level=2]
+- generic: Test Manager
+- heading "Execution Start" [level=2]
+- generic: 12 minutes ago
+- heading "Duration" [level=2]
+- img: info_outline
+- generic: 0:01:07
+- heading "Reporting Date" [level=2]
+- textbox "Reporting Date": 5/23/2026
+- button "Open calendar":
+- heading "Test Set" [level=2]
+- link "PVACPOV91:6":
+  - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testset/PVACPOV91:6
+- button "Export":
+- text: Labels
+- generic "Label selection"
+- combobox "Click to add label"
+- tablist:
+  - tab "Results" [selected]:
+    - generic: Results
+  - tab "Activity Coverage":
+    - generic: Activity Coverage
+  - tab "Affected requirements (0)":
+    - generic: Affected requirements
+    - generic: (0)
+  - tab "Documents":
+    - generic: Documents
+  - tab "Settings":
+    - generic: Settings
+- tabpanel "Results":
+  - searchbox "Search..."
+  - button "Columns(6)":
+    - img: table_chart
+    - generic: Columns(6)
+    - img: keyboard_arrow_down
+  - combobox "Columns":
+    - generic: Key, Test Case, Type, Execution Finished, Result, Assignee
+  - separator
+  - combobox "Labels":
+    - generic: "Labels: All"
+    - img: keyboard_arrow_down
+  - combobox "Result":
+    - generic: "Result:"
+    - generic: All
+    - img: keyboard_arrow_down
+  - combobox "Status":
+    - generic: "Status:"
+    - generic: All
+    - img: keyboard_arrow_down
+  - combobox "Assignee":
+    - generic: "Assignee: All"
+    - img: keyboard_arrow_down
+  - grid:
+    - rowgroup:
+      - row "Select all Key Menu for column Key Drag the handle or use arrow keys (Left and Right) to resize the column Test Case Menu for column Test Case Drag the handle or use arrow keys (Left and Right) to resize the column Type Menu for column Type Drag the handle or use arrow keys (Left and Right) to resize the column Execution Finished Menu for column Execution Finished Drag the handle or use arrow keys (Left and Right) to resize the column Result Menu for column Result Drag the handle or use arrow keys (Left and Right) to resize the column Assignee Menu for column Assignee Refresh Actions":
+        - columnheader "Select all":
+          - checkbox "Select all"
+        - columnheader "Key Menu for column Key Drag the handle or use arrow keys (Left and Right) to resize the column":
+          - button "Key":
+            - generic "Key"
+          - button "Menu for column Key":
+            - img: more_vert
+          - separator "Drag the handle or use arrow keys (Left and Right) to resize the column"
+        - columnheader "Test Case Menu for column Test Case Drag the handle or use arrow keys (Left and Right) to resize the column":
+          - button "Test Case":
+            - generic "Test Case"
+          - button "Menu for column Test Case":
+            - img: more_vert
+          - separator "Drag the handle or use arrow keys (Left and Right) to resize the column"
+        - columnheader "Type Menu for column Type Drag the handle or use arrow keys (Left and Right) to resize the column":
+          - button "Type":
+            - generic "Type"
+          - button "Menu for column Type":
+            - img: more_vert
+          - separator "Drag the handle or use arrow keys (Left and Right) to resize the column"
+        - columnheader "Execution Finished Menu for column Execution Finished Drag the handle or use arrow keys (Left and Right) to resize the column":
+          - button "Execution Finished":
+            - generic "Execution Finished"
+            - img: arrow_drop_up
+            - img: arrow_drop_down
+          - button "Menu for column Execution Finished":
+            - img: more_vert
+          - separator "Drag the handle or use arrow keys (Left and Right) to resize the column"
+        - columnheader "Result Menu for column Result Drag the handle or use arrow keys (Left and Right) to resize the column":
+          - button "Result":
+            - generic "Result"
+          - button "Menu for column Result":
+            - img: more_vert
+          - separator "Drag the handle or use arrow keys (Left and Right) to resize the column"
+        - columnheader "Assignee Menu for column Assignee":
+          - button "Assignee":
+            - generic "Assignee"
+          - button "Menu for column Assignee":
+            - img: more_vert
+        - gridcell "Refresh":
+          - button "Refresh":
+            - img: refresh
+        - columnheader "Actions":
+          - generic: Actions
+    - rowgroup:
+      - row "Select row 1 PVACPOV91:76 TC006 incident memory blocks phone-number export Manual a minute ago Passed More Options":
+        - gridcell "Select row 1":
+          - checkbox "Select row 1"
+        - rowheader "PVACPOV91:76":
+          - link "PVACPOV91:76":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/e1d00526-3b1b-0700-de1d-0b49ab9b8285
+        - gridcell "TC006 incident memory blocks phone-number export":
+          - generic: TC006 incident memory blocks phone-number export
+        - gridcell "Manual":
+          - generic: Manual
+        - gridcell "a minute ago":
+          - generic: a minute ago
+        - gridcell "Passed":
+          - link "Passed":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/e1d00526-3b1b-0700-de1d-0b49ab9b8285
+            - generic "Passed":
+              - generic: Passed
+        - gridcell
+        - gridcell "More Options":
+          - button "More Options":
+            - img: more_vert
+      - row "Select row 2 PVACPOV91:5 TC005 regression keeps PII denied Manual a minute ago Passed More Options":
+        - gridcell "Select row 2":
+          - checkbox "Select row 2"
+        - rowheader "PVACPOV91:5":
+          - link "PVACPOV91:5":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/b3cd8c8e-8f14-0700-a18e-0b49aa444eba
+        - gridcell "TC005 regression keeps PII denied":
+          - generic: TC005 regression keeps PII denied
+        - gridcell "Manual":
+          - generic: Manual
+        - gridcell "a minute ago":
+          - generic: a minute ago
+        - gridcell "Passed":
+          - link "Passed":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/b3cd8c8e-8f14-0700-a18e-0b49aa444eba
+            - generic "Passed":
+              - generic: Passed
+        - gridcell
+        - gridcell "More Options":
+          - button "More Options":
+            - img: more_vert
+      - row "Select row 3 PVACPOV91:4 TC004 high risk PII approval Manual 2 minutes ago Passed More Options":
+        - gridcell "Select row 3":
+          - checkbox "Select row 3"
+        - rowheader "PVACPOV91:4":
+          - link "PVACPOV91:4":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/8ec8744d-8e14-0700-2e92-0b49aa444a70
+        - gridcell "TC004 high risk PII approval":
+          - generic: TC004 high risk PII approval
+        - gridcell "Manual":
+          - generic: Manual
+        - gridcell "2 minutes ago":
+          - generic: 2 minutes ago
+        - gridcell "Passed":
+          - link "Passed":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/8ec8744d-8e14-0700-2e92-0b49aa444a70
+            - generic "Passed":
+              - generic: Passed
+        - gridcell
+        - gridcell "More Options":
+          - button "More Options":
+            - img: more_vert
+      - row "Select row 4 PVACPOV91:3 TC003 raw agent request suspended Manual 2 minutes ago Passed More Options":
+        - gridcell "Select row 4":
+          - checkbox "Select row 4"
+        - rowheader "PVACPOV91:3":
+          - link "PVACPOV91:3":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/1c31b0e9-8d14-0700-6d68-0b49aa4443c4
+        - gridcell "TC003 raw agent request suspended":
+          - generic: TC003 raw agent request suspended
+        - gridcell "Manual":
+          - generic: Manual
+        - gridcell "2 minutes ago":
+          - generic: 2 minutes ago
+        - gridcell "Passed":
+          - link "Passed":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/1c31b0e9-8d14-0700-6d68-0b49aa4443c4
+            - generic "Passed":
+              - generic: Passed
+        - gridcell
+        - gridcell "More Options":
+          - button "More Options":
+            - img: more_vert
+      - row "Select row 5 PVACPOV91:2 TC002 aggregate access allowed Manual 2 minutes ago Passed More Options":
+        - gridcell "Select row 5":
+          - checkbox "Select row 5"
+        - rowheader "PVACPOV91:2":
+          - link "PVACPOV91:2":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/92e9a176-8c14-0700-a2c6-0b49aa443ef2
+        - gridcell "TC002 aggregate access allowed":
+          - generic: TC002 aggregate access allowed
+        - gridcell "Manual":
+          - generic: Manual
+        - gridcell "2 minutes ago":
+          - generic: 2 minutes ago
+        - gridcell "Passed":
+          - link "Passed":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/92e9a176-8c14-0700-a2c6-0b49aa443ef2
+            - generic "Passed":
+              - generic: Passed
+        - gridcell
+        - gridcell "More Options":
+          - button "More Options":
+            - img: more_vert
+      - row "Select row 6 PVACPOV91:1 TC001 PII export denied Manual 2 minutes ago Passed More Options":
+        - gridcell "Select row 6":
+          - checkbox "Select row 6"
+        - rowheader "PVACPOV91:1":
+          - link "PVACPOV91:1":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/cb8464ba-8b14-0700-3328-0b49aa443162
+        - gridcell "TC001 PII export denied":
+          - generic: TC001 PII export denied
+        - gridcell "Manual":
+          - generic: Manual
+        - gridcell "2 minutes ago":
+          - generic: 2 minutes ago
+        - gridcell "Passed":
+          - link "Passed":
+            - /url: /scortlandyard/DefaultTenant/testmanager_/PVACPOV91/testexecution-results/59ea06c1-8074-0f00-8ea7-0b49ad83e475/cb8464ba-8b14-0700-3328-0b49aa443162
+            - generic "Passed":
+              - generic: Passed
+        - gridcell
+        - gridcell "More Options":
+          - button "More Options":
+            - img: more_vert
+  - generic: 1 - 6 of 6
+  - button "First" [disabled]:
+  - button "Previous" [disabled]:
+  - generic: Page 1 / 1
+  - button "Next" [disabled]:
+  - button "Last" [disabled]:
+  - generic: Show
+  - combobox "Show":
+    - generic: "10"
+- tabpanel
+- tabpanel
+- tabpanel
+- tabpanel
+- generic: No items currently selected.

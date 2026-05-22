@@ -191,4 +191,4 @@ Label: next research queue
 3. Compare top Devpost AI-agent/testing projects and extract what makes their demos feel judge-ready.
 4. Search for real-world failures in AI-generated tests, prompt injection, and agent-to-agent data leakage.
 5. Audit the demo script against official judging criteria after every major source-backed finding.
-6. Decide whether a fresh six-case Manual Execution Assistant run is worth the risk before recording.
+6. Use the completed six-case Test Manager execution as the primary Test Cloud proof in final video review.

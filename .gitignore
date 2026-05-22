@@ -5,3 +5,4 @@ __pycache__/
 .DS_Store
 .permitops_secrets/
 .vercel
+.playwright-mcp/

@@ -82,7 +82,7 @@ Open risk:
 ## Guardrails
 
 - Action Center task `#3545796` remains pending until the final live demo approval moment.
-- Preserve current Test Manager proof unless intentionally creating a fresh six-case Manual Execution Assistant run.
+- Preserve the fresh six-case Test Manager execution proof; do not overwrite it while recording.
 - Do not reframe Python as the orchestration layer. UiPath remains the control plane.
 - Do not claim legal compliance certification.
 - Do not claim coding-agent repairs are trusted automatically.

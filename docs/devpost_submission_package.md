@@ -102,7 +102,7 @@ UiPath is valuable because it gives the system a control plane: Test Cloud for e
 
 ## What's next
 
-- Complete a fresh six-test execution through Manual Execution Assistant for final video polish.
+- Attach captured AI trace and hash evidence directly to each Test Manager test result.
 - Add UiPath Agent Builder agents for Policy Miner and Red-Team roles.
 - Add a reusable API Workflow runtime permit template.
 - Add first-class Test Cloud attachments for captured AI traces, deterministic oracle versions, and evidence hashes.

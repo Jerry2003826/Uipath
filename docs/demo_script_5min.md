@@ -70,11 +70,13 @@ Show UiPath Test Manager.
 
 Point out:
 
-- `5 passed / 0 failed / 0 not executed`
+- Fresh execution `PermitOps Certification Evidence - 20260522.1544`
+- `Finished`, `6 passed / 0 failed / 0 not executed`
 - TC-001 raw PII export
 - TC-003 agent-to-agent request
 - TC-004 human approval
 - TC-005 regression after repair
+- TC-006 incident-memory phone-number export regression
 
 "Test Cloud is the certification evidence layer. This is not only a local console result."
 

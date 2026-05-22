@@ -162,7 +162,7 @@ Strong matches:
 
 Weak spots:
 
-- The live Test Manager execution is still historical five-case evidence, while TC-006 is assigned but not in a fresh completed six-case execution.
+- The fresh six-case Test Manager execution is now complete; the remaining risk is making sure the final video lingers on `6 passed / 0 failed / 0 not executed` long enough for judges to notice.
 - The demo can still become too Vercel-heavy if it starts from `live-swarm-view`.
 - Some existing copy says "permit/license" too early. For Ingo, the testing swarm should be the product; the permit is the output.
 - The business metric story needs to be spoken in the video, not just written in README.
@@ -235,8 +235,8 @@ P0:
 
 P1:
 
-- If there is time, record a fresh six-case Manual Execution Assistant run including TC-006.
-- If not, narrate clearly that TC-006 is live and assigned under `Static Assignment (6)`, while the historical execution is five-case evidence.
+- Show the fresh six-case Test Manager execution `PermitOps Certification Evidence - 20260522.1544`.
+- Narrate clearly that TC-006 is the incident-memory test and that the run is `Finished` with `6 passed / 0 failed / 0 not executed`.
 
 P2:
 

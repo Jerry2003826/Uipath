@@ -133,7 +133,8 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 Do not overclaim:
 
 - TC-006 is now a live Test Manager case (`PVACPOV91:76`) assigned to `PVACPOV91:6` under `Static Assignment (6)`.
-- The current Test Manager execution can show `Running` because the five original results were entered through result override before TC-006 was added.
+- The primary Test Manager execution is now the fresh six-case run `PermitOps Certification Evidence - 20260522.1544`, which shows `Finished` and `6 passed / 0 failed / 0 not executed`.
+- The older `20260519.0911` execution can still show `Running`; keep it as historical evidence only.
 - Do not click Action Center approval before the final recording.
 - Do not claim the UiPath-native Failure Analyst Agent replaces Test Cloud or the deterministic oracle; it is advisory failure analysis inside UiPath, and Test Cloud evidence remains the source of certification truth.
 - Do not claim legal compliance certification.
