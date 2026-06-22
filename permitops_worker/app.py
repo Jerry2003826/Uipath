@@ -29,11 +29,66 @@ CASE_ID_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
 STATIC_EVIDENCE_ROOT = Path("evidence")
 
 
+def _render_home_page() -> str:
+    links = [
+        ("/live-swarm-view", "Live swarm browser demo"),
+        ("/run-live-swarm", "Live swarm JSON demo"),
+        ("/test-cloud-traceability-view", "Test Cloud traceability view"),
+        ("/before-after-execution-evidence-view", "Before / after repair evidence"),
+        ("/judge-evidence-matrix-view", "Judge evidence matrix"),
+        ("/continuous-quality-memory-view", "Continuous quality memory"),
+        ("/evidence-graph-view", "Evidence graph"),
+        ("/uipath-native-agent-pack", "UiPath-native agent pack JSON"),
+        ("/health", "Health check"),
+    ]
+    link_items = "\n".join(
+        f'<a class="link" href="{escape(href)}"><strong>{escape(label)}</strong><span>{escape(href)}</span></a>'
+        for href, label in links
+    )
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Agentic Test Swarm</title>
+  <style>
+    :root {{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #13202e; background: #f4f7fb; }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; }}
+    main {{ max-width: 980px; margin: 0 auto; padding: 46px 24px; }}
+    .kicker {{ color: #2457d6; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }}
+    h1 {{ margin: 10px 0 12px; font-size: 42px; line-height: 1.05; letter-spacing: 0; }}
+    p {{ color: #4b5f76; font-size: 16px; line-height: 1.55; max-width: 830px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }}
+    .link {{ display: block; min-height: 118px; padding: 16px; border: 1px solid #d8e1ec; border-radius: 8px; background: #fff; color: #13202e; text-decoration: none; box-shadow: 0 6px 18px rgba(15, 23, 42, .05); }}
+    .link strong {{ display: block; font-size: 15px; margin-bottom: 12px; }}
+    .link span {{ display: block; color: #2463eb; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }}
+    .note {{ margin-top: 24px; padding: 14px 16px; border: 1px solid #fed7aa; background: #fff7ed; color: #9a3412; border-radius: 8px; }}
+    @media (max-width: 820px) {{ .grid {{ grid-template-columns: 1fr; }} h1 {{ font-size: 34px; }} }}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="kicker">UiPath AgentHack · Test Cloud Track</div>
+    <h1>Agentic Test Swarm</h1>
+    <p>UiPath Test Cloud agents that attack, repair, re-test, and certify enterprise AI workflows before they can touch production tools.</p>
+    <p>This homepage exists so judges do not land on a raw FastAPI 404. Use the links below for the live demo, Test Cloud traceability, before/after repair evidence, and UiPath-native agent pack.</p>
+    <section class="grid">{link_items}</section>
+    <div class="note">If a JSON endpoint returns <code>{{"detail":"Not Found"}}</code>, that URL is not a registered route. Start here or use <code>/live-swarm-view</code>.</div>
+  </main>
+</body>
+</html>"""
+
+
 def _case_id_from_payload(payload: dict) -> str:
     case_id = payload.get("case_id", "case_001")
     if not isinstance(case_id, str) or not CASE_ID_PATTERN.fullmatch(case_id):
         raise HTTPException(status_code=400, detail="case_id must contain only letters, numbers, hyphen, or underscore")
     return case_id
+
+
+@app.get("/", response_class=HTMLResponse)
+def home_page() -> HTMLResponse:
+    return HTMLResponse(_render_home_page())
 
 
 def _render_live_swarm_view(run: dict) -> str:
@@ -318,6 +373,17 @@ def run_live_swarm_endpoint(payload: dict) -> dict:
     if not isinstance(changed_actions, list) or not all(isinstance(action, str) for action in changed_actions):
         raise HTTPException(status_code=400, detail="changed_actions must be a list of strings")
     return run_live_agentic_testing_loop(case_id=case_id, changed_actions=changed_actions, evidence_root=API_EVIDENCE_ROOT)
+
+
+@app.get("/run-live-swarm")
+def run_live_swarm_get(case_id: str = "case_001", changed_actions: str = "export_customer_phone_numbers") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    actions = [action.strip() for action in changed_actions.split(",") if action.strip()]
+    return run_live_agentic_testing_loop(
+        case_id=validated_case_id,
+        changed_actions=actions,
+        evidence_root=API_EVIDENCE_ROOT,
+    )
 
 
 @app.get("/uipath-one-click-runbook")
