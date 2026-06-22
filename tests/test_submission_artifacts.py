@@ -690,7 +690,7 @@ def test_finish_pack_documents_remaining_platform_work_and_failure_lineage():
         "0 passed / 1 failed / 0 not executed",
         "6 passed / 0 failed / 0 not executed",
         "docs/uipath_platform_finish_runbook.md",
-        "assets/test_manager_req_pii_001_created.png",
+        "evidence/case_001/test_manager_req_pii_001_created.txt",
         "assets/test_manager_before_repair_tc001_failed.png",
         "POST https://permitops-uipath.vercel.app/test-manager-webhook/create-defect",
         "Do not approve Action Center task `#3545796`",

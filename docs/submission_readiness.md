@@ -23,6 +23,8 @@ Completed:
 - Public one-click runbook endpoint exists at `https://permitops-uipath.vercel.app/uipath-one-click-runbook`.
 - Maestro / Studio Web model exists for `PermitOps V9.1 Certification`.
 - Test Manager project exists: `PermitOps V9.1 Agent Certification` (`PVACPOV91`).
+- Live requirement exists: `PVACPOV91:151 - REQ-PII-001 Agent-to-agent PII export must be blocked before production`.
+- Requirement `PVACPOV91:151` is linked to the six certification test cases: `PVACPOV91:1`, `PVACPOV91:2`, `PVACPOV91:3`, `PVACPOV91:4`, `PVACPOV91:5`, and `PVACPOV91:76`.
 - Test set exists: `PVACPOV91:6 - PermitOps Certification Evidence`.
 - Live TC-006 case exists: `PVACPOV91:76 - TC006 incident memory blocks phone-number export`.
 - Test set `PVACPOV91:6` now shows `Static Assignment (6)` and includes `PVACPOV91:76`.
@@ -46,6 +48,7 @@ Completed:
 - Test Manager Create Defect webhook demo exists at `/test-manager-webhook-demo` and `/test-manager-webhook-demo-view`.
 - Judge evidence matrix exists at `/judge-evidence-matrix` and `/judge-evidence-matrix-view`.
 - Before/after execution evidence exists at `/before-after-execution-evidence` and `/before-after-execution-evidence-view`.
+- Requirement-to-test evidence exists at `evidence/case_001/test_manager_req_pii_001_created.txt`.
 
 Known boundary:
 
@@ -57,11 +60,12 @@ Known boundary:
 - Native-depth deep dive: the project maps cleanly to UiPath's native agent
   shape, `Prompt / Context / Tools / Escalations`. Current proof is strongest
   for prompt, tools, and escalations; Context Grounding, Agent Memory, tool guardrails, and tool simulations should be framed as product-fit extensions rather than rushed into the final demo.
-- Test Cloud native traceability deep dive: the strongest remaining platform
-  upgrade is making `Requirement -> Test Case -> Execution -> Defect -> Runtime
-  Permit` visible inside Test Manager/Test Cloud. Current live proof covers Test
-  Case -> Execution -> Runtime Permit. The next safe UiPath additions are
-  `REQ-PII-001`, an `Obsolete Test Scout`, and a Create Defect webhook plan.
+- Test Cloud native traceability deep dive: `Requirement -> Test Case ->
+  Execution -> Runtime Permit` is now visible inside Test Manager/Test Cloud
+  through live `REQ-PII-001` requirement `PVACPOV91:151`, linked tests, the
+  six-case execution, Action Center, and API Workflow runtime proof. The next
+  safe UiPath additions are an `Obsolete Test Scout` and a Create Defect webhook
+  plan.
   A deterministic evidence pack now exists at
   `evidence/case_001/test_cloud_traceability_pack.json`.
   A deterministic Create Defect webhook demo now exists at
@@ -113,6 +117,7 @@ Use these screenshots in the final video or Devpost gallery:
 - `assets/test_manager_tc006_case_created.png`
 - `assets/test_manager_tc006_added_to_test_set.png`
 - `assets/test_manager_6_passed_completed.png`
+- `evidence/case_001/test_manager_req_pii_001_created.txt`
 - `assets/uipath_failure_analyst_agent_draft.png`
 - `assets/uipath_failure_analyst_agent_model_selected.png`
 - `assets/uipath_failure_analyst_agent_no_issues.png`
@@ -135,15 +140,16 @@ Recommended live path:
 7. Show Continuous Quality Memory: runtime incidents become permanent UiPath Test Cloud regression evidence.
 8. Show Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
 9. Show Test Cloud Native Traceability Pack: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit.
-10. Show Before/After Execution Evidence: Run A failed TC-001 before repair, Run B is the after-repair six-case Test Manager execution.
-11. Show Test Manager Create Defect webhook demo: failed TC-001 -> `ATS-DEFECT-TC-001` -> Failure Analyst -> Repair Agent -> targeted re-test.
-12. Show TC-006 incident-memory antibody test for phone-number export.
-13. Show Maestro/Studio Web BPMN as the certification lifecycle.
-14. Show Test Manager project, test set, and execution result summary.
-15. Show Action Center task `#3545796` in `Pending`.
-16. Click approval live only during the final recording.
-17. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-18. Show API Workflow debug result: `deny_and_suspend`.
+10. Show live Requirement `PVACPOV91:151` linked to TC-001 through TC-006 in Test Manager.
+11. Show Before/After Execution Evidence: Run A failed TC-001 before repair, Run B is the after-repair six-case Test Manager execution.
+12. Show Test Manager Create Defect webhook demo: failed TC-001 -> `ATS-DEFECT-TC-001` -> Failure Analyst -> Repair Agent -> targeted re-test.
+13. Show TC-006 incident-memory antibody test for phone-number export.
+14. Show Maestro/Studio Web BPMN as the certification lifecycle.
+15. Show Test Manager project, test set, and execution result summary.
+16. Show Action Center task `#3545796` in `Pending`.
+17. Click approval live only during the final recording.
+18. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+19. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 
@@ -164,7 +170,6 @@ Still needed before Devpost final submission:
 - Complete the Devpost project page.
 - Submit the UiPath Product Feedback form.
 - Capture the Studio Web one-click runbook trigger if the authenticated UiPath session is available.
-- If authenticated Test Manager is available, create `REQ-PII-001` and link TC-001 through TC-006.
 - If authenticated Test Manager is available, create a before-repair failed execution for TC-001.
 - If authenticated Test Manager settings are available, configure or screenshot the Create Defect webhook integration path.
 - Use the fresh six-case Test Manager execution screenshot in the final video and Devpost gallery.
@@ -189,6 +194,22 @@ https://cloud.uipath.com/scortlandyard/DefaultTenant/testmanager_/PVACPOV91/test
 The automated browser reached UiPath login, accepted the Google account and
 password, then stopped at Google two-step verification. No Test Manager data was
 changed, and Action Center task `#3545796` was not approved.
+
+## 2026-06-22 platform update
+
+Authenticated Test Manager access was available.
+
+Completed:
+
+- Created Test Manager requirement `PVACPOV91:151 - REQ-PII-001 Agent-to-agent PII export must be blocked before production`.
+- Linked `PVACPOV91:151` to TC-001 through TC-006.
+- Verified the Requirement overview lists all six linked test cases with latest result `Passed`.
+- Opened `Optimize coverage`; Test Manager exposes Autopilot actions for requirement quality evaluation and generated tests, but this tenant requires an added document or RAG source before the next step.
+
+Not changed:
+
+- Action Center task `#3545796` remains pending.
+- The existing six-case Test Manager execution was not re-run or overwritten.
 
 Not required for the current non-sandbox completion:
 

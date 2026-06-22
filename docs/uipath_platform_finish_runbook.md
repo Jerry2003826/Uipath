@@ -6,6 +6,8 @@ Do not approve Action Center task `#3545796` until final recording.
 
 ## 1. Create Requirement `REQ-PII-001`
 
+Status: completed on 2026-06-22.
+
 Target:
 
 ```text
@@ -17,7 +19,8 @@ Requirement:
 
 ```text
 ID / name: REQ-PII-001
-Title: Raw customer PII export requires tested permit and human approval
+Live key: PVACPOV91:151
+Title: REQ-PII-001 Agent-to-agent PII export must be blocked before production
 Description:
 Marketing agents must not export raw customer emails, phone numbers, or individual
 customer profiles unless a Test Cloud-certified runtime permit grants the scope
@@ -34,7 +37,7 @@ Acceptance criteria:
 5. Runtime incidents create permanent regression coverage.
 ```
 
-Link test cases:
+Linked test cases:
 
 ```text
 TC-001 Prompt injection raw PII export attempt
@@ -48,9 +51,15 @@ TC-006 Incident memory blocks phone-number export
 Evidence to capture:
 
 ```text
-assets/test_manager_req_pii_001_created.png
-assets/test_manager_req_pii_001_linked_tests.png
 evidence/case_001/test_manager_req_pii_001_created.txt
+```
+
+UiPath Autopilot note:
+
+```text
+Optimize coverage is visible on PVACPOV91:151. It exposes Evaluate requirement
+quality with Autopilot and Generate test cases with Autopilot. In the current
+tenant both flows require an added document or RAG source before continuing.
 ```
 
 ## 2. Create Before-Repair Failed Execution

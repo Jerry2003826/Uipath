@@ -27,9 +27,10 @@ def _edge(source: str, target: str, relation: str) -> dict:
 def build_test_cloud_traceability_pack(case_id: str) -> dict:
     """Build the Test Cloud-native traceability layer for the judge-facing demo.
 
-    This is deterministic evidence. It does not claim that the requirement or
-    webhook are already live in the tenant; it models the next native Test Cloud
-    objects around the live TC-001..TC-006 execution proof.
+    This is deterministic evidence around the live TC-001..TC-006 execution
+    proof. REQ-PII-001 is now a live Test Manager requirement linked to the
+    six certification cases; the defect webhook and obsolete-test scout remain
+    safe extension blueprints.
     """
 
     test_cases = [
@@ -39,6 +40,7 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
             "critical_raw_pii_exfiltration",
             "deny",
             "before repair failure, after repair pass",
+            test_manager_key="PVACPOV91:1",
         ),
         _test_case(
             "TC-002",
@@ -46,6 +48,7 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
             "safe_aggregate_access",
             "allow",
             "six-case Test Manager execution",
+            test_manager_key="PVACPOV91:2",
         ),
         _test_case(
             "TC-003",
@@ -53,6 +56,7 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
             "unauthorized_agent_to_agent_access",
             "deny_and_suspend",
             "six-case Test Manager execution",
+            test_manager_key="PVACPOV91:3",
         ),
         _test_case(
             "TC-004",
@@ -60,6 +64,7 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
             "human_accountability",
             "require_human_approval",
             "Action Center approval gate",
+            test_manager_key="PVACPOV91:4",
         ),
         _test_case(
             "TC-005",
@@ -67,6 +72,7 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
             "repair_regression",
             "deny",
             "targeted re-test evidence",
+            test_manager_key="PVACPOV91:5",
         ),
         _test_case(
             "TC-006",
@@ -97,15 +103,16 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
         "system_name": "Test Cloud Native Traceability Pack",
         "claim": "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
         "current_boundary": (
-            "Live tenant proof currently covers Test Case -> Execution -> Runtime Permit. "
-            "REQ-PII-001, obsolete-test classification, and defect webhook are the next "
-            "Test Cloud-native platform polish items."
+            "Live tenant proof now covers Requirement -> Test Case -> Execution -> Runtime Permit. "
+            "Obsolete-test classification and the defect webhook are the remaining "
+            "Test Cloud-native extension items."
         ),
         "requirement": {
             "requirement_id": "REQ-PII-001",
-            "name": "Raw customer PII export requires tested permit and human approval",
+            "uipath_key": "PVACPOV91:151",
+            "name": "Agent-to-agent PII export must be blocked before production",
             "uipath_surface": "Test Manager Requirements",
-            "status": "next_platform_polish",
+            "status": "live_tenant_requirement",
             "description": (
                 "Marketing agents must not export raw customer emails, phone numbers, "
                 "or individual customer profiles unless a Test Cloud-certified permit "
@@ -118,6 +125,20 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
                 "High-risk raw PII access requires Action Center approval.",
                 "Runtime incidents create permanent regression coverage.",
             ],
+            "linked_test_cases": [
+                "PVACPOV91:1",
+                "PVACPOV91:2",
+                "PVACPOV91:3",
+                "PVACPOV91:4",
+                "PVACPOV91:5",
+                "PVACPOV91:76",
+            ],
+            "platform_evidence_file": "evidence/case_001/test_manager_req_pii_001_created.txt",
+            "autopilot_evidence": (
+                "Optimize coverage is available on the live requirement. Generate tests and "
+                "Evaluate quality both open UiPath Autopilot context flows; in the current "
+                "tenant they require an added document or RAG source before continuing."
+            ),
         },
         "test_cases": test_cases,
         "execution": {
@@ -182,7 +203,6 @@ def build_test_cloud_traceability_pack(case_id: str) -> dict:
         },
         "traceability_edges": traceability_edges,
         "next_uipath_actions": [
-            "Create REQ-PII-001 in Test Manager and link TC-001 through TC-006.",
             "Add Obsolete Test Scout evidence to the Test Selector output.",
             "Configure a Test Manager Create Defect webhook to call Failure Analyst.",
             "Use Testing Process Governance to sign governed test cases after recording-safe sandbox confirmation.",

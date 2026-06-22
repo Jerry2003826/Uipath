@@ -118,6 +118,9 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Added webhook evidence: `evidence/case_001/test_manager_create_defect_webhook_demo.json`, with defect payload `ATS-DEFECT-TC-001`.
 - Added judge status endpoints: `/judge-evidence-matrix-view` and `/before-after-execution-evidence-view`.
 - Added before/after execution evidence: Run A fails TC-001 before repair; Run B is the live six-case after-repair Test Manager execution.
+- Created live Test Manager requirement `PVACPOV91:151 - REQ-PII-001 Agent-to-agent PII export must be blocked before production`.
+- Linked `PVACPOV91:151` to all six certification cases: `PVACPOV91:1`, `PVACPOV91:2`, `PVACPOV91:3`, `PVACPOV91:4`, `PVACPOV91:5`, and `PVACPOV91:76`.
+- Verified the requirement exposes UiPath Test Manager Optimize coverage with Autopilot actions for requirement quality evaluation and test generation; the current tenant asks for additional document or RAG context before continuing.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 
 ## What we learned
@@ -131,7 +134,6 @@ UiPath is valuable because it gives the system a control plane: Test Cloud for e
 - Attach captured AI trace and hash evidence directly to each Test Manager test result.
 - If recording time allows, instantiate the Policy Miner Agent and Red-Team Agent specs inside UiPath Agent Builder using the `/uipath-native-agent-pack` payload.
 - Add a reusable API Workflow runtime permit template.
-- Create `REQ-PII-001` directly in Test Manager and link it to TC-001 through TC-006.
 - If platform time allows, create a separate Test Manager before-repair execution named `Attack Detection - Before Repair` with TC-001 failed, so Run A becomes live tenant proof.
 - Turn `Obsolete Test Scout` into a live Test Manager obsolete-test classification step.
 - Connect Test Manager's Create Defect webhook to the Failure Analyst / Repair Agent loop.

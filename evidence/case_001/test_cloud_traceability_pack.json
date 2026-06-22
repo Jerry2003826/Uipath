@@ -1,7 +1,7 @@
 {
   "case_id": "case_001",
   "claim": "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit",
-  "current_boundary": "Live tenant proof currently covers Test Case -> Execution -> Runtime Permit. REQ-PII-001, obsolete-test classification, and defect webhook are the next Test Cloud-native platform polish items.",
+  "current_boundary": "Live tenant proof now covers Requirement -> Test Case -> Execution -> Runtime Permit. Obsolete-test classification and the defect webhook are the remaining Test Cloud-native extension items.",
   "defect_webhook_blueprint": {
     "demo_endpoint": "/test-manager-webhook-demo",
     "demo_view": "/test-manager-webhook-demo-view",
@@ -31,7 +31,6 @@
   },
   "judge_line": "Agentic Test Swarm makes Test Cloud the system of record for Requirement -> Test Case -> Execution -> Defect -> Runtime Permit.",
   "next_uipath_actions": [
-    "Create REQ-PII-001 in Test Manager and link TC-001 through TC-006.",
     "Add Obsolete Test Scout evidence to the Test Selector output.",
     "Configure a Test Manager Create Defect webhook to call Failure Analyst.",
     "Use Testing Process Governance to sign governed test cases after recording-safe sandbox confirmation."
@@ -64,10 +63,21 @@
       "High-risk raw PII access requires Action Center approval.",
       "Runtime incidents create permanent regression coverage."
     ],
+    "autopilot_evidence": "Optimize coverage is available on the live requirement. Generate tests and Evaluate quality both open UiPath Autopilot context flows; in the current tenant they require an added document or RAG source before continuing.",
     "description": "Marketing agents must not export raw customer emails, phone numbers, or individual customer profiles unless a Test Cloud-certified permit grants the scope and high-risk access has human approval.",
-    "name": "Raw customer PII export requires tested permit and human approval",
+    "linked_test_cases": [
+      "PVACPOV91:1",
+      "PVACPOV91:2",
+      "PVACPOV91:3",
+      "PVACPOV91:4",
+      "PVACPOV91:5",
+      "PVACPOV91:76"
+    ],
+    "name": "Agent-to-agent PII export must be blocked before production",
+    "platform_evidence_file": "evidence/case_001/test_manager_req_pii_001_created.txt",
     "requirement_id": "REQ-PII-001",
-    "status": "next_platform_polish",
+    "status": "live_tenant_requirement",
+    "uipath_key": "PVACPOV91:151",
     "uipath_surface": "Test Manager Requirements"
   },
   "runtime_permit": {
@@ -90,7 +100,7 @@
       "requirement_id": "REQ-PII-001",
       "risk": "critical_raw_pii_exfiltration",
       "test_id": "TC-001",
-      "test_manager_key": "external:TC-001"
+      "test_manager_key": "PVACPOV91:1"
     },
     {
       "evidence": "six-case Test Manager execution",
@@ -99,7 +109,7 @@
       "requirement_id": "REQ-PII-001",
       "risk": "safe_aggregate_access",
       "test_id": "TC-002",
-      "test_manager_key": "external:TC-002"
+      "test_manager_key": "PVACPOV91:2"
     },
     {
       "evidence": "six-case Test Manager execution",
@@ -108,7 +118,7 @@
       "requirement_id": "REQ-PII-001",
       "risk": "unauthorized_agent_to_agent_access",
       "test_id": "TC-003",
-      "test_manager_key": "external:TC-003"
+      "test_manager_key": "PVACPOV91:3"
     },
     {
       "evidence": "Action Center approval gate",
@@ -117,7 +127,7 @@
       "requirement_id": "REQ-PII-001",
       "risk": "human_accountability",
       "test_id": "TC-004",
-      "test_manager_key": "external:TC-004"
+      "test_manager_key": "PVACPOV91:4"
     },
     {
       "evidence": "targeted re-test evidence",
@@ -126,7 +136,7 @@
       "requirement_id": "REQ-PII-001",
       "risk": "repair_regression",
       "test_id": "TC-005",
-      "test_manager_key": "external:TC-005"
+      "test_manager_key": "PVACPOV91:5"
     },
     {
       "evidence": "live Test Manager case PVACPOV91:76",

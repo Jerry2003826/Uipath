@@ -17,7 +17,10 @@ def test_traceability_pack_links_requirement_to_permit():
     assert pack["system_name"] == "Test Cloud Native Traceability Pack"
     assert pack["claim"] == "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit"
     assert pack["requirement"]["requirement_id"] == "REQ-PII-001"
+    assert pack["requirement"]["uipath_key"] == "PVACPOV91:151"
+    assert pack["requirement"]["status"] == "live_tenant_requirement"
     assert pack["requirement"]["uipath_surface"] == "Test Manager Requirements"
+    assert "PVACPOV91:76" in pack["requirement"]["linked_test_cases"]
     assert pack["execution"]["execution_id"] == "59ea06c1-8074-0f00-8ea7-0b49ad83e475"
     assert pack["execution"]["result_summary"] == "6 passed / 0 failed / 0 not executed"
     assert pack["runtime_permit"]["decision"] == "deny_and_suspend"
@@ -26,6 +29,8 @@ def test_traceability_pack_links_requirement_to_permit():
 
     test_ids = {case["test_id"] for case in pack["test_cases"]}
     assert {"TC-001", "TC-002", "TC-003", "TC-004", "TC-005", "TC-006"} == test_ids
+    keys = {case["test_manager_key"] for case in pack["test_cases"]}
+    assert {"PVACPOV91:1", "PVACPOV91:2", "PVACPOV91:3", "PVACPOV91:4", "PVACPOV91:5", "PVACPOV91:76"} == keys
 
     edge_pairs = {(edge["from"], edge["to"], edge["relation"]) for edge in pack["traceability_edges"]}
     assert ("REQ-PII-001", "TC-001", "validated_by") in edge_pairs
@@ -57,9 +62,11 @@ def test_api_exposes_traceability_pack_and_view():
     assert response.status_code == 200
     assert response.json()["claim"] == "Requirement -> Test Case -> Execution -> Defect -> Runtime Permit"
     assert response.json()["requirement"]["requirement_id"] == "REQ-PII-001"
+    assert response.json()["requirement"]["uipath_key"] == "PVACPOV91:151"
     assert view.status_code == 200
     assert "Test Cloud Native Traceability Pack" in view.text
     assert "REQ-PII-001" in view.text
+    assert "PVACPOV91:151" in view.text
     assert "Obsolete Test Scout" in view.text
 
 
@@ -78,3 +85,4 @@ def test_static_traceability_pack_exists_after_generation():
     payload = json.loads(path.read_text(encoding="utf-8"))
     assert payload["system_name"] == "Test Cloud Native Traceability Pack"
     assert payload["requirement"]["requirement_id"] == "REQ-PII-001"
+    assert payload["requirement"]["uipath_key"] == "PVACPOV91:151"

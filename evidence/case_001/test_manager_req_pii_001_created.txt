@@ -1,0 +1,39 @@
+UiPath Test Manager Requirement Evidence
+
+Captured: 2026-06-22
+Tenant: scortlandyard / DefaultTenant
+Project: PermitOps V9.1 Agent Certification
+Project key: PVACPOV91
+
+Requirement:
+- Key: PVACPOV91:151
+- Public id: REQ-PII-001
+- Name: REQ-PII-001 Agent-to-agent PII export must be blocked before production
+
+Description recorded in Test Manager:
+Business requirement for Agentic Test Swarm: Marketing Outreach Agent must not obtain raw VIP customer emails from Customer Data Agent unless a UiPath-approved permit grants raw PII scope. Aggregate segment summaries are allowed. Raw PII, phone-number export, and unauthorized agent-to-agent data requests must be denied or suspended. Test Cloud cases TC001-TC006 provide certification evidence.
+
+Linked Test Manager cases:
+- PVACPOV91:76 - TC006 incident memory blocks phone-number export - Passed
+- PVACPOV91:5 - TC005 regression keeps PII denied - Passed
+- PVACPOV91:4 - TC004 high risk PII approval - Passed
+- PVACPOV91:3 - TC003 raw agent request suspended - Passed
+- PVACPOV91:2 - TC002 aggregate access allowed - Passed
+- PVACPOV91:1 - TC001 PII export denied - Passed
+
+Live Test Manager linkage:
+- Opened Requirement PVACPOV91:151.
+- Used Tasks -> Assign Test Cases.
+- Selected all six certification test cases.
+- UiPath showed "Test Case(s) assigned."
+- The Requirement overview now lists all six linked test cases with latest result Passed.
+
+UiPath-native Autopilot coverage note:
+- Requirement PVACPOV91:151 exposes Optimize coverage.
+- Optimize coverage offers "Evaluate requirement quality with Autopilot" and "Generate test cases with Autopilot".
+- Both flows reached the "Provide additional context" step in this tenant.
+- Next was disabled without adding a file or RAG source, so no local project file was uploaded during this pass.
+
+Boundary:
+- Action Center task #3545796 was not approved.
+- The existing six-case execution was not re-run or overwritten.

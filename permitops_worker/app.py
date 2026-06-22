@@ -381,7 +381,7 @@ def test_cloud_traceability_view(case_id: str = "case_001") -> HTMLResponse:
     pack = build_test_cloud_traceability_pack(validated_case_id)
     items = [
         {
-            "label": pack["requirement"]["requirement_id"],
+            "label": f"{pack['requirement']['requirement_id']} / {pack['requirement'].get('uipath_key', 'external')}",
             "owner": pack["requirement"]["uipath_surface"],
             "evidence": pack["requirement"]["description"],
         },

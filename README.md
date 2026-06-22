@@ -131,18 +131,19 @@ Runtime incidents become permanent UiPath Test Cloud regression evidence, and th
 
 ## Test Cloud-native traceability target
 
-The latest Test Cloud native gap research says the next UiPath platform upgrade
-should make this chain first-class:
+The latest Test Cloud native gap research says the strongest UiPath platform
+story is this chain:
 
 ```text
 Requirement -> Test Case -> Execution -> Defect -> Runtime Permit
 ```
 
-Current proof already covers Test Case -> Execution -> Runtime Permit with
-TC-001 through TC-006, the six-case Test Manager execution, Action Center, and
-API Workflow enforcement. The next Test Cloud-native objects should be:
+Current proof now covers Requirement -> Test Case -> Execution -> Runtime Permit
+with the live `REQ-PII-001` requirement, TC-001 through TC-006, the six-case
+Test Manager execution, Action Center, and API Workflow enforcement. The
+remaining Test Cloud-native extension objects are:
 
-- `REQ-PII-001`: a managed Test Manager requirement for raw customer PII export policy.
+- `REQ-PII-001` / `PVACPOV91:151`: a managed Test Manager requirement for raw customer PII export policy, linked to all six certification cases.
 - `Obsolete Test Scout`: an agent that checks whether changed requirements or tool schemas make existing tests stale.
 - `Create Defect webhook`: a Test Manager failure event that can trigger Failure Analyst and Repair Agent evidence, producing `ATS-DEFECT-TC-001`.
 - `Testing Process Governance`: the native sign-off path for test artifacts, complementing Action Center permit approval.
@@ -350,6 +351,8 @@ The live tenant evidence still uses the original PermitOps names because those U
 
 - Tenant: `scortlandyard / DefaultTenant`
 - Test Manager project: `PermitOps V9.1 Agent Certification` (`PVACPOV91`)
+- Requirement: `PVACPOV91:151 - REQ-PII-001 Agent-to-agent PII export must be blocked before production`
+- Requirement coverage: `PVACPOV91:151` is linked to `PVACPOV91:1`, `PVACPOV91:2`, `PVACPOV91:3`, `PVACPOV91:4`, `PVACPOV91:5`, and `PVACPOV91:76`
 - Test set: `PVACPOV91:6 - PermitOps Certification Evidence`
 - Live incident-memory case: `PVACPOV91:76 - TC006 incident memory blocks phone-number export`
 - Test set assignment: `Static Assignment (6)` now includes `PVACPOV91:76`

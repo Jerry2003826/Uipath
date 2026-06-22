@@ -136,6 +136,7 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | Continuous Quality Memory | `https://permitops-uipath.vercel.app/continuous-quality-memory`, `evidence/case_001/continuous_quality_memory.json` |
 | Evidence Graph | `https://permitops-uipath.vercel.app/evidence-graph`, `evidence/case_001/evidence_graph.json` |
 | Test Cloud Native Traceability Pack | `https://permitops-uipath.vercel.app/test-cloud-traceability`, `evidence/case_001/test_cloud_traceability_pack.json` |
+| Live Test Manager requirement traceability | `PVACPOV91:151 - REQ-PII-001`, linked to `PVACPOV91:1`, `PVACPOV91:2`, `PVACPOV91:3`, `PVACPOV91:4`, `PVACPOV91:5`, `PVACPOV91:76`; see `evidence/case_001/test_manager_req_pii_001_created.txt` |
 | Test Manager Create Defect webhook demo | `https://permitops-uipath.vercel.app/test-manager-webhook-demo`, `https://permitops-uipath.vercel.app/test-manager-webhook-demo-view`, `evidence/case_001/test_manager_create_defect_webhook_demo.json`, defect payload `ATS-DEFECT-TC-001` |
 | UiPath runtime proxy works | `assets/uipath_api_workflow_success_deny_suspend.png` |
 | UiPath-native Failure Analyst Agent runs in Studio Web | `assets/uipath_failure_analyst_agent_debug_success.png`, `assets/uipath_failure_analyst_agent_output_detail.png`, `evidence/case_001/uipath_failure_analyst_agent_debug_success.txt` |
@@ -151,12 +152,13 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 Do not overclaim:
 
 - TC-006 is now a live Test Manager case (`PVACPOV91:76`) assigned to `PVACPOV91:6` under `Static Assignment (6)`.
+- REQ-PII-001 is now a live Test Manager requirement (`PVACPOV91:151`) linked to TC-001 through TC-006.
 - The primary Test Manager execution is now the fresh six-case run `PermitOps Certification Evidence - 20260522.1544`, which shows `Finished` and `6 passed / 0 failed / 0 not executed`.
 - The older `20260519.0911` execution can still show `Running`; keep it as historical evidence only.
 - Do not click Action Center approval before the final recording.
 - Do not claim the UiPath-native Failure Analyst Agent replaces Test Cloud or the deterministic oracle; it is advisory failure analysis inside UiPath, and Test Cloud evidence remains the source of certification truth.
 - Do not claim legal compliance certification.
 - Do not claim coding-agent repairs are automatically trusted.
-- Do not claim `REQ-PII-001`, Obsolete Test Scout, Create Defect webhook, or Testing Process Governance are already live tenant objects. They are the next Test Cloud-native polish layer, while the current live proof covers TC-001 through TC-006, the six-case execution, Action Center, and API Workflow enforcement.
+- Do not claim Obsolete Test Scout, Create Defect webhook, or Testing Process Governance are already live tenant objects. They are the next Test Cloud-native polish layer, while the current live proof covers REQ-PII-001, TC-001 through TC-006, the six-case execution, Action Center, and API Workflow enforcement.
 - The Create Defect webhook is a webhook-compatible demo endpoint, not a configured live Test Manager tenant webhook yet.
 - Do not present the six-case `6 passed` execution as the failure trigger. The failure trigger is Run A before repair; the six-case execution is Run B after repair.
