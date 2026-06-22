@@ -28,6 +28,13 @@ def build_judge_evidence_matrix(case_id: str = "case_001") -> dict[str, Any]:
         ),
         "rows": [
             _row(
+                "Before-repair failure trigger",
+                "Test Manager candidate execution",
+                "Run A models TC-001 failing before repair: 0 passed / 1 failed / 0 not executed.",
+                "DETERMINISTIC FAILED RUN",
+                "Create this as a real before-repair Test Manager execution before claiming live tenant failure proof.",
+            ),
+            _row(
                 "Six-case certification result",
                 "UiPath Test Manager / Test Cloud",
                 "Execution 59ea06c1-8074-0f00-8ea7-0b49ad83e475 shows 6 passed / 0 failed / 0 not executed.",

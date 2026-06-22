@@ -6,6 +6,7 @@ from permitops_worker.engine.ai_trace import capture_trace_replay
 from permitops_worker.engine.compiler import compile_license
 from permitops_worker.engine.continuous_quality import build_continuous_quality_memory, build_evidence_graph
 from permitops_worker.engine.evidence import write_json
+from permitops_worker.engine.execution_timeline import build_before_after_execution_evidence
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
 from permitops_worker.engine.test_cloud_traceability import build_test_cloud_traceability_pack
@@ -262,6 +263,18 @@ def cmd_test_manager_webhook_demo_local(_args) -> int:
     return 0
 
 
+def cmd_before_after_execution_evidence_local(_args) -> int:
+    evidence = build_before_after_execution_evidence(CASE_ID)
+    write_json(_case_dir() / "before_after_execution_evidence.json", evidence)
+    print("[1/4] Before/after execution evidence built")
+    print("      Run A: TC-001 failed before repair")
+    print("      Run B: six-case Test Manager execution passed after repair")
+    print("[2/4] Failure trigger and final certification are separated")
+    print("[3/4] Action Center and API Workflow remain the runtime governance path")
+    print("[4/4] wrote evidence/case_001/before_after_execution_evidence.json")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="permitops")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -288,6 +301,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("evidence-graph-local").set_defaults(func=cmd_evidence_graph_local)
     sub.add_parser("test-cloud-traceability-local").set_defaults(func=cmd_test_cloud_traceability_local)
     sub.add_parser("test-manager-webhook-demo-local").set_defaults(func=cmd_test_manager_webhook_demo_local)
+    sub.add_parser("before-after-execution-evidence-local").set_defaults(func=cmd_before_after_execution_evidence_local)
     return parser
 
 

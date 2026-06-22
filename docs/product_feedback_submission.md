@@ -34,6 +34,16 @@ The most valuable improvement would be a first-class cross-product "AI workflow 
 The same object should support Continuous Quality Memory so runtime incidents become permanent UiPath Test Cloud regression evidence without manually re-linking every artifact.
 ```
 
+## Before/after execution lineage
+
+copy-paste answer:
+
+```text
+For agentic testing, Test Cloud should make before/after execution lineage first-class. In Agentic Test Swarm there are two different runs: Run A fails TC-001 before repair and triggers Failure Analyst / Repair Agent, while Run B is the after-repair certification execution showing 6 passed. Those should be linked as one repair lineage, not explained through separate screenshots.
+
+A native "failure -> repair candidate -> targeted re-test -> certification pass" view would help reviewers understand exactly which failure was fixed, which tests were re-run, and which passed execution now supports the runtime permit.
+```
+
 ## Test Cloud evidence attachments
 
 copy-paste answer:

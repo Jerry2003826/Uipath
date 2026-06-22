@@ -1,6 +1,6 @@
 # Agentic Test Swarm Submission Readiness
 
-Last updated: 2026-05-23
+Last updated: 2026-06-22
 
 Current public positioning:
 
@@ -44,6 +44,8 @@ Completed:
 - Evidence Graph exists at `/evidence-graph` and `/evidence-graph-view`.
 - Test Cloud Native Traceability Pack exists at `/test-cloud-traceability` and `/test-cloud-traceability-view`.
 - Test Manager Create Defect webhook demo exists at `/test-manager-webhook-demo` and `/test-manager-webhook-demo-view`.
+- Judge evidence matrix exists at `/judge-evidence-matrix` and `/judge-evidence-matrix-view`.
+- Before/after execution evidence exists at `/before-after-execution-evidence` and `/before-after-execution-evidence-view`.
 
 Known boundary:
 
@@ -86,6 +88,7 @@ Completed:
 - Evidence Graph evidence exists at `evidence/case_001/evidence_graph.json`.
 - Test Cloud Native Traceability Pack evidence exists at `evidence/case_001/test_cloud_traceability_pack.json`.
 - Test Manager Create Defect webhook evidence exists at `evidence/case_001/test_manager_create_defect_webhook_demo.json`.
+- Before/after execution evidence exists at `evidence/case_001/before_after_execution_evidence.json`.
 - Before/after deterministic test evidence exists.
 - Active and pending permits include `compiler_rules_hash`, `evidence_hash`, and `license_hash`.
 - Runtime decision evidence exists for raw PII denial/suspension.
@@ -132,14 +135,15 @@ Recommended live path:
 7. Show Continuous Quality Memory: runtime incidents become permanent UiPath Test Cloud regression evidence.
 8. Show Evidence Graph: trace -> policy -> test -> repair -> approval -> runtime enforcement.
 9. Show Test Cloud Native Traceability Pack: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit.
-10. Show Test Manager Create Defect webhook demo: failed TC-001 -> `ATS-DEFECT-TC-001` -> Failure Analyst -> Repair Agent -> targeted re-test.
-11. Show TC-006 incident-memory antibody test for phone-number export.
-12. Show Maestro/Studio Web BPMN as the certification lifecycle.
-13. Show Test Manager project, test set, and execution result summary.
-14. Show Action Center task `#3545796` in `Pending`.
-15. Click approval live only during the final recording.
-16. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
-17. Show API Workflow debug result: `deny_and_suspend`.
+10. Show Before/After Execution Evidence: Run A failed TC-001 before repair, Run B is the after-repair six-case Test Manager execution.
+11. Show Test Manager Create Defect webhook demo: failed TC-001 -> `ATS-DEFECT-TC-001` -> Failure Analyst -> Repair Agent -> targeted re-test.
+12. Show TC-006 incident-memory antibody test for phone-number export.
+13. Show Maestro/Studio Web BPMN as the certification lifecycle.
+14. Show Test Manager project, test set, and execution result summary.
+15. Show Action Center task `#3545796` in `Pending`.
+16. Click approval live only during the final recording.
+17. Show PermitOps Runtime Permit hash metadata from `evidence/case_001/license.json`.
+18. Show API Workflow debug result: `deny_and_suspend`.
 
 Key narration:
 
@@ -160,6 +164,9 @@ Still needed before Devpost final submission:
 - Complete the Devpost project page.
 - Submit the UiPath Product Feedback form.
 - Capture the Studio Web one-click runbook trigger if the authenticated UiPath session is available.
+- If authenticated Test Manager is available, create `REQ-PII-001` and link TC-001 through TC-006.
+- If authenticated Test Manager is available, create a before-repair failed execution for TC-001.
+- If authenticated Test Manager settings are available, configure or screenshot the Create Defect webhook integration path.
 - Use the fresh six-case Test Manager execution screenshot in the final video and Devpost gallery.
 
 Ready-to-paste submission helpers now exist:
@@ -167,6 +174,7 @@ Ready-to-paste submission helpers now exist:
 - `docs/devpost_submission_package.md`
 - `docs/product_feedback_submission.md`
 - `docs/coding_agents_bonus_pack.md`
+- `docs/uipath_platform_finish_runbook.md`
 - `docs/uipath_native_depth_gap_research_2026-05-23.md`
 - `docs/test_cloud_native_gap_research_2026-05-23.md`
 

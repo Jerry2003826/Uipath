@@ -21,9 +21,11 @@ Start here if you are reviewing the project quickly.
 Judge-facing proof pack:
 
 - [Judge scorecard](docs/judge_scorecard.md)
+- [Judge README](docs/JUDGE_README.md)
 - [Judge taste research](docs/judge_taste_research_2026-05-23.md)
 - [TC-006 Test Manager runbook](docs/tc006_test_manager_runbook.md)
 - [Final video shot list](docs/final_video_shot_list.md)
+- [UiPath platform finish runbook](docs/uipath_platform_finish_runbook.md)
 - [Devpost submission package](docs/devpost_submission_package.md)
 - [Product Feedback submission](docs/product_feedback_submission.md)
 - [Bonus evidence pack](docs/bonus_evidence_pack.md)
@@ -104,6 +106,8 @@ https://permitops-uipath.vercel.app/test-manager-webhook-demo
 https://permitops-uipath.vercel.app/test-manager-webhook-demo-view
 https://permitops-uipath.vercel.app/judge-evidence-matrix
 https://permitops-uipath.vercel.app/judge-evidence-matrix-view
+https://permitops-uipath.vercel.app/before-after-execution-evidence
+https://permitops-uipath.vercel.app/before-after-execution-evidence-view
 ```
 
 Evidence files:
@@ -112,10 +116,12 @@ Evidence files:
 - `evidence/case_001/evidence_graph.json`
 - `evidence/case_001/test_cloud_traceability_pack.json`
 - `evidence/case_001/test_manager_create_defect_webhook_demo.json`
+- `evidence/case_001/before_after_execution_evidence.json`
 
 Judge-facing status page:
 
 - `/judge-evidence-matrix-view` separates live UiPath tenant proof from deterministic demo evidence and next-platform-polish items, so the final pitch does not overclaim blueprint artifacts as live tenant configuration.
+- `/before-after-execution-evidence-view` separates the before-repair failed TC-001 run from the after-repair six-case Test Manager execution, so the failure-analysis story does not conflict with the final `6 passed` evidence.
 
 Judge line:
 
@@ -146,6 +152,7 @@ Local proof:
 ```bash
 .venv/bin/python -m permitops_worker.cli test-cloud-traceability-local
 .venv/bin/python -m permitops_worker.cli test-manager-webhook-demo-local
+.venv/bin/python -m permitops_worker.cli before-after-execution-evidence-local
 ```
 
 Research note:

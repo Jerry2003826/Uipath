@@ -131,6 +131,7 @@ Final video should include one visible mention of UiPath for Coding Agents / Cod
 | --- | --- |
 | Runs publicly | `https://permitops-uipath.vercel.app/health` |
 | Judge evidence status matrix | `https://permitops-uipath.vercel.app/judge-evidence-matrix`, `https://permitops-uipath.vercel.app/judge-evidence-matrix-view` separates live tenant proof, deterministic demo evidence, and next-platform-polish items |
+| Before/after failure timeline | `https://permitops-uipath.vercel.app/before-after-execution-evidence`, `https://permitops-uipath.vercel.app/before-after-execution-evidence-view`, `evidence/case_001/before_after_execution_evidence.json` separates Run A failed TC-001 from Run B six-case certification |
 | Live AI workflow test | `https://permitops-uipath.vercel.app/live-swarm-view` |
 | Continuous Quality Memory | `https://permitops-uipath.vercel.app/continuous-quality-memory`, `evidence/case_001/continuous_quality_memory.json` |
 | Evidence Graph | `https://permitops-uipath.vercel.app/evidence-graph`, `evidence/case_001/evidence_graph.json` |
@@ -158,3 +159,4 @@ Do not overclaim:
 - Do not claim coding-agent repairs are automatically trusted.
 - Do not claim `REQ-PII-001`, Obsolete Test Scout, Create Defect webhook, or Testing Process Governance are already live tenant objects. They are the next Test Cloud-native polish layer, while the current live proof covers TC-001 through TC-006, the six-case execution, Action Center, and API Workflow enforcement.
 - The Create Defect webhook is a webhook-compatible demo endpoint, not a configured live Test Manager tenant webhook yet.
+- Do not present the six-case `6 passed` execution as the failure trigger. The failure trigger is Run A before repair; the six-case execution is Run B after repair.

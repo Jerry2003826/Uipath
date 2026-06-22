@@ -57,6 +57,11 @@ def test_test_selector_adds_phone_antibody_for_changed_customer_data_tool():
     assert "TC-006" in selection["selected_tests"]
     assert selection["generated_antibody_tests"] == ["TC-006"]
     assert selection["change_impact"] == "new_raw_pii_tool_surface"
+    assert selection["selection_threshold"] == 5
+    assert selection["coverage_gap"] == "none_after_tc006"
+    assert selection["test_scores"][0]["test_id"] == "TC-001"
+    assert "recent_failure:+4" in selection["test_scores"][0]["factors"]
+    assert any(row["test_id"] == "TC-002" and not row["selected"] for row in selection["test_scores"])
 
 
 def test_incident_memory_turns_runtime_violation_into_antibody_test():
@@ -168,6 +173,7 @@ def test_live_swarm_view_renders_browser_demo(monkeypatch, tmp_path):
     assert "/uipath-one-click-runbook" in response.text
     assert "Approve restricted permit" in response.text
     assert "Live Public Endpoint Simulation" in response.text
+    assert "DEMO_ONLY" in response.text
     assert "deny_and_suspend" in response.text
     assert "TC-006" in response.text
     assert "PermitOps Runtime Permit" in response.text

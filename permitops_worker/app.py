@@ -10,6 +10,7 @@ from fastapi.responses import HTMLResponse, Response
 from permitops_worker.engine.ai_trace import capture_trace_replay
 from permitops_worker.engine.compiler import compile_license
 from permitops_worker.engine.continuous_quality import build_continuous_quality_memory, build_evidence_graph
+from permitops_worker.engine.execution_timeline import build_before_after_execution_evidence
 from permitops_worker.engine.judge_evidence import build_judge_evidence_matrix
 from permitops_worker.engine.license_decision import decide
 from permitops_worker.engine.policy_to_test import generate_certification_tests
@@ -96,6 +97,7 @@ def _render_live_swarm_view(run: dict) -> str:
     .sub {{ margin: 10px 0 0; color: #4b5563; font-size: 16px; line-height: 1.45; max-width: 850px; }}
     .endpoint {{ background: #111827; color: #d1fae5; padding: 14px 16px; border-radius: 8px; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; min-width: 370px; box-shadow: 0 10px 30px rgba(15,23,42,.12); }}
     .banner {{ padding: 12px 14px; border: 1px solid #bfdbfe; background: #eff6ff; color: #1e3a8a; border-radius: 8px; font-size: 14px; margin: 16px 0 6px; }}
+    .demo-warning {{ padding: 12px 14px; border: 1px solid #fed7aa; background: #fff7ed; color: #9a3412; border-radius: 8px; font-size: 14px; margin: 10px 0 6px; }}
     .grid {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }}
     .card {{ background: #fff; border: 1px solid #d9e0ea; border-radius: 8px; padding: 18px; box-shadow: 0 6px 18px rgba(15,23,42,.06); }}
     .card h2 {{ font-size: 15px; margin: 0 0 12px; color: #111827; }}
@@ -147,6 +149,7 @@ def _render_live_swarm_view(run: dict) -> str:
       <div class="endpoint">POST /run-live-swarm<br>Status: 200 OK<br>Case: {escape(run["case_id"])}<br>Version: {escape(run["version"])}</div>
     </div>
     <div class="banner">This normal HTTPS page renders the same V11 live swarm result that the POST endpoint returns as JSON.</div>
+    <div class="demo-warning"><strong>DEMO_ONLY:</strong> public worker output uses synthetic data and contains no production UiPath credentials or real customer PII. UiPath tenant evidence is separated in the Judge Evidence Matrix.</div>
     <section class="grid">
       <div class="card"><h2>Before Repair</h2><p class="value danger">{escape(before["decision"])}</p><div class="muted">The vulnerable agent accepts the executive override and returns raw PII.</div></div>
       <div class="card"><h2>Failure Analyst</h2><p class="value danger">{escape(failure["failed_test"])}</p><div class="muted">{escape(failure["root_cause"])}</div></div>
@@ -489,6 +492,27 @@ def judge_evidence_matrix_view(case_id: str = "case_001") -> HTMLResponse:
         for row in matrix["rows"]
     ]
     return HTMLResponse(_render_evidence_view(matrix["system_name"], matrix["claim"], items, matrix))
+
+
+@app.get("/before-after-execution-evidence")
+def before_after_execution_evidence(case_id: str = "case_001") -> dict:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    return build_before_after_execution_evidence(validated_case_id)
+
+
+@app.get("/before-after-execution-evidence-view", response_class=HTMLResponse)
+def before_after_execution_evidence_view(case_id: str = "case_001") -> HTMLResponse:
+    validated_case_id = _case_id_from_payload({"case_id": case_id})
+    evidence = build_before_after_execution_evidence(validated_case_id)
+    items = [
+        {
+            "label": run["name"],
+            "owner": f"{run['status']} - {run['uipath_surface']}",
+            "evidence": f"{run['result_summary']} Purpose: {run['purpose']}",
+        }
+        for run in evidence["runs"]
+    ]
+    return HTMLResponse(_render_evidence_view(evidence["system_name"], evidence["claim"], items, evidence))
 
 
 @app.get("/live-swarm-view", response_class=HTMLResponse)

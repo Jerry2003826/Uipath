@@ -37,6 +37,8 @@ Agentic Test Swarm follows the testing principle that AI should amplify judgment
 
 The continuous quality layer turns runtime incidents into future tests. `Continuous Quality Memory` shows how `runtime-event-phone-001` becomes TC-006 in UiPath Test Manager. The `Evidence Graph` links the whole chain: trace -> policy -> test -> repair -> approval -> runtime enforcement. The `Test Cloud Native Traceability Pack` shows the next native Test Cloud chain: Requirement -> Test Case -> Execution -> Defect -> Runtime Permit, anchored by `REQ-PII-001`, `Obsolete Test Scout`, a Create Defect webhook demo that returns `ATS-DEFECT-TC-001`, Testing Process Governance, and the runtime permit.
 
+The judge evidence page separates what is live in UiPath from deterministic worker evidence and future platform polish. It also separates Run A, the before-repair TC-001 failure, from Run B, the after-repair six-case Test Manager execution. That avoids overclaiming and makes the repair loop easier to audit.
+
 ## How we built it
 
 UiPath is the orchestration and governance layer:
@@ -114,6 +116,8 @@ That keeps external LLMs inside a governed UiPath workflow instead of making the
 - Added repo evidence files: `evidence/case_001/continuous_quality_memory.json` and `evidence/case_001/evidence_graph.json`.
 - Added repo traceability evidence: `evidence/case_001/test_cloud_traceability_pack.json`.
 - Added webhook evidence: `evidence/case_001/test_manager_create_defect_webhook_demo.json`, with defect payload `ATS-DEFECT-TC-001`.
+- Added judge status endpoints: `/judge-evidence-matrix-view` and `/before-after-execution-evidence-view`.
+- Added before/after execution evidence: Run A fails TC-001 before repair; Run B is the live six-case after-repair Test Manager execution.
 - Built an MIT-licensed public GitHub repository with tests, setup instructions, deck, Devpost copy, and product feedback notes.
 
 ## What we learned
@@ -128,6 +132,7 @@ UiPath is valuable because it gives the system a control plane: Test Cloud for e
 - If recording time allows, instantiate the Policy Miner Agent and Red-Team Agent specs inside UiPath Agent Builder using the `/uipath-native-agent-pack` payload.
 - Add a reusable API Workflow runtime permit template.
 - Create `REQ-PII-001` directly in Test Manager and link it to TC-001 through TC-006.
+- If platform time allows, create a separate Test Manager before-repair execution named `Attack Detection - Before Repair` with TC-001 failed, so Run A becomes live tenant proof.
 - Turn `Obsolete Test Scout` into a live Test Manager obsolete-test classification step.
 - Connect Test Manager's Create Defect webhook to the Failure Analyst / Repair Agent loop.
 - Use Testing Process Governance to sign off the test artifacts themselves.

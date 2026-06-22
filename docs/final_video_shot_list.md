@@ -69,6 +69,7 @@ Screen:
 - Fresh execution `PermitOps Certification Evidence - 20260522.1544`
 - `Finished`, `6 passed / 0 failed / 0 not executed`
 - `test-cloud-traceability-view`
+- `before-after-execution-evidence-view`
 - `test-manager-webhook-demo-view`
 
 Narration:
@@ -77,6 +78,7 @@ Narration:
 Test Cloud is where the swarm output becomes managed certification evidence. This is not a local console-only test run.
 The Test Cloud-native chain we are building toward is Requirement -> Test Case -> Execution -> Defect -> Runtime Permit. This live proof shows the managed Test Case and Execution layer, then Action Center and API Workflow complete the runtime permit path.
 The Test Cloud Native Traceability Pack shows the next native layer: REQ-PII-001, Obsolete Test Scout, Create Defect webhook, Testing Process Governance, and runtime permit enforcement.
+The Before/After Execution Evidence makes the repair loop explicit: Run A fails TC-001 before repair, and Run B is the after-repair six-case Test Manager execution.
 The webhook demo shows how a failed TC-001 Test Manager result can produce defect payload ATS-DEFECT-TC-001 and route failure analysis into a repair and targeted re-test loop.
 ```
 
@@ -84,6 +86,7 @@ The webhook demo shows how a failed TC-001 Test Manager result can produce defec
 
 Screen:
 
+- `before-after-execution-evidence-view`
 - failure analysis
 - repair summary
 - after-repair result showing `deny_and_suspend`
@@ -94,6 +97,7 @@ Narration:
 
 ```text
 When the raw PII test fails, the Failure Analyst explains why, and the coding-agent-backed Repair Agent proposes a guardrail. The repair is not trusted until targeted re-tests pass.
+The failed run and the passed run are separate evidence objects: the failed TC-001 run triggers analysis, while the six-case Test Manager execution proves the repaired state.
 ```
 
 If time allows, briefly show the UiPath-native Failure Analyst Agent draft:
@@ -182,5 +186,6 @@ Agentic Test Swarm turns AI-generated tests into enforceable production permissi
 - Show Continuous Quality Memory with `/continuous-quality-memory-view`.
 - Show Evidence Graph with `/evidence-graph-view`.
 - Show Test Cloud Native Traceability Pack with `/test-cloud-traceability-view`.
+- Show Before/After Execution Evidence with `/before-after-execution-evidence-view`.
 - Show Test Manager Create Defect webhook demo with `/test-manager-webhook-demo-view` if there is time.
 - Keep the video under five minutes.

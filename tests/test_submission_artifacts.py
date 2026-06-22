@@ -10,6 +10,8 @@ JUDGE_SCORECARD = Path("docs/judge_scorecard.md")
 JUDGE_TASTE_RESEARCH = Path("docs/judge_taste_research_2026-05-23.md")
 UIPATH_NATIVE_GAP_RESEARCH = Path("docs/uipath_native_depth_gap_research_2026-05-23.md")
 TEST_CLOUD_NATIVE_GAP_RESEARCH = Path("docs/test_cloud_native_gap_research_2026-05-23.md")
+JUDGE_README = Path("docs/JUDGE_README.md")
+UIPATH_PLATFORM_FINISH_RUNBOOK = Path("docs/uipath_platform_finish_runbook.md")
 TC006_RUNBOOK = Path("docs/tc006_test_manager_runbook.md")
 VIDEO_SHOT_LIST = Path("docs/final_video_shot_list.md")
 DEVPOST_PACKAGE = Path("docs/devpost_submission_package.md")
@@ -659,5 +661,38 @@ def test_test_cloud_traceability_pack_is_documented_for_judges():
         "Create Defect webhook",
         "ATS-DEFECT-TC-001",
         "Testing Process Governance",
+    ]:
+        assert phrase in docs
+
+
+def test_finish_pack_documents_remaining_platform_work_and_failure_lineage():
+    docs = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [
+            README,
+            JUDGE_README,
+            UIPATH_PLATFORM_FINISH_RUNBOOK,
+            DEVPOST_PACKAGE,
+            VIDEO_SHOT_LIST,
+            SUBMISSION_READINESS,
+            JUDGE_SCORECARD,
+            PRODUCT_FEEDBACK_SUBMISSION,
+        ]
+    )
+
+    for phrase in [
+        "/before-after-execution-evidence",
+        "/before-after-execution-evidence-view",
+        "evidence/case_001/before_after_execution_evidence.json",
+        "Run A",
+        "Run B",
+        "Attack Detection - Before Repair",
+        "0 passed / 1 failed / 0 not executed",
+        "6 passed / 0 failed / 0 not executed",
+        "docs/uipath_platform_finish_runbook.md",
+        "assets/test_manager_req_pii_001_created.png",
+        "assets/test_manager_before_repair_tc001_failed.png",
+        "POST https://permitops-uipath.vercel.app/test-manager-webhook/create-defect",
+        "Do not approve Action Center task `#3545796`",
     ]:
         assert phrase in docs
