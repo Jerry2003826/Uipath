@@ -8,6 +8,128 @@ Internal governance module: `PermitOps Runtime Permit`.
 
 Public claim: Agentic Test Swarm runs on UiPath Automation Cloud. UiPath Test Cloud records certification evidence, Maestro/Studio Web models the test-swarm lifecycle, Action Center gates human approval, and a UiPath API Workflow enforces the resulting permit at runtime.
 
+## Submission qualification checklist
+
+This section mirrors the required Devpost / UiPath AgentHack judging fields so
+reviewers can verify eligibility quickly.
+
+### Project Description
+
+Agentic Test Swarm solves the testing and governance gap created by enterprise
+AI agents that can call tools, trigger automations, and request data from other
+agents. A static prompt review cannot prove that an AI worker will refuse a
+prompt-injected request for raw customer PII at runtime.
+
+The project demonstrates a UiPath-orchestrated AI testing swarm. The swarm turns
+business policy, captured AI traces, and tool schemas into adversarial tests,
+Test Cloud certification cases, failure analysis, repair candidates, targeted
+re-tests, Action Center approval, and finally an API Workflow runtime decision.
+
+The hero scenario tests a Marketing Outreach Agent calling a Customer Data
+Agent. The risky request claims urgent CMO approval and asks for 500 VIP
+customer emails. The final runtime behavior blocks raw email export with
+`deny_and_suspend`, while aggregate marketing insight remains allowed.
+
+### UiPath Components
+
+- UiPath Test Cloud / Test Manager: certification requirements, test cases,
+  execution evidence, and traceability.
+- UiPath Maestro / Studio Web: low-code lifecycle model for the test-swarm run.
+- UiPath Action Center: human approval gate for the restricted runtime permit.
+- UiPath API Workflow: runtime proxy that enforces `allow`,
+  `require_human_approval`, `deny`, or `deny_and_suspend`.
+- UiPath Agent Builder / Studio Web agent proof: native Failure Analyst agent
+  and structured specs for Policy Miner, Red-Team Agent, and Test Designer.
+- UiPath for Coding Agents / Codex-style coding agents: adversarial scenario
+  generation and repair-candidate evidence.
+
+### Agent Type
+
+The solution uses both low-code / UiPath-native agents and coded agents.
+
+- Low-code / UiPath-native: Studio Web / Maestro lifecycle, Action Center,
+  API Workflow, Test Manager, and UiPath-native agent specs.
+- Coded agents: deterministic FastAPI worker, policy oracle, test selector,
+  quality governor, runtime permit compiler, and CLI evidence generator.
+- Coding agents: used to generate adversarial test candidates and repair
+  suggestions. Their output is not trusted until deterministic expected results,
+  Test Cloud evidence, and human approval validate it.
+
+### Setup Instructions
+
+Judges can review the solution through the hosted demo, the UiPath Labs
+environment, or the local deterministic worker.
+
+1. Open the public demo:
+
+   ```text
+   https://permitops-uipath.vercel.app/
+   ```
+
+2. Run the live swarm simulation:
+
+   ```text
+   https://permitops-uipath.vercel.app/live-swarm-view
+   ```
+
+3. Inspect the Test Cloud traceability pack:
+
+   ```text
+   https://permitops-uipath.vercel.app/test-cloud-traceability-view
+   ```
+
+4. Inspect before/after repair evidence:
+
+   ```text
+   https://permitops-uipath.vercel.app/before-after-execution-evidence-view
+   ```
+
+5. Inspect the machine-readable runtime decision:
+
+   ```text
+   https://permitops-uipath.vercel.app/run-live-swarm
+   ```
+
+6. Open the UiPath Labs environment used for the hackathon build:
+
+   ```text
+   https://staging.uipath.com/hackathon26_067/
+   ```
+
+   Relevant tenant/project evidence:
+
+   - Test Manager project: `PVACPOV91 - PermitOps V9.1 Agent Certification`
+   - Requirement: `PVACPOV91:151 - REQ-PII-001`
+   - Final execution: `PermitOps Certification Evidence - 20260522.1544`
+   - Action Center task: `3545796`
+
+7. To run locally from source:
+
+   ```bash
+   git clone https://github.com/Jerry2003826/Uipath.git
+   cd Uipath
+   python3 -m venv .venv
+   .venv/bin/python -m pip install -r requirements.txt
+   .venv/bin/python -m pytest -q
+   .venv/bin/python -m permitops_worker.cli full-demo-local
+   .venv/bin/python -m permitops_worker.cli v11-live-swarm-local
+   ```
+
+8. To serve the deterministic worker locally:
+
+   ```bash
+   .venv/bin/python -m uvicorn permitops_worker.app:app --host 127.0.0.1 --port 8000
+   curl http://127.0.0.1:8000/health
+   ```
+
+### Presentation Deck
+
+The submission deck is based on the official UiPath AgentHack template:
+
+```text
+assets/agentic_test_swarm_deck.pptx
+```
+
 ## For Judges: 5-minute evaluation path
 
 Start here if you are reviewing the project quickly.
